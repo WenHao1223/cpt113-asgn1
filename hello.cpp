@@ -8,6 +8,6 @@ int main () {
 
   cout << "Lim Wen Hao is sabi";
 
-  cout << "Assignmenttttt"
+  cout << "Assignmenttttt";
   return 0;
 }
