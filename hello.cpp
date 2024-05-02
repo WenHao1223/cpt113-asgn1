@@ -14,7 +14,7 @@ int main () {
   cout << "Welcome handsome boy";
 
   for (int i = 0; i < 10; i++) {
-    cout << "WenHao" << endl;
+    cout << "WenHao" << endl; cout << "Hello, World!";
   }
 
   cout << "Now is juinewe branch edit, hihihi";
