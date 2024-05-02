@@ -5,5 +5,7 @@ int main () {
   cout << "Hello, World!" << endl;
 
   cout << "dev";
+
+  cout << "Lim Wen Hao is sabi"
   return 0;
 }
