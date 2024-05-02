@@ -9,5 +9,11 @@ int main () {
   cout << "Lim Wen Hao is sabi";
 
   cout << "Assignmenttttt";
+
+  cout << "Teh  Juin Ewe is here to sabotage";
+  cout << "Welcome handsome boy";
+  for (int i = 0; i < 10; i++) {
+    cout << i << endl;
+  }
   return 0;
 }
