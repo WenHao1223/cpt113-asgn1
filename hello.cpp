@@ -17,8 +17,6 @@ int main () {
     cout << i << endl;
   }
 
-  cout << "Now is juinewe branch edit";
+  cout << "Now is juinewe branch edit, hihihi";
   return 0;
-
-  cout << "Wen Hao is here to sabotage";
 }
