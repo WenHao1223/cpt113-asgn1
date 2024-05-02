@@ -6,6 +6,6 @@ int main () {
 
   cout << "dev";
 
-  cout << "Lim Wen Hao is sabi"
+  cout << "Lim Wen Hao is sabi";
   return 0;
 }
