@@ -30,7 +30,7 @@ class Employee {
     Employee(string employeeID, string name, string position);
 
     // member functions
-    static void startBakery();
+    IngredientInventory * startBakery() const;
     void displayEmployeeDetails() const;
 
     // Destructor

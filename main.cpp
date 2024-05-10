@@ -107,22 +107,16 @@ int main () {
   // Done: Access menu details
   // accessMenuDetails(bakeryItems[1]);
 
-  // Create ingredient inventory
-  IngredientInventory * ingredientInventory = new IngredientInventory[MAX_INGREDIENTS_INVENTORY] {
-    IngredientInventory("Ingredient 1", 10.0, 100000.0),
-    IngredientInventory("Ingredient 2", 20.0, 200)
-  };
-
   // use only once per program
   // can be started by random employee
-  supervisor1.startBakery();
+  IngredientInventory * ingredientInventory = supervisor1.startBakery();
   cout << endl;
 
   // Done: display ingredient inventory details
   ingredientInventory[0].displayIngredientInventoryDetails();
   cout << endl;
 
-  // Done: check ingredient inventory
+  // Done: check all ingredients in ingredient inventory
   ingredientInventory[0].checkIngredientInventory();
 
   delete [] bakeryItems;

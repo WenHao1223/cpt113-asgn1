@@ -36,14 +36,21 @@ Employee::Employee(string employeeID, string name, string position) {
   }
 }
 
-void Employee::startBakery() {
+IngredientInventory * Employee::startBakery() const {
   cout << "Bakery start operating now." << endl;
+
+  // Create ingredient inventory
+  IngredientInventory * ingredientInventory = new IngredientInventory[MAX_INGREDIENTS_INVENTORY] {
+    IngredientInventory("Ingredient 1", 10.0, 100000.0),
+    IngredientInventory("Ingredient 2", 20.0, 200)
+  };
 
   // print address of ingredientInventory
   cout << "Ingredient Inventory address: " << ingredientInventory << endl;
 
   cout << "Selling " << ingredientInventory[0].getIngredientInventoryCount() << " items today." << endl;
 
+  return ingredientInventory;
 }
 
 void Employee::displayEmployeeDetails() const {
