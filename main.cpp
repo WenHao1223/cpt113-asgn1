@@ -17,7 +17,7 @@ class Employee;
 #include "Cashier.h"
 #include "Employee.h"
 
-void accessBakeryName(BakeryItem * item) {
+void Employee::accessBakeryName(BakeryItem * item) {
   cout << "Bakery name: " << item->name << endl;
 }
 
@@ -64,7 +64,7 @@ int main () {
   // supervisor1.accessMenuList(bakeryItems);
 
   // print bakeryItems address
-  accessBakeryName(bakeryItems[0]);
+  supervisor1.accessBakeryName(bakeryItems[0]);
 
   
   return 0;
