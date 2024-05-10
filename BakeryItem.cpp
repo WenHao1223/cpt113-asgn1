@@ -44,7 +44,8 @@ BakeryItem::BakeryItem(string name, string description, double pricePerUnit, Ing
 
   // cout << "bakeryItemCount: " << bakeryItemCount << endl;
   // bakeryItems[bakeryItemCount] = *this;
-  // bakeryItemCount++;
+  bakeryItemCount++;
+  cout << "bakeryItemCount: " << bakeryItemCount << endl;
 
   // cout << "Bakery Item " << name << " has been added." << endl;
 }
@@ -64,9 +65,9 @@ void BakeryItem::displayBakeryItemDetails() const {
   cout << endl;
 }
 
-// int BakeryItem::getBakeryItemCount() const {
-//   return bakeryItemCount;
-// }
+int BakeryItem::getBakeryItemCount() const {
+  return bakeryItemCount;
+}
 
 string BakeryItem::getBakeryItemName() const {
   return name;
@@ -76,5 +77,5 @@ BakeryItem::~BakeryItem() {
   // cout << "Bakery Item " << name << " has been removed." << endl;
 }
 
-// static int bakeryItemCount = 0;
+int BakeryItem::bakeryItemCount = 0;
 // static BakeryItem * bakeryItems = nullptr;

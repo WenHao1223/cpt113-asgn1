@@ -17,9 +17,13 @@ class Employee;
 #include "Cashier.h"
 #include "Employee.h"
 
-void Employee::accessBakeryName(BakeryItem & item) {
-  cout << "Bakery address: " << &item << endl;
-  cout << "Bakery name: " << item.name << endl;
+const int MAX_BAKERY_ITEMS = 10;
+
+void accessMenuList(BakeryItem items []) {
+  for (int i = 0; i < items->getBakeryItemCount(); i++) {
+    // cout << "Item address: " << &items[i] << endl;
+    cout << i+1 << ". " << items[i].getBakeryItemName() << endl;
+  }
 }
 
 int main () {
@@ -51,14 +55,10 @@ int main () {
     Ingredient("Ingredient 3 of Item 3", 40.0, 400.0)
   };
 
-  BakeryItem bakeryItems[2] = {
-    BakeryItem("Item 1", "Description 1", 10.0, ingredient1, INGREDIENT1_COUNT, "Recipe 1"),
-    BakeryItem("Item 2", "Description 2", 20.0, ingredient2, INGREDIENT2_COUNT, "Recipe 2")
-  };
-
-  // BakeryItem * bakeryItems[10];
-  // bakeryItems[0] = new BakeryItem("Item 1", "Description 1", 10.0, ingredient1, INGREDIENT1_COUNT, "Recipe 1");
-  // bakeryItems[1] = new BakeryItem("Item 2", "Description 2", 20.0, ingredient2, INGREDIENT2_COUNT, "Recipe 2");
+  BakeryItem * bakeryItems = new BakeryItem[MAX_BAKERY_ITEMS];
+  // @TjeEwe check if user input larger than MAX_BAKERY_ITEMS
+  bakeryItems[0] = BakeryItem("Item 1", "Description 1", 10.0, ingredient1, INGREDIENT1_COUNT, "Recipe 1");
+  bakeryItems[1] = BakeryItem("Item 2", "Description 2", 20.0, ingredient2, INGREDIENT2_COUNT, "Recipe 2");
 
   cout << endl;
 
@@ -67,12 +67,10 @@ int main () {
   // item2.displayBakeryItemDetails();
 
   // Access menu list
-  // supervisor1.accessMenuList(bakeryItems);
+  // cout << "Bakery Item Address: " << &bakeryItems << endl;
+  accessMenuList(bakeryItems);
 
-  // print bakeryItems address
-  cout << "bakeryItems[0]: " << &bakeryItems[0] << endl;
-  supervisor1.accessBakeryName(bakeryItems[0]);
-
+  delete [] bakeryItems;
   
   return 0;
 }

@@ -30,10 +30,9 @@ class BakeryItem {
     int getBakeryItemCount() const;
     string getBakeryItemName() const;
 
-    // friend functions to be used by Employee class
-    // friend void Employee::accessMenuList(BakeryItem * item) const;
+    // friend functions to be used by main.cpp
     // friend void accessMenuDetails() const;
-    friend void accessBakeryName(BakeryItem & item);
+    friend void accessMenuList(BakeryItem []);
 
     // destructor
     ~BakeryItem();

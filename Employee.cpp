@@ -51,18 +51,10 @@ void Employee::displayEmployeeDetails() const {
   cout << endl;
 }
 
-// void Employee::accessMenuList(BakeryItem * items) const {
-//   cout << "Menu List: " << endl;
-//   for (int i = 0; i < items->getBakeryItemCount(); i++) {
-//     cout << i;
-//   }
-//   cout << endl;
-// }
-
 Employee::~Employee() {
   delete supervisor;
   delete baker;
   delete cashier;
 
-  cout << "Employee " << name << " has been removed." << endl;
+  // cout << "Employee " << name << " has been removed." << endl;
 }
