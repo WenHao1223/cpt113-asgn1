@@ -23,6 +23,7 @@ class Employee {
     Employee(string employeeID, string name, string position);
 
     // member functions
+    void startBakery();
     void displayEmployeeDetails() const;
 
     // Friend function

@@ -33,6 +33,10 @@ Employee::Employee(string employeeID, string name, string position) {
   }
 }
 
+void startBakery() {
+  cout << "Bakery has started." << endl;
+}
+
 void Employee::displayEmployeeDetails() const {
   cout << "Employee ID: " << employeeID << endl;
   cout << "Name: " << name << endl;
