@@ -43,7 +43,6 @@ BakeryItem::BakeryItem(string name, string description, double pricePerUnit, Ing
   this->recipe = recipe;
 
   // cout << "bakeryItemCount: " << bakeryItemCount << endl;
-  // bakeryItems[bakeryItemCount] = *this;
   bakeryItemCount++;
   cout << "bakeryItemCount: " << bakeryItemCount << endl;
 
@@ -70,4 +69,3 @@ BakeryItem::~BakeryItem() {
 }
 
 int BakeryItem::bakeryItemCount = 0;
-// static BakeryItem * bakeryItems = nullptr;

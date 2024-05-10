@@ -2,6 +2,7 @@
 // g++ *.cpp -o main.exe && ./main
 
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <cstdlib>
 using namespace std;
@@ -24,6 +25,19 @@ void accessMenuList(BakeryItem items []) {
     // cout << "Item address: " << &items[i] << endl;
     cout << i+1 << ". " << items[i].name << endl;
   }
+  cout << endl;
+}
+
+void accessMenuDetails(BakeryItem & item) {
+  cout << item.name << endl;
+  cout << item.description << endl;
+  cout << "RM" << setprecision(2) << fixed << item.pricePerUnit << endl;
+  if (item.disabled) {
+    cout << "Out of stock." << endl;
+  } else {
+    cout << "In stock." << endl;
+  }
+  cout << endl;
 }
 
 int main () {
@@ -66,9 +80,14 @@ int main () {
   // item1.displayBakeryItemDetails();
   // item2.displayBakeryItemDetails();
 
-  // Access menu list
+  // Done: Access menu list
   // cout << "Bakery Item Address: " << &bakeryItems << endl;
   accessMenuList(bakeryItems);
+
+  // Done: Access menu details
+  accessMenuDetails(bakeryItems[0]);
+
+  // 
 
   delete [] bakeryItems;
   

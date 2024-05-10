@@ -18,7 +18,6 @@ class BakeryItem {
     string recipe;
     bool disabled = false;
     static int bakeryItemCount;
-    static BakeryItem * bakeryItems;
         
   public:
     // Constructor
@@ -31,6 +30,7 @@ class BakeryItem {
     // friend functions to be used by main.cpp
     // friend void accessMenuDetails() const;
     friend void accessMenuList(BakeryItem []);
+    friend void accessMenuDetails(BakeryItem &);
 
     // destructor
     ~BakeryItem();
