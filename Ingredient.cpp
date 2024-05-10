@@ -29,7 +29,7 @@ Ingredient::Ingredient(string name, double cost, double weight) {
   this->name = name;
   this->cost = cost;
   this->weight = weight;
-  cout << "Ingredient " << name << " has been added." << endl;
+  // cout << "Ingredient " << name << " has been added." << endl;
 }
 
 Ingredient::Ingredient(string name, double cost, int piece) {
@@ -54,7 +54,7 @@ Ingredient::Ingredient(string name, double cost, int piece) {
   this->name = name;
   this->cost = cost;
   this->piece = piece;
-  cout << "Ingredient " << name << " has been added." << endl;
+  // cout << "Ingredient " << name << " has been added." << endl;
 }
 
 void Ingredient::displayIngredientDetails() const {
@@ -63,4 +63,20 @@ void Ingredient::displayIngredientDetails() const {
   cout << "Weight: " << weight << endl;
   cout << "Piece: " << piece << endl;
   cout << endl;
+}
+
+string Ingredient::getName() const {
+  return name;
+}
+
+double Ingredient::getCost() const {
+  return cost;
+}
+
+double Ingredient::getWeight() const {
+  return weight;
+}
+
+int Ingredient::getPiece() const {
+  return piece;
 }

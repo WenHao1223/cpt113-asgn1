@@ -23,6 +23,12 @@ class Ingredient {
 
     // member functions
     void displayIngredientDetails() const;
+
+    // accessor
+    string getName() const;
+    double getCost() const;
+    double getWeight() const;
+    int getPiece() const;
 };
 
 #endif

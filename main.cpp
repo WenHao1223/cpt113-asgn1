@@ -32,6 +32,20 @@ void accessMenuDetails(BakeryItem & item) {
   cout << item.name << endl;
   cout << item.description << endl;
   cout << "RM " << setprecision(2) << fixed << item.pricePerUnit << endl;
+  cout << "Ingredients: " << endl;
+  for (int i = 0; i < item.ingredientCount; i++) {
+    // display ingredient details as 200g sugar, 1 egg, 1 cup flour
+    if (item.ingredient[i].getWeight() > 0) {
+      cout << item.ingredient[i].getWeight() << "g " << item.ingredient[i].getName();
+    }
+    if (item.ingredient[i].getPiece() > 0) {
+      cout << item.ingredient[i].getPiece() << " " << item.ingredient[i].getName();
+    }
+    if (i < item.ingredientCount - 1) {
+      cout << ", ";
+    }
+  }
+  cout << endl;
   if (item.disabled) {
     cout << "Out of stock." << endl;
   } else {
@@ -62,40 +76,42 @@ int main () {
   // system will need to login and logout many times to create bakery items
   // @TjeEwe check if user input larger than MAX_BAKERY_ITEMS
   BakeryItem * bakeryItems = new BakeryItem[MAX_BAKERY_ITEMS];
+  Ingredient * ingredient;
 
   // @TjeEwe need user input in determining the number of ingredients in one bakery items
   numberOfIngredients = 1;
-  Ingredient * ingredient = new Ingredient[numberOfIngredients] {
+
+  ingredient = new Ingredient[numberOfIngredients] {
     Ingredient("Ingredient 1 of Item 1", 10.0, 100.0)
   };
   bakeryItems[0] = BakeryItem("Item 1", "Description 1", 10.0, ingredient, numberOfIngredients, "Recipe 1");
-  delete [] ingredient;
+  // delete [] ingredient;
 
   numberOfIngredients = 3;
-  Ingredient * ingredient = new Ingredient[numberOfIngredients] {
+  ingredient = new Ingredient[numberOfIngredients] {
     Ingredient("Ingredient 1 of Item 1", 20.0, 200.0),
-    Ingredient("Ingredient 2 of Item 2", 30.0, 300.0),
+    Ingredient("Ingredient 2 of Item 2", 30.0, 3),
     Ingredient("Ingredient 3 of Item 3", 40.0, 400.0)
   };
   bakeryItems[1] = BakeryItem("Item 2", "Description 2", 20.0, ingredient, numberOfIngredients, "Recipe 2");
-  delete [] ingredient;
+  // delete [] ingredient;
 
   cout << endl;
 
   // Done: display bakery item details
-  // item1.displayBakeryItemDetails();
-  // item2.displayBakeryItemDetails();
+  // bakeryItems[0].displayBakeryItemDetails();
 
   // Done: Access menu list
   // cout << "Bakery Item Address: " << &bakeryItems << endl;
-  accessMenuList(bakeryItems);
+  // accessMenuList(bakeryItems);
 
   // Done: Access menu details
-  accessMenuDetails(bakeryItems[0]);
+  accessMenuDetails(bakeryItems[1]);
 
   // 
 
   delete [] bakeryItems;
+  delete [] ingredient;
   
   return 0;
 }
