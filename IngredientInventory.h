@@ -29,6 +29,9 @@ class IngredientInventory : public Ingredient {
     // mutator
     // void restockIngredientInventory(int quantity);
 
+    // accessor
+    int getIngredientInventoryCount() const;
+
     // destructor
     ~IngredientInventory();
 };

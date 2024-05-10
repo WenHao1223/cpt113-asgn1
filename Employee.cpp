@@ -40,7 +40,9 @@ void Employee::startBakery() {
   cout << "Bakery start operating now." << endl;
 
   // print address of ingredientInventory
-  // cout << "Ingredient Inventory address: " << ingredientInventory << endl;
+  cout << "Ingredient Inventory address: " << ingredientInventory << endl;
+
+  cout << "Selling " << ingredientInventory[0].getIngredientInventoryCount() << " items today." << endl;
 
 }
 

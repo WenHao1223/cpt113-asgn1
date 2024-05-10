@@ -101,6 +101,10 @@ void IngredientInventory::checkIngredientInventory() const {
 //   cout << "Ingredient " << ingredient.getName() << " has been restocked." << endl;
 // }
 
+int IngredientInventory::getIngredientInventoryCount() const {
+  return ingredientInventoryCount;
+}
+
 IngredientInventory::~IngredientInventory() {
   // cout << "Ingredient " << ingredient.getName() << " has been removed." << endl;
 }

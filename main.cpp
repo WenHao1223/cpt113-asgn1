@@ -63,10 +63,6 @@ int main () {
   // Employee baker1("B1", "Baker 1", "Baker");
   // Employee cashier1("C1", "Cashier 1", "Cashier");
 
-  // use only once per program
-  // can be started by random employee
-  supervisor1.startBakery();
-
   cout << endl;
 
   // Done: display employee details
@@ -90,7 +86,6 @@ int main () {
     Ingredient("Ingredient 1 of Item 1", 10.0, 100.0)
   };
   bakeryItems[0] = BakeryItem("Item 1", "Description 1", 10.0, ingredient, numberOfIngredients, "Recipe 1");
-  // delete [] ingredient;
 
   numberOfIngredients = 3;
   ingredient = new Ingredient[numberOfIngredients] {
@@ -99,7 +94,6 @@ int main () {
     Ingredient("Ingredient 3 of Item 3", 40.0, 400.0)
   };
   bakeryItems[1] = BakeryItem("Item 2", "Description 2", 20.0, ingredient, numberOfIngredients, "Recipe 2");
-  // delete [] ingredient;
 
   cout << endl;
 
@@ -118,6 +112,11 @@ int main () {
     IngredientInventory("Ingredient 1", 10.0, 100000.0),
     IngredientInventory("Ingredient 2", 20.0, 200)
   };
+
+  // use only once per program
+  // can be started by random employee
+  supervisor1.startBakery();
+  cout << endl;
 
   // Done: display ingredient inventory details
   ingredientInventory[0].displayIngredientInventoryDetails();
