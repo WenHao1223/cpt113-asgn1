@@ -8,12 +8,14 @@
 
 using namespace std;
 
+const int MAX_INGREDIENTS = 10;
+
 class BakeryItem {
   private:
     string name;
     string description;
     double pricePerUnit;
-    Ingredient * ingredient = nullptr;
+    Ingredient * ingredient = new Ingredient[MAX_INGREDIENTS];
     int ingredientCount = 0;
     string recipe;
     bool disabled = false;

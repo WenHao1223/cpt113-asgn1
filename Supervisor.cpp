@@ -2,5 +2,5 @@
 
 Supervisor::Supervisor(string name) {
   this->name = name;
-  cout << "Supervisor " << name << " has been added." << endl;
+  // cout << "Supervisor " << name << " has been added." << endl;
 }

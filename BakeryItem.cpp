@@ -44,7 +44,6 @@ BakeryItem::BakeryItem(string name, string description, double pricePerUnit, Ing
 
   // cout << "bakeryItemCount: " << bakeryItemCount << endl;
   bakeryItemCount++;
-  cout << "bakeryItemCount: " << bakeryItemCount << endl;
 
   // cout << "Bakery Item " << name << " has been added." << endl;
 }
