@@ -33,7 +33,7 @@ class BakeryItem {
     // friend functions to be used by Employee class
     // friend void Employee::accessMenuList(BakeryItem * item) const;
     // friend void accessMenuDetails() const;
-    friend void accessBakeryName(BakeryItem * item);
+    friend void accessBakeryName(BakeryItem & item);
 
     // destructor
     ~BakeryItem();

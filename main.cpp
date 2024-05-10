@@ -17,8 +17,9 @@ class Employee;
 #include "Cashier.h"
 #include "Employee.h"
 
-void Employee::accessBakeryName(BakeryItem * item) {
-  cout << "Bakery name: " << item->name << endl;
+void Employee::accessBakeryName(BakeryItem & item) {
+  cout << "Bakery address: " << &item << endl;
+  cout << "Bakery name: " << item.name << endl;
 }
 
 int main () {
@@ -50,9 +51,14 @@ int main () {
     Ingredient("Ingredient 3 of Item 3", 40.0, 400.0)
   };
 
-  BakeryItem * bakeryItems[10];
-  bakeryItems[0] = new BakeryItem("Item 1", "Description 1", 10.0, ingredient1, INGREDIENT1_COUNT, "Recipe 1");
-  bakeryItems[1] = new BakeryItem("Item 2", "Description 2", 20.0, ingredient2, INGREDIENT2_COUNT, "Recipe 2");
+  BakeryItem bakeryItems[2] = {
+    BakeryItem("Item 1", "Description 1", 10.0, ingredient1, INGREDIENT1_COUNT, "Recipe 1"),
+    BakeryItem("Item 2", "Description 2", 20.0, ingredient2, INGREDIENT2_COUNT, "Recipe 2")
+  };
+
+  // BakeryItem * bakeryItems[10];
+  // bakeryItems[0] = new BakeryItem("Item 1", "Description 1", 10.0, ingredient1, INGREDIENT1_COUNT, "Recipe 1");
+  // bakeryItems[1] = new BakeryItem("Item 2", "Description 2", 20.0, ingredient2, INGREDIENT2_COUNT, "Recipe 2");
 
   cout << endl;
 
@@ -64,6 +70,7 @@ int main () {
   // supervisor1.accessMenuList(bakeryItems);
 
   // print bakeryItems address
+  cout << "bakeryItems[0]: " << &bakeryItems[0] << endl;
   supervisor1.accessBakeryName(bakeryItems[0]);
 
   

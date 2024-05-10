@@ -73,7 +73,6 @@ string BakeryItem::getBakeryItemName() const {
 }
 
 BakeryItem::~BakeryItem() {
-  delete[] ingredient;
   // cout << "Bakery Item " << name << " has been removed." << endl;
 }
 

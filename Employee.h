@@ -33,7 +33,7 @@ class Employee {
     // Friend function
     // void Employee::accessMenuList(BakeryItem * items) const;
     // void BakeryItem::accessMenuDetails() const;
-    void accessBakeryName(BakeryItem * item);
+    void accessBakeryName(BakeryItem & item);
 
     // Destructor
     ~Employee();
