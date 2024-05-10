@@ -28,6 +28,9 @@ int main () {
   // cashier1.displayEmployeeDetails();
 
   // Create bakery items
+  // @TjeEwe @AeroRin this section will not include in the final project
+  // employees will create bakery items
+  // system will need to login and logout many times to create bakery items
   const int INGREDIENT1_COUNT = 1;
   const int INGREDIENT2_COUNT = 3;
   Ingredient ingredient1[INGREDIENT1_COUNT] = {
