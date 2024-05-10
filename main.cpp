@@ -31,7 +31,7 @@ void accessMenuList(BakeryItem items []) {
 void accessMenuDetails(BakeryItem & item) {
   cout << item.name << endl;
   cout << item.description << endl;
-  cout << "RM" << setprecision(2) << fixed << item.pricePerUnit << endl;
+  cout << "RM " << setprecision(2) << fixed << item.pricePerUnit << endl;
   if (item.disabled) {
     cout << "Out of stock." << endl;
   } else {
@@ -41,6 +41,8 @@ void accessMenuDetails(BakeryItem & item) {
 }
 
 int main () {
+  int numberOfIngredients;
+
   // Done: create employees
   Employee supervisor1("S1", "Supervisor 1", "Supervisor");
   // Employee baker1("B1", "Baker 1", "Baker");
@@ -58,21 +60,25 @@ int main () {
   // @TjeEwe @AeroRin this section will not include in the final project
   // employees will create bakery items
   // system will need to login and logout many times to create bakery items
-  const int INGREDIENT1_COUNT = 1;
-  const int INGREDIENT2_COUNT = 3;
-  Ingredient ingredient1[INGREDIENT1_COUNT] = {
+  // @TjeEwe check if user input larger than MAX_BAKERY_ITEMS
+  BakeryItem * bakeryItems = new BakeryItem[MAX_BAKERY_ITEMS];
+
+  // @TjeEwe need user input in determining the number of ingredients in one bakery items
+  numberOfIngredients = 1;
+  Ingredient * ingredient = new Ingredient[numberOfIngredients] {
     Ingredient("Ingredient 1 of Item 1", 10.0, 100.0)
   };
-  Ingredient ingredient2[INGREDIENT2_COUNT] = {
+  bakeryItems[0] = BakeryItem("Item 1", "Description 1", 10.0, ingredient, numberOfIngredients, "Recipe 1");
+  delete [] ingredient;
+
+  numberOfIngredients = 3;
+  Ingredient * ingredient = new Ingredient[numberOfIngredients] {
     Ingredient("Ingredient 1 of Item 1", 20.0, 200.0),
     Ingredient("Ingredient 2 of Item 2", 30.0, 300.0),
     Ingredient("Ingredient 3 of Item 3", 40.0, 400.0)
   };
-
-  BakeryItem * bakeryItems = new BakeryItem[MAX_BAKERY_ITEMS];
-  // @TjeEwe check if user input larger than MAX_BAKERY_ITEMS
-  bakeryItems[0] = BakeryItem("Item 1", "Description 1", 10.0, ingredient1, INGREDIENT1_COUNT, "Recipe 1");
-  bakeryItems[1] = BakeryItem("Item 2", "Description 2", 20.0, ingredient2, INGREDIENT2_COUNT, "Recipe 2");
+  bakeryItems[1] = BakeryItem("Item 2", "Description 2", 20.0, ingredient, numberOfIngredients, "Recipe 2");
+  delete [] ingredient;
 
   cout << endl;
 

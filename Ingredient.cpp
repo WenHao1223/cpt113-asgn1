@@ -1,5 +1,12 @@
 #include "Ingredient.h"
 
+Ingredient::Ingredient() {
+  name = "";
+  cost = 0;
+  weight = 0;
+  piece = 0;
+}
+
 Ingredient::Ingredient(string name, double cost, double weight) {
   if (name == "") {
     cout << "Name cannot be empty." << endl;

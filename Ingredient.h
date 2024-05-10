@@ -15,6 +15,7 @@ class Ingredient {
     
   public:
     // Constructor
+    Ingredient();
     // uncountable items
     Ingredient(string name, double cost, double weight);
     // countable items
