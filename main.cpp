@@ -62,6 +62,10 @@ int main () {
   // Employee baker1("B1", "Baker 1", "Baker");
   // Employee cashier1("C1", "Cashier 1", "Cashier");
 
+  // use only once per program
+  // can be started by random employee
+  supervisor1.startBakery();
+
   cout << endl;
 
   // Done: display employee details
@@ -106,9 +110,11 @@ int main () {
   // accessMenuList(bakeryItems);
 
   // Done: Access menu details
-  accessMenuDetails(bakeryItems[1]);
+  // accessMenuDetails(bakeryItems[1]);
 
-  // 
+  // Create ingredient inventory
+  IngredientInventory ingredientInventory1("Ingredient 1", 10.0, 100.0, 10);
+  IngredientInventory ingredientInventory2("Ingredient 2", 20.0, 200.0, 20);
 
   delete [] bakeryItems;
   delete [] ingredient;

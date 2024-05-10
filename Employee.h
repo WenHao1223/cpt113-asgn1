@@ -7,6 +7,7 @@
 #include "Baker.h"
 #include "Cashier.h"
 #include "BakeryItem.h"
+#include "IngredientInventory.h"
 
 using namespace std;
 
@@ -21,13 +22,15 @@ class Employee {
     Supervisor * supervisor = nullptr;
     Baker * baker = nullptr;
     Cashier * cashier = nullptr;
+
+    static IngredientInventory * ingredientInventory;
         
   public:
     // Constructor
     Employee(string employeeID, string name, string position);
 
     // member functions
-    void startBakery();
+    static void startBakery();
     void displayEmployeeDetails() const;
 
     // Destructor

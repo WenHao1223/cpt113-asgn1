@@ -1,6 +1,8 @@
 #include "Employee.h"
 #include "BakeryItem.h"
 
+const int MAX_INGREDIENTS_INVENTORY = 20;
+
 Employee::Employee(string employeeID, string name, string position) {
   if (employeeID == "") {
     cout << "Employee ID cannot be empty." << endl;
@@ -34,8 +36,12 @@ Employee::Employee(string employeeID, string name, string position) {
   }
 }
 
-void startBakery() {
-  cout << "Bakery has started." << endl;
+void Employee::startBakery() {
+  cout << "Bakery start operating now." << endl;
+
+  // print address of ingredientInventory
+  // cout << "Ingredient Inventory address: " << ingredientInventory << endl;
+
 }
 
 void Employee::displayEmployeeDetails() const {
@@ -58,3 +64,5 @@ Employee::~Employee() {
 
   // cout << "Employee " << name << " has been removed." << endl;
 }
+
+IngredientInventory * Employee::ingredientInventory = IngredientInventory::getIngredientInventory();
