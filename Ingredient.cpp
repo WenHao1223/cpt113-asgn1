@@ -1,6 +1,24 @@
 #include "Ingredient.h"
 
 Ingredient::Ingredient(string name, double cost, double weight) {
+  if (name == "") {
+    cout << "Name cannot be empty." << endl;
+    exit(EXIT_FAILURE);
+    return;
+  }
+
+  if (cost < 0) {
+    cout << "Cost cannot be negative." << endl;
+    exit(EXIT_FAILURE);
+    return;
+  }
+
+  if (weight < 0) {
+    cout << "Weight cannot be negative." << endl;
+    exit(EXIT_FAILURE);
+    return;
+  }
+
   this->name = name;
   this->cost = cost;
   this->weight = weight;
@@ -8,6 +26,24 @@ Ingredient::Ingredient(string name, double cost, double weight) {
 }
 
 Ingredient::Ingredient(string name, double cost, int piece) {
+  if (name == "") {
+    cout << "Name cannot be empty." << endl;
+    exit(EXIT_FAILURE);
+    return;
+  }
+
+  if (cost < 0) {
+    cout << "Cost cannot be negative." << endl;
+    exit(EXIT_FAILURE);
+    return;
+  }
+
+  if (piece < 0) {
+    cout << "Piece cannot be negative." << endl;
+    exit(EXIT_FAILURE);
+    return;
+  }
+
   this->name = name;
   this->cost = cost;
   this->piece = piece;

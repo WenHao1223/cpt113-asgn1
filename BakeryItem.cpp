@@ -1,6 +1,30 @@
 #include "BakeryItem.h"
 
 BakeryItem::BakeryItem(string name, string description, double pricePerUnit, Ingredient * ingredient, int ingredientCount, string recipe) {
+  if (name == "") {
+    cout << "Name cannot be empty." << endl;
+    exit(EXIT_FAILURE);
+    return;
+  }
+
+  if (pricePerUnit < 0) {
+    cout << "Price per unit cannot be negative." << endl;
+    exit(EXIT_FAILURE);
+    return;
+  }
+
+  if (ingredient == nullptr) {
+    cout << "Ingredient cannot be empty." << endl;
+    exit(EXIT_FAILURE);
+    return;
+  }
+
+  if (ingredientCount < 0) {
+    cout << "Number of ingredients cannot be negative." << endl;
+    exit(EXIT_FAILURE);
+    return;
+  }
+
   this->name = name;
   this->description = description;
   this->pricePerUnit = pricePerUnit;
