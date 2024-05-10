@@ -1,12 +1,14 @@
+#include <iomanip>
+
 #include "IngredientInventory.h"
 
 const int MAX_INGREDIENTS_INVENTORY = 20;
 
 IngredientInventory::IngredientInventory() {
-  this->quantity = 0;
+  // cout << "IngredientInventory object has been created." << endl;
 }
 
-IngredientInventory::IngredientInventory(string name, double cost, double weight, int quantity) {
+IngredientInventory::IngredientInventory(string name, double cost, double weight) {
   if (name == "") {
     cout << "Name cannot be empty." << endl;
     exit(EXIT_FAILURE);
@@ -25,14 +27,7 @@ IngredientInventory::IngredientInventory(string name, double cost, double weight
     return;
   }
 
-  if (quantity < 0) {
-    cout << "Quantity cannot be negative." << endl;
-    exit(EXIT_FAILURE);
-    return;
-  }
-
   this->ingredient = Ingredient(name, cost, weight);
-  this->quantity = quantity;
 
   ingredientInventory[ingredientInventoryCount] = *this;
   ingredientInventoryCount++;
@@ -40,7 +35,7 @@ IngredientInventory::IngredientInventory(string name, double cost, double weight
   // cout << "Ingredient " << name << " has been added." << endl;
 }
 
-IngredientInventory::IngredientInventory(string name, double cost, int piece, int quantity) {
+IngredientInventory::IngredientInventory(string name, double cost, int piece) {
   if (name == "") {
     cout << "Name cannot be empty." << endl;
     exit(EXIT_FAILURE);
@@ -59,14 +54,7 @@ IngredientInventory::IngredientInventory(string name, double cost, int piece, in
     return;
   }
 
-  if (quantity < 0) {
-    cout << "Quantity cannot be negative." << endl;
-    exit(EXIT_FAILURE);
-    return;
-  }
-
   this->ingredient = Ingredient(name, cost, piece);
-  this->quantity = quantity;
   
   ingredientInventory[ingredientInventoryCount] = *this;
   ingredientInventoryCount++;
@@ -81,13 +69,24 @@ IngredientInventory * IngredientInventory::getIngredientInventory() {
 
 void IngredientInventory::displayIngredientInventoryDetails() const {
   ingredient.displayIngredientDetails();
-  cout << "Quantity: " << quantity << endl;
 }
 
 void IngredientInventory::checkIngredientInventory() const {
   // check all ingredients in inventory
   cout << "Checking ingredient inventory..." << endl;
-  displayIngredientInventoryDetails();
+  cout << setw(20) << left << "Ingredient Name" << "Quantity" << endl;
+
+  for (int i = 0; i < ingredientInventoryCount; i++) {
+    cout << setw(20) << left << ingredientInventory[i].ingredient.getName();
+    if (ingredientInventory[i].ingredient.getWeight() > 0) {
+      cout << ingredientInventory[i].ingredient.getWeight() << " gram(s)" << endl;
+    } else if (ingredientInventory[i].ingredient.getPiece() > 0) {
+      cout << ingredientInventory[i].ingredient.getPiece() << " piece(s)" << endl;
+    } else {
+      cout << 0 << endl;
+    }
+  }
+
   cout << endl;
 }
 

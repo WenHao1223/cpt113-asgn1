@@ -1,3 +1,5 @@
+#include <iomanip>
+
 #include "Ingredient.h"
 
 Ingredient::Ingredient() {
@@ -59,10 +61,9 @@ Ingredient::Ingredient(string name, double cost, int piece) {
 
 void Ingredient::displayIngredientDetails() const {
   cout << "Name: " << name << endl;
-  cout << "Cost: " << cost << endl;
+  cout << setprecision(2) << fixed << "Cost: RM" << cost << endl;
   cout << "Weight: " << weight << endl;
   cout << "Piece: " << piece << endl;
-  cout << endl;
 }
 
 string Ingredient::getName() const {

@@ -10,7 +10,6 @@ using namespace std;
 
 class IngredientInventory : public Ingredient {
   private:
-    int quantity;
     Ingredient ingredient;
     static int ingredientInventoryCount;
     static IngredientInventory * ingredientInventory;
@@ -18,9 +17,9 @@ class IngredientInventory : public Ingredient {
     // constructor
     IngredientInventory();
     // uncountable items
-    IngredientInventory(string name, double cost, double weight, int quantity);
+    IngredientInventory(string name, double cost, double weight);
     // countable items
-    IngredientInventory(string name, double cost, int piece, int quantity);
+    IngredientInventory(string name, double cost, int piece);
     
     // member functions
     static IngredientInventory * getIngredientInventory();

@@ -113,8 +113,15 @@ int main () {
   // accessMenuDetails(bakeryItems[1]);
 
   // Create ingredient inventory
-  IngredientInventory ingredientInventory1("Ingredient 1", 10.0, 100.0, 10);
-  IngredientInventory ingredientInventory2("Ingredient 2", 20.0, 200.0, 20);
+  IngredientInventory ingredientInventory1("Ingredient 1", 10.0, 100000.0);
+  IngredientInventory ingredientInventory2("Ingredient 2", 20.0, 200);
+
+  // Done: display ingredient inventory details
+  ingredientInventory1.displayIngredientInventoryDetails();
+  cout << endl;
+
+  // Done: check ingredient inventory
+  ingredientInventory1.checkIngredientInventory();
 
   delete [] bakeryItems;
   delete [] ingredient;
