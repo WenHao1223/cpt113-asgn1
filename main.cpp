@@ -20,9 +20,9 @@ class Employee;
 const int MAX_BAKERY_ITEMS = 10;
 
 void accessMenuList(BakeryItem items []) {
-  for (int i = 0; i < items->getBakeryItemCount(); i++) {
+  for (int i = 0; i < items->bakeryItemCount; i++) {
     // cout << "Item address: " << &items[i] << endl;
-    cout << i+1 << ". " << items[i].getBakeryItemName() << endl;
+    cout << i+1 << ". " << items[i].name << endl;
   }
 }
 

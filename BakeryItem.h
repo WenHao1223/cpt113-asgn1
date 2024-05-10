@@ -27,8 +27,6 @@ class BakeryItem {
 
     // member functions
     void displayBakeryItemDetails() const;
-    int getBakeryItemCount() const;
-    string getBakeryItemName() const;
 
     // friend functions to be used by main.cpp
     // friend void accessMenuDetails() const;

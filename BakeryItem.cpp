@@ -65,14 +65,6 @@ void BakeryItem::displayBakeryItemDetails() const {
   cout << endl;
 }
 
-int BakeryItem::getBakeryItemCount() const {
-  return bakeryItemCount;
-}
-
-string BakeryItem::getBakeryItemName() const {
-  return name;
-}
-
 BakeryItem::~BakeryItem() {
   // cout << "Bakery Item " << name << " has been removed." << endl;
 }
