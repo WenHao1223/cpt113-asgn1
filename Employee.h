@@ -6,6 +6,7 @@
 #include "Supervisor.h"
 #include "Baker.h"
 #include "Cashier.h"
+#include "BakeryItem.h"
 
 using namespace std;
 
@@ -27,8 +28,8 @@ class Employee {
     void displayEmployeeDetails() const;
 
     // Friend function
-    // friend void accessMenuList();
-    // friend void accessMenuDetails();
+    // void Employee::accessMenuList(BakeryItem * items) const;
+    // void BakeryItem::accessMenuDetails() const;
 
     // Destructor
     ~Employee();

@@ -1,5 +1,15 @@
 #include "BakeryItem.h"
 
+BakeryItem::BakeryItem() {
+  name = "";
+  description = "";
+  pricePerUnit = 0;
+  ingredient = nullptr;
+  ingredientCount = 0;
+  recipe = "";
+  disabled = false;
+}
+
 BakeryItem::BakeryItem(string name, string description, double pricePerUnit, Ingredient * ingredient, int ingredientCount, string recipe) {
   if (name == "") {
     cout << "Name cannot be empty." << endl;
@@ -31,6 +41,11 @@ BakeryItem::BakeryItem(string name, string description, double pricePerUnit, Ing
   this->ingredient = ingredient;
   this->ingredientCount = ingredientCount;
   this->recipe = recipe;
+
+  // cout << "bakeryItemCount: " << bakeryItemCount << endl;
+  // bakeryItems[bakeryItemCount] = *this;
+  // bakeryItemCount++;
+
   // cout << "Bakery Item " << name << " has been added." << endl;
 }
 
@@ -49,7 +64,18 @@ void BakeryItem::displayBakeryItemDetails() const {
   cout << endl;
 }
 
+// int BakeryItem::getBakeryItemCount() const {
+//   return bakeryItemCount;
+// }
+
+string BakeryItem::getBakeryItemName() const {
+  return name;
+}
+
 BakeryItem::~BakeryItem() {
   delete[] ingredient;
   // cout << "Bakery Item " << name << " has been removed." << endl;
 }
+
+// static int bakeryItemCount = 0;
+// static BakeryItem * bakeryItems = nullptr;

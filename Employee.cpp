@@ -1,4 +1,5 @@
 #include "Employee.h"
+#include "BakeryItem.h"
 
 Employee::Employee(string employeeID, string name, string position) {
   if (employeeID == "") {
@@ -49,6 +50,14 @@ void Employee::displayEmployeeDetails() const {
 
   cout << endl;
 }
+
+// void Employee::accessMenuList(BakeryItem * items) const {
+//   cout << "Menu List: " << endl;
+//   for (int i = 0; i < items->getBakeryItemCount(); i++) {
+//     cout << i;
+//   }
+//   cout << endl;
+// }
 
 Employee::~Employee() {
   delete supervisor;
