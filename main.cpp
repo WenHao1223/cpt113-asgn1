@@ -19,6 +19,7 @@ class Employee;
 #include "Employee.h"
 
 const int MAX_BAKERY_ITEMS = 10;
+const int MAX_INGREDIENTS_INVENTORY = 20;
 
 void accessMenuList(BakeryItem items []) {
   for (int i = 0; i < items->bakeryItemCount; i++) {
@@ -113,15 +114,17 @@ int main () {
   // accessMenuDetails(bakeryItems[1]);
 
   // Create ingredient inventory
-  IngredientInventory ingredientInventory1("Ingredient 1", 10.0, 100000.0);
-  IngredientInventory ingredientInventory2("Ingredient 2", 20.0, 200);
+  IngredientInventory * ingredientInventory = new IngredientInventory[MAX_INGREDIENTS_INVENTORY] {
+    IngredientInventory("Ingredient 1", 10.0, 100000.0),
+    IngredientInventory("Ingredient 2", 20.0, 200)
+  };
 
   // Done: display ingredient inventory details
-  ingredientInventory1.displayIngredientInventoryDetails();
+  ingredientInventory[0].displayIngredientInventoryDetails();
   cout << endl;
 
   // Done: check ingredient inventory
-  ingredientInventory1.checkIngredientInventory();
+  ingredientInventory[0].checkIngredientInventory();
 
   delete [] bakeryItems;
   delete [] ingredient;
