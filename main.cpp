@@ -96,6 +96,15 @@ class Employee {
     // Friend function
     // friend void accessMenuList();
     // friend void accessMenuDetails();
+
+    // Destructor
+    ~Employee() {
+      delete supervisor;
+      delete baker;
+      delete cashier;
+
+      cout << "Employee " << name << " has been removed." << endl;
+    }
 };
 
 int main () {
