@@ -47,11 +47,21 @@ class Employee {
   public:
     // Constructor
     Employee(string employeeID, string name, string position) {
-      // exit with error if employeeID is empty
-
-
       if (employeeID == "") {
         cout << "Employee ID cannot be empty." << endl;
+        exit(EXIT_FAILURE);
+        return;
+      }
+
+      if (name == "") {
+        cout << "Name cannot be empty." << endl;
+        exit(EXIT_FAILURE);
+        return;
+      }
+
+      if (position == "") {
+        cout << "Position cannot be empty." << endl;
+        exit(EXIT_FAILURE);
         return;
       }
 
