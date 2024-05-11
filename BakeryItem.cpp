@@ -68,6 +68,20 @@ void BakeryItem::displayBakeryItemDetails() const {
   cout << endl;
 }
 
+void BakeryItem::calculateCost() const {
+  double totalCost = 0;
+
+  for (int i = 0; i < ingredientCount; i++) {
+    if (ingredient[i].getCountable()) {
+      totalCost += ingredient[i].getCostPerUnit() * ingredient[i].getPiece();
+    } else {
+      totalCost += ingredient[i].getCostPerUnit() * ingredient[i].getWeight();
+    }
+  }
+
+  cout << "Total cost: RM " << totalCost << endl;
+}
+
 int BakeryItem::getBakeryItemCount() const {
   return bakeryItemCount;
 }

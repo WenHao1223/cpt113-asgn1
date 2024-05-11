@@ -129,7 +129,7 @@ void IngredientInventory::changeIngredientCost(int index, double cost) {
 
   cout << "Cost of ingredient " << ingredientInventory[index].ingredient.getName() << " has been changed." << endl;
   cout << setprecision(2) << fixed;
-  cout << "New cost: RM" << ingredientInventory[index].ingredient.getCostPerPiece() << endl;
+  cout << "New cost: RM" << ingredientInventory[index].ingredient.getCostPerUnit() << endl;
 }
 
 void IngredientInventory::setIngredientInventory(IngredientInventory * ingredientInventory) {
@@ -154,7 +154,7 @@ string IngredientInventory::getIngredientInventoryName (int index) const {
 }
 
 double IngredientInventory::getIngredientInventoryCost (int index) const {
-  return ingredientInventory[index].ingredient.getCostPerPiece();
+  return ingredientInventory[index].ingredient.getCostPerUnit();
 }
 
 IngredientInventory::~IngredientInventory() {

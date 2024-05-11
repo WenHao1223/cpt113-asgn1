@@ -9,7 +9,7 @@ using namespace std;
 class Ingredient {
   private:
     string name;
-    double costPerPiece;
+    double costPerUnit;
     double weight;
     int piece;
     bool countable;
@@ -18,16 +18,16 @@ class Ingredient {
     // Constructor
     Ingredient();
     // uncountable items
-    Ingredient(string name, double costPerPiece, double weight);
+    Ingredient(string name, double costPerUnit, double weight);
     // countable items
-    Ingredient(string name, double costPerPiece, int piece);
+    Ingredient(string name, double costPerUnit, int piece);
 
     // member functions
     void displayIngredientDetails() const;
 
     // accessor
     string getName() const;
-    double getCostPerPiece() const;
+    double getCostPerUnit() const;
     double getWeight() const;
     int getPiece() const;
     bool getCountable() const;
