@@ -23,6 +23,8 @@ class Employee {
     Baker * baker = nullptr;
     Cashier * cashier = nullptr;
 
+    static BakeryItem * bakeryItems;
+    static Ingredient * ingredientBakeryItems;
     static IngredientInventory * ingredientInventory;
         
   public:
@@ -42,6 +44,7 @@ class Employee {
     void checkIngredientInventory() const;
     void restockIngredientInventory(int, int) const;
     void changeIngredientCost(int, double) const;
+    void createBakeryItem();
 
     // Destructor
     ~Employee();

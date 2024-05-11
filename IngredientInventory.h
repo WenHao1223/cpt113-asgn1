@@ -12,7 +12,7 @@ class IngredientInventory : public Ingredient {
   private:
     Ingredient ingredient;
     static int ingredientInventoryCount;
-    static IngredientInventory * ingredientInventory;
+    static IngredientInventory * ingredientInventory; // store here
   public:
     // constructor
     IngredientInventory();

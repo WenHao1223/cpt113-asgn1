@@ -3,8 +3,8 @@
 
 #include <iostream>
 #include <string>
+
 #include "Ingredient.h"
-#include "Employee.h"
 
 using namespace std;
 
@@ -20,6 +20,7 @@ class BakeryItem {
     string recipe;
     bool disabled = false;
     static int bakeryItemCount;
+    static BakeryItem * bakeryItems; // pointer from Employee class
         
   public:
     // Constructor
@@ -28,6 +29,13 @@ class BakeryItem {
 
     // member functions
     void displayBakeryItemDetails() const;
+
+    // accessor
+    int getBakeryItemCount() const;
+    string getBakeryItemName() const;
+
+    // mutator
+    void setBakeryItems(BakeryItem *);
 
     // friend functions to be used by main.cpp
     // friend void accessMenuDetails() const;

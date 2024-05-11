@@ -1,13 +1,17 @@
 #include "BakeryItem.h"
 
+const int MAX_BAKERY_ITEMS = 10;
+
 BakeryItem::BakeryItem() {
-  name = "";
-  description = "";
-  pricePerUnit = 0;
-  ingredient = nullptr;
-  ingredientCount = 0;
-  recipe = "";
-  disabled = false;
+  // name = "";
+  // description = "";
+  // pricePerUnit = 0;
+  // ingredient = nullptr;
+  // ingredientCount = 0;
+  // recipe = "";
+  // disabled = false;
+
+  // cout << "BakeryItem object has been created." << endl;
 }
 
 BakeryItem::BakeryItem(string name, string description, double pricePerUnit, Ingredient * ingredient, int ingredientCount, string recipe) {
@@ -42,6 +46,7 @@ BakeryItem::BakeryItem(string name, string description, double pricePerUnit, Ing
   this->ingredientCount = ingredientCount;
   this->recipe = recipe;
 
+  this->bakeryItems[bakeryItemCount] = *this;
   // cout << "bakeryItemCount: " << bakeryItemCount << endl;
   bakeryItemCount++;
 
@@ -63,8 +68,22 @@ void BakeryItem::displayBakeryItemDetails() const {
   cout << endl;
 }
 
+int BakeryItem::getBakeryItemCount() const {
+  return bakeryItemCount;
+}
+
+string BakeryItem::getBakeryItemName() const {
+  return name;
+}
+
+void BakeryItem::setBakeryItems(BakeryItem * bakeryItems) {
+  // cout << "Bakery Item Address (from BakeryItem): " << bakeryItems << endl;
+  this->bakeryItems = bakeryItems;
+}
+
 BakeryItem::~BakeryItem() {
   // cout << "Bakery Item " << name << " has been removed." << endl;
 }
 
 int BakeryItem::bakeryItemCount = 0;
+BakeryItem * BakeryItem::bakeryItems = new BakeryItem[MAX_BAKERY_ITEMS];

@@ -13,6 +13,7 @@ class Employee;
 // class declaration
 #include "Ingredient.h"
 #include "BakeryItem.h"
+#include "IngredientInventory.h"
 #include "Supervisor.h"
 #include "Baker.h"
 #include "Cashier.h"
@@ -20,7 +21,7 @@ class Employee;
 
 // global constant
 const int MAX_EMPLOYEES = 10;
-const int MAX_BAKERY_ITEMS = 10;
+// const int MAX_BAKERY_ITEMS = 10;
 const int MAX_INGREDIENTS_INVENTORY = 20;
 
 void accessMenuList(BakeryItem items []) {
@@ -58,7 +59,7 @@ void accessMenuDetails(BakeryItem & item) {
 }
 
 int main () {
-  int numberOfIngredients;
+  // int numberOfIngredients;
 
   // Done: create employees
   Employee employees[MAX_EMPLOYEES] = {
@@ -80,25 +81,25 @@ int main () {
   // employees will create bakery items
   // system will need to login and logout many times to create bakery items
   // @TjeEwe check if user input larger than MAX_BAKERY_ITEMS
-  BakeryItem * bakeryItems = new BakeryItem[MAX_BAKERY_ITEMS];
-  Ingredient * ingredient;
+  // BakeryItem * bakeryItems = new BakeryItem[MAX_BAKERY_ITEMS];
+  // Ingredient * ingredient;
 
-  // @TjeEwe need user input in determining the number of ingredients in one bakery items
-  numberOfIngredients = 1;
+  // // @TjeEwe need user input in determining the number of ingredients in one bakery items
+  // numberOfIngredients = 1;
 
-  ingredient = new Ingredient[numberOfIngredients] {
-    Ingredient("Ingredient 1 of Item 1", 10.0, 100.0)
-  };
-  bakeryItems[0] = BakeryItem("Item 1", "Description 1", 10.0, ingredient, numberOfIngredients, "Recipe 1");
+  // ingredient = new Ingredient[numberOfIngredients] {
+  //   Ingredient("Ingredient 1 of Item 1", 10.0, 100.0)
+  // };
+  // bakeryItems[0] = BakeryItem("Item 1", "Description 1", 10.0, ingredient, numberOfIngredients, "Recipe 1");
 
-  numberOfIngredients = 3;
-  ingredient = new Ingredient[numberOfIngredients] {
-    Ingredient("Ingredient 1 of Item 1", 20.0, 200.0),
-    Ingredient("Ingredient 2 of Item 2", 30.0, 3),
-    Ingredient("Ingredient 3 of Item 3", 40.0, 400.0)
-  };
-  bakeryItems[1] = BakeryItem("Item 2", "Description 2", 20.0, ingredient, numberOfIngredients, "Recipe 2");
-  cout << endl;
+  // numberOfIngredients = 3;
+  // ingredient = new Ingredient[numberOfIngredients] {
+  //   Ingredient("Ingredient 1 of Item 1", 20.0, 200.0),
+  //   Ingredient("Ingredient 2 of Item 2", 30.0, 3),
+  //   Ingredient("Ingredient 3 of Item 3", 40.0, 400.0)
+  // };
+  // bakeryItems[1] = BakeryItem("Item 2", "Description 2", 20.0, ingredient, numberOfIngredients, "Recipe 2");
+  // cout << endl;
 
   // Done: display bakery item details
   // bakeryItems[0].displayBakeryItemDetails();
@@ -133,8 +134,8 @@ int main () {
   // cout << endl;
 
   // Done: check all ingredients in ingredient inventory
-  employees[0].checkIngredientInventory();
-  cout << endl;
+  // employees[0].checkIngredientInventory();
+  // cout << endl;
   // employees[1].checkIngredientInventory();
   // cout << endl;
   // employees[2].checkIngredientInventory();
@@ -148,16 +149,17 @@ int main () {
   // employees[0].restockIngredientInventory(1, 300);
   // employees[2].restockIngredientInventory(1, 300);
 
-  // change ingredient cost
-  employees[0].changeIngredientCost(0, 20.0);
-  employees[1].changeIngredientCost(0, 20.0);
-  employees[2].changeIngredientCost(0, 20.0);
-  cout << endl;
+  // Done: change ingredient cost
+  // employees[0].changeIngredientCost(0, 20.0);
+  // employees[1].changeIngredientCost(0, 20.0);
+  // employees[2].changeIngredientCost(0, 20.0);
+  // cout << endl;
 
-  employees[0].accessIngredientInventoryDetails(1);
+  // create new bakery item
+  employees[0].createBakeryItem();
 
-  delete [] bakeryItems;
-  delete [] ingredient;
+  // delete [] bakeryItems;
+  // delete [] ingredient;
   
   return 0;
 }
