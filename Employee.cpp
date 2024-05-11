@@ -333,12 +333,22 @@ void Employee::compareCostVsProfit(int index) const {
   cout << position << " - Comparing " << bakeryItems[index].getBakeryItemName() << " cost vs profit..." << endl;
   cout << setprecision(2) << fixed;
   cout << "Total cost: RM " << bakeryItems[index].calculateCost() << endl;
-  cout << "Selling price: RM " << bakeryItems[index].getPricePerUnit() << endl; 
   cout << "Total profit: RM " << bakeryItems[index].calculateProfit() << endl;
 
   // percentage
   cout << setprecision(2) << fixed;
   cout << "Profit percentage: " << (bakeryItems[index].calculateProfit() / bakeryItems[index].calculateCost()) * 100 << "%" << endl;
+}
+
+void Employee::compareCostVsPrice(int index) const {
+  cout << position << " - Comparing " << bakeryItems[index].getBakeryItemName() << " cost vs price..." << endl;
+  cout << setprecision(2) << fixed;
+  cout << "Total cost: RM " << bakeryItems[index].calculateCost() << endl;
+  cout << "Price per unit: RM " << bakeryItems[index].getPricePerUnit() << endl;
+
+  // percentage
+  cout << setprecision(2) << fixed;
+  cout << "Price percentage: " << (bakeryItems[index].getPricePerUnit() / bakeryItems[index].calculateCost()) * 100 << "%" << endl;
 }
 
 void Employee::getBakeryItems(BakeryItem * bakeryItems) const {

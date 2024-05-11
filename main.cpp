@@ -156,7 +156,10 @@ int main () {
   // employees[0].calculateBakeryItemProfit(1);
 
   // Done: compare cost vs profit of bakery item
-  employees[0].compareCostVsProfit(1);
+  // employees[0].compareCostVsProfit(1);
+
+  // Done: compare cost vs price of bakery item
+  employees[0].compareCostVsPrice(1);
   
   return 0;
 }
