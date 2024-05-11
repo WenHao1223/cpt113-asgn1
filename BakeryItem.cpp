@@ -76,9 +76,17 @@ string BakeryItem::getBakeryItemName() const {
   return name;
 }
 
+string BakeryItem::getRecipe() const {
+  return recipe;
+}
+
 void BakeryItem::setBakeryItems(BakeryItem * bakeryItems) {
   // cout << "Bakery Item Address (from BakeryItem): " << bakeryItems << endl;
   this->bakeryItems = bakeryItems;
+}
+
+void BakeryItem::setRecipe(string recipe) {
+  this->recipe = recipe;
 }
 
 BakeryItem::~BakeryItem() {

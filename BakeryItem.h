@@ -33,9 +33,11 @@ class BakeryItem {
     // accessor
     int getBakeryItemCount() const;
     string getBakeryItemName() const;
+    string getRecipe() const;
 
     // mutator
     void setBakeryItems(BakeryItem *);
+    void setRecipe(string);
 
     // friend functions to be used by main.cpp
     // friend void accessMenuDetails() const;

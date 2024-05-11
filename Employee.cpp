@@ -157,21 +157,96 @@ void Employee::changeIngredientCost(int choice, double cost) const {
 };
 
 void Employee::createBakeryItem() {
-  BakeryItem bakeryItem;
-
-
   // show address of bakeryItems
   // cout << "Bakery Item Address (from employee): " << bakeryItems << endl;
-  // cout << bakeryItems[0]->getBakeryItemName() << endl;
 
-  // if (supervisor != nullptr) {
-  //   cout << position << " - Creating bakery item..." << endl;
-  //   for (int i = 0; i < bakeryItems[0]->getBakeryItemCount(); i++) {
-  //     cout << bakeryItems[i]->getBakeryItemName() << endl;
-  //   }
-  // } else {
-  //   cout << "Only supervisor can create bakery item." << endl;
-  // }
+  if (supervisor != nullptr) {
+    cout << position << " - Creating bakery item..." << endl;
+    // for (int i = 0; i < bakeryItems[0].getBakeryItemCount(); i++) {
+    //   cout << bakeryItems[i].getBakeryItemName() << endl;
+    // }
+
+    // create bakery items from user input
+    string bakeryItemName;
+    string bakeryItemDescription;
+    double bakeryItemPricePerUnit;
+    int numberOfIngredients;
+    Ingredient * ingredient;
+    string recipe;
+
+    cout << "Enter bakery item name: ";
+    getline(cin, bakeryItemName);
+    cout << "Enter bakery item description: ";
+    getline(cin, bakeryItemDescription);
+    cout << "Enter bakery item price per unit: RM ";
+    cin >> bakeryItemPricePerUnit;
+    cin.ignore();
+    cout << "Enter number of ingredients: ";
+    cin >> numberOfIngredients;
+
+    ingredient = new Ingredient[numberOfIngredients];
+    for (int i = 0; i < numberOfIngredients; i++) {
+      string ingredientName;
+      double ingredientCost;
+      double ingredientWeight;
+      int ingredientPiece;
+      bool countable;
+
+      char countableInput;
+
+      cout << "--- Ingredient " << i+1 << " ---" << endl;
+
+      cin.ignore();
+      cout << "Enter ingredient name: ";
+      getline(cin, ingredientName);
+
+      cout << "Enter ingredient cost: RM ";
+      cin >> ingredientCost;
+      cin.ignore();
+
+      // ask user is the ingredient in piece or weight
+      do {
+        cout << "Enter ingredient piece or weight (0 for weight, 1 for piece): ";
+        cin >> countableInput;
+      } while (countableInput != '0' && countableInput != '1');
+
+      countable = (countableInput == '1');
+
+      if (countable) {
+        cout << "Enter ingredient piece: ";
+        cin >> ingredientPiece;
+        ingredient[i] = Ingredient(ingredientName, ingredientCost, ingredientPiece);
+      } else {
+        cout << "Enter ingredient weight in gram(s): ";
+        cin >> ingredientWeight;
+        ingredient[i] = Ingredient(ingredientName, ingredientCost, ingredientWeight);
+      }
+    }
+
+    // enable user to type multiline recipe
+    cout << "Enter recipe (press CTRL+Z then Enter on Windows, or CTRL+D on Unix, to exit): " << endl;
+    cin.ignore();
+    string line;
+    while (getline(cin, line)) {
+      if (cin.eof()) {
+        break;
+      }
+      recipe += line + "\n";
+    }
+
+    bakeryItems[bakeryItems->getBakeryItemCount()] = BakeryItem(bakeryItemName, bakeryItemDescription, bakeryItemPricePerUnit, ingredient, numberOfIngredients, recipe);
+
+    // cout << "Bakery Item Address (from employee): " << bakeryItems << endl;
+
+    accessMenuList(bakeryItems);
+    
+  } else {
+    cout << "Only supervisor can create bakery item." << endl;
+  }
+}
+
+void Employee::getBakeryItems(BakeryItem * bakeryItems) const {
+  this->bakeryItems = bakeryItems;
 }
 
 Employee::~Employee() {

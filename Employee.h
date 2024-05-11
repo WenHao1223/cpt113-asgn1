@@ -46,6 +46,9 @@ class Employee {
     void changeIngredientCost(int, double) const;
     void createBakeryItem();
 
+    // accessor
+    void getBakeryItems(BakeryItem *) const;
+
     // Destructor
     ~Employee();
 };

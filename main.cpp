@@ -157,6 +157,7 @@ int main () {
 
   // create new bakery item
   employees[0].createBakeryItem();
+  // employee[0].accessMenuDetails(2);
 
   // delete [] bakeryItems;
   // delete [] ingredient;
