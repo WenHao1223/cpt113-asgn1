@@ -150,7 +150,10 @@ int main () {
   // employees[0].accessMenuItem(1);
 
   // Done: calculate cost of bakery item
-  employees[0].calculateBakeryItemCost(1);
+  // employees[0].calculateBakeryItemCost(1);
+
+  // calculate profit of bakery item
+  employees[0].calculateBakeryItemProfit(1);
   
   return 0;
 }

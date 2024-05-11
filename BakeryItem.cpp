@@ -82,6 +82,10 @@ double BakeryItem::calculateCost() const {
   return totalCost;
 }
 
+double BakeryItem::calculateProfit() const {
+  return pricePerUnit - calculateCost();
+}
+
 int BakeryItem::getBakeryItemCount() const {
   return bakeryItemCount;
 }

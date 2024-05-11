@@ -323,6 +323,12 @@ void Employee::calculateBakeryItemCost(int index) const {
   cout << "Total cost: RM " << bakeryItems[index].calculateCost() << endl;
 }
 
+void Employee::calculateBakeryItemProfit(int index) const {
+  cout << position << " - Calculating " << bakeryItems[index].getBakeryItemName() << " profit..." << endl;
+  cout << setprecision(2) << fixed;
+  cout << "Total profit: RM " << bakeryItems[index].calculateProfit() << endl;
+}
+
 void Employee::getBakeryItems(BakeryItem * bakeryItems) const {
   this->bakeryItems = bakeryItems;
 }

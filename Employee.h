@@ -51,6 +51,9 @@ class Employee {
     void enableBakeryItem(int index);
     void changeBakeryItemPrice(int index, double newPrice);
     void calculateBakeryItemCost(int index) const;
+    void calculateBakeryItemProfit(int index) const;
+    void compareCostVsProfit(int index) const;
+    void compareCostVsPrice(int index) const;
 
     // accessor
     void getBakeryItems(BakeryItem *) const;
