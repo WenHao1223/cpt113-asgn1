@@ -11,6 +11,7 @@ using namespace std;
 class Employee;
 
 // class declaration
+#include "Constant.h"
 #include "Ingredient.h"
 #include "BakeryItem.h"
 #include "IngredientInventory.h"
@@ -20,7 +21,7 @@ class Employee;
 #include "Employee.h"
 
 // global constant
-const int MAX_EMPLOYEES = 10;
+const int MAX_EMPLOYEES = Constant::MAX_EMPLOYEES;
 
 void accessMenuDetails(BakeryItem & item) {
   cout << item.name << endl;

@@ -1,6 +1,7 @@
+#include "Constant.h"
 #include "BakeryItem.h"
 
-const int MAX_BAKERY_ITEMS = 10;
+const int MAX_BAKERY_ITEMS = Constant::MAX_BAKERY_ITEMS;
 
 BakeryItem::BakeryItem() {
   // name = "";

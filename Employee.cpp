@@ -1,10 +1,11 @@
 #include <iomanip>
 
+#include "Constant.h"
 #include "Employee.h"
 #include "BakeryItem.h"
 
-const int MAX_BAKERY_ITEMS = 10;
-const int MAX_INGREDIENTS_INVENTORY = 20;
+const int MAX_BAKERY_ITEMS = Constant::MAX_BAKERY_ITEMS;
+const int MAX_INGREDIENTS_INVENTORY = Constant::MAX_INGREDIENTS_INVENTORY;
 
 Employee::Employee() {
   employeeID = "";

@@ -1,8 +1,9 @@
 #include <iomanip>
 
+#include "Constant.h"
 #include "IngredientInventory.h"
 
-const int MAX_INGREDIENTS_INVENTORY = 20;
+const int MAX_INGREDIENTS_INVENTORY = Constant::MAX_INGREDIENTS_INVENTORY;
 
 IngredientInventory::IngredientInventory() {
   // cout << "IngredientInventory object has been created." << endl;

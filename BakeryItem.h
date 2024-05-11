@@ -4,11 +4,12 @@
 #include <iostream>
 #include <string>
 
+#include "Constant.h"
 #include "Ingredient.h"
 
 using namespace std;
 
-const int MAX_INGREDIENTS = 10;
+const int MAX_INGREDIENTS = Constant::MAX_BAKERY_ITEMS;
 
 class BakeryItem {
   private:
