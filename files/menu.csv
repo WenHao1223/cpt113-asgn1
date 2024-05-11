@@ -1,1 +1,2 @@
 name,description,pricePerUnit,ingredients,recipe,disabled
+Tiramisu,Some cake description,12.00,[Sugar,100.0;Flour,200.0;Chocolate,2;],"1.Heat up oven.,\n2.Bake cake.",true
