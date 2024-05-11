@@ -117,13 +117,23 @@ int main () {
   cout << endl;
 
   // Done: access ingredient inventory details
-  employees[1].accessIngredientInventoryDetails();
-  employees[2].accessIngredientInventoryDetails();
+  // parameter is the exact ingredient index to be accessed
+  // @TjeEwe need to print ingredient inventory list available
+  // and let user choose which ingredient to access
+  employees[0].accessIngredientInventoryDetails(1);
+  cout << endl;
+  employees[1].accessIngredientInventoryDetails(1);
+  cout << endl;
+  employees[2].accessIngredientInventoryDetails(1);
   cout << endl;
 
   // Done: check all ingredients in ingredient inventory
-  employees[2].checkIngredientInventory();
-  cout << endl;
+  // employees[0].checkIngredientInventory();
+  // cout << endl;
+  // employees[1].checkIngredientInventory();
+  // cout << endl;
+  // employees[2].checkIngredientInventory();
+  // cout << endl;
 
   delete [] bakeryItems;
   delete [] ingredient;

@@ -81,18 +81,18 @@ void Employee::startBakery() const {
   cout << "Selling " << ingredientInventory[0].getIngredientInventoryCount() << " items today." << endl;
 }
 
-void Employee::accessIngredientInventoryDetails() const {
-  cout << "Accessing ingredient inventory details..." << endl;
+void Employee::accessIngredientInventoryDetails(int choice) const {
   if (supervisor != nullptr || baker != nullptr) {
-    ingredientInventory->accessIngredientInventoryDetails();
+    cout << position << " - Accessing ingredient inventory details..." << endl;
+    (ingredientInventory+choice)->accessIngredientInventoryDetails();
   } else {
     cout << "Only supervisor or baker can access ingredient inventory details." << endl;
   }
 }
 
-void Employee::checkIngredientInventory() {
-  cout << "Checking ingredient inventory..." << endl;
+void Employee::checkIngredientInventory() const {
   if (supervisor != nullptr) {
+    cout << "Checking ingredient inventory..." << endl;
     ingredientInventory->checkIngredientInventory();
   } else {
     cout << "Only supervisor can check ingredient inventory." << endl;
