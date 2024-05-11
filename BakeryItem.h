@@ -37,6 +37,7 @@ class BakeryItem {
 
     // mutator
     void setBakeryItems(BakeryItem *);
+    void setPricePerUnit(double);
     void setRecipe(string);
     void setDisabled(bool);
 

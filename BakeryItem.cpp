@@ -85,6 +85,10 @@ void BakeryItem::setBakeryItems(BakeryItem * bakeryItems) {
   this->bakeryItems = bakeryItems;
 }
 
+void BakeryItem::setPricePerUnit(double pricePerUnit) {
+  this->pricePerUnit = pricePerUnit;
+}
+
 void BakeryItem::setRecipe(string recipe) {
   this->recipe = recipe;
 }

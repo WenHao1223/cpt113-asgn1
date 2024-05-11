@@ -135,13 +135,18 @@ int main () {
   // cout << endl;
 
   // Done: withdraw bakery item
-  employees[0].withdrawBakeryItem(1);
-  cout << endl;
-  employees[0].accessMenuItem(1);
+  // employees[0].withdrawBakeryItem(1);
+  // cout << endl;
+  // employees[0].accessMenuItem(1);
 
-  // enable bakery item
-  employees[0].enableBakeryItem(1);
-  cout << endl;
+  // Done: enable bakery item
+  // employees[0].enableBakeryItem(1);
+  // cout << endl;
+  // employees[0].accessMenuItem(1);
+
+  // Done: change bakery item price
+  employees[0].accessMenuItem(1);
+  employees[0].changeBakeryItemPrice(1, 10.0);
   employees[0].accessMenuItem(1);
   
   return 0;

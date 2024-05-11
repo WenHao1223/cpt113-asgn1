@@ -306,6 +306,15 @@ void Employee::enableBakeryItem (int index) {
   }
 }
 
+void Employee::changeBakeryItemPrice(int index, double newPrice) {
+  if (supervisor != nullptr) {
+    cout << position << " - Changing " << bakeryItems[index].getBakeryItemName() << " price..." << endl;
+    bakeryItems[index].setPricePerUnit(newPrice);
+  } else {
+    cout << "Only supervisor can change bakery item price." << endl;
+  }
+}
+
 void Employee::getBakeryItems(BakeryItem * bakeryItems) const {
   this->bakeryItems = bakeryItems;
 }
