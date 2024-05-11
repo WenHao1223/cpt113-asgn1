@@ -109,15 +109,16 @@ int main () {
 
   // use only once per program
   // can be started by random employee
+  // @TjeEwe inventory file shall be read in Employee::startBakery()
   IngredientInventory * ingredientInventory = supervisor1.startBakery();
   cout << endl;
 
   // Done: display ingredient inventory details
-  ingredientInventory[0].displayIngredientInventoryDetails();
-  cout << endl;
+  // ingredientInventory[0].displayIngredientInventoryDetails();
+  // cout << endl;
 
   // Done: check all ingredients in ingredient inventory
-  ingredientInventory[0].checkIngredientInventory();
+  // ingredientInventory[0].checkIngredientInventory();
 
   delete [] bakeryItems;
   delete [] ingredient;
