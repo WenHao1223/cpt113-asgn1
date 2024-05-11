@@ -48,6 +48,7 @@ class Employee {
     void getAllInventoryIngredientName() const;
     void createBakeryItem();
     void withdrawBakeryItem(int index);
+    void enableBakeryItem(int index);
 
     // accessor
     void getBakeryItems(BakeryItem *) const;

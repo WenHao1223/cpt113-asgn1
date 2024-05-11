@@ -290,10 +290,19 @@ void Employee::createBakeryItem() {
 
 void Employee::withdrawBakeryItem (int index) {
   if (supervisor != nullptr) {
-    cout << position << " - Withdrawing bakery item..." << endl;
+    cout << position << " - Withdrawing " << bakeryItems[index].getBakeryItemName() << "..." << endl;
     bakeryItems[index].setDisabled(true);
   } else {
     cout << "Only supervisor can withdraw bakery item." << endl;
+  }
+}
+
+void Employee::enableBakeryItem (int index) {
+  if (supervisor != nullptr) {
+    cout << position << " - Enabling " << bakeryItems[index].getBakeryItemName() << "..." << endl;
+    bakeryItems[index].setDisabled(false);
+  } else {
+    cout << "Only supervisor can enable bakery item." << endl;
   }
 }
 

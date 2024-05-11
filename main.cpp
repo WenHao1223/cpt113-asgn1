@@ -138,6 +138,11 @@ int main () {
   employees[0].withdrawBakeryItem(1);
   cout << endl;
   employees[0].accessMenuItem(1);
+
+  // enable bakery item
+  employees[0].enableBakeryItem(1);
+  cout << endl;
+  employees[0].accessMenuItem(1);
   
   return 0;
 }
