@@ -28,12 +28,25 @@ Employee::Employee(string employeeID, string name, string position) {
   // cout << "Employee " << name << " has been added." << endl;
 
   if (position == "Supervisor") {
-    supervisor = new Supervisor(name);
+    supervisor = new Supervisor(employeeID, name);
   } else if (position == "Baker") {
-    baker = new Baker(name);
+    baker = new Baker(employeeID, name);
   } else {
-    cashier = new Cashier(name);
+    cashier = new Cashier(employeeID, name);
   }
+}
+
+void Employee::displayEmployeeDetails() const {
+  cout << "Employee ID: " << employeeID << endl;
+  cout << "Name: " << name << endl;
+  cout << "Position: " << position << endl;
+
+  // hide after done testing
+  cout << "Supervisor: " << supervisor << endl;
+  cout << "Baker: " << baker << endl;
+  cout << "Cashier: " << cashier << endl;
+
+  cout << endl;
 }
 
 IngredientInventory * Employee::startBakery() const {
@@ -48,22 +61,19 @@ IngredientInventory * Employee::startBakery() const {
   // print address of ingredientInventory
   // cout << "Ingredient Inventory address: " << ingredientInventory << endl;
 
+  if (supervisor != nullptr) {
+    supervisor->startBakery();
+  } else if (baker != nullptr) {
+    baker->startBakery();
+  } else if (cashier != nullptr) {
+    cashier->startBakery();
+  } else {
+    cout << "Called by default constructor." << endl;
+  }
+
   cout << "Selling " << ingredientInventory[0].getIngredientInventoryCount() << " items today." << endl;
 
   return ingredientInventory;
-}
-
-void Employee::displayEmployeeDetails() const {
-  cout << "Employee ID: " << employeeID << endl;
-  cout << "Name: " << name << endl;
-  cout << "Position: " << position << endl;
-
-  // hide after done testing
-  cout << "Supervisor: " << supervisor << endl;
-  cout << "Baker: " << baker << endl;
-  cout << "Cashier: " << cashier << endl;
-
-  cout << endl;
 }
 
 Employee::~Employee() {

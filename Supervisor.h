@@ -8,11 +8,15 @@ using namespace std;
 
 class Supervisor {
   private:
+    string employeeID;
     string name;
         
   public:
     // Constructor
-    Supervisor(string name);
+    Supervisor(string employeeID, string name);
+
+    // member functions
+    void startBakery();
 };
 
 #endif

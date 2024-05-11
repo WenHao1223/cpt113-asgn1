@@ -60,8 +60,8 @@ int main () {
 
   // Done: create employees
   Employee supervisor1("S1", "Supervisor 1", "Supervisor");
-  // Employee baker1("B1", "Baker 1", "Baker");
-  // Employee cashier1("C1", "Cashier 1", "Cashier");
+  Employee baker1("B1", "Baker 1", "Baker");
+  Employee cashier1("C1", "Cashier 1", "Cashier");
 
   cout << endl;
 
@@ -110,7 +110,7 @@ int main () {
   // use only once per program
   // can be started by random employee
   // @TjeEwe inventory file shall be read in Employee::startBakery()
-  IngredientInventory * ingredientInventory = supervisor1.startBakery();
+  IngredientInventory * ingredientInventory = cashier1.startBakery();
   cout << endl;
 
   // Done: display ingredient inventory details

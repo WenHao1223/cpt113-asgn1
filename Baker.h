@@ -8,11 +8,15 @@ using namespace std;
 
 class Baker {
   private:
+    string employeeID;
     string name;
         
   public:
     // Constructor
-    Baker(string name);
+    Baker(string employeeID, string name);
+
+    // member functions
+    void startBakery();
 };
 
 #endif
