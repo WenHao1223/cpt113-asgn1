@@ -33,10 +33,14 @@ class Employee {
     // member functions
     void displayEmployeeDetails() const;
     void startBakery() const;
+
+    // accessible by supervisor or baker only
+    void displayIngredientInventoryList() const;
     void accessIngredientInventoryDetails(int) const;
 
     // accessibly by supervisor role only
     void checkIngredientInventory() const;
+    void restockIngredientInventory(int, int) const;
 
     // Destructor
     ~Employee();

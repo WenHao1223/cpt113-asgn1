@@ -81,6 +81,15 @@ void Employee::startBakery() const {
   cout << "Selling " << ingredientInventory[0].getIngredientInventoryCount() << " items today." << endl;
 }
 
+void Employee::displayIngredientInventoryList() const {
+  if (supervisor != nullptr || baker != nullptr) {
+    cout << position << " - Displaying ingredient inventory list..." << endl;
+    ingredientInventory->displayIngredientInventoryList();
+  } else {
+    cout << "Only supervisor or baker can display ingredient inventory list." << endl;
+  }
+}
+
 void Employee::accessIngredientInventoryDetails(int choice) const {
   if (supervisor != nullptr || baker != nullptr) {
     cout << position << " - Accessing ingredient inventory details..." << endl;
@@ -96,6 +105,19 @@ void Employee::checkIngredientInventory() const {
     ingredientInventory->checkIngredientInventory();
   } else {
     cout << "Only supervisor or baker can check ingredient inventory." << endl;
+  }
+}
+
+void Employee::restockIngredientInventory(int choice, int quantity) const {
+  if (supervisor != nullptr) {
+    cout << position << " - Restocking ingredient inventory..." << endl;
+    if (quantity < 0) {
+      cout << "Quantity cannot be negative." << endl;
+      return;
+    }
+    ingredientInventory->restockIngredientInventory(choice, quantity);
+  } else {
+    cout << "Only supervisor can restock ingredient inventory." << endl;
   }
 }
 

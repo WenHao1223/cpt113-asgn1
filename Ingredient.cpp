@@ -31,6 +31,7 @@ Ingredient::Ingredient(string name, double cost, double weight) {
   this->name = name;
   this->cost = cost;
   this->weight = weight;
+  this->countable = false;
   // cout << "Ingredient " << name << " has been added." << endl;
 }
 
@@ -56,6 +57,7 @@ Ingredient::Ingredient(string name, double cost, int piece) {
   this->name = name;
   this->cost = cost;
   this->piece = piece;
+  this->countable = true;
   // cout << "Ingredient " << name << " has been added." << endl;
 }
 
@@ -80,4 +82,38 @@ double Ingredient::getWeight() const {
 
 int Ingredient::getPiece() const {
   return piece;
+}
+
+bool Ingredient::getCountable() const {
+  return countable;
+}
+
+void Ingredient::setCost(double cost) {
+  if (cost < 0) {
+    cout << "Cost cannot be negative." << endl;
+    exit(EXIT_FAILURE);
+    return;
+  }
+
+  this->cost = cost;
+}
+
+void Ingredient::setWeight(double weight) {
+  if (weight < 0) {
+    cout << "Weight cannot be negative." << endl;
+    exit(EXIT_FAILURE);
+    return;
+  }
+
+  this->weight = weight;
+}
+
+void Ingredient::setPiece(int piece) {
+  if (piece < 0) {
+    cout << "Piece cannot be negative." << endl;
+    exit(EXIT_FAILURE);
+    return;
+  }
+
+  this->piece = piece;
 }

@@ -67,6 +67,14 @@ IngredientInventory * IngredientInventory::getIngredientInventory() {
   return ingredientInventory;
 }
 
+void IngredientInventory::displayIngredientInventoryList() const {
+  cout << setw(5) << left << "No." << setw(20) << "Ingredient Name" << endl;
+
+  for (int i = 0; i < ingredientInventoryCount; i++) {
+    cout << setw(5) << left << to_string(i+1) + "." << ingredientInventory[i].ingredient.getName() << endl;
+  }
+}
+
 void IngredientInventory::accessIngredientInventoryDetails() const {
   ingredient.displayIngredientDetails();
 }
@@ -87,16 +95,26 @@ void IngredientInventory::checkIngredientInventory() const {
   }
 }
 
-// void IngredientInventory::restockIngredientInventory(int quantity) {
-//   if (quantity < 0) {
-//     cout << "Restock quantity cannot be negative." << endl;
-//     exit(EXIT_FAILURE);
-//     return;
-//   }
-//
-//   this->quantity += quantity;
-//   cout << "Ingredient " << ingredient.getName() << " has been restocked." << endl;
-// }
+void IngredientInventory::restockIngredientInventory(int choice, int quantity) {
+  if (quantity < 0) {
+    cout << "Restock weight cannot be negative." << endl;
+    exit(EXIT_FAILURE);
+    return;
+  }
+
+  if (ingredientInventory[choice].ingredient.getCountable()) {
+    ingredientInventory[choice].ingredient.setPiece(ingredientInventory[choice].ingredient.getPiece() + quantity);
+  } else {
+    ingredientInventory[choice].ingredient.setWeight(ingredientInventory[choice].ingredient.getWeight() + quantity);
+  }
+
+  cout << "Ingredient " << ingredientInventory[choice].ingredient.getName() << " has been restocked." << endl;
+  if (ingredientInventory[choice].ingredient.getCountable()) {
+    cout << "New quantity: " << ingredientInventory[choice].ingredient.getPiece() << " piece(s)" << endl;
+  } else {
+    cout << "New quantity: " << ingredientInventory[choice].ingredient.getWeight() << " gram(s)" << endl;
+  }
+}
 
 int IngredientInventory::getIngredientInventoryCount() const {
   return ingredientInventoryCount;

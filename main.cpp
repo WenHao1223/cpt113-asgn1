@@ -116,12 +116,17 @@ int main () {
   employees[2].startBakery();
   cout << endl;
 
+  // Done: display ingredient inventory list
+  // employees[0].displayIngredientInventoryList();
+  // employees[1].displayIngredientInventoryList();
+  // employees[2].displayIngredientInventoryList();
+
   // Done: access ingredient inventory details
   // parameter is the exact ingredient index to be accessed
   // @TjeEwe need to print ingredient inventory list available
   // and let user choose which ingredient to access
   // employees[0].accessIngredientInventoryDetails(1);
-  // cout << endl;
+  cout << endl;
   // employees[1].accessIngredientInventoryDetails(1);
   // cout << endl;
   // employees[2].accessIngredientInventoryDetails(1);
@@ -130,10 +135,18 @@ int main () {
   // Done: check all ingredients in ingredient inventory
   employees[0].checkIngredientInventory();
   cout << endl;
-  employees[1].checkIngredientInventory();
-  cout << endl;
-  employees[2].checkIngredientInventory();
-  cout << endl;
+  // employees[1].checkIngredientInventory();
+  // cout << endl;
+  // employees[2].checkIngredientInventory();
+  // cout << endl;
+
+  // restock ingredient
+  // @TjeEwe need to print ingredient inventory list available
+  // and let supervisor choose which ingredient to restock
+  // then how many pieces or weight to restock
+  employees[0].restockIngredientInventory(0, 200.0);
+  employees[0].restockIngredientInventory(1, 300);
+  employees[2].restockIngredientInventory(1, 300);
 
   delete [] bakeryItems;
   delete [] ingredient;

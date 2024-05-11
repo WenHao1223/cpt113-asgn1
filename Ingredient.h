@@ -10,8 +10,9 @@ class Ingredient {
   private:
     string name;
     double cost;
-    double weight = 0;
-    int piece = 0;
+    double weight;
+    int piece;
+    bool countable;
     
   public:
     // Constructor
@@ -29,6 +30,12 @@ class Ingredient {
     double getCost() const;
     double getWeight() const;
     int getPiece() const;
+    bool getCountable() const;
+
+    // mutator
+    void setCost(double);
+    void setWeight(double);
+    void setPiece(int);
 };
 
 #endif
