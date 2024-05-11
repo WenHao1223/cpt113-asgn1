@@ -31,11 +31,10 @@ void accessMenuDetails(BakeryItem & item) {
   cout << "Ingredients: " << endl;
   for (int i = 0; i < item.ingredientCount; i++) {
     // display ingredient details as 200g sugar, 1 egg, 1 cup flour
-    if (item.ingredient[i].getWeight() > 0) {
+    if (item.ingredient[i].getCountable()) {
+      cout << item.ingredient[i].getPiece() << "x " << item.ingredient[i].getName();
+    } else {
       cout << item.ingredient[i].getWeight() << "g " << item.ingredient[i].getName();
-    }
-    if (item.ingredient[i].getPiece() > 0) {
-      cout << item.ingredient[i].getPiece() << " " << item.ingredient[i].getName();
     }
     if (i < item.ingredientCount - 1) {
       cout << ", ";
@@ -43,9 +42,9 @@ void accessMenuDetails(BakeryItem & item) {
   }
   cout << endl;
   if (item.disabled) {
-    cout << "Out of stock." << endl;
+    cout << "Sold out." << endl;
   } else {
-    cout << "In stock." << endl;
+    cout << "Available." << endl;
   }
   cout << endl;
 }
@@ -123,20 +122,22 @@ int main () {
   // Done: Get inventory ingredient list
   employees[0].getAllInventoryIngredientName();
 
-  // create new bakery item
+  // Done: create new bakery item
   // system will need to login and logout many times to create bakery items
   // @TjeEwe check if user input larger than MAX_BAKERY_ITEMS
-  employees[0].accessMenuList();
-  cout << endl;
-  employees[0].checkIngredientInventory();
-  cout << endl;
+  // before creating new bakery item
+  // employees[0].accessMenuList();
+  // employees[0].checkIngredientInventory();
+  // employees[0].createBakeryItem();
+  // after creating new bakery item
+  // employees[0].accessMenuList();
+  // employees[0].accessMenuItem(2);
+  // cout << endl;
 
-  employees[0].createBakeryItem();
+  // Done: withdraw bakery item
+  employees[0].withdrawBakeryItem(1);
   cout << endl;
-
-  employees[0].accessMenuList();
-  employees[0].accessMenuItem(2);
-  cout << endl;
+  employees[0].accessMenuItem(1);
   
   return 0;
 }

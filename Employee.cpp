@@ -59,13 +59,6 @@ void Employee::displayEmployeeDetails() const {
 void Employee::startBakery() const {
   cout << "Bakery start operating now." << endl;
 
-  // Create ingredient inventory
-  // IngredientInventory * ingredientInventory = new IngredientInventory[MAX_INGREDIENTS_INVENTORY] {
-  //   IngredientInventory("Ingredient 1", 10.0, 100000.0),
-  //   IngredientInventory("Ingredient 2", 20.0, 200),
-  //   IngredientInventory("Ingredient 3", 30.0, 0.0),
-  // };
-
   ingredientInventory[0] = IngredientInventory("Ingredient 1", 10.0, 100000.0);
   ingredientInventory[1] = IngredientInventory("Ingredient 2", 20.0, 200);
   ingredientInventory[2] = IngredientInventory("Ingredient 3", 30.0, 0.0);
@@ -86,9 +79,9 @@ void Employee::startBakery() const {
   numberOfIngredients = 3;
   bakeryItems[1] = BakeryItem("Item 2", "Description 2", 20.0,
     new Ingredient[numberOfIngredients] {
-      Ingredient("Ingredient 1 of Item 1", 20.0, 200.0),
+      Ingredient("Ingredient 1 of Item 2", 20.0, 200.0),
       Ingredient("Ingredient 2 of Item 2", 30.0, 3),
-      Ingredient("Ingredient 3 of Item 3", 40.0, 400.0)
+      Ingredient("Ingredient 3 of Item 2", 40.0, 400.0)
     }, numberOfIngredients, "Recipe 2");
 
   // cout << "Bakery Item Address (from employee): " << bakeryItems << endl;
@@ -295,6 +288,15 @@ void Employee::createBakeryItem() {
   }
 }
 
+void Employee::withdrawBakeryItem (int index) {
+  if (supervisor != nullptr) {
+    cout << position << " - Withdrawing bakery item..." << endl;
+    bakeryItems[index].setDisabled(true);
+  } else {
+    cout << "Only supervisor can withdraw bakery item." << endl;
+  }
+}
+
 void Employee::getBakeryItems(BakeryItem * bakeryItems) const {
   this->bakeryItems = bakeryItems;
 }
@@ -307,6 +309,5 @@ Employee::~Employee() {
   // cout << "Employee " << name << " has been removed." << endl;
 }
 
-// IngredientInventory * Employee::ingredientInventory = IngredientInventory::getIngredientInventory();
 IngredientInventory * Employee::ingredientInventory = new IngredientInventory[MAX_INGREDIENTS_INVENTORY];
 BakeryItem * Employee::bakeryItems = new BakeryItem[MAX_BAKERY_ITEMS];

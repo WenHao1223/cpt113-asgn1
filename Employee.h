@@ -47,6 +47,7 @@ class Employee {
     void changeIngredientCost(int index, double cost) const;
     void getAllInventoryIngredientName() const;
     void createBakeryItem();
+    void withdrawBakeryItem(int index);
 
     // accessor
     void getBakeryItems(BakeryItem *) const;

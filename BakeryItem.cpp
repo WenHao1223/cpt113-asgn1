@@ -89,6 +89,10 @@ void BakeryItem::setRecipe(string recipe) {
   this->recipe = recipe;
 }
 
+void BakeryItem::setDisabled(bool disabled) {
+  this->disabled = disabled;
+}
+
 BakeryItem::~BakeryItem() {
   // cout << "Bakery Item " << name << " has been removed." << endl;
 }

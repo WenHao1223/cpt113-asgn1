@@ -38,6 +38,7 @@ class BakeryItem {
     // mutator
     void setBakeryItems(BakeryItem *);
     void setRecipe(string);
+    void setDisabled(bool);
 
     // friend functions to be used by main.cpp
     friend void accessMenuDetails(BakeryItem &);
