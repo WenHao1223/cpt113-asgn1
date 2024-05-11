@@ -41,6 +41,7 @@ class Employee {
     // accessibly by supervisor role only
     void checkIngredientInventory() const;
     void restockIngredientInventory(int, int) const;
+    void changeIngredientCost(int, double) const;
 
     // Destructor
     ~Employee();

@@ -29,6 +29,7 @@ class IngredientInventory : public Ingredient {
 
     // mutator
     void restockIngredientInventory(int chocie, int quantity);
+    void changeIngredientCost(int choice, double cost);
 
     // accessor
     int getIngredientInventoryCount() const;

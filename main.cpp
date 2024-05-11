@@ -140,13 +140,21 @@ int main () {
   // employees[2].checkIngredientInventory();
   // cout << endl;
 
-  // restock ingredient
+  // Done: restock ingredient
   // @TjeEwe need to print ingredient inventory list available
   // and let supervisor choose which ingredient to restock
   // then how many pieces or weight to restock
-  employees[0].restockIngredientInventory(0, 200.0);
-  employees[0].restockIngredientInventory(1, 300);
-  employees[2].restockIngredientInventory(1, 300);
+  // employees[0].restockIngredientInventory(0, 200.0);
+  // employees[0].restockIngredientInventory(1, 300);
+  // employees[2].restockIngredientInventory(1, 300);
+
+  // change ingredient cost
+  employees[0].changeIngredientCost(0, 20.0);
+  employees[1].changeIngredientCost(0, 20.0);
+  employees[2].changeIngredientCost(0, 20.0);
+  cout << endl;
+
+  employees[0].accessIngredientInventoryDetails(1);
 
   delete [] bakeryItems;
   delete [] ingredient;

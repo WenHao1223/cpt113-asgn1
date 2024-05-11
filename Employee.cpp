@@ -122,6 +122,19 @@ void Employee::restockIngredientInventory(int choice, int quantity) const {
   }
 }
 
+void Employee::changeIngredientCost(int choice, double cost) const {
+  if (supervisor != nullptr) {
+    cout << position << " - Changing ingredient cost..." << endl;
+    if (cost < 0) {
+      cout << "Cost cannot be negative." << endl;
+      return;
+    }
+    ingredientInventory->changeIngredientCost(choice, cost);
+  } else {
+    cout << "Only supervisor can change ingredient cost." << endl;
+  }
+};
+
 Employee::~Employee() {
   delete supervisor;
   delete baker;

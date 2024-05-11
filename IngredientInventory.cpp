@@ -123,6 +123,20 @@ void IngredientInventory::restockIngredientInventory(int choice, int quantity) {
   }
 }
 
+void IngredientInventory::changeIngredientCost(int choice, double cost) {
+  if (cost < 0) {
+    cout << "Cost cannot be negative." << endl;
+    exit(EXIT_FAILURE);
+    return;
+  }
+
+  ingredientInventory[choice].ingredient.setCost(cost);
+
+  cout << "Cost of ingredient " << ingredientInventory[choice].ingredient.getName() << " has been changed." << endl;
+  cout << setprecision(2) << fixed;
+  cout << "New cost: RM" << ingredientInventory[choice].ingredient.getCost() << endl;
+}
+
 int IngredientInventory::getIngredientInventoryCount() const {
   return ingredientInventoryCount;
 }

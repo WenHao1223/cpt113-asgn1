@@ -31,6 +31,7 @@ Ingredient::Ingredient(string name, double cost, double weight) {
   this->name = name;
   this->cost = cost;
   this->weight = weight;
+  this->piece = 0;
   this->countable = false;
   // cout << "Ingredient " << name << " has been added." << endl;
 }
@@ -56,6 +57,7 @@ Ingredient::Ingredient(string name, double cost, int piece) {
 
   this->name = name;
   this->cost = cost;
+  this->weight = 0;
   this->piece = piece;
   this->countable = true;
   // cout << "Ingredient " << name << " has been added." << endl;
@@ -63,9 +65,12 @@ Ingredient::Ingredient(string name, double cost, int piece) {
 
 void Ingredient::displayIngredientDetails() const {
   cout << "Name: " << name << endl;
-  cout << setprecision(2) << fixed << "Cost: RM" << cost << endl;
-  cout << "Weight: " << weight << endl;
-  cout << "Piece: " << piece << endl;
+  cout << setprecision(2) << fixed << "Cost: RM " << cost << endl;
+  if (countable) {
+    cout << "Piece: " << piece << " piece(s)" << endl;
+  } else {
+    cout << "Weight: " << weight << " gram(s)" << endl;
+  }
 }
 
 string Ingredient::getName() const {
