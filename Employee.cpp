@@ -224,30 +224,29 @@ void Employee::createBakeryItem() {
 
       // find ingredient name from ingredient inventory, if found, use the cost
       for (int j = 0; j < ingredientInventory->getIngredientInventoryCount(); j++) {
-        cout << (ingredientInventory+j) << endl;
-        cout << ingredientInventory->getIngredientInventory(j)->getName() << endl;
-      //   if (ingredientName == ingredientInventory[j].getName()) {
-      //     cout << "Ingredient found in inventory." << endl;
-      //     cout << "Cost: RM " << ingredientInventory[j].getCost() << endl;
-      //     cout << "Do you want to use this cost? (Y/N): ";
-      //     char useCost;
-      //     cin >> useCost;
-      //     cin.ignore();
-      //     if (useCost == 'Y' || useCost == 'y') {
-      //       ingredientCost = ingredientInventory[j].getCost();
-      //       break;
-      //     }
+        if (ingredientName ==  ingredientInventory->getIngredientInventoryName(j)) {
+          cout << "Ingredient found in inventory." << endl;
+          cout << "Cost: RM " << ingredientInventory->getIngredientInventoryCost(j) << endl;
+          cout << "Do you want to use this cost? (Y/N): ";
+          char useCost;
+          cin >> useCost;
+          if (useCost == 'Y' || useCost == 'y') {
+            ingredientCost = ingredientInventory->getIngredientInventoryCost(j);
+          } else {
+            cout << "Enter ingredient cost: RM ";
+            cin >> ingredientCost;
+          }
 
-      //     if (ingredientInventory[j].getCountable()) {
-      //       cout << "Enter ingredient piece: ";
-      //       cin >> ingredientPiece;
-      //       ingredient[i] = Ingredient(ingredientName, ingredientCost, ingredientPiece);
-      //     } else {
-      //       cout << "Enter ingredient weight in gram(s): ";
-      //       cin >> ingredientWeight;
-      //       ingredient[i] = Ingredient(ingredientName, ingredientCost, ingredientWeight);
-      //     }
-      //   }
+          if (ingredientInventory[j].getCountable()) {
+            cout << "Enter ingredient piece: ";
+            cin >> ingredientPiece;
+            ingredient[i] = Ingredient(ingredientName, ingredientCost, ingredientPiece);
+          } else {
+            cout << "Enter ingredient weight in gram(s): ";
+            cin >> ingredientWeight;
+            ingredient[i] = Ingredient(ingredientName, ingredientCost, ingredientWeight);
+          }
+        }
       }
 
       // if ingredient name not found in inventory, ask user to input cost

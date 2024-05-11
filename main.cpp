@@ -131,14 +131,12 @@ int main () {
   employees[0].checkIngredientInventory();
   cout << endl;
 
-  // employees[0].createBakeryItem();
+  employees[0].createBakeryItem();
   cout << endl;
 
-  // employees[0].accessMenuList();
-  // employees[0].accessMenuItem(2);
-  // cout << endl;
-  // employees[0].checkIngredientInventory();
-  // cout << endl;
+  employees[0].accessMenuList();
+  employees[0].accessMenuItem(2);
+  cout << endl;
   
   return 0;
 }

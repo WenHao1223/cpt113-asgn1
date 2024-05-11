@@ -153,6 +153,10 @@ string IngredientInventory::getIngredientInventoryName (int index) const {
   return ingredientInventory[index].ingredient.getName();
 }
 
+double IngredientInventory::getIngredientInventoryCost (int index) const {
+  return ingredientInventory[index].ingredient.getCost();
+}
+
 IngredientInventory::~IngredientInventory() {
   // cout << "Ingredient " << ingredient.getName() << " has been removed." << endl;
 }

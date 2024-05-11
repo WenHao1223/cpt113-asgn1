@@ -36,6 +36,7 @@ class IngredientInventory : public Ingredient {
     int getIngredientInventoryCount() const;
     IngredientInventory * getIngredientInventory(int) const;
     string getIngredientInventoryName(int) const;
+    double getIngredientInventoryCost(int) const;
 
     // destructor
     ~IngredientInventory();
