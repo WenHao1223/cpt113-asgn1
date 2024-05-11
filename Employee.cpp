@@ -1,3 +1,5 @@
+#include <iomanip>
+
 #include "Employee.h"
 #include "BakeryItem.h"
 
@@ -59,7 +61,7 @@ void Employee::displayEmployeeDetails() const {
 void Employee::startBakery() const {
   cout << "Bakery start operating now." << endl;
 
-  ingredientInventory[0] = IngredientInventory("Ingredient 1", 10.0, 100000.0);
+  ingredientInventory[0] = IngredientInventory("Ingredient 1", 0.0005, 100000.0);
   ingredientInventory[1] = IngredientInventory("Ingredient 2", 20.0, 200);
   ingredientInventory[2] = IngredientInventory("Ingredient 3", 30.0, 0.0);
 
@@ -74,14 +76,14 @@ void Employee::startBakery() const {
   numberOfIngredients = 1;
   bakeryItems[0] = BakeryItem("Item 1", "Description 1", 10.0,
     new Ingredient[numberOfIngredients] {
-      Ingredient("Ingredient 1 of Item 1", 10.0, 100.0)
+      Ingredient("Ingredient 1 of Item 1", 1.0, 100.0)
     }, numberOfIngredients, "Recipe 1");
   numberOfIngredients = 3;
   bakeryItems[1] = BakeryItem("Item 2", "Description 2", 20.0,
     new Ingredient[numberOfIngredients] {
-      Ingredient("Ingredient 1 of Item 2", 20.0, 200.0),
-      Ingredient("Ingredient 2 of Item 2", 30.0, 3),
-      Ingredient("Ingredient 3 of Item 2", 40.0, 400.0)
+      Ingredient("Ingredient 1 of Item 2", 0.005, 200.0),
+      Ingredient("Ingredient 2 of Item 2", 2.0, 3),
+      Ingredient("Ingredient 3 of Item 2", 0.02, 400.0)
     }, numberOfIngredients, "Recipe 2");
 
   // cout << "Bakery Item Address (from employee): " << bakeryItems << endl;
@@ -313,6 +315,12 @@ void Employee::changeBakeryItemPrice(int index, double newPrice) {
   } else {
     cout << "Only supervisor can change bakery item price." << endl;
   }
+}
+
+void Employee::calculateBakeryItemCost(int index) const {
+  cout << position << " - Calculating " << bakeryItems[index].getBakeryItemName() << " cost..." << endl;
+  cout << setprecision(2) << fixed;
+  cout << "Total cost: RM " << bakeryItems[index].calculateCost() << endl;
 }
 
 void Employee::getBakeryItems(BakeryItem * bakeryItems) const {

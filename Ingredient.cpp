@@ -65,10 +65,12 @@ Ingredient::Ingredient(string name, double costPerUnit, int piece) {
 
 void Ingredient::displayIngredientDetails() const {
   cout << "Name: " << name << endl;
-  cout << setprecision(2) << fixed << "Cost: RM " << costPerUnit << endl;
+  cout << setprecision(2) << fixed << "Cost: RM " << costPerUnit;
   if (countable) {
+    cout << " / gram(s)" << endl;
     cout << "Piece: " << piece << " piece(s)" << endl;
   } else {
+    cout << " / piece(s)" << endl;
     cout << "Weight: " << weight << " gram(s)" << endl;
   }
 }

@@ -91,7 +91,7 @@ int main () {
   // @TjeEwe need to print ingredient inventory list available
   // and let user choose which ingredient to access
   // employees[0].accessIngredientInventoryDetails(1);
-  cout << endl;
+  // cout << endl;
   // employees[1].accessIngredientInventoryDetails(1);
   // cout << endl;
   // employees[2].accessIngredientInventoryDetails(1);
@@ -120,7 +120,7 @@ int main () {
   // cout << endl;
 
   // Done: Get inventory ingredient list
-  employees[0].getAllInventoryIngredientName();
+  // employees[0].getAllInventoryIngredientName();
 
   // Done: create new bakery item
   // system will need to login and logout many times to create bakery items
@@ -145,9 +145,12 @@ int main () {
   // employees[0].accessMenuItem(1);
 
   // Done: change bakery item price
-  employees[0].accessMenuItem(1);
-  employees[0].changeBakeryItemPrice(1, 10.0);
-  employees[0].accessMenuItem(1);
+  // employees[0].accessMenuItem(1);
+  // employees[0].changeBakeryItemPrice(1, 10.0);
+  // employees[0].accessMenuItem(1);
+
+  // Done: calculate cost of bakery item
+  employees[0].calculateBakeryItemCost(1);
   
   return 0;
 }

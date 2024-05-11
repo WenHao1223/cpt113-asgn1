@@ -68,7 +68,7 @@ void BakeryItem::displayBakeryItemDetails() const {
   cout << endl;
 }
 
-void BakeryItem::calculateCost() const {
+double BakeryItem::calculateCost() const {
   double totalCost = 0;
 
   for (int i = 0; i < ingredientCount; i++) {
@@ -79,7 +79,7 @@ void BakeryItem::calculateCost() const {
     }
   }
 
-  cout << "Total cost: RM " << totalCost << endl;
+  return totalCost;
 }
 
 int BakeryItem::getBakeryItemCount() const {

@@ -50,6 +50,7 @@ class Employee {
     void withdrawBakeryItem(int index);
     void enableBakeryItem(int index);
     void changeBakeryItemPrice(int index, double newPrice);
+    void calculateBakeryItemCost(int index) const;
 
     // accessor
     void getBakeryItems(BakeryItem *) const;

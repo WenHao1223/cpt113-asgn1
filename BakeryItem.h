@@ -29,7 +29,7 @@ class BakeryItem {
 
     // member functions
     void displayBakeryItemDetails() const;
-    void calculateCost() const;
+    double calculateCost() const;
 
     // accessor
     int getBakeryItemCount() const;
