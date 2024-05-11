@@ -67,7 +67,7 @@ IngredientInventory * IngredientInventory::getIngredientInventory() {
   return ingredientInventory;
 }
 
-void IngredientInventory::displayIngredientInventoryDetails() const {
+void IngredientInventory::accessIngredientInventoryDetails() const {
   ingredient.displayIngredientDetails();
 }
 

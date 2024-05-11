@@ -23,7 +23,7 @@ class IngredientInventory : public Ingredient {
     
     // member functions
     static IngredientInventory * getIngredientInventory();
-    void displayIngredientInventoryDetails() const;
+    void accessIngredientInventoryDetails() const;
     void checkIngredientInventory() const;
 
     // mutator

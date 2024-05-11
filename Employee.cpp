@@ -3,6 +3,12 @@
 
 const int MAX_INGREDIENTS_INVENTORY = 20;
 
+Employee::Employee() {
+  employeeID = "";
+  name = "";
+  position = "";
+}
+
 Employee::Employee(string employeeID, string name, string position) {
   if (employeeID == "") {
     cout << "Employee ID cannot be empty." << endl;
@@ -49,7 +55,7 @@ void Employee::displayEmployeeDetails() const {
   cout << endl;
 }
 
-IngredientInventory * Employee::startBakery() const {
+void Employee::startBakery() const {
   cout << "Bakery start operating now." << endl;
 
   // Create ingredient inventory
@@ -68,12 +74,29 @@ IngredientInventory * Employee::startBakery() const {
   } else if (cashier != nullptr) {
     cashier->startBakery();
   } else {
-    cout << "Called by default constructor." << endl;
+    cout << "Not a valid position to start the bakery." << endl;
+    exit(EXIT_FAILURE);
   }
 
   cout << "Selling " << ingredientInventory[0].getIngredientInventoryCount() << " items today." << endl;
+}
 
-  return ingredientInventory;
+void Employee::accessIngredientInventoryDetails() const {
+  cout << "Accessing ingredient inventory details..." << endl;
+  if (supervisor != nullptr || baker != nullptr) {
+    ingredientInventory->accessIngredientInventoryDetails();
+  } else {
+    cout << "Only supervisor or baker can access ingredient inventory details." << endl;
+  }
+}
+
+void Employee::checkIngredientInventory() {
+  cout << "Checking ingredient inventory..." << endl;
+  if (supervisor != nullptr) {
+    ingredientInventory->checkIngredientInventory();
+  } else {
+    cout << "Only supervisor can check ingredient inventory." << endl;
+  }
 }
 
 Employee::~Employee() {

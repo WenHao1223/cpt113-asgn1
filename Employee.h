@@ -27,11 +27,16 @@ class Employee {
         
   public:
     // Constructor
+    Employee();
     Employee(string employeeID, string name, string position);
 
     // member functions
     void displayEmployeeDetails() const;
-    IngredientInventory * startBakery() const;
+    void startBakery() const;
+    void accessIngredientInventoryDetails() const;
+
+    // accessibly by supervisor role only
+    void checkIngredientInventory();
 
     // Destructor
     ~Employee();

@@ -18,6 +18,8 @@ class Employee;
 #include "Cashier.h"
 #include "Employee.h"
 
+// global constant
+const int MAX_EMPLOYEES = 10;
 const int MAX_BAKERY_ITEMS = 10;
 const int MAX_INGREDIENTS_INVENTORY = 20;
 
@@ -59,16 +61,18 @@ int main () {
   int numberOfIngredients;
 
   // Done: create employees
-  Employee supervisor1("S1", "Supervisor 1", "Supervisor");
-  Employee baker1("B1", "Baker 1", "Baker");
-  Employee cashier1("C1", "Cashier 1", "Cashier");
+  Employee employees[MAX_EMPLOYEES] = {
+    Employee("S1", "Adam", "Supervisor"),
+    Employee("B1", "Juin Ewe", "Baker"),
+    Employee("C1", "Jennie Ng", "Cashier")
+  };
 
   cout << endl;
 
   // Done: display employee details
-  // supervisor1.displayEmployeeDetails();
-  // baker1.displayEmployeeDetails();
-  // cashier1.displayEmployeeDetails();
+  // employees[0].displayEmployeeDetails();
+  // employees[1].displayEmployeeDetails();
+  // employees[2].displayEmployeeDetails();
 
   // WIP: create bakery items, to be added into Baker class
   // but now for testing Bakery Item -related function
@@ -94,7 +98,6 @@ int main () {
     Ingredient("Ingredient 3 of Item 3", 40.0, 400.0)
   };
   bakeryItems[1] = BakeryItem("Item 2", "Description 2", 20.0, ingredient, numberOfIngredients, "Recipe 2");
-
   cout << endl;
 
   // Done: display bakery item details
@@ -110,15 +113,17 @@ int main () {
   // use only once per program
   // can be started by random employee
   // @TjeEwe inventory file shall be read in Employee::startBakery()
-  IngredientInventory * ingredientInventory = cashier1.startBakery();
+  employees[2].startBakery();
   cout << endl;
 
-  // Done: display ingredient inventory details
-  // ingredientInventory[0].displayIngredientInventoryDetails();
-  // cout << endl;
+  // Done: access ingredient inventory details
+  employees[1].accessIngredientInventoryDetails();
+  employees[2].accessIngredientInventoryDetails();
+  cout << endl;
 
   // Done: check all ingredients in ingredient inventory
-  // ingredientInventory[0].checkIngredientInventory();
+  employees[2].checkIngredientInventory();
+  cout << endl;
 
   delete [] bakeryItems;
   delete [] ingredient;
