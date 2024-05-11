@@ -115,9 +115,9 @@ void Employee::accessMenuList() const {
   }
 }
 
-void Employee::accessMenuItem(int choice) const {
+void Employee::accessMenuItem(int index) const {
   cout << position << " - Accessing menu details..." << endl;
-  accessMenuDetails(bakeryItems[choice]);
+  accessMenuDetails(bakeryItems[index]);
 }
 
 void Employee::displayIngredientInventoryList() const {
@@ -129,10 +129,10 @@ void Employee::displayIngredientInventoryList() const {
   }
 }
 
-void Employee::accessIngredientInventoryDetails(int choice) const {
+void Employee::accessIngredientInventoryDetails(int index) const {
   if (supervisor != nullptr || baker != nullptr) {
     cout << position << " - Accessing ingredient inventory details..." << endl;
-    (ingredientInventory+choice)->accessIngredientInventoryDetails();
+    (ingredientInventory+index)->accessIngredientInventoryDetails();
   } else {
     cout << "Only supervisor or baker can access ingredient inventory details." << endl;
   }
@@ -147,27 +147,27 @@ void Employee::checkIngredientInventory() const {
   }
 }
 
-void Employee::restockIngredientInventory(int choice, int quantity) const {
+void Employee::restockIngredientInventory(int index, int quantity) const {
   if (supervisor != nullptr) {
     cout << position << " - Restocking ingredient inventory..." << endl;
     if (quantity < 0) {
       cout << "Quantity cannot be negative." << endl;
       return;
     }
-    ingredientInventory->restockIngredientInventory(choice, quantity);
+    ingredientInventory->restockIngredientInventory(index, quantity);
   } else {
     cout << "Only supervisor can restock ingredient inventory." << endl;
   }
 }
 
-void Employee::changeIngredientCost(int choice, double cost) const {
+void Employee::changeIngredientCost(int index, double cost) const {
   if (supervisor != nullptr) {
     cout << position << " - Changing ingredient cost..." << endl;
     if (cost < 0) {
       cout << "Cost cannot be negative." << endl;
       return;
     }
-    ingredientInventory->changeIngredientCost(choice, cost);
+    ingredientInventory->changeIngredientCost(index, cost);
   } else {
     cout << "Only supervisor can change ingredient cost." << endl;
   }

@@ -28,7 +28,7 @@ class IngredientInventory : public Ingredient {
 
     // mutator
     void restockIngredientInventory(int chocie, int quantity);
-    void changeIngredientCost(int choice, double cost);
+    void changeIngredientCost(int index, double cost);
     void setIngredientInventory(IngredientInventory * ingredientInventory);
 
     // accessor
