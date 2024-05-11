@@ -10,10 +10,10 @@ const int MAX_INGREDIENTS_INVENTORY = Constant::MAX_INGREDIENTS_INVENTORY;
 Employee::Employee() {
   employeeID = "";
   name = "";
-  position = "";
+  role = "";
 }
 
-Employee::Employee(string employeeID, string name, string position) {
+Employee::Employee(string employeeID, string name, string role) {
   if (employeeID == "") {
     cout << "Employee ID cannot be empty." << endl;
     exit(EXIT_FAILURE);
@@ -26,7 +26,7 @@ Employee::Employee(string employeeID, string name, string position) {
     return;
   }
 
-  if (position == "") {
+  if (role == "") {
     cout << "Position cannot be empty." << endl;
     exit(EXIT_FAILURE);
     return;
@@ -34,12 +34,12 @@ Employee::Employee(string employeeID, string name, string position) {
 
   this->employeeID = employeeID;
   this->name = name;
-  this->position = position;
+  this->role = role;
   // cout << "Employee " << name << " has been added." << endl;
 
-  if (position == "Supervisor") {
+  if (role == "Supervisor") {
     supervisor = new Supervisor(employeeID, name);
-  } else if (position == "Baker") {
+  } else if (role == "Baker") {
     baker = new Baker(employeeID, name);
   } else {
     cashier = new Cashier(employeeID, name);
@@ -49,7 +49,7 @@ Employee::Employee(string employeeID, string name, string position) {
 void Employee::displayEmployeeDetails() const {
   cout << "Employee ID: " << employeeID << endl;
   cout << "Name: " << name << endl;
-  cout << "Position: " << position << endl;
+  cout << "Position: " << role << endl;
 
   // hide after done testing
   cout << "Supervisor: " << supervisor << endl;
@@ -96,7 +96,7 @@ void Employee::startBakery() const {
   } else if (cashier != nullptr) {
     cashier->startBakery();
   } else {
-    cout << "Not a valid position to start the bakery." << endl;
+    cout << "Not a valid role to start the bakery." << endl;
     exit(EXIT_FAILURE);
   }
 
@@ -104,7 +104,7 @@ void Employee::startBakery() const {
 }
 
 void Employee::accessMenuList() const {
-  cout << position << " - Accessing menu list..." << endl;
+  cout << role << " - Accessing menu list..." << endl;
   for (int i = 0; i < bakeryItems[0].getBakeryItemCount(); i++) {
     // cout << "Item address: " << &items[i] << endl;
     cout << i+1 << ". " << bakeryItems[i].getBakeryItemName() << endl;
@@ -112,13 +112,13 @@ void Employee::accessMenuList() const {
 }
 
 void Employee::accessMenuItem(int index) const {
-  cout << position << " - Accessing menu details..." << endl;
+  cout << role << " - Accessing menu details..." << endl;
   accessMenuDetails(bakeryItems[index]);
 }
 
 void Employee::displayIngredientInventoryList() const {
   if (supervisor != nullptr || baker != nullptr) {
-    cout << position << " - Displaying ingredient inventory list..." << endl;
+    cout << role << " - Displaying ingredient inventory list..." << endl;
     ingredientInventory->displayIngredientInventoryList();
   } else {
     cout << "Only supervisor or baker can display ingredient inventory list." << endl;
@@ -127,7 +127,7 @@ void Employee::displayIngredientInventoryList() const {
 
 void Employee::accessIngredientInventoryDetails(int index) const {
   if (supervisor != nullptr || baker != nullptr) {
-    cout << position << " - Accessing ingredient inventory details..." << endl;
+    cout << role << " - Accessing ingredient inventory details..." << endl;
     (ingredientInventory+index)->accessIngredientInventoryDetails();
   } else {
     cout << "Only supervisor or baker can access ingredient inventory details." << endl;
@@ -136,7 +136,7 @@ void Employee::accessIngredientInventoryDetails(int index) const {
 
 void Employee::checkIngredientInventory() const {
   if (supervisor != nullptr || baker != nullptr) {
-    cout << position << " - Checking ingredient inventory..." << endl;
+    cout << role << " - Checking ingredient inventory..." << endl;
     ingredientInventory->checkIngredientInventory();
   } else {
     cout << "Only supervisor or baker can check ingredient inventory." << endl;
@@ -145,7 +145,7 @@ void Employee::checkIngredientInventory() const {
 
 void Employee::restockIngredientInventory(int index, int quantity) const {
   if (supervisor != nullptr) {
-    cout << position << " - Restocking ingredient inventory..." << endl;
+    cout << role << " - Restocking ingredient inventory..." << endl;
     if (quantity < 0) {
       cout << "Quantity cannot be negative." << endl;
       return;
@@ -158,7 +158,7 @@ void Employee::restockIngredientInventory(int index, int quantity) const {
 
 void Employee::changeIngredientCost(int index, double cost) const {
   if (supervisor != nullptr) {
-    cout << position << " - Changing ingredient cost..." << endl;
+    cout << role << " - Changing ingredient cost..." << endl;
     if (cost < 0) {
       cout << "Cost cannot be negative." << endl;
       return;
@@ -181,7 +181,7 @@ void Employee::createBakeryItem() {
   // cout << "Bakery Item Address (from employee): " << bakeryItems << endl;
 
   if (supervisor != nullptr) {
-    cout << position << " - Creating bakery item..." << endl;
+    cout << role << " - Creating bakery item..." << endl;
 
     // create bakery items from user input
     string bakeryItemName;
@@ -293,7 +293,7 @@ void Employee::createBakeryItem() {
 
 void Employee::withdrawBakeryItem (int index) {
   if (supervisor != nullptr) {
-    cout << position << " - Withdrawing " << bakeryItems[index].getBakeryItemName() << "..." << endl;
+    cout << role << " - Withdrawing " << bakeryItems[index].getBakeryItemName() << "..." << endl;
     bakeryItems[index].setDisabled(true);
   } else {
     cout << "Only supervisor can withdraw bakery item." << endl;
@@ -302,7 +302,7 @@ void Employee::withdrawBakeryItem (int index) {
 
 void Employee::enableBakeryItem (int index) {
   if (supervisor != nullptr) {
-    cout << position << " - Enabling " << bakeryItems[index].getBakeryItemName() << "..." << endl;
+    cout << role << " - Enabling " << bakeryItems[index].getBakeryItemName() << "..." << endl;
     bakeryItems[index].setDisabled(false);
   } else {
     cout << "Only supervisor can enable bakery item." << endl;
@@ -311,7 +311,7 @@ void Employee::enableBakeryItem (int index) {
 
 void Employee::changeBakeryItemPrice(int index, double newPrice) {
   if (supervisor != nullptr) {
-    cout << position << " - Changing " << bakeryItems[index].getBakeryItemName() << " price..." << endl;
+    cout << role << " - Changing " << bakeryItems[index].getBakeryItemName() << " price..." << endl;
     bakeryItems[index].setPricePerUnit(newPrice);
   } else {
     cout << "Only supervisor can change bakery item price." << endl;
@@ -319,19 +319,19 @@ void Employee::changeBakeryItemPrice(int index, double newPrice) {
 }
 
 void Employee::calculateBakeryItemCost(int index) const {
-  cout << position << " - Calculating " << bakeryItems[index].getBakeryItemName() << " cost..." << endl;
+  cout << role << " - Calculating " << bakeryItems[index].getBakeryItemName() << " cost..." << endl;
   cout << setprecision(2) << fixed;
   cout << "Total cost: RM " << bakeryItems[index].calculateCost() << endl;
 }
 
 void Employee::calculateBakeryItemProfit(int index) const {
-  cout << position << " - Calculating " << bakeryItems[index].getBakeryItemName() << " profit..." << endl;
+  cout << role << " - Calculating " << bakeryItems[index].getBakeryItemName() << " profit..." << endl;
   cout << setprecision(2) << fixed;
   cout << "Total profit: RM " << bakeryItems[index].calculateProfit() << endl;
 }
 
 void Employee::compareCostVsProfit(int index) const {
-  cout << position << " - Comparing " << bakeryItems[index].getBakeryItemName() << " cost vs profit..." << endl;
+  cout << role << " - Comparing " << bakeryItems[index].getBakeryItemName() << " cost vs profit..." << endl;
   cout << setprecision(2) << fixed;
   cout << "Total cost: RM " << bakeryItems[index].calculateCost() << endl;
   cout << "Total profit: RM " << bakeryItems[index].calculateProfit() << endl;
@@ -342,7 +342,7 @@ void Employee::compareCostVsProfit(int index) const {
 }
 
 void Employee::compareCostVsPrice(int index) const {
-  cout << position << " - Comparing " << bakeryItems[index].getBakeryItemName() << " cost vs price..." << endl;
+  cout << role << " - Comparing " << bakeryItems[index].getBakeryItemName() << " cost vs price..." << endl;
   cout << setprecision(2) << fixed;
   cout << "Total cost: RM " << bakeryItems[index].calculateCost() << endl;
   cout << "Price per unit: RM " << bakeryItems[index].getPricePerUnit() << endl;

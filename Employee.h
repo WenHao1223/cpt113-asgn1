@@ -18,7 +18,7 @@ class Employee {
   private:
     string employeeID;
     string name;
-    string position;
+    string role;
     Supervisor * supervisor = nullptr;
     Baker * baker = nullptr;
     Cashier * cashier = nullptr;
@@ -29,7 +29,7 @@ class Employee {
   public:
     // Constructor
     Employee();
-    Employee(string employeeID, string name, string position);
+    Employee(string employeeID, string name, string role);
 
     // member functions
     void displayEmployeeDetails() const;
