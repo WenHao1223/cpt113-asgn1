@@ -41,7 +41,6 @@ class BakeryItem {
 
     // friend functions to be used by main.cpp
     // friend void accessMenuDetails() const;
-    friend void accessMenuList(BakeryItem []);
     friend void accessMenuDetails(BakeryItem &);
 
     // destructor

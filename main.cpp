@@ -24,14 +24,6 @@ const int MAX_EMPLOYEES = 10;
 // const int MAX_BAKERY_ITEMS = 10;
 const int MAX_INGREDIENTS_INVENTORY = 20;
 
-void accessMenuList(BakeryItem items []) {
-  for (int i = 0; i < items->bakeryItemCount; i++) {
-    // cout << "Item address: " << &items[i] << endl;
-    cout << i+1 << ". " << items[i].name << endl;
-  }
-  cout << endl;
-}
-
 void accessMenuDetails(BakeryItem & item) {
   cout << item.name << endl;
   cout << item.description << endl;
@@ -156,8 +148,9 @@ int main () {
   // cout << endl;
 
   // create new bakery item
-  employees[0].createBakeryItem();
-  // employee[0].accessMenuDetails(2);
+  // employees[0].createBakeryItem();
+  employees->accessMenuList();
+  // employees[0].accessMenuDetails(1);
 
   // delete [] bakeryItems;
   // delete [] ingredient;

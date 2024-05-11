@@ -103,6 +103,19 @@ void Employee::startBakery() const {
   cout << "Selling " << ingredientInventory[0].getIngredientInventoryCount() << " items today." << endl;
 }
 
+void Employee::accessMenuList() const {
+  cout << position << " - Accessing menu list..." << endl;
+  for (int i = 0; i < bakeryItems[0].getBakeryItemCount(); i++) {
+    // cout << "Item address: " << &items[i] << endl;
+    cout << i+1 << ". " << bakeryItems[i].getBakeryItemName() << endl;
+  }
+}
+
+void Employee::accessMenuDetails(int choice) const {
+  cout << position << " - Accessing menu details..." << endl;
+  bakeryItems[choice].displayBakeryItemDetails();
+}
+
 void Employee::displayIngredientInventoryList() const {
   if (supervisor != nullptr || baker != nullptr) {
     cout << position << " - Displaying ingredient inventory list..." << endl;
@@ -237,8 +250,6 @@ void Employee::createBakeryItem() {
     bakeryItems[bakeryItems->getBakeryItemCount()] = BakeryItem(bakeryItemName, bakeryItemDescription, bakeryItemPricePerUnit, ingredient, numberOfIngredients, recipe);
 
     // cout << "Bakery Item Address (from employee): " << bakeryItems << endl;
-
-    accessMenuList(bakeryItems);
     
   } else {
     cout << "Only supervisor can create bakery item." << endl;
