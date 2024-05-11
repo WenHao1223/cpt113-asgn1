@@ -81,16 +81,23 @@ void IngredientInventory::accessIngredientInventoryDetails() const {
 
 void IngredientInventory::checkIngredientInventory() const {
   // check all ingredients in inventory
-  cout << setw(20) << left << "Ingredient Name" << "Quantity" << endl;
+  cout << setw(5) << left << "No." << setw(20) << left << "Ingredient" << "Quantity" << endl;
 
   for (int i = 0; i < ingredientInventoryCount; i++) {
-    cout << setw(20) << left << ingredientInventory[i].ingredient.getName();
-    if (ingredientInventory[i].ingredient.getWeight() > 0) {
-      cout << ingredientInventory[i].ingredient.getWeight() << " gram(s)" << endl;
-    } else if (ingredientInventory[i].ingredient.getPiece() > 0) {
-      cout << ingredientInventory[i].ingredient.getPiece() << " piece(s)" << endl;
+    cout << setw(5) << left << (i+1) << setw(20) << left << ingredientInventory[i].ingredient.getName();
+    // Check if the ingredient is 0 in quantity
+    if (ingredientInventory[i].ingredient.getCountable()) {
+      if (ingredientInventory[i].ingredient.getPiece() == 0) {
+        cout << "Out of stock" << endl;
+      } else {
+        cout << ingredientInventory[i].ingredient.getPiece() << " piece(s)" << endl;
+      }
     } else {
-      cout << 0 << endl;
+      if (ingredientInventory[i].ingredient.getWeight() == 0) {
+        cout << 0 << endl;
+      } else {
+        cout << ingredientInventory[i].ingredient.getWeight() << " gram(s)" << endl;
+      }
     }
   }
 }

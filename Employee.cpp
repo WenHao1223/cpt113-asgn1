@@ -61,7 +61,8 @@ void Employee::startBakery() const {
   // Create ingredient inventory
   IngredientInventory * ingredientInventory = new IngredientInventory[MAX_INGREDIENTS_INVENTORY] {
     IngredientInventory("Ingredient 1", 10.0, 100000.0),
-    IngredientInventory("Ingredient 2", 20.0, 200)
+    IngredientInventory("Ingredient 2", 20.0, 200),
+    IngredientInventory("Ingredient 3", 30.0, 0.0),
   };
 
   // print address of ingredientInventory
