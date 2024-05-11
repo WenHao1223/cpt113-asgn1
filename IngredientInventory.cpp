@@ -62,11 +62,6 @@ IngredientInventory::IngredientInventory(string name, double cost, int piece) {
   // cout << "Ingredient " << name << " has been added." << endl;
 }
 
-IngredientInventory * IngredientInventory::getIngredientInventory() {
-  // cout << "address: " << ingredientInventory << endl;
-  return ingredientInventory;
-}
-
 void IngredientInventory::displayIngredientInventoryList() const {
   cout << setw(5) << left << "No." << setw(20) << "Ingredient Name" << endl;
 
@@ -137,8 +132,25 @@ void IngredientInventory::changeIngredientCost(int choice, double cost) {
   cout << "New cost: RM" << ingredientInventory[choice].ingredient.getCost() << endl;
 }
 
+void IngredientInventory::setIngredientInventory(IngredientInventory * ingredientInventory) {
+  this->ingredientInventory = ingredientInventory;
+}
+
+IngredientInventory * IngredientInventory::getIngredientInventory() {
+  cout << "address: " << ingredientInventory << endl;
+  return ingredientInventory;
+}
+
 int IngredientInventory::getIngredientInventoryCount() const {
   return ingredientInventoryCount;
+}
+
+IngredientInventory * IngredientInventory::getIngredientInventory(int index) const {
+  return &ingredientInventory[index];
+}
+
+string IngredientInventory::getIngredientInventoryName (int index) const {
+  return ingredientInventory[index].ingredient.getName();
 }
 
 IngredientInventory::~IngredientInventory() {

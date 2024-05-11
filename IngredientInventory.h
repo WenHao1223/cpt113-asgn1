@@ -22,7 +22,6 @@ class IngredientInventory : public Ingredient {
     IngredientInventory(string name, double cost, int piece);
     
     // member functions
-    static IngredientInventory * getIngredientInventory();
     void displayIngredientInventoryList() const;
     void accessIngredientInventoryDetails() const;
     void checkIngredientInventory() const;
@@ -30,9 +29,13 @@ class IngredientInventory : public Ingredient {
     // mutator
     void restockIngredientInventory(int chocie, int quantity);
     void changeIngredientCost(int choice, double cost);
+    void setIngredientInventory(IngredientInventory * ingredientInventory);
 
     // accessor
+    static IngredientInventory * getIngredientInventory();
     int getIngredientInventoryCount() const;
+    IngredientInventory * getIngredientInventory(int) const;
+    string getIngredientInventoryName(int) const;
 
     // destructor
     ~IngredientInventory();

@@ -60,16 +60,20 @@ void Employee::startBakery() const {
   cout << "Bakery start operating now." << endl;
 
   // Create ingredient inventory
-  IngredientInventory * ingredientInventory = new IngredientInventory[MAX_INGREDIENTS_INVENTORY] {
-    IngredientInventory("Ingredient 1", 10.0, 100000.0),
-    IngredientInventory("Ingredient 2", 20.0, 200),
-    IngredientInventory("Ingredient 3", 30.0, 0.0),
-  };
+  // IngredientInventory * ingredientInventory = new IngredientInventory[MAX_INGREDIENTS_INVENTORY] {
+  //   IngredientInventory("Ingredient 1", 10.0, 100000.0),
+  //   IngredientInventory("Ingredient 2", 20.0, 200),
+  //   IngredientInventory("Ingredient 3", 30.0, 0.0),
+  // };
+
+  ingredientInventory[0] = IngredientInventory("Ingredient 1", 10.0, 100000.0);
+  ingredientInventory[1] = IngredientInventory("Ingredient 2", 20.0, 200);
+  ingredientInventory[2] = IngredientInventory("Ingredient 3", 30.0, 0.0);
 
   bakeryItems->setBakeryItems(bakeryItems);
 
   // print address of ingredientInventory
-  // cout << "Ingredient Inventory address (from employee): " << ingredientInventory << endl;
+  cout << "Ingredient Inventory address (from employee): " << ingredientInventory << endl;
 
   int numberOfIngredients;
   Ingredient * ingredient;
@@ -169,6 +173,13 @@ void Employee::changeIngredientCost(int choice, double cost) const {
   }
 };
 
+void Employee::getAllInventoryIngredientName() const {
+  cout << "Getting all ingredient inventory names..." << endl;
+  for (int i = 0; i < ingredientInventory->getIngredientInventoryCount(); i++) {
+    cout << i+1 << ". " << ingredientInventory->getIngredientInventoryName(i) << endl;
+  }
+}
+
 void Employee::createBakeryItem() {
   // show address of bakeryItems
   // cout << "Bakery Item Address (from employee): " << bakeryItems << endl;
@@ -197,7 +208,7 @@ void Employee::createBakeryItem() {
     ingredient = new Ingredient[numberOfIngredients];
     for (int i = 0; i < numberOfIngredients; i++) {
       string ingredientName;
-      double ingredientCost;
+      double ingredientCost = 0;
       double ingredientWeight;
       int ingredientPiece;
       bool countable;
@@ -210,26 +221,57 @@ void Employee::createBakeryItem() {
       cout << "Enter ingredient name: ";
       getline(cin, ingredientName);
 
-      cout << "Enter ingredient cost: RM ";
-      cin >> ingredientCost;
-      cin.ignore();
 
-      // ask user is the ingredient in piece or weight
-      do {
-        cout << "Enter ingredient piece or weight (0 for weight, 1 for piece): ";
-        cin >> countableInput;
-      } while (countableInput != '0' && countableInput != '1');
+      // find ingredient name from ingredient inventory, if found, use the cost
+      for (int j = 0; j < ingredientInventory->getIngredientInventoryCount(); j++) {
+        cout << (ingredientInventory+j) << endl;
+        cout << ingredientInventory->getIngredientInventory(j)->getName() << endl;
+      //   if (ingredientName == ingredientInventory[j].getName()) {
+      //     cout << "Ingredient found in inventory." << endl;
+      //     cout << "Cost: RM " << ingredientInventory[j].getCost() << endl;
+      //     cout << "Do you want to use this cost? (Y/N): ";
+      //     char useCost;
+      //     cin >> useCost;
+      //     cin.ignore();
+      //     if (useCost == 'Y' || useCost == 'y') {
+      //       ingredientCost = ingredientInventory[j].getCost();
+      //       break;
+      //     }
 
-      countable = (countableInput == '1');
+      //     if (ingredientInventory[j].getCountable()) {
+      //       cout << "Enter ingredient piece: ";
+      //       cin >> ingredientPiece;
+      //       ingredient[i] = Ingredient(ingredientName, ingredientCost, ingredientPiece);
+      //     } else {
+      //       cout << "Enter ingredient weight in gram(s): ";
+      //       cin >> ingredientWeight;
+      //       ingredient[i] = Ingredient(ingredientName, ingredientCost, ingredientWeight);
+      //     }
+      //   }
+      }
 
-      if (countable) {
-        cout << "Enter ingredient piece: ";
-        cin >> ingredientPiece;
-        ingredient[i] = Ingredient(ingredientName, ingredientCost, ingredientPiece);
-      } else {
-        cout << "Enter ingredient weight in gram(s): ";
-        cin >> ingredientWeight;
-        ingredient[i] = Ingredient(ingredientName, ingredientCost, ingredientWeight);
+      // if ingredient name not found in inventory, ask user to input cost
+      if (ingredientCost == 0) {
+        cout << "Enter ingredient cost: RM ";
+        cin >> ingredientCost;
+
+        // ask user is the ingredient in piece or weight
+        do {
+          cout << "Enter ingredient piece or weight (0 for weight, 1 for piece): ";
+          cin >> countableInput;
+        } while (countableInput != '0' && countableInput != '1');
+
+        countable = (countableInput == '1');
+
+        if (countable) {
+          cout << "Enter ingredient piece: ";
+          cin >> ingredientPiece;
+          ingredient[i] = Ingredient(ingredientName, ingredientCost, ingredientPiece);
+        } else {
+          cout << "Enter ingredient weight in gram(s): ";
+          cin >> ingredientWeight;
+          ingredient[i] = Ingredient(ingredientName, ingredientCost, ingredientWeight);
+        }
       }
     }
 
@@ -245,6 +287,7 @@ void Employee::createBakeryItem() {
     }
 
     bakeryItems[bakeryItems->getBakeryItemCount()] = BakeryItem(bakeryItemName, bakeryItemDescription, bakeryItemPricePerUnit, ingredient, numberOfIngredients, recipe);
+    // @TjeEwe file handling for new bakery item
 
     // cout << "Bakery Item Address (from employee): " << bakeryItems << endl;
     
@@ -265,5 +308,6 @@ Employee::~Employee() {
   // cout << "Employee " << name << " has been removed." << endl;
 }
 
-IngredientInventory * Employee::ingredientInventory = IngredientInventory::getIngredientInventory();
+// IngredientInventory * Employee::ingredientInventory = IngredientInventory::getIngredientInventory();
+IngredientInventory * Employee::ingredientInventory = new IngredientInventory[MAX_INGREDIENTS_INVENTORY];
 BakeryItem * Employee::bakeryItems = new BakeryItem[MAX_BAKERY_ITEMS];

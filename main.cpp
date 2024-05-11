@@ -120,12 +120,25 @@ int main () {
   // employees[2].changeIngredientCost(0, 20.0);
   // cout << endl;
 
+  // Done: Get inventory ingredient list
+  employees[0].getAllInventoryIngredientName();
+
   // create new bakery item
   // system will need to login and logout many times to create bakery items
   // @TjeEwe check if user input larger than MAX_BAKERY_ITEMS
-  employees[0].createBakeryItem();
   employees[0].accessMenuList();
-  employees[0].accessMenuItem(2);
+  cout << endl;
+  employees[0].checkIngredientInventory();
+  cout << endl;
+
+  // employees[0].createBakeryItem();
+  cout << endl;
+
+  // employees[0].accessMenuList();
+  // employees[0].accessMenuItem(2);
+  // cout << endl;
+  // employees[0].checkIngredientInventory();
+  // cout << endl;
   
   return 0;
 }
