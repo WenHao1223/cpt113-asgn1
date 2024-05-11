@@ -94,6 +94,10 @@ string BakeryItem::getBakeryItemName() const {
   return name;
 }
 
+double BakeryItem::getPricePerUnit() const {
+  return pricePerUnit;
+}
+
 string BakeryItem::getRecipe() const {
   return recipe;
 }
