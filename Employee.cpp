@@ -91,11 +91,11 @@ void Employee::accessIngredientInventoryDetails(int choice) const {
 }
 
 void Employee::checkIngredientInventory() const {
-  if (supervisor != nullptr) {
-    cout << "Checking ingredient inventory..." << endl;
+  if (supervisor != nullptr || baker != nullptr) {
+    cout << position << " - Checking ingredient inventory..." << endl;
     ingredientInventory->checkIngredientInventory();
   } else {
-    cout << "Only supervisor can check ingredient inventory." << endl;
+    cout << "Only supervisor or baker can check ingredient inventory." << endl;
   }
 }
 

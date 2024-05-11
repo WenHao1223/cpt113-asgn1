@@ -73,7 +73,6 @@ void IngredientInventory::accessIngredientInventoryDetails() const {
 
 void IngredientInventory::checkIngredientInventory() const {
   // check all ingredients in inventory
-  cout << "Checking ingredient inventory..." << endl;
   cout << setw(20) << left << "Ingredient Name" << "Quantity" << endl;
 
   for (int i = 0; i < ingredientInventoryCount; i++) {
@@ -86,8 +85,6 @@ void IngredientInventory::checkIngredientInventory() const {
       cout << 0 << endl;
     }
   }
-
-  cout << endl;
 }
 
 // void IngredientInventory::restockIngredientInventory(int quantity) {
