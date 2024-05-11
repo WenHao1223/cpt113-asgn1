@@ -67,41 +67,14 @@ int main () {
   // employees[1].displayEmployeeDetails();
   // employees[2].displayEmployeeDetails();
 
-  // WIP: create bakery items, to be added into Baker class
-  // but now for testing Bakery Item -related function
-  // @TjeEwe @AeroRin this section will not include in the final project
-  // employees will create bakery items
-  // system will need to login and logout many times to create bakery items
-  // @TjeEwe check if user input larger than MAX_BAKERY_ITEMS
-  // BakeryItem * bakeryItems = new BakeryItem[MAX_BAKERY_ITEMS];
-  // Ingredient * ingredient;
-
-  // // @TjeEwe need user input in determining the number of ingredients in one bakery items
-  // numberOfIngredients = 1;
-
-  // ingredient = new Ingredient[numberOfIngredients] {
-  //   Ingredient("Ingredient 1 of Item 1", 10.0, 100.0)
-  // };
-  // bakeryItems[0] = BakeryItem("Item 1", "Description 1", 10.0, ingredient, numberOfIngredients, "Recipe 1");
-
-  // numberOfIngredients = 3;
-  // ingredient = new Ingredient[numberOfIngredients] {
-  //   Ingredient("Ingredient 1 of Item 1", 20.0, 200.0),
-  //   Ingredient("Ingredient 2 of Item 2", 30.0, 3),
-  //   Ingredient("Ingredient 3 of Item 3", 40.0, 400.0)
-  // };
-  // bakeryItems[1] = BakeryItem("Item 2", "Description 2", 20.0, ingredient, numberOfIngredients, "Recipe 2");
-  // cout << endl;
-
   // Done: display bakery item details
   // bakeryItems[0].displayBakeryItemDetails();
 
   // Done: Access menu list
-  // cout << "Bakery Item Address: " << &bakeryItems << endl;
-  // accessMenuList(bakeryItems);
+  // employees[0].accessMenuList();
 
   // Done: Access menu details
-  // accessMenuDetails(bakeryItems[1]);
+  // employees[0].accessMenuItem(1);
 
   // use only once per program
   // can be started by random employee
@@ -148,12 +121,11 @@ int main () {
   // cout << endl;
 
   // create new bakery item
-  // employees[0].createBakeryItem();
-  employees->accessMenuList();
-  // employees[0].accessMenuDetails(1);
-
-  // delete [] bakeryItems;
-  // delete [] ingredient;
+  // system will need to login and logout many times to create bakery items
+  // @TjeEwe check if user input larger than MAX_BAKERY_ITEMS
+  employees[0].createBakeryItem();
+  employees[0].accessMenuList();
+  employees[0].accessMenuItem(2);
   
   return 0;
 }

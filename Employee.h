@@ -36,7 +36,7 @@ class Employee {
     void displayEmployeeDetails() const;
     void startBakery() const;
     void accessMenuList() const;
-    void accessMenuDetails(int) const;
+    void accessMenuItem(int) const;
 
     // accessible by supervisor or baker only
     void displayIngredientInventoryList() const;

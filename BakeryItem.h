@@ -40,7 +40,6 @@ class BakeryItem {
     void setRecipe(string);
 
     // friend functions to be used by main.cpp
-    // friend void accessMenuDetails() const;
     friend void accessMenuDetails(BakeryItem &);
 
     // destructor

@@ -111,9 +111,9 @@ void Employee::accessMenuList() const {
   }
 }
 
-void Employee::accessMenuDetails(int choice) const {
+void Employee::accessMenuItem(int choice) const {
   cout << position << " - Accessing menu details..." << endl;
-  bakeryItems[choice].displayBakeryItemDetails();
+  accessMenuDetails(bakeryItems[choice]);
 }
 
 void Employee::displayIngredientInventoryList() const {
@@ -175,9 +175,6 @@ void Employee::createBakeryItem() {
 
   if (supervisor != nullptr) {
     cout << position << " - Creating bakery item..." << endl;
-    // for (int i = 0; i < bakeryItems[0].getBakeryItemCount(); i++) {
-    //   cout << bakeryItems[i].getBakeryItemName() << endl;
-    // }
 
     // create bakery items from user input
     string bakeryItemName;
