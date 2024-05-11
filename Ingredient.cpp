@@ -4,19 +4,19 @@
 
 Ingredient::Ingredient() {
   name = "";
-  cost = 0;
+  costPerPiece = 0;
   weight = 0;
   piece = 0;
 }
 
-Ingredient::Ingredient(string name, double cost, double weight) {
+Ingredient::Ingredient(string name, double costPerPiece, double weight) {
   if (name == "") {
     cout << "Name cannot be empty." << endl;
     exit(EXIT_FAILURE);
     return;
   }
 
-  if (cost < 0) {
+  if (costPerPiece < 0) {
     cout << "Cost cannot be negative." << endl;
     exit(EXIT_FAILURE);
     return;
@@ -29,21 +29,21 @@ Ingredient::Ingredient(string name, double cost, double weight) {
   }
 
   this->name = name;
-  this->cost = cost;
+  this->costPerPiece = costPerPiece;
   this->weight = weight;
   this->piece = 0;
   this->countable = false;
   // cout << "Ingredient " << name << " has been added." << endl;
 }
 
-Ingredient::Ingredient(string name, double cost, int piece) {
+Ingredient::Ingredient(string name, double costPerPiece, int piece) {
   if (name == "") {
     cout << "Name cannot be empty." << endl;
     exit(EXIT_FAILURE);
     return;
   }
 
-  if (cost < 0) {
+  if (costPerPiece < 0) {
     cout << "Cost cannot be negative." << endl;
     exit(EXIT_FAILURE);
     return;
@@ -56,7 +56,7 @@ Ingredient::Ingredient(string name, double cost, int piece) {
   }
 
   this->name = name;
-  this->cost = cost;
+  this->costPerPiece = costPerPiece;
   this->weight = 0;
   this->piece = piece;
   this->countable = true;
@@ -65,7 +65,7 @@ Ingredient::Ingredient(string name, double cost, int piece) {
 
 void Ingredient::displayIngredientDetails() const {
   cout << "Name: " << name << endl;
-  cout << setprecision(2) << fixed << "Cost: RM " << cost << endl;
+  cout << setprecision(2) << fixed << "Cost: RM " << costPerPiece << endl;
   if (countable) {
     cout << "Piece: " << piece << " piece(s)" << endl;
   } else {
@@ -77,8 +77,8 @@ string Ingredient::getName() const {
   return name;
 }
 
-double Ingredient::getCost() const {
-  return cost;
+double Ingredient::getCostPerPiece() const {
+  return costPerPiece;
 }
 
 double Ingredient::getWeight() const {
@@ -93,14 +93,14 @@ bool Ingredient::getCountable() const {
   return countable;
 }
 
-void Ingredient::setCost(double cost) {
-  if (cost < 0) {
+void Ingredient::setCostPerPiece(double costPerPiece) {
+  if (costPerPiece < 0) {
     cout << "Cost cannot be negative." << endl;
     exit(EXIT_FAILURE);
     return;
   }
 
-  this->cost = cost;
+  this->costPerPiece = costPerPiece;
 }
 
 void Ingredient::setWeight(double weight) {
