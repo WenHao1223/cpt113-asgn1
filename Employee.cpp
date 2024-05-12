@@ -442,6 +442,7 @@ void Employee::createNewEmployee(Employee employees [], string employeeID, strin
   }
 }
 
+// @TjeEwe file handling if employee role is changed
 void Employee::changeEmployeeRole (Employee employees [], int index, string role) {
   if (supervisor != nullptr) {
     cout << role << " - Changing employee role..." << endl;
@@ -512,6 +513,7 @@ void Employee::displayAllEmployeeDetails(Employee employees []) const {
   }
 }
 
+// @TjeEwe file handling if employee is deleted
 void Employee::deleteEmployee(Employee employees [], int index) {
   if (supervisor != nullptr) {
     cout << role << " - Deleting employee..." << endl;
