@@ -71,6 +71,7 @@ class Employee {
     void calculateCartTotalPrice() const;
     void calculateCartTotalProfit() const;
     void getCartItemCount() const;
+    void removeBakeryItemFromCart(int index);
 
     // accessor
     void getBakeryItems(BakeryItem *) const;

@@ -692,6 +692,16 @@ void Employee::getCartItemCount() const {
   }
 }
 
+void Employee::removeBakeryItemFromCart (int index) {
+  if (cashier != nullptr) {
+    cout << "Removing " << cashier->getCart()->getBakeryItems()[index].getBakeryItemName() << " from cart..." << endl;
+    cashier->getCart()->removeBakeryItemFromCart(index);
+    cout << cashier->getCart()->getBakeryItems()[index].getBakeryItemName() << " removed from cart." << endl;
+  } else {
+    cout << "Only cashier can remove bakery item from cart." << endl;
+  }
+}
+
 void Employee::getBakeryItems(BakeryItem * bakeryItems) const {
   this->bakeryItems = bakeryItems;
 }

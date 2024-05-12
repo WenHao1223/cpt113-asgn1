@@ -216,16 +216,20 @@ int main () {
   // employees[3].displayCartDetails();
 
   // Done: calculate total cost of cart
-  employees[2].calculateCartTotalCost();
+  // employees[2].calculateCartTotalCost();
 
   // Done: calculate total price of cart
-  employees[2].calculateCartTotalPrice();
+  // employees[2].calculateCartTotalPrice();
 
   // Done: calculate total profit of cart
-  employees[2].calculateCartTotalProfit();
+  // employees[2].calculateCartTotalProfit();
 
   // Done: calculate cart item count
-  employees[2].getCartItemCount();
+  // employees[2].getCartItemCount();
+
+  // Done: remove bakery item from cart
+  employees[2].removeBakeryItemFromCart(0);
+  employees[2].displayCartDetails();
   
   return 0;
 }
