@@ -99,6 +99,10 @@ double BakeryItem::getPricePerUnit() const {
   return pricePerUnit;
 }
 
+bool BakeryItem::getDisabled() const {
+  return disabled;
+}
+
 string BakeryItem::getRecipe() const {
   return recipe;
 }

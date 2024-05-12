@@ -134,7 +134,7 @@ int main () {
   // cout << endl;
 
   // Done: withdraw bakery item
-  // employees[0].withdrawBakeryItem(1);
+  employees[0].withdrawBakeryItem(1);
   // cout << endl;
   // employees[0].accessMenuItem(1);
 
@@ -158,7 +158,10 @@ int main () {
   // employees[0].compareCostVsProfit(1);
 
   // Done: compare cost vs price of bakery item
-  employees[0].compareCostVsPrice(1);
+  // employees[0].compareCostVsPrice(1);
+
+  // bake new bakery item
+  employees[1].bakeNewBakeryItem(1, 1);
   
   return 0;
 }

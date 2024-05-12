@@ -37,6 +37,7 @@ class BakeryItem {
     int getBakeryItemCount() const;
     string getBakeryItemName() const;
     double getPricePerUnit() const;
+    bool getDisabled() const;
     string getRecipe() const;
 
     // mutator

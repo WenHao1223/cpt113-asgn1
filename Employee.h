@@ -55,6 +55,9 @@ class Employee {
     void compareCostVsProfit(int index) const;
     void compareCostVsPrice(int index) const;
 
+    // accessible by baker role only
+    void bakeNewBakeryItem(int index, int quantity);
+
     // accessor
     void getBakeryItems(BakeryItem *) const;
 

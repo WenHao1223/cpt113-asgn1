@@ -352,6 +352,19 @@ void Employee::compareCostVsPrice(int index) const {
   cout << "Price percentage: " << (bakeryItems[index].getPricePerUnit() / bakeryItems[index].calculateCost()) * 100 << "%" << endl;
 }
 
+void Employee::bakeNewBakeryItem(int index, int quantity) {
+  if (baker != nullptr) {
+    cout << role << " - Baking " << quantity << " " << bakeryItems[index].getBakeryItemName() << "..." << endl;
+    // check if bakery item is disabled
+    if (bakeryItems[index].getDisabled()) {
+      cout << "Action unavailable. " << bakeryItems[index].getBakeryItemName() << " is withdrawn." << endl;
+      return;
+    }
+  } else {
+    cout << "Only baker can bake bakery item." << endl;
+  }
+}
+
 void Employee::getBakeryItems(BakeryItem * bakeryItems) const {
   this->bakeryItems = bakeryItems;
 }
