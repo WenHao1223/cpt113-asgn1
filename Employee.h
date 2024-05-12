@@ -64,6 +64,9 @@ class Employee {
     // accessible by baker role only
     void bakeNewBakeryItem(int index, int quantity);
 
+    // accessible by cashier only
+    void addBakeryItemToCart(int index, int quantity);
+
     // accessor
     void getBakeryItems(BakeryItem *) const;
 

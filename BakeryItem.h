@@ -18,6 +18,7 @@ class BakeryItem {
     double pricePerUnit;
     Ingredient * ingredient = new Ingredient[MAX_INGREDIENTS];
     int ingredientCount = 0;
+    int quantity = 0;
     string recipe;
     bool disabled = false;
     static int bakeryItemCount;
@@ -39,6 +40,7 @@ class BakeryItem {
     double getPricePerUnit() const;
     Ingredient * getIngredient(int) const;
     int getIngredientCount() const;
+    int getBakeryItemQuantity() const;
     string getRecipe() const;
     bool getDisabled() const;
     int getBakeryItemCount() const;
@@ -46,6 +48,7 @@ class BakeryItem {
     // mutator
     void setBakeryItems(BakeryItem *);
     void setPricePerUnit(double);
+    void setBakeryItemQuantity(int);
     void setRecipe(string);
     void setDisabled(bool);
 

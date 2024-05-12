@@ -610,9 +610,37 @@ void Employee::bakeNewBakeryItem(int index, int quantity) {
         }
       }
 
+      // add bakery item quantity
+      bakeryItems[index].setBakeryItemQuantity(bakeryItems[index].getBakeryItemQuantity() + quantity);
+
+      cout << "Bakery item " << bakeryItems[index].getBakeryItemName() << " has been baked." << endl;
     }
   } else {
     cout << "Only baker can bake bakery item." << endl;
+  }
+}
+
+void Employee::addBakeryItemToCart (int index, int quantity) {
+  if (cashier != nullptr) {
+    cout << "Adding " << quantity << "x " << bakeryItems[index].getBakeryItemName() << " to cart..." << endl;
+
+    // check if bakery item is disabled
+    if (bakeryItems[index].getDisabled()) {
+      cout << "Warning: " << bakeryItems[index].getBakeryItemName() << " is withdrawn." << endl;
+      return;
+    }
+
+    // check if bakery item is enough
+    if (bakeryItems[index].getBakeryItemQuantity() < quantity) {
+      cout << "Warning: Not enough " << bakeryItems[index].getBakeryItemName() << " in inventory." << endl;
+      cout << "Available: " << bakeryItems[index].getBakeryItemQuantity() << " items." << endl;
+      cout << "Require " << quantity << " items." << endl;
+      return;
+    }
+
+    cashier->getCart()->addBakeryItemToCart(bakeryItems[index], quantity);
+  } else {
+    cout << "Only cashier can add bakery item to cart." << endl;
   }
 }
 

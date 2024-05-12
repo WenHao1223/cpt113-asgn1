@@ -47,6 +47,8 @@ void Cart::addBakeryItemToCart(BakeryItem & item, int quantity) {
   bakeryItems[cartItemCount] = item;
   this->quantity[cartItemCount] = quantity;
   cartItemCount++;
+
+  cout << item.getBakeryItemName() << " added to cart." << endl;
 }
 
 void Cart::removeBakeryItemFromCart(int index) {

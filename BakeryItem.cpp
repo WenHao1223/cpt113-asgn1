@@ -107,6 +107,10 @@ int BakeryItem::getIngredientCount() const {
   return ingredientCount;
 }
 
+int BakeryItem::getBakeryItemQuantity() const {
+  return quantity;
+}
+
 string BakeryItem::getRecipe() const {
   return recipe;
 }
@@ -126,6 +130,10 @@ void BakeryItem::setBakeryItems(BakeryItem * bakeryItems) {
 
 void BakeryItem::setPricePerUnit(double pricePerUnit) {
   this->pricePerUnit = pricePerUnit;
+}
+
+void BakeryItem::setBakeryItemQuantity(int quantity) {
+  this->quantity = quantity;
 }
 
 void BakeryItem::setRecipe(string recipe) {

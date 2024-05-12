@@ -4,19 +4,24 @@
 #include <iostream>
 #include <string>
 
+#include "Cart.h"
+
 using namespace std;
 
 class Cashier {
   private:
     string employeeID;
     string name;
-        
+    Cart * cart = nullptr;
   public:
     // Constructor
     Cashier(string employeeID, string name);
 
     // member functions
     void startBakery();
+
+    // accessor
+    Cart * getCart();
 };
 
 #endif

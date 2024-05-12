@@ -187,21 +187,21 @@ int main () {
   // Done: display all employee details
   // employees[0].displayAllEmployeeDetails(employees);
 
-  Cart testCart = Cart();
-  IngredientInventory * ingredientInventory = new IngredientInventory[Constant::MAX_INGREDIENTS_INVENTORY];
-  ingredientInventory[0] = IngredientInventory("Ingredient 1", 0.0005, 100000.0);
-  ingredientInventory[1] = IngredientInventory("Ingredient 2", 20.0, 200);
-  ingredientInventory[2] = IngredientInventory("Ingredient 3", 30.0, 0.0);
+  // Cart testCart = Cart();
+  // IngredientInventory * ingredientInventory = new IngredientInventory[Constant::MAX_INGREDIENTS_INVENTORY];
+  // ingredientInventory[0] = IngredientInventory("Ingredient 1", 0.0005, 100000.0);
+  // ingredientInventory[1] = IngredientInventory("Ingredient 2", 20.0, 200);
+  // ingredientInventory[2] = IngredientInventory("Ingredient 3", 30.0, 0.0);
   
-  BakeryItem bakeryItems[3] = {
-    BakeryItem("Croissant", "A buttery, flaky, viennoiserie pastry of Austrian origin, named for its historical crescent shape.", 3.50, ingredientInventory, 3, "Mix ingredients, roll dough, fold dough, cut dough, shape dough, proof dough, bake dough."),
-    BakeryItem("Pain au Chocolat", "A type of viennoiserie sweet roll consisting of a cuboid-shaped piece of yeast-leavened laminated dough, similar in texture to a puff pastry, with one or two pieces of dark chocolate in the centre.", 3.00, ingredientInventory, 3, "Mix ingredients, roll dough, fold dough, cut dough, shape dough, proof dough, bake dough."),
-    BakeryItem("Palmier", "A pastry in the shape of a palm leaf or a butterfly.", 2.00, ingredientInventory, 3, "Mix ingredients, roll dough, fold dough, cut dough, shape dough, proof dough, bake dough.")
-  };
-  testCart.addBakeryItemToCart(bakeryItems[0], 2);
-  testCart.addBakeryItemToCart(bakeryItems[1], 3);
-  testCart.addBakeryItemToCart(bakeryItems[2], 4);
-  testCart.displayCartDetails();
+  // BakeryItem bakeryItems[3] = {
+  //   BakeryItem("Croissant", "A buttery, flaky, viennoiserie pastry of Austrian origin, named for its historical crescent shape.", 3.50, ingredientInventory, 3, "Mix ingredients, roll dough, fold dough, cut dough, shape dough, proof dough, bake dough."),
+  //   BakeryItem("Pain au Chocolat", "A type of viennoiserie sweet roll consisting of a cuboid-shaped piece of yeast-leavened laminated dough, similar in texture to a puff pastry, with one or two pieces of dark chocolate in the centre.", 3.00, ingredientInventory, 3, "Mix ingredients, roll dough, fold dough, cut dough, shape dough, proof dough, bake dough."),
+  //   BakeryItem("Palmier", "A pastry in the shape of a palm leaf or a butterfly.", 2.00, ingredientInventory, 3, "Mix ingredients, roll dough, fold dough, cut dough, shape dough, proof dough, bake dough.")
+  // };
+  // testCart.addBakeryItemToCart(bakeryItems[0], 2);
+  // testCart.addBakeryItemToCart(bakeryItems[1], 3);
+  // testCart.addBakeryItemToCart(bakeryItems[2], 4);
+  // testCart.displayCartDetails();
   // testCart.calculateTotalCost();
   // testCart.calculateTotalProfit();
   // cout << "Total cost: RM " << setprecision(2) << fixed << testCart.getTotalCost() << endl;
@@ -211,6 +211,14 @@ int main () {
   // testCart.compareCostVsProfit(1);
 
   // cout << "Cart item count: " << testCart.getCartItemCount() << endl;
+
+  // add bakery item to cart
+  employees[1].addBakeryItemToCart(0, 2);
+  employees[2].addBakeryItemToCart(0, 2);
+  cout << endl;
+  employees[1].bakeNewBakeryItem(0, 3);
+  cout << endl;
+  employees[2].addBakeryItemToCart(0, 2);
   
   return 0;
 }
