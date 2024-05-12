@@ -917,6 +917,7 @@ double Employee::calculateDiscountedTotalPrice () const {
   }
 }
 
+// @TjeEwe store the transaction details to csv file
 void Employee::checkout() {
   if (cashier != nullptr) {
     cout << "Checking out..." << endl;
@@ -982,3 +983,4 @@ IngredientInventory * Employee::ingredientInventory = new IngredientInventory[MA
 BakeryItem * Employee::bakeryItems = new BakeryItem[MAX_BAKERY_ITEMS];
 // Discount * Employee::discounts = new Discount[Constant::MAX_DISCOUNTS];
 Discount * Employee::discounts = nullptr;
+double Employee::totalProfitPerDay = 0;

@@ -29,6 +29,11 @@ class Employee {
     static BakeryItem * bakeryItems;
     static IngredientInventory * ingredientInventory;
     static Discount * discounts;
+
+    static double totalBalance;
+    static double totalCredit;
+    static double totalDebit;
+    static double totalProfitPerDay;
         
   public:
     // Constructor
