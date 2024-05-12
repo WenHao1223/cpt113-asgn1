@@ -1,2 +1,6 @@
-employeeID,name,role
-123424,Eben,Cashier
+employeeID,name,position
+S1,John,Supervisor
+B1,Smith,Baker
+B2,Sam,Baker
+C1,Eben,Cashier
+C2,Jack,Cashier
