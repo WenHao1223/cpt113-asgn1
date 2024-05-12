@@ -512,6 +512,41 @@ void Employee::displayAllEmployeeDetails(Employee employees []) const {
   }
 }
 
+void Employee::deleteEmployee(Employee employees [], int index) {
+  if (supervisor != nullptr) {
+    cout << role << " - Deleting employee..." << endl;
+
+    // check if employee id is empty
+    if (employees[index].employeeID == "") {
+      cout << "Employee ID cannot be empty." << endl;
+      return;
+    }
+
+    // check if name is empty
+    if (employees[index].name == "") {
+      cout << "Name cannot be empty." << endl;
+      return;
+    }
+
+    // cannot delete own account
+    if (employeeID == employees[index].employeeID) {
+      cout << "Warning: Cannot delete own account." << endl;
+      return;
+    }
+
+    // cannot delete supervisor account
+    if (employees[index].role == "Supervisor") {
+      cout << "Warning: Cannot delete supervisor account." << endl;
+      return;
+    }
+
+    employees[index] = Employee();
+    cout << "Employee has been deleted." << endl;
+  } else {
+    cout << "Only supervisor can delete employee." << endl;
+  }
+}
+
 // @TjeEwe file handling if new bakery item is created
 // deduct ingredients from inventory
 void Employee::bakeNewBakeryItem(int index, int quantity) {

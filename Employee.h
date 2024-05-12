@@ -59,6 +59,7 @@ class Employee {
     void createNewEmployee(Employee employees [], string employeeID, string name, string role);
     void changeEmployeeRole(Employee employees [], int index, string role);
     void displayAllEmployeeDetails(Employee employees []) const;
+    void deleteEmployee(Employee employees [], int index);
 
     // accessible by baker role only
     void bakeNewBakeryItem(int index, int quantity);

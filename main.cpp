@@ -172,13 +172,16 @@ int main () {
   // employees[1].bakeNewBakeryItem(1, 2);
 
   // Done: create new employee by supervisor
-  employees[0].createNewEmployee(employees, "S2", "Bob", "Supervisor");
+  employees[0].createNewEmployee(employees, "S2", "Bob", "Baker");
 
   // Done: change employee role
   // Juin Ewe and Jennie are now Cashiers *^____^*
   employees[0].changeEmployeeRole(employees, 1, "Cashier");
   employees[0].changeEmployeeRole(employees, 0, "Baker");
   employees[0].changeEmployeeRole(employees, 3, "Baker");
+
+  // delete employees
+  employees[0].deleteEmployee(employees, 3);
 
   // Done: display all employee details
   employees[0].displayAllEmployeeDetails(employees);
