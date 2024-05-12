@@ -65,6 +65,8 @@ void Employee::startBakery() const {
 
   orderNo = 0;
 
+  // @TjeEwe fetch balance from balanceSheet.csv
+
   ingredientInventory[0] = IngredientInventory("Ingredient 1", 0.0005, 100000.0);
   ingredientInventory[1] = IngredientInventory("Ingredient 2", 20.0, 200);
   ingredientInventory[2] = IngredientInventory("Ingredient 3", 30.0, 0.0);
@@ -1016,6 +1018,14 @@ void Employee::checkout() {
 
 void Employee::showReceipt() const {
 
+}
+
+string Employee::getEmployeeID() const {
+  return employeeID;
+}
+
+string Employee::getName() const {
+  return name;
 }
 
 string Employee::getRole() const {

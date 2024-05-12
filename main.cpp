@@ -68,10 +68,20 @@ int main () {
   //   cout << "employees[" << i << "] address: " << &employees[i] << endl;
   // }
 
+  // Done: show employee id
+  // @TjeEwe useful for showing different menu options based on employee id
+  // S1, B1, C1
+  cout << "Employee ID: " << employees[0].getEmployeeID() << endl;
+
+  // Done: show employee name
+  // @TjeEwe useful for showing different menu options based on employee name
+  // Adam, Juin Ewe, Jennie Ng
+  cout << "Name: " << employees[0].getName() << endl;
+
   // Done: show employee role
   // @TjeEwe useful for showing different menu options based on role
   // Supervisor, Baker, Cashier
-  // cout << "Role: " << employees[0].getRole() << endl;
+  cout << "Role: " << employees[0].getRole() << endl;
 
   // Done: display employee details
   // employees[0].displayEmployeeDetails();
@@ -90,8 +100,8 @@ int main () {
   // use only once per program
   // can be started by random employee
   // @TjeEwe inventory file shall be read in Employee::startBakery()
-  employees[2].startBakery();
-  cout << endl;
+  // employees[2].startBakery();
+  // cout << endl;
 
   // Done: display ingredient inventory list
   // employees[0].displayIngredientInventoryList();
@@ -204,16 +214,16 @@ int main () {
   // employees[1].addBakeryItemToCart(0, 2);
   // employees[2].addBakeryItemToCart(0, 2);
   // cout << endl;
-  employees[1].bakeNewBakeryItem(0, 3);
-  employees[1].bakeNewBakeryItem(2, 3);
+  // employees[1].bakeNewBakeryItem(0, 3);
+  // employees[1].bakeNewBakeryItem(2, 3);
   // cout << endl;
-  employees[2].addBakeryItemToCart(0, 2);
-  employees[2].addBakeryItemToCart(0, 3);
-  employees[2].addBakeryItemToCart(2, 1);
+  // employees[2].addBakeryItemToCart(0, 2);
+  // employees[2].addBakeryItemToCart(0, 3);
+  // employees[2].addBakeryItemToCart(2, 1);
   // cout << endl;
 
   // Done: display cart details
-  employees[2].displayCartDetails();
+  // employees[2].displayCartDetails();
   // employees[3].displayCartDetails();
 
   // Done: calculate total cost of cart
@@ -285,8 +295,8 @@ int main () {
 
   // Done: checkout
   // employees[2].accessMenuItem(0);
-  employees[2].checkout();
-  employees[2].accessMenuItem(0);
+  // employees[2].checkout();
+  // employees[2].accessMenuItem(0);
 
   // Done: calculate price after discount
   // not using this since it is used in checkout()
@@ -297,7 +307,7 @@ int main () {
   // cout << endl;
 
   // Done: show receipt
-  employees[2].showReceipt();
+  // employees[2].showReceipt();
   
   return 0;
 }

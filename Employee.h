@@ -100,6 +100,8 @@ class Employee {
     void showReceipt() const;
 
     // accessor
+    string getEmployeeID() const;
+    string getName() const;
     string getRole() const;
     double getTotalBalance() const;
     double getTotalCredit() const;
