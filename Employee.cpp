@@ -901,6 +901,18 @@ void Employee::applyDiscount(int choice) {
   }
 }
 
+double Employee::calculateDiscountedTotalPrice () const {
+  if (cashier != nullptr) {
+    cout << "Calculating discounted price..." << endl;
+    cout << setprecision(2) << fixed;
+    cout << "Discounted price: RM " << cashier->getCart()->calculateTotalPrice() - cashier->getCart()->getTotalDiscount() << endl;
+    return cashier->getCart()->calculateTotalPrice() - cashier->getCart()->getTotalDiscount();
+  } else {
+    cout << "Only cashier can calculate discounted price." << endl;
+    return 0;
+  }
+}
+
 string Employee::getRole() const {
   return role;
 }

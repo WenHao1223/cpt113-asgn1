@@ -274,8 +274,13 @@ int main () {
   // Done: calculate price after discount
   // discount choice based on showDiscountBasedOnCartTotalPrice(), start from 1
   // @TjeEwe must use this function to get discount
-  employees[2].applyDiscount(3);
+  // employees[2].applyDiscount(3);
   employees[2].applyDiscount(2);
+
+  // calculate cart total price after discount
+  employees[2].calculateDiscountedTotalPrice();
+  // @TjeEwe only show line below to store discounted price
+  // double discountedPrice = employees[2].calculateDiscountedTotalPrice();
   
   return 0;
 }
