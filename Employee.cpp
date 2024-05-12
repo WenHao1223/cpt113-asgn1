@@ -697,8 +697,8 @@ void Employee::bakeNewBakeryItem(int index, int quantity) {
           if (bakeryItems[index].getIngredient(i)->getCountable()) {
             if (bakeryItems[index].getIngredient(i)->getPiece() * quantity > ingredientInventory->getIngredientInventoryPiece(j)) {
               cout << "Not enough " << bakeryItems[index].getIngredient(i)->getName() << " in inventory." << endl;
-              cout << "Available: " << ingredientInventory->getIngredientInventoryPiece(j) << " pieces." << endl;
-              cout << "Require " << bakeryItems[index].getIngredient(i)->getPiece() * quantity << " pieces." << endl;
+              cout << "Available: " << ingredientInventory->getIngredientInventoryPiece(j) << " piece(s)." << endl;
+              cout << "Require " << bakeryItems[index].getIngredient(i)->getPiece() * quantity << " piece(s)." << endl;
               return;
             } else {
               ingredientInventoryIndex[i] = j;
@@ -760,8 +760,8 @@ void Employee::addBakeryItemToCart (int index, int quantity) {
     // check if bakery item is enough
     if (bakeryItems[index].getBakeryItemQuantity() < quantity) {
       cout << "Warning: Not enough " << bakeryItems[index].getBakeryItemName() << " in inventory." << endl;
-      cout << "Available: " << bakeryItems[index].getBakeryItemQuantity() << " items." << endl;
-      cout << "Require " << quantity << " items." << endl;
+      cout << "Available: " << bakeryItems[index].getBakeryItemQuantity() << " item(s)." << endl;
+      cout << "Require " << quantity << " item(s)." << endl;
       return;
     }
 
