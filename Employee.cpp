@@ -442,6 +442,53 @@ void Employee::createNewEmployee(Employee employees [], string employeeID, strin
   }
 }
 
+void Employee::changeEmployeeRole (Employee employees [], int index, string role) {
+  if (supervisor != nullptr) {
+    cout << role << " - Changing employee role..." << endl;
+
+    // check if role is empty
+    if (role == "") {
+      cout << "Role cannot be empty." << endl;
+      return;
+    }
+
+    // check if employee id is empty
+    if (employees[index].employeeID == "") {
+      cout << "Employee ID cannot be empty." << endl;
+      return;
+    }
+
+    // check if name is empty
+    if (employees[index].name == "") {
+      cout << "Name cannot be empty." << endl;
+      return;
+    }
+
+    // cannot change own role
+    if (employeeID == employees[index].employeeID) {
+      cout << "Warning: Cannot change own role." << endl;
+      return;
+    }
+
+    // cannot change supervisor role
+    if (employees[index].role == "Supervisor") {
+      cout << "Warning: Cannot change supervisor role." << endl;
+      return;
+    }
+
+    // role is the same
+    if (employees[index].role == role) {
+      cout << employees[index].name << "'s role is already " << role << "." << endl;
+      return;
+    }
+
+    employees[index].role = role;
+    cout << employees[index].name << "'s role has been changed to " << role << "." << endl;
+  } else {
+    cout << "Only supervisor can change employee role." << endl;
+  }
+}
+
 void Employee::displayAllEmployeeDetails(Employee employees []) const {
   if (supervisor != nullptr) {
     cout << role << " - Displaying all employee details..." << endl;

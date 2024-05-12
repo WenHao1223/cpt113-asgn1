@@ -174,6 +174,12 @@ int main () {
   // Done: create new employee by supervisor
   employees[0].createNewEmployee(employees, "S2", "Bob", "Supervisor");
 
+  // Done: change employee role
+  // Juin Ewe and Jennie are now Cashiers *^____^*
+  employees[0].changeEmployeeRole(employees, 1, "Cashier");
+  employees[0].changeEmployeeRole(employees, 0, "Baker");
+  employees[0].changeEmployeeRole(employees, 3, "Baker");
+
   // Done: display all employee details
   employees[0].displayAllEmployeeDetails(employees);
   
