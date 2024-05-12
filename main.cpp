@@ -225,6 +225,9 @@ int main () {
 
   // Done: calculate total cost of cart
   employees[2].calculateCartTotalCost();
+
+  // Done: calculate total price of cart
+  employees[2].calculateCartTotalPrice();
   
   return 0;
 }

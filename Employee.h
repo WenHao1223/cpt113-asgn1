@@ -68,6 +68,7 @@ class Employee {
     void addBakeryItemToCart(int index, int quantity);
     void displayCartDetails() const;
     void calculateCartTotalCost() const;
+    void calculateCartTotalPrice() const;
 
     // accessor
     void getBakeryItems(BakeryItem *) const;

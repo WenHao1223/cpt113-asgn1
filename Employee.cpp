@@ -663,6 +663,16 @@ void Employee::calculateCartTotalCost () const {
   }
 }
 
+void Employee::calculateCartTotalPrice () const {
+  if (cashier != nullptr) {
+    cout << "Cashier " << name << " (" << employeeID << ") - Calculating total price..." << endl;
+    cout << setprecision(2) << fixed;
+    cout << "Total price: RM " << cashier->getCart()->calculateTotalPrice() << endl;
+  } else {
+    cout << "Only cashier can calculate total price." << endl;
+  }
+}
+
 void Employee::getBakeryItems(BakeryItem * bakeryItems) const {
   this->bakeryItems = bakeryItems;
 }
