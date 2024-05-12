@@ -67,6 +67,7 @@ class Employee {
     void displayAllEmployeeDetails(Employee employees []) const;
     void deleteEmployee(Employee employees [], int index);
     void addNewDiscount();
+    void editDiscountName(int index, string name);
     void editDiscountPercentage(int index, double percentage);
 
     // accessible by baker role only

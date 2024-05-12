@@ -619,6 +619,15 @@ void Employee::addNewDiscount() {
   }
 }
 
+void Employee::editDiscountName(int index, string newName) {
+  if (supervisor != nullptr) {
+    cout << role << " - Editing discount name..." << endl;
+    discounts[index].setName(newName);
+  } else {
+    cout << "Only supervisor can edit discount name." << endl;
+  }
+}
+
 void Employee::editDiscountPercentage(int index, double newPercentage) {
   if (supervisor != nullptr) {
     cout << role << " - Editing discount percentage..." << endl;
