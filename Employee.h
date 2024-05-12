@@ -70,6 +70,7 @@ class Employee {
     void editDiscountName(int index, string name);
     void editDiscountDescription(int index, string description);
     void editDiscountPercentage(int index, double percentage);
+    void disableDiscount(int index);
 
     // accessible by baker role only
     void bakeNewBakeryItem(int index, int quantity);
