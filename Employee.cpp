@@ -492,19 +492,21 @@ void Employee::changeEmployeeRole (Employee employees [], int index, string role
 void Employee::displayAllEmployeeDetails(Employee employees []) const {
   if (supervisor != nullptr) {
     cout << role << " - Displaying all employee details..." << endl;
-    cout << "+--------------------+--------------------+--------------------+" << endl;
-    cout << "| " << left << setw(19) << "Name" << "| ";
+    cout << "+---+--------------------+--------------------+--------------------+" << endl;
+    cout << "| " << left << setw(2) << "No" << "| ";
+    cout << left << setw(19) << "Name" << "| ";
     cout << left << setw(19) << "Position" << "| ";
     cout << left << setw(19) << "Employee ID" << "|" << endl;
-    cout << "+--------------------+--------------------+--------------------+" << endl;
+    cout << "+---+--------------------+--------------------+--------------------+" << endl;
     for (int i = 0; i < Constant::MAX_EMPLOYEES; i++) {
       if (employees[i].employeeID != "") {
-        cout << "| " << left << setw(19) << employees[i].name << "| ";
+        cout << "| " << left << setw(2) << i+1 << "| ";
+        cout << left << setw(19) << employees[i].name << "| ";
         cout << left << setw(19) << employees[i].role << "| ";
         cout << left << setw(19) << employees[i].employeeID << "|" << endl;
       }
     }
-    cout << "+--------------------+--------------------+--------------------+" << endl;
+    cout << "+---+--------------------+--------------------+--------------------+" << endl;
   } else {
     cout << "Only supervisor can display all employee details." << endl;
   }
