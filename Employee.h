@@ -67,6 +67,7 @@ class Employee {
     void displayAllEmployeeDetails(Employee employees []) const;
     void deleteEmployee(Employee employees [], int index);
     void addNewDiscount();
+    void editDiscountPercentage(int index, double percentage);
 
     // accessible by baker role only
     void bakeNewBakeryItem(int index, int quantity);
@@ -83,7 +84,7 @@ class Employee {
     void clearCart();
 
     // accessor
-    void getBakeryItems(BakeryItem *) const;
+    string getRole() const;
 
     // Destructor
     ~Employee();

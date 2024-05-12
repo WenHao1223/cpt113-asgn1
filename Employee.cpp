@@ -580,6 +580,8 @@ void Employee::deleteEmployee(Employee employees [], int index) {
   }
 }
 
+// @TjeEwe file handling if new discount is created
+// @AeroRin input validation
 void Employee::addNewDiscount() {
   if (supervisor != nullptr) {
     cout << role << " - Adding new discount..." << endl;
@@ -615,6 +617,8 @@ void Employee::addNewDiscount() {
     cout << "Only supervisor can add new discount." << endl;
   }
 }
+
+
 
 // @TjeEwe file handling if new bakery item is created
 // deduct ingredients from inventory
@@ -787,6 +791,10 @@ void Employee::clearCart() {
   } else {
     cout << "Only cashier can clear cart." << endl;
   }
+}
+
+string Employee::getRole() const {
+  return role;
 }
 
 // Discount * Employee::getDiscounts() const {

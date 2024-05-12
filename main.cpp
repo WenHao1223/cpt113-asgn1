@@ -67,6 +67,11 @@ int main () {
   //   cout << "employees[" << i << "] address: " << &employees[i] << endl;
   // }
 
+  // Done: show employee role
+  // @TjeEwe useful for showing different menu options based on role
+  // Supervisor, Baker, Cashier
+  cout << "Role: " << employees[0].getRole() << endl;
+
   // Done: display employee details
   // employees[0].displayEmployeeDetails();
   // employees[1].displayEmployeeDetails();
@@ -239,9 +244,12 @@ int main () {
   employees[0].accessDiscountDetails(1);
 
   // Done: add new discount
-  employees[0].addNewDiscount();
-  employees[0].accessDiscountList();
-  employees[0].accessDiscountDetails(2);
+  // employees[0].addNewDiscount();
+  // employees[0].accessDiscountList();
+  // employees[0].accessDiscountDetails(2);
+
+  // Done: edit discount percentage
+  // employees[0].editDiscountPercentage(1, 20.0);
   
   return 0;
 }
