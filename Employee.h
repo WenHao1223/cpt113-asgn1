@@ -40,11 +40,13 @@ class Employee {
     // accessible by supervisor or baker only
     void displayIngredientInventoryList() const;
     void accessIngredientInventoryDetails(int) const;
+    void checkIngredientInventory() const;
 
     // accessibly by supervisor role only
-    void checkIngredientInventory() const;
     void restockIngredientInventory(int index, int quantity) const;
     void changeIngredientCost(int index, double cost) const;
+    void addNewInventoryIngredientWeight(string, double, double);
+    void addNewInventoryIngredientPiece(string, double, int);
     void getAllInventoryIngredientName() const;
     void createBakeryItem();
     void withdrawBakeryItem(int index);

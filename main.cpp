@@ -118,6 +118,9 @@ int main () {
   // employees[2].changeIngredientCost(0, 20.0);
   // cout << endl;
 
+  // add new ingredient
+  // employees[0].addNewInventoryIngredientWeight("Salt", 5.0, 500);
+
   // Done: Get inventory ingredient list
   // employees[0].getAllInventoryIngredientName();
 
@@ -161,11 +164,11 @@ int main () {
   // employees[0].compareCostVsPrice(1);
 
   // Done: bake new bakery item
-  employees[1].bakeNewBakeryItem(0, 3);
-  cout << endl;
-  employees[1].bakeNewBakeryItem(0, 2);
-  cout << endl;
-  employees[1].bakeNewBakeryItem(1, 2);
+  // employees[1].bakeNewBakeryItem(0, 3);
+  // cout << endl;
+  // employees[1].bakeNewBakeryItem(0, 2);
+  // cout << endl;
+  // employees[1].bakeNewBakeryItem(1, 2);
   
   return 0;
 }

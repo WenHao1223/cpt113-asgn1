@@ -352,6 +352,8 @@ void Employee::compareCostVsPrice(int index) const {
   cout << "Price percentage: " << (bakeryItems[index].getPricePerUnit() / bakeryItems[index].calculateCost()) * 100 << "%" << endl;
 }
 
+// @TjeEwe file handling if new bakery item is created
+// deduct ingredients from inventory
 void Employee::bakeNewBakeryItem(int index, int quantity) {
   if (baker != nullptr) {
     cout << role << " - Baking " << quantity << "x " << bakeryItems[index].getBakeryItemName() << "..." << endl;
