@@ -25,9 +25,11 @@ class IngredientInventory : public Ingredient {
     void displayIngredientInventoryList() const;
     void accessIngredientInventoryDetails() const;
     void checkIngredientInventory() const;
+    void addNewInventoryIngredientWeight(string name, double cost, double weight);
+    void addNewInventoryIngredientPiece(string name, double cost, int piece);
 
     // mutator
-    void restockIngredientInventory(int chocie, int quantity);
+    void restockIngredientInventory(int index, int quantity);
     void changeIngredientCost(int index, double cost);
     void setIngredientInventory(IngredientInventory * ingredientInventory);
     void setIngredientInventoryPiece(int index, int piece);

@@ -169,6 +169,54 @@ void Employee::changeIngredientCost(int index, double cost) const {
   }
 };
 
+void Employee::addNewInventoryIngredientWeight(string name, double cost, double weight) const {
+  if (supervisor != nullptr) {
+    cout << role << " - Adding new inventory ingredient (weight)..." << endl;
+    // name cannot be empty
+    if (name == "") {
+      cout << "Name cannot be empty." << endl;
+      return;
+    }
+    // cost cannot be negative
+    if (cost < 0) {
+      cout << "Cost cannot be negative." << endl;
+      return;
+    }
+    // weight cannot be negative
+    if (weight < 0) {
+      cout << "Weight cannot be negative." << endl;
+      return;
+    }
+    ingredientInventory->addNewInventoryIngredientWeight(name, cost, weight);
+  } else {
+    cout << "Only supervisor can add new inventory ingredient." << endl;
+  }
+}
+
+void Employee::addNewInventoryIngredientPiece(string name, double cost, int piece) const {
+  if (supervisor != nullptr) {
+    cout << role << " - Adding new inventory ingredient (piece)..." << endl;
+    // name cannot be empty
+    if (name == "") {
+      cout << "Name cannot be empty." << endl;
+      return;
+    }
+    // cost cannot be negative
+    if (cost < 0) {
+      cout << "Cost cannot be negative." << endl;
+      return;
+    }
+    // piece cannot be negative
+    if (piece < 0) {
+      cout << "Piece cannot be negative." << endl;
+      return;
+    }
+    ingredientInventory->addNewInventoryIngredientPiece(name, cost, piece);
+  } else {
+    cout << "Only supervisor can add new inventory ingredient." << endl;
+  }
+}
+
 void Employee::getAllInventoryIngredientName() const {
   cout << "Getting all ingredient inventory names..." << endl;
   for (int i = 0; i < ingredientInventory->getIngredientInventoryCount(); i++) {
