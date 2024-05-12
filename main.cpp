@@ -228,7 +228,11 @@ int main () {
   // employees[2].getCartItemCount();
 
   // Done: remove bakery item from cart
-  employees[2].removeBakeryItemFromCart(0);
+  // employees[2].removeBakeryItemFromCart(0);
+  // employees[2].displayCartDetails();
+
+  // Done: update bakery item quantity in cart
+  employees[2].updateBakeryItemQuantityInCart(0, 3);
   employees[2].displayCartDetails();
   
   return 0;

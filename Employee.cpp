@@ -702,6 +702,16 @@ void Employee::removeBakeryItemFromCart (int index) {
   }
 }
 
+void Employee::updateBakeryItemQuantityInCart(int index, int quantity) {
+  if (cashier != nullptr) {
+    cout << "Editing " << cashier->getCart()->getBakeryItems()[index].getBakeryItemName() << " quantity in cart..." << endl;
+    cashier->getCart()->updateBakeryItemQuantity(index, quantity);
+    cout << cashier->getCart()->getBakeryItems()[index].getBakeryItemName() << " quantity in cart has been changed to " << quantity << "." << endl;
+  } else {
+    cout << "Only cashier can edit bakery item quantity in cart." << endl;
+  }
+}
+
 void Employee::getBakeryItems(BakeryItem * bakeryItems) const {
   this->bakeryItems = bakeryItems;
 }

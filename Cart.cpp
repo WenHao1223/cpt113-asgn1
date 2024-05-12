@@ -47,6 +47,15 @@ void Cart::removeBakeryItemFromCart(int index) {
   cartItemCount--;
 }
 
+void Cart::updateBakeryItemQuantity(int index, int quantity) {
+  if (index < 0 || index >= cartItemCount) {
+    cout << "Invalid index." << endl;
+    return;
+  }
+
+  this->quantity[index] = quantity;
+}
+
 double Cart::calculateTotalCost() {
   totalCost = 0;
   for (int i = 0; i < cartItemCount; i++) {
