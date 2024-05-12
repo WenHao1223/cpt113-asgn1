@@ -9,17 +9,15 @@ Cart::Cart() {
 
 void Cart::displayCartDetails() {
   this->totalPrice = 0;
-  cout << "+--------------------------+----------+------------+------------------+" << endl;
-  cout << "| " << setw(25) << left << "Name" << "| " << setw(9) << left << "Quantity" << "| " << setw(11) << left << "Price (RM)" << "| " << setw(16) << left << "Amount (RM)" << " |" << endl;
-  cout << "+--------------------------+----------+------------+------------------+" << endl;
+  cout << "+----+--------------------------+----------+------------+------------------+" << endl;
+  cout << "| " << setw(3) << left << "No" << "| " << setw(25) << left << "Name" << "| " << setw(9) << left << "Quantity" << "| " << setw(11) << left << "Price (RM)" << "| " << setw(16) << left << "Amount (RM)" << " |" << endl;
+  cout << "+----+--------------------------+----------+------------+------------------+" << endl;
   for (int i = 0; i < cartItemCount; i++) {
     cout << setprecision(2) << fixed;
-    cout << "| " << setw(25) << left << bakeryItems[i].getBakeryItemName() << "| " << setw(9) << left << quantity[i] << "| " << setw(11) << left << bakeryItems[i].getPricePerUnit() << "| " << setw(16) << left << bakeryItems[i].getPricePerUnit() * quantity[i] << " |" << endl;
+    cout << "| " << setw(3) << left << i+1 << "| " << setw(25) << left << bakeryItems[i].getBakeryItemName() << "| " << setw(9) << left << quantity[i] << "| " << setw(11) << left << bakeryItems[i].getPricePerUnit() << "| " << setw(16) << left << bakeryItems[i].getPricePerUnit() * quantity[i] << " |" << endl;
   }
-  cout << "+--------------------------+----------+------------+------------------+" << endl;
-
+  cout << "+----+--------------------------+----------+------------+------------------+" << endl;
   cout << "Total Price: RM " << setprecision(2) << fixed << this->calculateTotalPrice() << endl;
-
 }
 
 void Cart::addBakeryItemToCart(BakeryItem & item, int quantity) {
