@@ -400,6 +400,8 @@ void Employee::compareCostVsPrice(int index) const {
   cout << "Price percentage: " << (bakeryItems[index].getPricePerUnit() / bakeryItems[index].calculateCost()) * 100 << "%" << endl;
 }
 
+// @TjeEwe file handling if new employee is created
+// update employeeData.csv
 void Employee::createNewEmployee(Employee employees [], string employeeID, string name, string role) {
   if (supervisor != nullptr) {
     cout << role << " - Creating new employee..." << endl;
@@ -447,7 +449,7 @@ void Employee::bakeNewBakeryItem(int index, int quantity) {
     cout << role << " - Baking " << quantity << "x " << bakeryItems[index].getBakeryItemName() << "..." << endl;
     // check if bakery item is disabled
     if (bakeryItems[index].getDisabled()) {
-      cout << "Action unavailable. " << bakeryItems[index].getBakeryItemName() << " is withdrawn." << endl;
+      cout << "Warning: " << bakeryItems[index].getBakeryItemName() << " is withdrawn." << endl;
       return;
     }
 
@@ -481,7 +483,7 @@ void Employee::bakeNewBakeryItem(int index, int quantity) {
       }
       // check if ingredient is not found in inventory
       if ((i == bakeryItems[index].getIngredientCount() - 1) && (bakeryItems[index].getIngredient(i)->getName() != ingredientInventory->getIngredientInventoryName(i))){
-        cout << "Action unavailable: Ingredient " << bakeryItems[index].getIngredient(i)->getName() << " not found in inventory." << endl;
+        cout << "Warning: Ingredient " << bakeryItems[index].getIngredient(i)->getName() << " not found in inventory." << endl;
         cout << "Please restock ingredient " << bakeryItems[index].getIngredient(i)->getName() << " before baking." << endl;
         return;
       }
