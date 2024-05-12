@@ -656,6 +656,16 @@ void Employee::disableDiscount(int index) {
   }
 }
 
+void Employee::enableDiscount(int index) {
+  if (supervisor != nullptr) {
+    cout << role << " - Enabling discount..." << endl;
+    discounts[index].setDisabled(false);
+    cout << discounts[index].getName() << " has been enabled." << endl;
+  } else {
+    cout << "Only supervisor can enable discount." << endl;
+  }
+}
+
 // @TjeEwe file handling if new bakery item is created
 // deduct ingredients from inventory
 void Employee::bakeNewBakeryItem(int index, int quantity) {

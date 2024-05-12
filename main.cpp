@@ -263,6 +263,10 @@ int main () {
   // Done: disable discount
   employees[0].disableDiscount(1);
   employees[0].accessDiscountDetails(1);
+
+  // Done: enable discount
+  employees[0].enableDiscount(1);
+  employees[0].accessDiscountDetails(1);
   
   return 0;
 }
