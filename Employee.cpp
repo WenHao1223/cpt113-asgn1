@@ -1,8 +1,7 @@
 #include <iomanip>
 
-#include "Constant.h"
+#include "Discount.h"
 #include "Employee.h"
-#include "BakeryItem.h"
 
 const int MAX_BAKERY_ITEMS = Constant::MAX_BAKERY_ITEMS;
 const int MAX_INGREDIENTS_INVENTORY = Constant::MAX_INGREDIENTS_INVENTORY;
@@ -69,7 +68,7 @@ void Employee::startBakery() const {
   bakeryItems->setBakeryItems(bakeryItems);
 
   // print address of ingredientInventory
-  cout << "Ingredient Inventory address (from employee): " << ingredientInventory << endl;
+  // cout << "Ingredient Inventory address (from employee): " << ingredientInventory << endl;
 
   int numberOfIngredients;
   Ingredient * ingredient;
@@ -88,6 +87,14 @@ void Employee::startBakery() const {
     }, numberOfIngredients, "Recipe 2");
 
   // cout << "Bakery Item Address (from employee): " << bakeryItems << endl;
+
+  discounts = new Discount[Constant::MAX_DISCOUNTS];
+
+  cout << "Address of discounts (from employee): " << discounts << endl;
+
+  // @TjeEwe need fetch this from file instead
+  discounts[0] = Discount("Over RM30 Oasis: Enjoy 5\% Off", 5.0, "Description 1", false);
+  discounts[1] = Discount("Fifty-Fiver Flourish: 10\% Discount", 10.0, "Description 2", false);
 
   if (supervisor != nullptr) {
     supervisor->startBakery();
@@ -114,6 +121,15 @@ void Employee::accessMenuList() const {
 void Employee::accessMenuItem(int index) const {
   cout << role << " - Accessing menu details..." << endl;
   accessMenuDetails(bakeryItems[index]);
+}
+
+void Employee::accessDiscountList() const {
+  cout << "Address of discounts (from employee): " << discounts << endl;
+
+  cout << role << " - Accessing discount list..." << endl;
+  for (int i = 0; i < discounts[0].getDiscountCount(); i++) {
+    cout << i+1 << ". " << discounts[i].getName() << endl;
+  }
 }
 
 void Employee::displayIngredientInventoryList() const {
@@ -404,7 +420,7 @@ void Employee::compareCostVsPrice(int index) const {
 // update employeeData.csv
 void Employee::createNewEmployee(Employee employees [], string employeeID, string name, string role) {
   if (supervisor != nullptr) {
-    cout << role << " - Creating new employee..." << endl;
+    cout << this->role << " - Creating new employee..." << endl;
 
     // check if name is empty
     if (name == "") {
@@ -428,15 +444,18 @@ void Employee::createNewEmployee(Employee employees [], string employeeID, strin
       // employee id is not unique
       if (employees[i].employeeID == employeeID) {
         cout << "Warning: Employee ID is not unique." << endl;
-        break;
+        return;
       }
 
       if (employees[i].employeeID == "") {
+        cout << role << " " << name << " created successfully." << endl;
         employees[i] = Employee(employeeID, name, role);
         break;
       }
-
     }
+
+
+    cout << "Warning: Maximum number of employees reached." << endl;
   } else {
     cout << "Only supervisor can create new employee." << endl;
   }
@@ -722,17 +741,20 @@ void Employee::clearCart() {
   }
 }
 
-void Employee::getBakeryItems(BakeryItem * bakeryItems) const {
-  this->bakeryItems = bakeryItems;
-}
+// Discount * Employee::getDiscounts() const {
+//   return discounts;
+// }
 
 Employee::~Employee() {
+  delete discounts;
+
   delete supervisor;
   delete baker;
   delete cashier;
-
   // cout << "Employee " << name << " has been removed." << endl;
 }
 
 IngredientInventory * Employee::ingredientInventory = new IngredientInventory[MAX_INGREDIENTS_INVENTORY];
 BakeryItem * Employee::bakeryItems = new BakeryItem[MAX_BAKERY_ITEMS];
+// Discount * Employee::discounts = new Discount[Constant::MAX_DISCOUNTS];
+Discount * Employee::discounts = nullptr;

@@ -12,6 +12,7 @@ class Employee;
 
 // class declaration
 #include "Constant.h"
+#include "Discount.h"
 #include "Ingredient.h"
 #include "BakeryItem.h"
 #include "IngredientInventory.h"
@@ -130,7 +131,7 @@ int main () {
   // system will need to login and logout many times to create bakery items
   // @TjeEwe check if user input larger than MAX_BAKERY_ITEMS
   // before creating new bakery item
-  // employees[0].accessMenuList();
+  employees[0].accessMenuList();
   // employees[0].checkIngredientInventory();
   // employees[0].createBakeryItem();
   // after creating new bakery item
@@ -173,7 +174,8 @@ int main () {
   // employees[1].bakeNewBakeryItem(1, 2);
 
   // Done: create new employee by supervisor
-  employees[0].createNewEmployee(employees, "C2", "Bob", "Cashier");
+  // employees[0].createNewEmployee(employees, "C2", "Bob", "Cashier");
+  // cout << "now working fine" << endl;
 
   // Done: change employee role
   // Juin Ewe and Jennie are now Cashiers *^____^*
@@ -185,20 +187,20 @@ int main () {
   // employees[0].deleteEmployee(employees, 3);
 
   // Done: display all employee details
-  // employees[0].displayAllEmployeeDetails(employees);
-  
+  employees[0].displayAllEmployeeDetails(employees);
+
   // Done: add bakery item to cart
   // employees[1].addBakeryItemToCart(0, 2);
   // employees[2].addBakeryItemToCart(0, 2);
   // cout << endl;
-  employees[1].bakeNewBakeryItem(0, 3);
-  cout << endl;
-  employees[2].addBakeryItemToCart(0, 2);
-  employees[2].addBakeryItemToCart(0, 1);
-  cout << endl;
+  // employees[1].bakeNewBakeryItem(0, 3);
+  // cout << endl;
+  // employees[2].addBakeryItemToCart(0, 2);
+  // employees[2].addBakeryItemToCart(0, 1);
+  // cout << endl;
 
   // Done: display cart details
-  employees[2].displayCartDetails();
+  // employees[2].displayCartDetails();
   // employees[3].displayCartDetails();
 
   // Done: calculate total cost of cart
@@ -222,8 +224,11 @@ int main () {
   // employees[2].displayCartDetails();
 
   // Done: clear whole cart
-  employees[2].clearCart();
-  employees[2].displayCartDetails();
+  // employees[2].clearCart();
+  // employees[2].displayCartDetails();
+
+  // Done: access discount list
+  employees[0].accessDiscountList();
   
   return 0;
 }

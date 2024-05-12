@@ -3,6 +3,9 @@
 
 #include <string>
 #include <iostream>
+
+#include "Constant.h"
+#include "Discount.h"
 #include "Supervisor.h"
 #include "Baker.h"
 #include "Cashier.h"
@@ -25,6 +28,7 @@ class Employee {
 
     static BakeryItem * bakeryItems;
     static IngredientInventory * ingredientInventory;
+    static Discount * discounts;
         
   public:
     // Constructor
@@ -36,6 +40,7 @@ class Employee {
     void startBakery() const;
     void accessMenuList() const;
     void accessMenuItem(int index) const;
+    void accessDiscountList() const;
 
     // accessible by supervisor or baker only
     void displayIngredientInventoryList() const;
