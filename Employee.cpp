@@ -100,7 +100,7 @@ void Employee::startBakery() const {
 
   discounts = new Discount[Constant::MAX_DISCOUNTS];
 
-  cout << "Address of discounts (from employee): " << discounts << endl;
+  // cout << "Address of discounts (from employee): " << discounts << endl;
 
   // @TjeEwe need fetch this from file instead
   discounts[0] = Discount("Over RM30 Oasis: Enjoy 5\% Off", 30.0, 5.0, "Description 1", false);
@@ -134,7 +134,7 @@ void Employee::accessMenuItem(int index) const {
 }
 
 void Employee::accessDiscountList() const {
-  cout << "Address of discounts (from employee): " << discounts << endl;
+  // cout << "Address of discounts (from employee): " << discounts << endl;
 
   cout << role << " - Accessing discount list..." << endl;
   for (int i = 0; i < discounts[0].getDiscountCount(); i++) {
@@ -485,7 +485,7 @@ void Employee::createNewEmployee(Employee * employees, string employeeID, string
 // @TjeEwe file handling if employee role is changed
 void Employee::changeEmployeeRole (Employee employees [], int index, string role) {
   if (supervisor != nullptr) {
-    cout << role << " - Changing employee role..." << endl;
+    cout << this->role << " - Changing employee role..." << endl;
 
     // check if role is empty
     if (role == "") {

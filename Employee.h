@@ -95,7 +95,7 @@ class Employee {
     void clearCart();
     void checkout();
     void showDiscountBasedOnCartTotalPrice() const;
-    void applyDiscount(int index);
+    void applyDiscount(int choice);
     double calculateDiscountedTotalPrice() const;
     void showReceipt() const;
 
