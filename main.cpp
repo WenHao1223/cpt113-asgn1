@@ -199,14 +199,6 @@ int main () {
   //   BakeryItem("Palmier", "A pastry in the shape of a palm leaf or a butterfly.", 2.00, ingredientInventory, 3, "Mix ingredients, roll dough, fold dough, cut dough, shape dough, proof dough, bake dough.")
   // };
   
-  // testCart.calculateTotalCost();
-  // testCart.calculateTotalProfit();
-  // cout << "Total cost: RM " << setprecision(2) << fixed << testCart.getTotalCost() << endl;
-  // cout << "Total profit: RM " << setprecision(2) << fixed << testCart.getTotalProfit() << endl;
-
-  // testCart.compareCostVsPrice(1);
-  // testCart.compareCostVsProfit(1);
-
   // cout << "Cart item count: " << testCart.getCartItemCount() << endl;
 
   // Done: add bakery item to cart
@@ -231,6 +223,9 @@ int main () {
 
   // Done: calculate total profit of cart
   employees[2].calculateCartTotalProfit();
+
+  // Done: calculate cart item count
+  employees[2].getCartItemCount();
   
   return 0;
 }

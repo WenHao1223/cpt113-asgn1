@@ -683,6 +683,15 @@ void Employee::calculateCartTotalProfit () const {
   }
 }
 
+void Employee::getCartItemCount() const {
+  if (cashier != nullptr) {
+    cout << "Cashier " << name << " (" << employeeID << ") - Getting cart item count..." << endl;
+    cout << "Cart item count: " << cashier->getCart()->getCartItemCount() << endl;
+  } else {
+    cout << "Only cashier can get cart item count." << endl;
+  }
+}
+
 void Employee::getBakeryItems(BakeryItem * bakeryItems) const {
   this->bakeryItems = bakeryItems;
 }
