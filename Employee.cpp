@@ -250,6 +250,7 @@ void Employee::getAllInventoryIngredientName() const {
   }
 }
 
+// @AeroRin input validation
 void Employee::createBakeryItem() {
   // show address of bakeryItems
   // cout << "Bakery Item Address (from employee): " << bakeryItems << endl;
@@ -618,7 +619,14 @@ void Employee::addNewDiscount() {
   }
 }
 
-
+void Employee::editDiscountPercentage(int index, double newPercentage) {
+  if (supervisor != nullptr) {
+    cout << role << " - Editing discount percentage..." << endl;
+    discounts[index].setDiscountPercentage(newPercentage);
+  } else {
+    cout << "Only supervisor can edit discount percentage." << endl;
+  }
+}
 
 // @TjeEwe file handling if new bakery item is created
 // deduct ingredients from inventory

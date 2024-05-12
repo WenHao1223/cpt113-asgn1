@@ -70,7 +70,7 @@ int main () {
   // Done: show employee role
   // @TjeEwe useful for showing different menu options based on role
   // Supervisor, Baker, Cashier
-  cout << "Role: " << employees[0].getRole() << endl;
+  // cout << "Role: " << employees[0].getRole() << endl;
 
   // Done: display employee details
   // employees[0].displayEmployeeDetails();
@@ -249,7 +249,9 @@ int main () {
   // employees[0].accessDiscountDetails(2);
 
   // Done: edit discount percentage
-  // employees[0].editDiscountPercentage(1, 20.0);
+  employees[0].accessDiscountDetails(1);
+  employees[0].editDiscountPercentage(1, 20.0);
+  employees[0].accessDiscountDetails(1);
   
   return 0;
 }
