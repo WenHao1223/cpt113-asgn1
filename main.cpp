@@ -272,26 +272,32 @@ int main () {
   // employees[0].accessDiscountDetails(1);
 
   // Done: show available discount based on cart total price
-  employees[2].showDiscountBasedOnCartTotalPrice();
-  cout << endl;
+  // extra option as it is used in checkout()
+  // employees[2].showDiscountBasedOnCartTotalPrice();
+  // cout << endl;
 
-  // Done: calculate price after discount
-  // discount choice based on showDiscountBasedOnCartTotalPrice(), start from 1
-  // @TjeEwe must use this function to get discount
-  // employees[2].applyDiscount(3);
-  employees[2].applyDiscount(2);
-  cout << endl;
-
-  // calculate cart total price after discount
-  employees[2].calculateDiscountedTotalPrice();
-  cout << endl;
+  // Done: calculate cart total price after discount
+  // extra option as it is used in checkout()
+  // employees[2].calculateDiscountedTotalPrice();
+  // cout << endl;
   // @TjeEwe only show line below to store discounted price
   // double discountedPrice = employees[2].calculateDiscountedTotalPrice();
 
   // Done: checkout
-  employees[2].accessMenuItem(0);
+  // employees[2].accessMenuItem(0);
   employees[2].checkout();
   employees[2].accessMenuItem(0);
+
+  // Done: calculate price after discount
+  // not using this since it is used in checkout()
+  // discount choice based on showDiscountBasedOnCartTotalPrice(), start from 1
+  // @TjeEwe must use this function to get discount
+  // employees[2].applyDiscount(3);
+  // employees[2].applyDiscount(2);
+  // cout << endl;
+
+  // Done: show receipt
+  employees[2].showReceipt();
   
   return 0;
 }

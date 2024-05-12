@@ -63,6 +63,8 @@ void Employee::displayEmployeeDetails() const {
 void Employee::startBakery() const {
   cout << "Bakery start operating now." << endl;
 
+  orderNo = 0;
+
   ingredientInventory[0] = IngredientInventory("Ingredient 1", 0.0005, 100000.0);
   ingredientInventory[1] = IngredientInventory("Ingredient 2", 20.0, 200);
   ingredientInventory[2] = IngredientInventory("Ingredient 3", 30.0, 0.0);
@@ -918,12 +920,10 @@ double Employee::calculateDiscountedTotalPrice () const {
 }
 
 // @TjeEwe store the transaction details to csv file
+// and create receipt txt file
 void Employee::checkout() {
   if (cashier != nullptr) {
     cout << "Checking out..." << endl;
-    cout << "Total price: RM " << cashier->getCart()->calculateTotalPrice() << endl;
-    cout << "Discounted price: RM " << cashier->getCart()->calculateTotalPrice() - cashier->getCart()->getTotalDiscount() << endl;
-    cout << "Total profit: RM " << cashier->getCart()->calculateTotalProfit() << endl;
 
     // deduct bakery items in cart from bakery
     for (int i = 0; i < cashier->getCart()->getCartItemCount(); i++) {
@@ -942,6 +942,9 @@ void Employee::checkout() {
             char skip;
             cin >> skip;
             if (skip == 'Y' || skip == 'y') {
+              // remove this item from cart
+              cashier->getCart()->removeBakeryItemFromCart(i);
+              cout << bakeryItems[j].getBakeryItemQuantity() << "x " << bakeryItems[j].getBakeryItemName() << " has been removed from cart." << endl;
               continue;
             } else {
               cout << "Please inform supervisor to restock bakery item " << bakeryItems[j].getBakeryItemName() << " before checkout." << endl;
@@ -949,17 +952,68 @@ void Employee::checkout() {
             }
           }
 
+          cout << "Total price: RM " << cashier->getCart()->calculateTotalPrice() << endl;
+
+          // deduct bakery item quantity from bakery
           bakeryItems[j].setBakeryItemQuantity(bakeryItems[j].getBakeryItemQuantity() - cashier->getCart()->getQuantity()[i]);
           cout << cashier->getCart()->getQuantity()[i] << "x " << cashier->getCart()->getBakeryItems()[i].getBakeryItemName() << " has been deducted from bakery." << endl;
         }
       }
     }
+    orderNo++;
+
+    cout << "Order No: " << orderNo << endl;
+
+    cout << "Please reconfirm your cart: " << endl;
+    this->displayCartDetails();
+    cout << endl;
+
+    // exit from empty cart
+    if (cashier->getCart()->getCartItemCount() == 0) {
+      cout << "Cart is empty. Please add bakery items to cart before checkout." << endl;
+      return;
+    }
+
+    // @AeroRin input validation
+    // exit from checking out if want to cancel
+    cout << "Do you want to proceed? (Y/N): ";
+    char proceed;
+    cin >> proceed;
+    if (proceed == 'N' || proceed == 'n') {
+      cout << "Checkout has been cancelled." << endl;
+      return;
+    }
+
+    // apply discount
+    this->showDiscountBasedOnCartTotalPrice();
+    cout << "Enter discount choice (0 to skip): ";
+    int choice;
+    cin >> choice;
+    if (choice != 0) {
+      this->applyDiscount(choice);
+    }
+
+    // calculate total price
+    double totalPrice = this->calculateDiscountedTotalPrice();
+    cout << "Total price: RM " << totalPrice << endl;
+
+    // update total balance
+    totalBalance += totalPrice;
 
     cout << "Thank you for shopping with us!" << endl;
+
+    // @TjeEwe store transaction details to csv file
+    // store transaction details to csv file
+    // generate receipt txt file
+
     cashier->getCart()->clearCart();
   } else {
     cout << "Only cashier can checkout." << endl;
   }
+}
+
+void Employee::showReceipt() const {
+
 }
 
 string Employee::getRole() const {
@@ -983,4 +1037,8 @@ IngredientInventory * Employee::ingredientInventory = new IngredientInventory[MA
 BakeryItem * Employee::bakeryItems = new BakeryItem[MAX_BAKERY_ITEMS];
 // Discount * Employee::discounts = new Discount[Constant::MAX_DISCOUNTS];
 Discount * Employee::discounts = nullptr;
+int Employee::orderNo = 0;
+double Employee::totalBalance = 5000;
+double Employee::totalCredit = 0;
+double Employee::totalDebit = 0;
 double Employee::totalProfitPerDay = 0;

@@ -30,6 +30,8 @@ class Employee {
     static IngredientInventory * ingredientInventory;
     static Discount * discounts;
 
+    static int orderNo;
+
     static double totalBalance;
     static double totalCredit;
     static double totalDebit;
@@ -91,10 +93,11 @@ class Employee {
     void removeBakeryItemFromCart(int index);
     void updateBakeryItemQuantityInCart(int index, int quantity);
     void clearCart();
+    void checkout();
     void showDiscountBasedOnCartTotalPrice() const;
     void applyDiscount(int index);
     double calculateDiscountedTotalPrice() const;
-    void checkout();
+    void showReceipt() const;
 
     // accessor
     string getRole() const;
