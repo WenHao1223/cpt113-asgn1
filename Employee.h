@@ -101,6 +101,10 @@ class Employee {
 
     // accessor
     string getRole() const;
+    double getTotalBalance() const;
+    double getTotalCredit() const;
+    double getTotalDebit() const;
+    double getTotalProfitPerDay() const;
 
     // Destructor
     ~Employee();

@@ -1000,6 +1000,8 @@ void Employee::checkout() {
     // update total balance
     totalBalance += totalPrice;
 
+    // WIP: update total profit per day, total credit, total debit
+
     cout << "Thank you for shopping with us!" << endl;
 
     // @TjeEwe store transaction details to csv file
@@ -1020,9 +1022,21 @@ string Employee::getRole() const {
   return role;
 }
 
-// Discount * Employee::getDiscounts() const {
-//   return discounts;
-// }
+double Employee::getTotalBalance() const {
+  return totalBalance;
+}
+
+double Employee::getTotalCredit() const {
+  return totalCredit;
+}
+
+double Employee::getTotalDebit() const {
+  return totalDebit;
+}
+
+double Employee::getTotalProfitPerDay() const {
+  return totalProfitPerDay;
+}
 
 Employee::~Employee() {
   delete discounts;
