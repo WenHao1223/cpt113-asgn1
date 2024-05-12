@@ -73,32 +73,6 @@ double Cart::calculateTotalProfit() {
   return totalProfit;
 }
 
-void Cart::compareCostVsProfit(int index) const {
-  if (index < 0 || index >= cartItemCount) {
-    cout << "Invalid index." << endl;
-    return;
-  }
-
-  double cost = bakeryItems[index].calculateCost() * quantity[index];
-  double profit = bakeryItems[index].calculateProfit() * quantity[index];
-
-  cout << "Cost: " << cost << endl;
-  cout << "Profit: " << profit << endl;
-}
-
-void Cart::compareCostVsPrice(int index) const {
-  if (index < 0 || index >= cartItemCount) {
-    cout << "Invalid index." << endl;
-    return;
-  }
-
-  double cost = bakeryItems[index].calculateCost() * quantity[index];
-  double price = bakeryItems[index].getPricePerUnit() * quantity[index];
-
-  cout << "Cost: " << cost << endl;
-  cout << "Price: " << price << endl;
-}
-
 int Cart::getCartItemCount() const {
   return cartItemCount;
 }

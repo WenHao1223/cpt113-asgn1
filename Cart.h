@@ -28,8 +28,6 @@ class Cart {
     double calculateTotalCost();
     double calculateTotalPrice();
     double calculateTotalProfit();
-    void compareCostVsProfit(int index) const;
-    void compareCostVsPrice(int index) const;
 
     // accessor
     int getCartItemCount() const;
