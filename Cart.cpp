@@ -15,11 +15,10 @@ void Cart::displayCartDetails() {
   for (int i = 0; i < cartItemCount; i++) {
     cout << setprecision(2) << fixed;
     cout << "| " << setw(25) << left << bakeryItems[i].getBakeryItemName() << "| " << setw(9) << left << quantity[i] << "| " << setw(11) << left << bakeryItems[i].getPricePerUnit() << "| " << setw(16) << left << bakeryItems[i].getPricePerUnit() * quantity[i] << " |" << endl;
-    this->totalPrice += bakeryItems[i].getPricePerUnit() * quantity[i];
   }
   cout << "+--------------------------+----------+------------+------------------+" << endl;
 
-  cout << "Total Price: RM " << setprecision(2) << fixed << this->totalPrice << endl;
+  cout << "Total Price: RM " << setprecision(2) << fixed << this->calculateTotalPrice() << endl;
 
 }
 
@@ -50,18 +49,28 @@ void Cart::removeBakeryItemFromCart(int index) {
   cartItemCount--;
 }
 
-void Cart::calculateTotalCost() {
+double Cart::calculateTotalCost() {
   totalCost = 0;
   for (int i = 0; i < cartItemCount; i++) {
     totalCost += bakeryItems[i].calculateCost() * quantity[i];
   }
+  return totalCost;
 }
 
-void Cart::calculateTotalProfit() {
+double Cart::calculateTotalPrice() {
+  totalPrice = 0;
+  for (int i = 0; i < cartItemCount; i++) {
+    totalPrice += bakeryItems[i].getPricePerUnit() * quantity[i];
+  }
+  return totalPrice;
+}
+
+double Cart::calculateTotalProfit() {
   totalProfit = 0;
   for (int i = 0; i < cartItemCount; i++) {
     totalProfit += bakeryItems[i].calculateProfit() * quantity[i];
   }
+  return totalProfit;
 }
 
 void Cart::compareCostVsProfit(int index) const {

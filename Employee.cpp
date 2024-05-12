@@ -77,7 +77,7 @@ void Employee::startBakery() const {
   numberOfIngredients = 1;
   bakeryItems[0] = BakeryItem("Item 1", "Description 1", 10.0,
     new Ingredient[numberOfIngredients] {
-      Ingredient("Ingredient 1", 1.0, 100.0)
+      Ingredient("Ingredient 1", 0.08, 100.0)
     }, numberOfIngredients, "Recipe 1");
   numberOfIngredients = 3;
   bakeryItems[1] = BakeryItem("Item 2", "Description 2", 20.0,
@@ -650,6 +650,16 @@ void Employee::displayCartDetails () const {
     cashier->getCart()->displayCartDetails();
   } else {
     cout << "Only cashier can display cart details." << endl;
+  }
+}
+
+void Employee::calculateCartTotalCost () const {
+  if (cashier != nullptr) {
+    cout << "Cashier " << name << " (" << employeeID << ") - Calculating total cost..." << endl;
+    cout << setprecision(2) << fixed;
+    cout << "Total cost: RM " << cashier->getCart()->calculateTotalCost() << endl;
+  } else {
+    cout << "Only cashier can calculate total cost." << endl;
   }
 }
 

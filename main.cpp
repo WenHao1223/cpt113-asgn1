@@ -198,10 +198,7 @@ int main () {
   //   BakeryItem("Pain au Chocolat", "A type of viennoiserie sweet roll consisting of a cuboid-shaped piece of yeast-leavened laminated dough, similar in texture to a puff pastry, with one or two pieces of dark chocolate in the centre.", 3.00, ingredientInventory, 3, "Mix ingredients, roll dough, fold dough, cut dough, shape dough, proof dough, bake dough."),
   //   BakeryItem("Palmier", "A pastry in the shape of a palm leaf or a butterfly.", 2.00, ingredientInventory, 3, "Mix ingredients, roll dough, fold dough, cut dough, shape dough, proof dough, bake dough.")
   // };
-  // testCart.addBakeryItemToCart(bakeryItems[0], 2);
-  // testCart.addBakeryItemToCart(bakeryItems[1], 3);
-  // testCart.addBakeryItemToCart(bakeryItems[2], 4);
-  // testCart.displayCartDetails();
+  
   // testCart.calculateTotalCost();
   // testCart.calculateTotalProfit();
   // cout << "Total cost: RM " << setprecision(2) << fixed << testCart.getTotalCost() << endl;
@@ -222,9 +219,12 @@ int main () {
   employees[2].addBakeryItemToCart(0, 1);
   cout << endl;
 
-  // display cart details
+  // Done: display cart details
   employees[2].displayCartDetails();
-  employees[3].displayCartDetails();
+  // employees[3].displayCartDetails();
+
+  // Done: calculate total cost of cart
+  employees[2].calculateCartTotalCost();
   
   return 0;
 }

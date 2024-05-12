@@ -25,8 +25,9 @@ class Cart {
     void displayCartDetails();
     void addBakeryItemToCart(BakeryItem & item, int quantity);
     void removeBakeryItemFromCart(int index);
-    void calculateTotalCost();
-    void calculateTotalProfit();
+    double calculateTotalCost();
+    double calculateTotalPrice();
+    double calculateTotalProfit();
     void compareCostVsProfit(int index) const;
     void compareCostVsPrice(int index) const;
 
