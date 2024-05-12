@@ -89,6 +89,7 @@ class Employee {
     void showDiscountBasedOnCartTotalPrice() const;
     void applyDiscount(int index);
     double calculateDiscountedTotalPrice() const;
+    void checkout();
 
     // accessor
     string getRole() const;

@@ -87,6 +87,10 @@ void Employee::startBakery() const {
       Ingredient("Ingredient 2", 2.0, 3),
       Ingredient("Ingredient 3 of Item 2", 0.02, 400.0)
     }, numberOfIngredients, "Recipe 2");
+  bakeryItems[2] = BakeryItem("Item 3", "Description 3", 30.0,
+    new Ingredient[numberOfIngredients] {
+      Ingredient("Ingredient 2", 2.0, 3),
+    }, numberOfIngredients, "Recipe 3");
 
   // cout << "Bakery Item Address (from employee): " << bakeryItems << endl;
 
@@ -910,6 +914,50 @@ double Employee::calculateDiscountedTotalPrice () const {
   } else {
     cout << "Only cashier can calculate discounted price." << endl;
     return 0;
+  }
+}
+
+void Employee::checkout() {
+  if (cashier != nullptr) {
+    cout << "Checking out..." << endl;
+    cout << "Total price: RM " << cashier->getCart()->calculateTotalPrice() << endl;
+    cout << "Discounted price: RM " << cashier->getCart()->calculateTotalPrice() - cashier->getCart()->getTotalDiscount() << endl;
+    cout << "Total profit: RM " << cashier->getCart()->calculateTotalProfit() << endl;
+
+    // deduct bakery items in cart from bakery
+    for (int i = 0; i < cashier->getCart()->getCartItemCount(); i++) {
+      for (int j = 0; j < bakeryItems->getBakeryItemCount(); j++) {
+        if (cashier->getCart()->getBakeryItems()[i].getBakeryItemName() == bakeryItems[j].getBakeryItemName()) {
+          cout << endl;
+          cout << "Checking out " << cashier->getCart()->getQuantity()[i] << "x " << cashier->getCart()->getBakeryItems()[i].getBakeryItemName() << "..." << endl;
+          // check if bakery item is enough
+          if (bakeryItems[j].getBakeryItemQuantity() < cashier->getCart()->getQuantity()[i]) {
+            cout << "Warning: Not enough " << bakeryItems[j].getBakeryItemName() << " in bakery." << endl;
+            cout << "Available: " << bakeryItems[j].getBakeryItemQuantity() << " bakery item(s)." << endl;
+            cout << "Require " << cashier->getCart()->getQuantity()[i] << " bakery item(s)." << endl;
+
+            // ask user to skip buying
+            cout << "Do you want to skip buying this item? (Y/N): ";
+            char skip;
+            cin >> skip;
+            if (skip == 'Y' || skip == 'y') {
+              continue;
+            } else {
+              cout << "Please inform supervisor to restock bakery item " << bakeryItems[j].getBakeryItemName() << " before checkout." << endl;
+              return;
+            }
+          }
+
+          bakeryItems[j].setBakeryItemQuantity(bakeryItems[j].getBakeryItemQuantity() - cashier->getCart()->getQuantity()[i]);
+          cout << cashier->getCart()->getQuantity()[i] << "x " << cashier->getCart()->getBakeryItems()[i].getBakeryItemName() << " has been deducted from bakery." << endl;
+        }
+      }
+    }
+
+    cout << "Thank you for shopping with us!" << endl;
+    cashier->getCart()->clearCart();
+  } else {
+    cout << "Only cashier can checkout." << endl;
   }
 }
 

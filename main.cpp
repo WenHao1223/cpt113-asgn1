@@ -28,6 +28,7 @@ const int MAX_EMPLOYEES = Constant::MAX_EMPLOYEES;
 void accessMenuDetails(BakeryItem & item) {
   cout << item.name << endl;
   cout << item.description << endl;
+  cout << item.quantity << " units available." << endl;
   cout << "RM " << setprecision(2) << fixed << item.pricePerUnit << endl;
   cout << "Ingredients: " << endl;
   for (int i = 0; i < item.ingredientCount; i++) {
@@ -204,9 +205,11 @@ int main () {
   // employees[2].addBakeryItemToCart(0, 2);
   // cout << endl;
   employees[1].bakeNewBakeryItem(0, 3);
+  employees[1].bakeNewBakeryItem(2, 3);
   // cout << endl;
   employees[2].addBakeryItemToCart(0, 2);
   employees[2].addBakeryItemToCart(0, 3);
+  employees[2].addBakeryItemToCart(2, 1);
   // cout << endl;
 
   // Done: display cart details
@@ -270,17 +273,25 @@ int main () {
 
   // Done: show available discount based on cart total price
   employees[2].showDiscountBasedOnCartTotalPrice();
+  cout << endl;
 
   // Done: calculate price after discount
   // discount choice based on showDiscountBasedOnCartTotalPrice(), start from 1
   // @TjeEwe must use this function to get discount
   // employees[2].applyDiscount(3);
   employees[2].applyDiscount(2);
+  cout << endl;
 
   // calculate cart total price after discount
   employees[2].calculateDiscountedTotalPrice();
+  cout << endl;
   // @TjeEwe only show line below to store discounted price
   // double discountedPrice = employees[2].calculateDiscountedTotalPrice();
+
+  // Done: checkout
+  employees[2].accessMenuItem(0);
+  employees[2].checkout();
+  employees[2].accessMenuItem(0);
   
   return 0;
 }
