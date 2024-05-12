@@ -623,6 +623,7 @@ void Employee::editDiscountName(int index, string newName) {
   if (supervisor != nullptr) {
     cout << role << " - Editing discount name..." << endl;
     discounts[index].setName(newName);
+    cout << "Name has been updated to '" << discounts[index].getName() << "'" << endl;
   } else {
     cout << "Only supervisor can edit discount name." << endl;
   }
@@ -632,6 +633,7 @@ void Employee::editDiscountPercentage(int index, double newPercentage) {
   if (supervisor != nullptr) {
     cout << role << " - Editing discount percentage..." << endl;
     discounts[index].setDiscountPercentage(newPercentage);
+    cout << "Percentage has been updated for discount '" << discounts[index].getName() << "'." << endl;
   } else {
     cout << "Only supervisor can edit discount percentage." << endl;
   }
@@ -641,6 +643,7 @@ void Employee::editDiscountDescription(int index, string newDescription) {
   if (supervisor != nullptr) {
     cout << role << " - Editing discount description..." << endl;
     discounts[index].setDescription(newDescription);
+    cout << "Description has been updated for '" << discounts[index].getName() << "'." << endl;
   } else {
     cout << "Only supervisor can edit discount description." << endl;
   }
@@ -650,7 +653,7 @@ void Employee::disableDiscount(int index) {
   if (supervisor != nullptr) {
     cout << role << " - Disabling discount..." << endl;
     discounts[index].setDisabled(true);
-    cout << discounts[index].getName() << " has been disabled." << endl;
+    cout << "'" << discounts[index].getName() << "' has been disabled." << endl;
   } else {
     cout << "Only supervisor can disable discount." << endl;
   }
@@ -660,7 +663,7 @@ void Employee::enableDiscount(int index) {
   if (supervisor != nullptr) {
     cout << role << " - Enabling discount..." << endl;
     discounts[index].setDisabled(false);
-    cout << discounts[index].getName() << " has been enabled." << endl;
+    cout << "'" << discounts[index].getName() << "' has been enabled." << endl;
   } else {
     cout << "Only supervisor can enable discount." << endl;
   }
