@@ -62,6 +62,11 @@ int main () {
 
   cout << endl;
 
+  // cout << "employees address: " << &employees << endl;
+  for (int i = 0; i < MAX_EMPLOYEES; i++) {
+    cout << "employees[" << i << "] address: " << &employees[i] << endl;
+  }
+
   // Done: display employee details
   // employees[0].displayEmployeeDetails();
   // employees[1].displayEmployeeDetails();
@@ -131,7 +136,7 @@ int main () {
   // system will need to login and logout many times to create bakery items
   // @TjeEwe check if user input larger than MAX_BAKERY_ITEMS
   // before creating new bakery item
-  employees[0].accessMenuList();
+  // employees[0].accessMenuList();
   // employees[0].checkIngredientInventory();
   // employees[0].createBakeryItem();
   // after creating new bakery item
@@ -173,9 +178,9 @@ int main () {
   // cout << endl;
   // employees[1].bakeNewBakeryItem(1, 2);
 
-  // Done: create new employee by supervisor
-  // employees[0].createNewEmployee(employees, "C2", "Bob", "Cashier");
-  // cout << "now working fine" << endl;
+  // WIP: create new employee by supervisor
+  employees[0].createNewEmployee(employees, "C2", "Bob", "Supervisor");
+  cout << "now working fine" << endl;
 
   // Done: change employee role
   // Juin Ewe and Jennie are now Cashiers *^____^*
@@ -187,7 +192,7 @@ int main () {
   // employees[0].deleteEmployee(employees, 3);
 
   // Done: display all employee details
-  employees[0].displayAllEmployeeDetails(employees);
+  // employees[0].displayAllEmployeeDetails(employees);
 
   // Done: add bakery item to cart
   // employees[1].addBakeryItemToCart(0, 2);
@@ -228,7 +233,7 @@ int main () {
   // employees[2].displayCartDetails();
 
   // Done: access discount list
-  employees[0].accessDiscountList();
+  // employees[0].accessDiscountList();
   
   return 0;
 }

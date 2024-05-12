@@ -43,6 +43,8 @@ Employee::Employee(string employeeID, string name, string role) {
   } else {
     cashier = new Cashier(employeeID, name);
   }
+
+  cout << "work fine constructor" << endl;
 }
 
 void Employee::displayEmployeeDetails() const {
@@ -418,7 +420,7 @@ void Employee::compareCostVsPrice(int index) const {
 
 // @TjeEwe file handling if new employee is created
 // update employeeData.csv
-void Employee::createNewEmployee(Employee employees [], string employeeID, string name, string role) {
+void Employee::createNewEmployee(Employee * employees, string employeeID, string name, string role) {
   if (supervisor != nullptr) {
     cout << this->role << " - Creating new employee..." << endl;
 
@@ -449,11 +451,13 @@ void Employee::createNewEmployee(Employee employees [], string employeeID, strin
 
       if (employees[i].employeeID == "") {
         cout << role << " " << name << " created successfully." << endl;
+        cout << "at index " << i << " of " << &employees[i] << endl;
         employees[i] = Employee(employeeID, name, role);
+        cout << "work fine" << endl;
+        employees[i].displayEmployeeDetails();
         break;
       }
     }
-
 
     cout << "Warning: Maximum number of employees reached." << endl;
   } else {

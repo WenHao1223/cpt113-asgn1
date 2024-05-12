@@ -61,7 +61,7 @@ class Employee {
     void calculateBakeryItemProfit(int index) const;
     void compareCostVsProfit(int index) const;
     void compareCostVsPrice(int index) const;
-    void createNewEmployee(Employee employees [], string employeeID, string name, string role);
+    void createNewEmployee(Employee * employees, string employeeID, string name, string role);
     void changeEmployeeRole(Employee employees [], int index, string role);
     void displayAllEmployeeDetails(Employee employees []) const;
     void deleteEmployee(Employee employees [], int index);
