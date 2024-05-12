@@ -637,6 +637,15 @@ void Employee::editDiscountPercentage(int index, double newPercentage) {
   }
 }
 
+void Employee::editDiscountDescription(int index, string newDescription) {
+  if (supervisor != nullptr) {
+    cout << role << " - Editing discount description..." << endl;
+    discounts[index].setDescription(newDescription);
+  } else {
+    cout << "Only supervisor can edit discount description." << endl;
+  }
+}
+
 // @TjeEwe file handling if new bakery item is created
 // deduct ingredients from inventory
 void Employee::bakeNewBakeryItem(int index, int quantity) {

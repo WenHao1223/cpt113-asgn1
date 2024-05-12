@@ -251,10 +251,14 @@ int main () {
   // Done: edit discount name
   employees[0].accessDiscountDetails(1);
   employees[0].editDiscountName(1, "New Discount");
-  
+
   // Done: edit discount percentage
   employees[0].accessDiscountDetails(1);
   employees[0].editDiscountPercentage(1, 20.0);
+  employees[0].accessDiscountDetails(1);
+
+  // Done: edit discount description
+  employees[0].editDiscountDescription(1, "New Description");
   employees[0].accessDiscountDetails(1);
   
   return 0;
