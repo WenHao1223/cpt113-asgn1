@@ -212,13 +212,18 @@ int main () {
 
   // cout << "Cart item count: " << testCart.getCartItemCount() << endl;
 
-  // add bakery item to cart
-  employees[1].addBakeryItemToCart(0, 2);
-  employees[2].addBakeryItemToCart(0, 2);
-  cout << endl;
+  // Done: add bakery item to cart
+  // employees[1].addBakeryItemToCart(0, 2);
+  // employees[2].addBakeryItemToCart(0, 2);
+  // cout << endl;
   employees[1].bakeNewBakeryItem(0, 3);
   cout << endl;
   employees[2].addBakeryItemToCart(0, 2);
+  employees[2].addBakeryItemToCart(0, 1);
+  cout << endl;
+
+  // display cart details
+  employees[2].displayCartDetails();
   
   return 0;
 }

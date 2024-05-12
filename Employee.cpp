@@ -644,6 +644,15 @@ void Employee::addBakeryItemToCart (int index, int quantity) {
   }
 }
 
+void Employee::displayCartDetails () const {
+  if (cashier != nullptr) {
+    cout << "Displaying cart details..." << endl;
+    cashier->getCart()->displayCartDetails();
+  } else {
+    cout << "Only cashier can display cart details." << endl;
+  }
+}
+
 void Employee::getBakeryItems(BakeryItem * bakeryItems) const {
   this->bakeryItems = bakeryItems;
 }

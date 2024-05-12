@@ -14,15 +14,15 @@ class Cart {
     int cartItemCount = 0;
     double totalCost = 0;
     double totalProfit = 0;
+    double totalPrice = 0;
     static Cart * cart;
 
   public:
     // Constructor
     Cart();
-    Cart(BakeryItem * bakeryItems, int * quantity, int cartItemCount, double totalCost, double totalProfit);
 
     // member functions
-    void displayCartDetails() const;
+    void displayCartDetails();
     void addBakeryItemToCart(BakeryItem & item, int quantity);
     void removeBakeryItemFromCart(int index);
     void calculateTotalCost();
@@ -35,6 +35,7 @@ class Cart {
     BakeryItem * getBakeryItems() const;
     int * getQuantity() const;
     double getTotalCost() const;
+    double getTotalPrice() const;
     double getTotalProfit() const;
 
     // mutator
@@ -42,6 +43,7 @@ class Cart {
     void setQuantity(int *);
     void setCartItemCount(int);
     void setTotalCost(double);
+    void setTotalPrice(double);
     void setTotalProfit(double);
 
     // destructor
