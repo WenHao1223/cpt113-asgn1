@@ -712,6 +712,16 @@ void Employee::updateBakeryItemQuantityInCart(int index, int quantity) {
   }
 }
 
+void Employee::clearCart() {
+  if (cashier != nullptr) {
+    cout << "Clearing cart..." << endl;
+    cashier->getCart()->clearCart();
+    cout << "Cart has been cleared." << endl;
+  } else {
+    cout << "Only cashier can clear cart." << endl;
+  }
+}
+
 void Employee::getBakeryItems(BakeryItem * bakeryItems) const {
   this->bakeryItems = bakeryItems;
 }
