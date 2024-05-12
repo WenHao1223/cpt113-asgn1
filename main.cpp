@@ -63,9 +63,9 @@ int main () {
   cout << endl;
 
   // cout << "employees address: " << &employees << endl;
-  for (int i = 0; i < MAX_EMPLOYEES; i++) {
-    cout << "employees[" << i << "] address: " << &employees[i] << endl;
-  }
+  // for (int i = 0; i < MAX_EMPLOYEES; i++) {
+  //   cout << "employees[" << i << "] address: " << &employees[i] << endl;
+  // }
 
   // Done: display employee details
   // employees[0].displayEmployeeDetails();
@@ -179,8 +179,8 @@ int main () {
   // employees[1].bakeNewBakeryItem(1, 2);
 
   // WIP: create new employee by supervisor
-  employees[0].createNewEmployee(employees, "C2", "Bob", "Supervisor");
-  cout << "now working fine" << endl;
+  // employees[0].createNewEmployee(employees, "C2", "Bob", "Supervisor");
+  // cout << "now working fine" << endl;
 
   // Done: change employee role
   // Juin Ewe and Jennie are now Cashiers *^____^*
@@ -233,7 +233,10 @@ int main () {
   // employees[2].displayCartDetails();
 
   // Done: access discount list
-  // employees[0].accessDiscountList();
+  employees[0].accessDiscountList();
+
+  // Done: display discount details
+  employees[0].accessDiscountDetails(1);
   
   return 0;
 }

@@ -44,7 +44,7 @@ Employee::Employee(string employeeID, string name, string role) {
     cashier = new Cashier(employeeID, name);
   }
 
-  cout << "work fine constructor" << endl;
+  // cout << "work fine constructor" << endl;
 }
 
 void Employee::displayEmployeeDetails() const {
@@ -132,6 +132,14 @@ void Employee::accessDiscountList() const {
   for (int i = 0; i < discounts[0].getDiscountCount(); i++) {
     cout << i+1 << ". " << discounts[i].getName() << endl;
   }
+}
+
+void Employee::accessDiscountDetails(int index) const {
+  cout << role << " - Accessing discount details..." << endl;
+  cout << "Name: " << discounts[index].getName() << endl;
+  cout << "Amount: " << discounts[index].getDiscountPercentage() << "%" << endl;
+  cout << "Description: " << discounts[index].getDescription() << endl;
+  cout << "Active: " << (!discounts[index].getDisabled() ? "Yes" : "No") << endl;
 }
 
 void Employee::displayIngredientInventoryList() const {
