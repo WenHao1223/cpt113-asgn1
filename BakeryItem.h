@@ -38,6 +38,8 @@ class BakeryItem {
     string getBakeryItemName() const;
     double getPricePerUnit() const;
     bool getDisabled() const;
+    Ingredient * getIngredient(int) const;
+    int getIngredientCount() const;
     string getRecipe() const;
 
     // mutator

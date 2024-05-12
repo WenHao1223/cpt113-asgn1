@@ -103,6 +103,14 @@ bool BakeryItem::getDisabled() const {
   return disabled;
 }
 
+Ingredient * BakeryItem::getIngredient(int index) const {
+  return &ingredient[index];
+}
+
+int BakeryItem::getIngredientCount() const {
+  return ingredientCount;
+}
+
 string BakeryItem::getRecipe() const {
   return recipe;
 }

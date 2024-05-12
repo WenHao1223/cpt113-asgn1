@@ -30,6 +30,8 @@ class IngredientInventory : public Ingredient {
     void restockIngredientInventory(int chocie, int quantity);
     void changeIngredientCost(int index, double cost);
     void setIngredientInventory(IngredientInventory * ingredientInventory);
+    void setIngredientInventoryPiece(int index, int piece);
+    void setIngredientInventoryWeight(int index, double weight);
 
     // accessor
     static IngredientInventory * getIngredientInventory();
@@ -37,6 +39,8 @@ class IngredientInventory : public Ingredient {
     IngredientInventory * getIngredientInventory(int) const;
     string getIngredientInventoryName(int) const;
     double getIngredientInventoryCost(int) const;
+    int getIngredientInventoryPiece(int) const;
+    double getIngredientInventoryWeight(int) const;
 
     // destructor
     ~IngredientInventory();

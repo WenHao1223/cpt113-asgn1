@@ -137,6 +137,14 @@ void IngredientInventory::setIngredientInventory(IngredientInventory * ingredien
   this->ingredientInventory = ingredientInventory;
 }
 
+void IngredientInventory::setIngredientInventoryPiece(int index, int piece) {
+  ingredientInventory[index].ingredient.setPiece(piece);
+}
+
+void IngredientInventory::setIngredientInventoryWeight(int index, double weight) {
+  ingredientInventory[index].ingredient.setWeight(weight);
+}
+
 IngredientInventory * IngredientInventory::getIngredientInventory() {
   cout << "address: " << ingredientInventory << endl;
   return ingredientInventory;
@@ -156,6 +164,14 @@ string IngredientInventory::getIngredientInventoryName (int index) const {
 
 double IngredientInventory::getIngredientInventoryCost (int index) const {
   return ingredientInventory[index].ingredient.getCostPerUnit();
+}
+
+int IngredientInventory::getIngredientInventoryPiece (int index) const {
+  return ingredientInventory[index].ingredient.getPiece();
+}
+
+double IngredientInventory::getIngredientInventoryWeight (int index) const {
+  return ingredientInventory[index].ingredient.getWeight();
 }
 
 IngredientInventory::~IngredientInventory() {
