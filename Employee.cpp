@@ -867,6 +867,40 @@ void Employee::showDiscountBasedOnCartTotalPrice() const {
   }
 }
 
+void Employee::applyDiscount(int choice) {
+  // find the index corresponding to the choice according to option in showDiscountBasedOnCartTotalPrice()
+  bool isDiscountAvailable = false;
+  Discount* availableDiscounts[discounts->getDiscountCount()];
+  int count = 0;
+  for (int i = 0; i < discounts->getDiscountCount(); i++) {
+    if (cashier->getCart()->calculateTotalPrice() >= discounts[i].getMinimumPurchase()) {
+      isDiscountAvailable = true;
+      if (count < discounts->getDiscountCount()) {
+        availableDiscounts[count++] = &discounts[i];
+      }
+    }
+  }
+
+  if (choice > count) {
+    cout << "Invalid choice." << endl;
+    return;
+  }
+
+  if (cashier != nullptr) {
+    cout << "Applying discount..." << endl;
+    if (cashier->getCart()->calculateTotalPrice() >= availableDiscounts[choice - 1]->getMinimumPurchase()) {
+      cout << "Discount applied: " << availableDiscounts[choice - 1]->getName() << endl;
+      cout << "Discount amount: " << availableDiscounts[choice - 1]->getDiscountPercentage() << "%" << endl;
+      cashier->getCart()->setTotalDiscount(cashier->getCart()->calculateTotalPrice() * (availableDiscounts[choice - 1]->getDiscountPercentage() / 100));
+      cout << "Discount amount: RM " << cashier->getCart()->getTotalDiscount() << endl;
+    } else {
+      cout << "Warning: Purchase doesn't qualify for discount." << endl;
+    }
+  } else {
+    cout << "Only cashier can apply discount." << endl;
+  }
+}
+
 string Employee::getRole() const {
   return role;
 }

@@ -15,6 +15,7 @@ class Cart {
     double totalCost = 0;
     double totalProfit = 0;
     double totalPrice = 0;
+    double totalDiscount = 0;
     static Cart * cart;
 
   public:
@@ -38,6 +39,7 @@ class Cart {
     double getTotalCost() const;
     double getTotalPrice() const;
     double getTotalProfit() const;
+    double getTotalDiscount() const;
 
     // mutator
     void setBakeryItems(BakeryItem *);
@@ -46,6 +48,7 @@ class Cart {
     void setTotalCost(double);
     void setTotalPrice(double);
     void setTotalProfit(double);
+    void setTotalDiscount(double);
 
     // destructor
     ~Cart();

@@ -108,6 +108,10 @@ double Cart::getTotalProfit() const {
   return totalProfit;
 }
 
+double Cart::getTotalDiscount() const {
+  return totalDiscount;
+}
+
 void Cart::setBakeryItems(BakeryItem * bakeryItems) {
   this->bakeryItems = bakeryItems;
 }
@@ -130,6 +134,10 @@ void Cart::setTotalPrice(double totalPrice) {
 
 void Cart::setTotalProfit(double totalProfit) {
   this->totalProfit = totalProfit;
+}
+
+void Cart::setTotalDiscount(double totalDiscount) {
+  this->totalDiscount = totalDiscount;
 }
 
 Cart::~Cart() {

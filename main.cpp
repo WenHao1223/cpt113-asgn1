@@ -206,7 +206,7 @@ int main () {
   employees[1].bakeNewBakeryItem(0, 3);
   // cout << endl;
   employees[2].addBakeryItemToCart(0, 2);
-  // employees[2].addBakeryItemToCart(0, 1);
+  employees[2].addBakeryItemToCart(0, 3);
   // cout << endl;
 
   // Done: display cart details
@@ -270,6 +270,12 @@ int main () {
 
   // Done: show available discount based on cart total price
   employees[2].showDiscountBasedOnCartTotalPrice();
+
+  // Done: calculate price after discount
+  // discount choice based on showDiscountBasedOnCartTotalPrice(), start from 1
+  // @TjeEwe must use this function to get discount
+  employees[2].applyDiscount(3);
+  employees[2].applyDiscount(2);
   
   return 0;
 }

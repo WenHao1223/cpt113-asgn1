@@ -87,6 +87,7 @@ class Employee {
     void updateBakeryItemQuantityInCart(int index, int quantity);
     void clearCart();
     void showDiscountBasedOnCartTotalPrice() const;
+    void applyDiscount(int index);
 
     // accessor
     string getRole() const;
