@@ -171,9 +171,11 @@ int main () {
   // cout << endl;
   // employees[1].bakeNewBakeryItem(1, 2);
 
-  // create new employee by supervisor
-  employees[0].createNewEmployee(employees, "S1", "Bob", "Supervisor");
-  employees[3].displayEmployeeDetails();
+  // Done: create new employee by supervisor
+  employees[0].createNewEmployee(employees, "S2", "Bob", "Supervisor");
+
+  // Done: display all employee details
+  employees[0].displayAllEmployeeDetails(employees);
   
   return 0;
 }
