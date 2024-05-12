@@ -400,6 +400,46 @@ void Employee::compareCostVsPrice(int index) const {
   cout << "Price percentage: " << (bakeryItems[index].getPricePerUnit() / bakeryItems[index].calculateCost()) * 100 << "%" << endl;
 }
 
+void Employee::createNewEmployee(Employee employees [], string employeeID, string name, string role) {
+  if (supervisor != nullptr) {
+    cout << role << " - Creating new employee..." << endl;
+
+    // check if name is empty
+    if (name == "") {
+      cout << "Name cannot be empty." << endl;
+      return;
+    }
+
+    // check if employee id is empty
+    if (employeeID == "") {
+      cout << "Employee ID cannot be empty." << endl;
+      return;
+    }
+
+    // check if role is empty
+    if (role == "") {
+      cout << "Role cannot be empty." << endl;
+      return;
+    }
+
+    for (int i = 0; i < Constant::MAX_EMPLOYEES; i++) {
+      // employee id is not unique
+      if (employees[i].employeeID == employeeID) {
+        cout << "Warning: Employee ID is not unique." << endl;
+        break;
+      }
+
+      if (employees[i].employeeID == "") {
+        employees[i] = Employee(employeeID, name, role);
+        break;
+      }
+
+    }
+  } else {
+    cout << "Only supervisor can create new employee." << endl;
+  }
+}
+
 // @TjeEwe file handling if new bakery item is created
 // deduct ingredients from inventory
 void Employee::bakeNewBakeryItem(int index, int quantity) {

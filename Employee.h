@@ -56,6 +56,7 @@ class Employee {
     void calculateBakeryItemProfit(int index) const;
     void compareCostVsProfit(int index) const;
     void compareCostVsPrice(int index) const;
+    void createNewEmployee(Employee employees [], string employeeID, string name, string role);
 
     // accessible by baker role only
     void bakeNewBakeryItem(int index, int quantity);
