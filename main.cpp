@@ -203,14 +203,14 @@ int main () {
   // employees[1].addBakeryItemToCart(0, 2);
   // employees[2].addBakeryItemToCart(0, 2);
   // cout << endl;
-  // employees[1].bakeNewBakeryItem(0, 3);
+  employees[1].bakeNewBakeryItem(0, 3);
   // cout << endl;
-  // employees[2].addBakeryItemToCart(0, 2);
+  employees[2].addBakeryItemToCart(0, 2);
   // employees[2].addBakeryItemToCart(0, 1);
   // cout << endl;
 
   // Done: display cart details
-  // employees[2].displayCartDetails();
+  employees[2].displayCartDetails();
   // employees[3].displayCartDetails();
 
   // Done: calculate total cost of cart
@@ -238,10 +238,10 @@ int main () {
   // employees[2].displayCartDetails();
 
   // Done: access discount list
-  employees[0].accessDiscountList();
+  // employees[0].accessDiscountList();
 
   // Done: display discount details
-  employees[0].accessDiscountDetails(1);
+  // employees[0].accessDiscountDetails(1);
 
   // Done: add new discount
   // employees[0].addNewDiscount();
@@ -249,24 +249,27 @@ int main () {
   // employees[0].accessDiscountDetails(2);
 
   // Done: edit discount name
-  employees[0].editDiscountName(1, "New Discount");
-  employees[0].accessDiscountDetails(1);
+  // employees[0].editDiscountName(1, "New Discount");
+  // employees[0].accessDiscountDetails(1);
 
   // Done: edit discount percentage
-  employees[0].editDiscountPercentage(1, 20.0);
-  employees[0].accessDiscountDetails(1);
+  // employees[0].editDiscountPercentage(1, 20.0);
+  // employees[0].accessDiscountDetails(1);
 
   // Done: edit discount description
-  employees[0].editDiscountDescription(1, "New Description");
-  employees[0].accessDiscountDetails(1);
+  // employees[0].editDiscountDescription(1, "New Description");
+  // employees[0].accessDiscountDetails(1);
 
   // Done: disable discount
-  employees[0].disableDiscount(1);
-  employees[0].accessDiscountDetails(1);
+  // employees[0].disableDiscount(1);
+  // employees[0].accessDiscountDetails(1);
 
   // Done: enable discount
-  employees[0].enableDiscount(1);
-  employees[0].accessDiscountDetails(1);
+  // employees[0].enableDiscount(1);
+  // employees[0].accessDiscountDetails(1);
+
+  // Done: show available discount based on cart total price
+  employees[2].showDiscountBasedOnCartTotalPrice();
   
   return 0;
 }

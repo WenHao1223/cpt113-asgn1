@@ -11,6 +11,7 @@ using namespace std;
 class Discount {
   private:
     string name;
+    double minimumPurchase = 0.0;
     double discountPercentage;
     string description;
     bool disabled = false;
@@ -19,8 +20,8 @@ class Discount {
   public:
     // Constructor
     Discount();
-    Discount(string name, double discountPercentage, string description);
-    Discount(string name, double discountPercentage, string description, bool disabled);
+    Discount(string name, double minimumPurchase, double discountPercentage, string description);
+    Discount(string name, double minimumPurchase, double discountPercentage, string description, bool disabled);
 
     // member functions
     void displayDiscountDetails() const;
@@ -29,6 +30,7 @@ class Discount {
 
     // accessor
     string getName() const;
+    double getMinimumPurchase() const;
     double getDiscountPercentage() const;
     string getDescription() const;
     bool getDisabled() const;
@@ -36,6 +38,7 @@ class Discount {
 
     // mutator
     void setName(string);
+    void setMinimumPurchase(double);
     void setDiscountPercentage(double);
     void setDescription(string);
     void setDisabled(bool);

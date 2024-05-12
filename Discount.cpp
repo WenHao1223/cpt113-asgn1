@@ -6,16 +6,18 @@ Discount::Discount() {
   // cout << "Discount object created at " << this << endl;
 }
 
-Discount::Discount(string name, double discountPercentage, string description) {
+Discount::Discount(string name, double minimumPurchase, double discountPercentage, string description) {
   this->name = name;
+  this->minimumPurchase = minimumPurchase;
   this->discountPercentage = discountPercentage;
   this->description = description;
 
   discountCount++;
 }
 
-Discount::Discount(string name, double discountPercentage, string description, bool disabled) {
+Discount::Discount(string name, double minimumPurchase, double discountPercentage, string description, bool disabled) {
   this->name = name;
+  this->minimumPurchase = minimumPurchase;
   this->discountPercentage = discountPercentage;
   this->description = description;
   this->disabled = disabled;
@@ -42,6 +44,10 @@ string Discount::getName() const {
   return this->name;
 }
 
+double Discount::getMinimumPurchase() const {
+  return this->minimumPurchase;
+}
+
 double Discount::getDiscountPercentage() const {
   return this->discountPercentage;
 }
@@ -60,6 +66,10 @@ int Discount::getDiscountCount() const {
 
 void Discount::setName(string name) {
   this->name = name;
+}
+
+void Discount::setMinimumPurchase(double minimumPurchase) {
+  this->minimumPurchase = minimumPurchase;
 }
 
 void Discount::setDiscountPercentage(double discountPercentage) {

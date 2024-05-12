@@ -95,8 +95,8 @@ void Employee::startBakery() const {
   cout << "Address of discounts (from employee): " << discounts << endl;
 
   // @TjeEwe need fetch this from file instead
-  discounts[0] = Discount("Over RM30 Oasis: Enjoy 5\% Off", 5.0, "Description 1", false);
-  discounts[1] = Discount("Fifty-Fiver Flourish: 10\% Discount", 10.0, "Description 2", false);
+  discounts[0] = Discount("Over RM30 Oasis: Enjoy 5\% Off", 30.0, 5.0, "Description 1", false);
+  discounts[1] = Discount("Fifty-Fiver Flourish: 10\% Discount", 50.0, 10.0, "Description 2", false);
 
   if (supervisor != nullptr) {
     supervisor->startBakery();
@@ -589,12 +589,15 @@ void Employee::addNewDiscount() {
 
     // create discounts from user input
     string discountName;
+    double minimumPurchase;
     double discountPercentage;
     string discountDescription;
     bool disabled;
 
     cout << "Enter discount name: ";
     getline(cin, discountName);
+    cout << "Enter minimum purchase amount: RM ";
+    cin >> minimumPurchase;
     cout << "Enter discount percentage (%): ";
     cin >> discountPercentage;
     cin.ignore();
@@ -607,7 +610,7 @@ void Employee::addNewDiscount() {
 
     for (int i = 0; i < Constant::MAX_DISCOUNTS; i++) {
       if (discounts[i].getName() == "") {
-        discounts[i] = Discount(discountName, discountPercentage, discountDescription, disabled);
+        discounts[i] = Discount(discountName, minimumPurchase, discountPercentage, discountDescription, disabled);
         cout << "Discount '" << discountName << "' has been added." << endl;
         return;
       }
@@ -839,6 +842,28 @@ void Employee::clearCart() {
     cout << "Cart has been cleared." << endl;
   } else {
     cout << "Only cashier can clear cart." << endl;
+  }
+}
+
+void Employee::showDiscountBasedOnCartTotalPrice() const {
+  if (cashier != nullptr) {
+    cout << "Cashier " << name << " (" << employeeID << ") - Showing available discount based on cart total price..." << endl;
+    bool isDiscountAvailable = false;
+    for (int i = 0; i < discounts->getDiscountCount(); i++) {
+      if (cashier->getCart()->calculateTotalPrice() >= discounts[i].getMinimumPurchase()) {
+        cout << i+1 << ". " << discounts[i].getName() << endl;
+        isDiscountAvailable = true;
+      }
+    }
+    // check if no discount available
+    if (!isDiscountAvailable) {
+      cout << "- Purchase doesn't qualify for discount. -" << endl;
+    }
+    if (discounts->getDiscountCount() == 0) {
+      cout << "No discount available." << endl;
+    }
+  } else {
+    cout << "Only cashier can show discount based on cart total price." << endl;
   }
 }
 
