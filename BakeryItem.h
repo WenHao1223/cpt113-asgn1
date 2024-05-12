@@ -34,13 +34,14 @@ class BakeryItem {
     double calculateProfit() const;
 
     // accessor
-    int getBakeryItemCount() const;
     string getBakeryItemName() const;
+    string getBakeryItemDescription() const;
     double getPricePerUnit() const;
-    bool getDisabled() const;
     Ingredient * getIngredient(int) const;
     int getIngredientCount() const;
     string getRecipe() const;
+    bool getDisabled() const;
+    int getBakeryItemCount() const;
 
     // mutator
     void setBakeryItems(BakeryItem *);

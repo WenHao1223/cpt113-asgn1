@@ -202,15 +202,15 @@ int main () {
   testCart.addBakeryItemToCart(bakeryItems[1], 3);
   testCart.addBakeryItemToCart(bakeryItems[2], 4);
   testCart.displayCartDetails();
-  testCart.calculateTotalCost();
-  testCart.calculateTotalProfit();
-  cout << "Total cost: RM " << setprecision(2) << fixed << testCart.getTotalCost() << endl;
-  cout << "Total profit: RM " << setprecision(2) << fixed << testCart.getTotalProfit() << endl;
+  // testCart.calculateTotalCost();
+  // testCart.calculateTotalProfit();
+  // cout << "Total cost: RM " << setprecision(2) << fixed << testCart.getTotalCost() << endl;
+  // cout << "Total profit: RM " << setprecision(2) << fixed << testCart.getTotalProfit() << endl;
 
-  testCart.compareCostVsPrice(1);
-  testCart.compareCostVsProfit(1);
+  // testCart.compareCostVsPrice(1);
+  // testCart.compareCostVsProfit(1);
 
-  cout << "Cart item count: " << testCart.getCartItemCount() << endl;
+  // cout << "Cart item count: " << testCart.getCartItemCount() << endl;
   
   return 0;
 }

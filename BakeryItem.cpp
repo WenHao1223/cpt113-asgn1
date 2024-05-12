@@ -87,20 +87,16 @@ double BakeryItem::calculateProfit() const {
   return pricePerUnit - calculateCost();
 }
 
-int BakeryItem::getBakeryItemCount() const {
-  return bakeryItemCount;
-}
-
 string BakeryItem::getBakeryItemName() const {
   return name;
 }
 
-double BakeryItem::getPricePerUnit() const {
-  return pricePerUnit;
+string BakeryItem::getBakeryItemDescription() const {
+  return description;
 }
 
-bool BakeryItem::getDisabled() const {
-  return disabled;
+double BakeryItem::getPricePerUnit() const {
+  return pricePerUnit;
 }
 
 Ingredient * BakeryItem::getIngredient(int index) const {
@@ -113,6 +109,14 @@ int BakeryItem::getIngredientCount() const {
 
 string BakeryItem::getRecipe() const {
   return recipe;
+}
+
+bool BakeryItem::getDisabled() const {
+  return disabled;
+}
+
+int BakeryItem::getBakeryItemCount() const {
+  return bakeryItemCount;
 }
 
 void BakeryItem::setBakeryItems(BakeryItem * bakeryItems) {
