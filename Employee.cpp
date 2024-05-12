@@ -580,6 +580,42 @@ void Employee::deleteEmployee(Employee employees [], int index) {
   }
 }
 
+void Employee::addNewDiscount() {
+  if (supervisor != nullptr) {
+    cout << role << " - Adding new discount..." << endl;
+
+    // create discounts from user input
+    string discountName;
+    double discountPercentage;
+    string discountDescription;
+    bool disabled;
+
+    cout << "Enter discount name: ";
+    getline(cin, discountName);
+    cout << "Enter discount percentage (%): ";
+    cin >> discountPercentage;
+    cin.ignore();
+    cout << "Enter discount description: ";
+    getline(cin, discountDescription);
+    cout << "Is the discount available now? (Y/N): ";
+    char available;
+    cin >> available;
+    disabled = (available == 'N' || available == 'n');  
+
+    for (int i = 0; i < Constant::MAX_DISCOUNTS; i++) {
+      if (discounts[i].getName() == "") {
+        discounts[i] = Discount(discountName, discountPercentage, discountDescription, disabled);
+        cout << "Discount '" << discountName << "' has been added." << endl;
+        return;
+      }
+    }
+
+    cout << "Warning: Maximum number of discounts reached." << endl;
+  } else {
+    cout << "Only supervisor can add new discount." << endl;
+  }
+}
+
 // @TjeEwe file handling if new bakery item is created
 // deduct ingredients from inventory
 void Employee::bakeNewBakeryItem(int index, int quantity) {
