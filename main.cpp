@@ -173,7 +173,7 @@ int main () {
   // employees[1].bakeNewBakeryItem(1, 2);
 
   // Done: create new employee by supervisor
-  // employees[0].createNewEmployee(employees, "S2", "Bob", "Baker");
+  employees[0].createNewEmployee(employees, "C2", "Bob", "Cashier");
 
   // Done: change employee role
   // Juin Ewe and Jennie are now Cashiers *^____^*
@@ -224,6 +224,7 @@ int main () {
 
   // display cart details
   employees[2].displayCartDetails();
+  employees[3].displayCartDetails();
   
   return 0;
 }

@@ -14,3 +14,7 @@ void Cashier::startBakery() {
 Cart * Cashier::getCart() {
   return cart;
 }
+
+Cashier::~Cashier() {
+  delete cart;
+}

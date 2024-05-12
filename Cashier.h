@@ -22,6 +22,9 @@ class Cashier {
 
     // accessor
     Cart * getCart();
+
+    // destructor
+    ~Cashier();
 };
 
 #endif

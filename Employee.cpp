@@ -646,7 +646,7 @@ void Employee::addBakeryItemToCart (int index, int quantity) {
 
 void Employee::displayCartDetails () const {
   if (cashier != nullptr) {
-    cout << "Displaying cart details..." << endl;
+    cout << "Cashier " << name << " (" << employeeID << ") - Displaying cart details..." << endl;
     cashier->getCart()->displayCartDetails();
   } else {
     cout << "Only cashier can display cart details." << endl;
