@@ -754,6 +754,13 @@ void Employee::addNewDiscount() {
       if (discounts[i].getName() == "") {
         discounts[i] = Discount(discountName, minimumPurchase, discountPercentage, discountDescription, disabled);
         cout << "Discount '" << discountName << "' has been added." << endl;
+
+        // add new discount to files/discount.csv
+        ofstream discountFile;
+        discountFile.open("files/discount.csv", ios::app);
+        discountFile << endl << discountName << "," << minimumPurchase << "," << discountPercentage << "," << discountDescription << "," << (disabled ? "false" : "true");
+        discountFile.close();
+
         return;
       }
     }

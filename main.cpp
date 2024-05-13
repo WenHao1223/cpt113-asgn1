@@ -318,7 +318,7 @@ int main () {
   // employees[0].accessDiscountDetails(1);
 
   // Done: add new discount
-  // employees[0].addNewDiscount();
+  employees[0].addNewDiscount();
   // employees[0].accessDiscountList();
   // employees[0].accessDiscountDetails(2);
 
