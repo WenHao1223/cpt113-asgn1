@@ -43,8 +43,6 @@ Employee::Employee(string employeeID, string name, string role) {
   } else {
     cashier = new Cashier(employeeID, name);
   }
-
-  // cout << "work fine constructor" << endl;
 }
 
 void Employee::displayEmployeeDetails() const {
@@ -488,6 +486,7 @@ void Employee::createNewEmployee(Employee * employees, string employeeID, string
       return;
     }
 
+    bool employeeCreated = false;
     for (int i = 0; i < Constant::MAX_EMPLOYEES; i++) {
       // employee id is not unique
       if (employees[i].employeeID == employeeID) {
@@ -498,14 +497,31 @@ void Employee::createNewEmployee(Employee * employees, string employeeID, string
       if (employees[i].employeeID == "") {
         cout << role << " " << name << " created successfully." << endl;
         cout << "at index " << i << " of " << &employees[i] << endl;
-        employees[i] = Employee(employeeID, name, role);
-        cout << "work fine" << endl;
+        // employees[i] = Employee(employeeID, name, role);
+
+        employees[i].employeeID = employeeID;
+        employees[i].name = name;
+        employees[i].role = role;
+
+        if (role == "Supervisor") {
+          employees[i].supervisor = new Supervisor(employeeID, name);
+        } else if (role == "Baker") {
+          employees[i].baker = new Baker(employeeID, name);
+        } else {
+          employees[i].cashier = new Cashier(employeeID, name);
+        }
+
+        employeeCreated = true;
+
         employees[i].displayEmployeeDetails();
         break;
       }
     }
 
-    cout << "Warning: Maximum number of employees reached." << endl;
+    if (!employeeCreated) {
+      cout << "Warning: Maximum number of employees reached." << endl;
+    }
+
   } else {
     cout << "Only supervisor can create new employee." << endl;
   }

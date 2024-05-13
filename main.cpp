@@ -168,7 +168,7 @@ int main () {
   // cout << endl;
 
   // Done: add new ingredient into inventory
-  employees[0].addNewInventoryIngredientWeight("Salt", 0.01, 500);
+  // employees[0].addNewInventoryIngredientWeight("Salt", 0.01, 500);
   // employees[0].addNewInventoryIngredientPiece("Egg", 0.5, 10);
 
   // Done: Get inventory ingredient list
@@ -215,9 +215,9 @@ int main () {
 
   // Done: bake new bakery item
   // employees[0].accessMenuItem(0);
-  employees[1].bakeNewBakeryItem(0, 6);
+  // employees[1].bakeNewBakeryItem(0, 6);
   // cout << endl;
-  employees[1].bakeNewBakeryItem(0, 2);
+  // employees[1].bakeNewBakeryItem(0, 2);
   // cout << endl;
   // employees[1].bakeNewBakeryItem(1, 2);
   // employees[0].accessMenuItem(0);
@@ -227,7 +227,7 @@ int main () {
 
   // WIP: create new employee by supervisor
   // @WenHao1223
-  // employees[0].createNewEmployee(employees, "C2", "Bob", "Supervisor");
+  employees[0].createNewEmployee(employees, "C2", "Bob", "Supervisor");
   // cout << "now working fine" << endl;
 
   // Done: change employee role
@@ -235,7 +235,7 @@ int main () {
   // employees[0].changeEmployeeRole(employees, 1, "Cashier");
   // employees[0].changeEmployeeRole(employees, 0, "Baker");
   // employees[0].changeEmployeeRole(employees, 3, "Baker");
-  // employees[0].displayAllEmployeeDetails(employees);
+  employees[0].displayAllEmployeeDetails(employees);
 
   // WIP: delete employees
   // @WenHao1223
@@ -251,8 +251,8 @@ int main () {
   // employees[0].accessMenuItem(2);
   // employees[1].accessIngredientInventoryDetails(1);
   // cout << endl;
-  employees[2].addBakeryItemToCart(0, 2);
-  employees[2].addBakeryItemToCart(0, 3);
+  // employees[2].addBakeryItemToCart(0, 2);
+  // employees[2].addBakeryItemToCart(0, 3);
   // employees[2].addBakeryItemToCart(2, 1);
   // cout << endl;
 
@@ -340,17 +340,17 @@ int main () {
 
   // Done: checkout
   // employees[2].accessMenuItem(0);
-  employees[2].checkout();
+  // employees[2].checkout();
   // employees[2].accessMenuItem(0);
 
   cout << endl << endl;
 
   // second order
 
-  employees[2].displayCartDetails();
-  employees[2].addBakeryItemToCart(0, 3);
-  employees[2].displayCartDetails();
-  employees[2].checkout();
+  // employees[2].displayCartDetails();
+  // employees[2].addBakeryItemToCart(0, 3);
+  // employees[2].displayCartDetails();
+  // employees[2].checkout();
 
   // Done: show receipt
   // employees[2].showReceipt();
