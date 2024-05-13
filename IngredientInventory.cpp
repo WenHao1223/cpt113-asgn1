@@ -1,4 +1,5 @@
 #include <iomanip>
+#include <cmath>
 
 #include "Constant.h"
 #include "IngredientInventory.h"
@@ -77,25 +78,27 @@ void IngredientInventory::accessIngredientInventoryDetails() const {
 
 void IngredientInventory::checkIngredientInventory() const {
   // check all ingredients in inventory
-  cout << setw(5) << left << "No." << setw(20) << left << "Ingredient" << "Quantity" << endl;
+  cout << "+-----+--------------------+-------------------------+" << endl;
+  cout << "| " << setw(3) << left << "No." << " | "
+      << setw(18) << left << "Ingredient" << " | "
+      << setw(12) << left << "Quantity"
+      << setw(13) << right << " |" << endl;
+  cout << "+-----+--------------------+-------------------------+" << endl;
 
   for (int i = 0; i < ingredientInventoryCount; i++) {
-    cout << setw(5) << left << (i+1) << setw(20) << left << ingredientInventory[i].ingredient.getName();
+    cout << "| " << setw(3) << left << (i+1) << " | "
+         << setw(18) << left << ingredientInventory[i].ingredient.getName() << " | ";
+
     // Check if the ingredient is 0 in quantity
     if (ingredientInventory[i].ingredient.getCountable()) {
-      if (ingredientInventory[i].ingredient.getPiece() == 0) {
-        cout << "Out of stock" << endl;
-      } else {
-        cout << ingredientInventory[i].ingredient.getPiece() << " piece(s)" << endl;
-      }
+      cout << setw(12) << right << ingredientInventory[i].ingredient.getPiece();
+      cout << setw(13) << right << "piece(s) |" << endl;
     } else {
-      if (ingredientInventory[i].ingredient.getWeight() == 0) {
-        cout << 0 << endl;
-      } else {
-        cout << ingredientInventory[i].ingredient.getWeight() << " gram(s)" << endl;
-      }
+      cout << setw(12) << right << fixed << setprecision(2) << ingredientInventory[i].ingredient.getWeight();
+      cout << setw(13) << right << "gram(s) |" << endl;
     }
   }
+  cout << "+-----+--------------------+-------------------------+" << endl;
 }
 
 // @TjeEwe require file handling

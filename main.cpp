@@ -137,8 +137,7 @@ int main () {
   // cout << endl;
 
   // Done: check all ingredients in ingredient inventory
-  // @WenHao1223 draw into table format
-  // employees[0].checkIngredientInventory();
+  employees[0].checkIngredientInventory();
   // cout << endl;
   // employees[1].checkIngredientInventory();
   // cout << endl;
