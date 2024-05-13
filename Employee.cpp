@@ -1,7 +1,7 @@
 #include <iomanip>
+#include <string>
 #include <fstream>
 #include <cmath>
-#include <string>
 
 #include "Discount.h"
 #include "Employee.h"
@@ -975,6 +975,37 @@ void Employee::deleteDiscount(int index) {
 
   } else {
     cout << "Only supervisor can delete discount." << endl;
+  }
+}
+
+void Employee::displayBalanceSheet() const {
+  if (supervisor != nullptr) {
+    cout << role << " - Displaying balance sheet..." << endl;
+    ifstream balanceSheetFile;
+    balanceSheetFile.open("files/balanceSheet.csv", ios::in);
+    string line;
+    cout << "+----------------+----------------+----------------+----------------+" << endl;
+    cout << "| " << left << setw(15) << "Date" << "| ";
+    cout << left << setw(15) << "Total Debit" << "| ";
+    cout << left << setw(15) << "Total Credit" << "| ";
+    cout << left << setw(15) << "Total Balance" << "|" << endl;
+    cout << "+----------------+----------------+----------------+----------------+" << endl;
+
+    getline(balanceSheetFile, line); // skip first line
+    while (!balanceSheetFile.eof()) {
+      getline(balanceSheetFile, line, ',');
+      cout << "| " << left << setw(15) << line << "| ";
+      getline(balanceSheetFile, line, ',');
+      cout << left << setw(15) << line << "| ";
+      getline(balanceSheetFile, line, ',');
+      cout << left << setw(15) << line << "| ";
+      getline(balanceSheetFile, line);
+      cout << left << setw(15) << line << "|" << endl;
+    }
+    cout << "+----------------+----------------+----------------+----------------+" << endl;
+    balanceSheetFile.close();
+  } else {
+    cout << "Only supervisor can display balance sheet." << endl;
   }
 }
 

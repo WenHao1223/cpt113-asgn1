@@ -89,6 +89,7 @@ class Employee {
     void disableDiscount(int index);
     void enableDiscount(int index);
     void deleteDiscount(int index);
+    void displayBalanceSheet() const;
 
     // accessible by baker role only
     void bakeNewBakeryItem(int index, int quantity);

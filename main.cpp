@@ -416,6 +416,9 @@ int main () {
   // employees[2].showTotalBalance();
 
   employees[2].closeBakery(convertTimeTOYYYY_MM__DD());
+
+  // Done: display balance sheet
+  employees[0].displayBalanceSheet();
   
   return 0;
 }
