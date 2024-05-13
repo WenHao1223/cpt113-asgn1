@@ -1477,6 +1477,13 @@ void Employee::checkout(string dateTime) {
     ifstream transactionFileCheck("files/transactions/transaction-" + dateTime.substr(0, 4) + dateTime.substr(5, 2) + dateTime.substr(8, 2) + ".csv");
     if (transactionFileCheck.peek() == ifstream::traits_type::eof()) {
       transactionFile << "orderID,dateTime,cashierID,itemsBought,paymentMethod,dineIn,totalPrice";
+    } else {
+      // set orderNo to the last orderNo in the file
+      string line;
+      while (getline(transactionFileCheck, line)) {
+        cout << line << endl;
+      }
+      orderNo = stoi(line.substr(0, line.find(','))) + 1;
     }
     transactionFileCheck.close();
 
