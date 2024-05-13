@@ -327,7 +327,7 @@ int main () {
   // employees[0].accessDiscountDetails(1);
 
   // Done: edit minimum purchase
-  employees[0].editDiscountMinimumPurchase(1, 10.0);
+  // employees[0].editDiscountMinimumPurchase(1, 10.0);
   // employees[0].accessDiscountDetails(1);
 
   // Done: edit discount percentage
@@ -343,11 +343,11 @@ int main () {
   // employees[0].accessDiscountDetails(1);
 
   // Done: enable discount
-  employees[0].enableDiscount(1);
+  // employees[0].enableDiscount(1);
   // employees[0].accessDiscountDetails(1);
 
   // Done: delete discount
-  // employees[0].deleteDiscount(1);
+  employees[0].deleteDiscount(1);
   // employees[0].accessDiscountList();
 
   // Done: show available discount based on cart total price

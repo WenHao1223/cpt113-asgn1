@@ -803,6 +803,8 @@ void Employee::accessDiscountFile(int index, string field, string value) {
         description = value;
       } else if (field == "disabled") {
         disabled = value;
+      } else if (field == "deleteAll") {
+        continue;
       } else {
         cout << "Invalid field." << endl;
         return;
@@ -906,12 +908,17 @@ void Employee::enableDiscount(int index) {
 void Employee::deleteDiscount(int index) {
   if (supervisor != nullptr) {
     cout << role << " - Deleting discount..." << endl;
+
+    // delete discount in files/discount.csv
+    accessDiscountFile(index, "deleteAll", "");
+
     cout << "Discount '" << discounts[index].getName() << "' has been deleted." << endl;
     discounts[index].setName("");
     discounts[index].setMinimumPurchase(0);
     discounts[index].setDiscountPercentage(0);
     discounts[index].setDescription("");
     discounts[index].setDisabled(false);
+
   } else {
     cout << "Only supervisor can delete discount." << endl;
   }
@@ -971,13 +978,6 @@ void Employee::bakeNewBakeryItem(int index, int quantity) {
         cout << "Please restock ingredient " << bakeryItems[index].getIngredient(i)->getName() << " before baking." << endl;
         return;
       }
-
-      // check if ingredient is not found in inventory
-      // if ((i == bakeryItems[index].getIngredientCount() - 1) && (bakeryItems[index].getIngredient(i)->getName() != ingredientInventory->getIngredientInventoryName(i))){
-      //   cout << "Warning: Ingredient " << bakeryItems[index].getIngredient(i)->getName() << " not found in inventory." << endl;
-      //   cout << "Please restock ingredient " << bakeryItems[index].getIngredient(i)->getName() << " before baking." << endl;
-      //   return;
-      // }
 
       // deduct ingredients from inventory
       if (i == bakeryItems[index].getIngredientCount() - 1) {
