@@ -1,4 +1,5 @@
 #include <iomanip>
+#include <fstream>
 #include <cmath>
 
 #include "Discount.h"
@@ -1118,10 +1119,28 @@ void Employee::checkout() {
   }
 }
 
-void Employee::showReceipt(int orderNo) const {
-  // read from receipts/receipt-20240510-1.txt
-  // string receiptFileName = "receipts/receipt-" + to_string(Constant::CURRENT_DATE) + "-" + to_string(orderNo) + ".txt";
+void Employee::showReceipt(string date, int orderNo) const {
+  // read from files/receipts/receipt-20240513-1.txt
+  string receiptFileName = "files/receipts/" + date + "/receipt-" + date + "-" + to_string(orderNo) + ".txt";
+  cout << "Showing receipt..." << endl;
+  cout << "Filename: " << receiptFileName << endl;
+  cout << endl;
+  cout << "**************************************" << endl;
+  cout << endl;
 
+  ifstream receiptFile(receiptFileName);
+  if (receiptFile) {
+    string line;
+    while (getline(receiptFile, line)) {
+      cout << line << endl;
+    }
+    receiptFile.close();
+  } else {
+    cout << "Unable to open file." << endl;
+  }
+
+  cout << endl << "**************************************";
+  cout << endl;
 }
 
 string Employee::getEmployeeID() const {

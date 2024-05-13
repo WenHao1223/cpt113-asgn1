@@ -102,7 +102,7 @@ class Employee {
     void showDiscountBasedOnCartTotalPrice() const;
     void applyDiscount(int choice);
     double calculateDiscountedTotalPrice() const;
-    void showReceipt(int oderNo = orderNo) const;
+    void showReceipt(string date, int oderNo = orderNo) const;
 
     // accessor
     string getEmployeeID() const;

@@ -27,15 +27,15 @@ class Employee;
 // global constant
 const int MAX_EMPLOYEES = Constant::MAX_EMPLOYEES;
 
-string convertTimeToYYMMDD() {
-    // Get current time
-    auto currentTime = time(0);
-    auto* timeNow = localtime(&currentTime);
+string convertTimeToYYYYMMDD() {
+  // Get current time
+  auto currentTime = time(0);
+  auto* timeNow = localtime(&currentTime);
 
-    char buffer[9];
-    strftime(buffer, sizeof(buffer), "%Y%m%d", timeNow);
+  char buffer[9];
+  strftime(buffer, sizeof(buffer), "%Y%m%d", timeNow);
 
-    return buffer;
+  return buffer;
 }
 
 void accessMenuDetails(BakeryItem & item) {
@@ -77,7 +77,8 @@ int findEmployeeIndex(Employee employees[], string employeeID) {
 
 int main () {
   // Done: display current date in YYYYMMDD format
-  cout << convertTimeToYYMMDD() << endl;
+  const string DATE_YYYYMMDD = convertTimeToYYYYMMDD();
+  cout << DATE_YYYYMMDD << endl;
 
   // int numberOfIngredients;
 
@@ -369,8 +370,10 @@ int main () {
 
   // Done: show receipt
   // default parameter is referring previous order's receipt
-  // employees[2].showReceipt();
-  // employees[2].showReceipt(1);
+  // employees[2].showReceipt(DATE_YYYYMMDD);
+  // DATE_YYYYMMDD = today's date
+  employees[2].showReceipt(DATE_YYYYMMDD, 1);
+  employees[2].showReceipt("20240510", 1);
 
   // Done: show total debit
   // employees[2].showTotalDebit();
