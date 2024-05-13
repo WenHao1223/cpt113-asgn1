@@ -139,8 +139,8 @@ int main () {
   // use only once per program
   // can be started by random employee
   // @TjeEwe inventory file shall be read in Employee::startBakery()
-  employees[2].startBakery();
-  cout << endl;
+  // employees[2].startBakery();
+  // cout << endl;
 
   // Done: set ingredient cost of bakery item to latest ingredient cost from inventory
   // not used anymore as it is done in Employee::startBakery()
@@ -245,8 +245,8 @@ int main () {
 
   // Done: bake new bakery item
   // employees[0].accessMenuItem(0);
-  employees[1].bakeNewBakeryItem(2, 6);
-  cout << endl;
+  // employees[1].bakeNewBakeryItem(2, 6);
+  // cout << endl;
   // employees[1].bakeNewBakeryItem(0, 2);
   // cout << endl;
   // employees[1].bakeNewBakeryItem(1, 2);
@@ -272,26 +272,26 @@ int main () {
   // employees[0].displayAllEmployeeDetails(employees);
 
   // add cake to cart by total weight
-  employees[2].addCakeByWeightToCart(2, 200);
-  employees[2].addCakeByWeightToCart(2, 1200);
-  employees[2].addCakeByWeightToCart(1, 200);
+  // employees[2].addCakeByWeightToCart(2, 200);
+  // employees[2].addCakeByWeightToCart(2, 1200);
+  // employees[2].addCakeByWeightToCart(1, 200);
 
   // Done: add bakery item to cart
   // employees[1].addBakeryItemToCart(0, 2);
   // employees[2].addBakeryItemToCart(0, 2);
   // cout << endl;
-  employees[1].bakeNewBakeryItem(0, 3);
+  // employees[1].bakeNewBakeryItem(0, 3);
   // employees[1].bakeNewBakeryItem(2, 3);
   // employees[0].accessMenuItem(2);
   // employees[1].accessIngredientInventoryDetails(1);
   // cout << endl;
-  employees[2].addBakeryItemToCart(0, 2);
+  // employees[2].addBakeryItemToCart(0, 2);
   // employees[2].addBakeryItemToCart(0, 3);
   // employees[2].addBakeryItemToCart(2, 1);
   // cout << endl;
 
   // // Done: display cart details
-  employees[2].displayCartDetails();
+  // employees[2].displayCartDetails();
   // employees[3].displayCartDetails();
 
   // Done: calculate total cost of cart
@@ -319,7 +319,7 @@ int main () {
   // employees[2].displayCartDetails();
 
   // Done: access discount list
-  employees[0].accessDiscountList();
+  // employees[0].accessDiscountList();
 
   // Done: display discount details
   // employees[0].accessDiscountDetails(1);
@@ -382,8 +382,8 @@ int main () {
 
   // Done: checkout
   // employees[2].accessMenuItem(0);
-  employees[2].checkout();
-  employees[2].accessMenuItem(2);
+  // employees[2].checkout();
+  // employees[2].accessMenuItem(2);
 
   // cout << endl << endl;
 
@@ -415,10 +415,16 @@ int main () {
   // show total balance
   // employees[2].showTotalBalance();
 
-  employees[2].closeBakery(convertTimeTOYYYY_MM__DD());
+  // employees[2].closeBakery(convertTimeTOYYYY_MM__DD());
 
   // Done: display balance sheet
-  employees[0].displayBalanceSheet();
+  // can be accessed even bakery is not opened
+  // employees[0].displayBalanceSheet();
+
+  // Done: access transaction history
+  // can be accessed even bakery is not opened
+  employees[0].accessTransactionHistory(DATE_YYYYMMDD);
+  employees[0].accessTransactionHistory("20240510");
   
   return 0;
 }

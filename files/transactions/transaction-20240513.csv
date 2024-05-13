@@ -1,0 +1,3 @@
+orderID,dateTime,cashierID,itemsBought,paymentMethod,dineIn,totalPrice
+1,2024-05-13 12:00:00,C1,Classic Vanilla Cake,TnG,true,23.0
+2,2024-05-13 13:00:00,C1,Classic Vanilla Cake,TnG,true,23.0

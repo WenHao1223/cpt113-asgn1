@@ -90,6 +90,7 @@ class Employee {
     void enableDiscount(int index);
     void deleteDiscount(int index);
     void displayBalanceSheet() const;
+    void accessTransactionHistory(string date) const;
 
     // accessible by baker role only
     void bakeNewBakeryItem(int index, int quantity);

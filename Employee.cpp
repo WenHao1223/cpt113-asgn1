@@ -1009,6 +1009,48 @@ void Employee::displayBalanceSheet() const {
   }
 }
 
+void Employee::accessTransactionHistory (string date) const {
+  if (supervisor != nullptr) {
+    cout << role << " - Accessing " + date + " transaction history ..." << endl;
+    ifstream transactionHistoryFile;
+    transactionHistoryFile.open("files/transactions/transaction-"+date+".csv", ios::in);
+    string line;
+    cout << "+-----------+----------------+----------------+--------------------------+----------------+----------------+----------------+" << endl;
+    cout << "| " << left << setw(10) << "Order ID" << "| ";
+    cout << left << setw(15) << "Date Time" << "| ";
+    cout << left << setw(15) << "Cashier ID" << "| ";
+    cout << left << setw(25) << "Items Bought" << "| ";
+    cout << left << setw(15) << "Payment Method" << "| ";
+    cout << left << setw(15) << "Dine In" << "| ";
+    cout << left << setw(15) << "Total Price" << "|" << endl;
+    cout << "+-----------+----------------+----------------+--------------------------+----------------+----------------+----------------+" << endl;
+
+    getline(transactionHistoryFile, line); // skip first line (header)
+    while (!transactionHistoryFile.eof()) {
+      getline(transactionHistoryFile, line, ',');
+      cout << "| " << left << setw(10) << line << "| ";
+      getline(transactionHistoryFile, line, ' '); // remove date
+      getline(transactionHistoryFile, line, ',');
+      cout << left << setw(15) << line << "| ";
+      getline(transactionHistoryFile, line, ',');
+      cout << left << setw(15) << line << "| ";
+      getline(transactionHistoryFile, line, ',');
+      cout << left << setw(25) << line << "| ";
+      getline(transactionHistoryFile, line, ',');
+      cout << left << setw(15) << line << "| ";
+      getline(transactionHistoryFile, line, ',');
+      cout << left << setw(15) << line << "| ";
+      getline(transactionHistoryFile, line);
+      cout << left << setw(15) << line << "|" << endl;
+    }
+    cout << "+-----------+----------------+----------------+--------------------------+----------------+----------------+----------------+" << endl;
+    transactionHistoryFile.close();
+    
+  } else {
+    cout << "Only supervisor can access transaction history." << endl;
+  }
+}
+
 // @TjeEwe file handling if new bakery item is created
 // deduct ingredients from inventory
 void Employee::bakeNewBakeryItem(int index, int quantity) {
