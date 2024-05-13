@@ -72,8 +72,9 @@ void IngredientInventory::displayIngredientInventoryList() const {
   }
 }
 
-void IngredientInventory::accessIngredientInventoryDetails() const {
-  ingredient.displayIngredientDetails();
+void IngredientInventory::accessIngredientInventoryDetails(int index) const {
+  // cout << "address accessing ingredient inventory: " << &ingredient << endl;
+  ingredientInventory[index].ingredient.displayIngredientDetails();
 }
 
 void IngredientInventory::checkIngredientInventory() const {
@@ -183,11 +184,18 @@ void IngredientInventory::changeIngredientCost(int index, double cost) {
     return;
   }
 
-  ingredientInventory[index].ingredient.setCostPerPiece(cost);
+  ingredientInventory[index].ingredient.setCostPerUnit(cost);
 
   cout << "Cost of ingredient " << ingredientInventory[index].ingredient.getName() << " has been changed." << endl;
   cout << setprecision(2) << fixed;
-  cout << "New cost: RM" << ingredientInventory[index].ingredient.getCostPerUnit() << endl;
+  cout << "New cost: RM " << ingredientInventory[index].ingredient.getCostPerUnit();
+  if (ingredientInventory[index].ingredient.getCountable()) {
+    cout << " / piece(s)" << endl;
+  } else {
+    cout << " / gram(s)" << endl;
+  }
+
+  cout << "address from ingredient inventory ingredient: " << &ingredientInventory[index].ingredient << endl;
 }
 
 void IngredientInventory::setIngredientInventory(IngredientInventory * ingredientInventory) {
@@ -209,6 +217,11 @@ IngredientInventory * IngredientInventory::getIngredientInventory() {
 
 int IngredientInventory::getIngredientInventoryCount() const {
   return ingredientInventoryCount;
+}
+
+Ingredient IngredientInventory::getIngredient() {
+  cout << "address: " << &ingredient << endl;
+  return ingredient;
 }
 
 IngredientInventory * IngredientInventory::getIngredientInventory(int index) const {

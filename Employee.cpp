@@ -162,7 +162,9 @@ void Employee::displayIngredientInventoryList() const {
 void Employee::accessIngredientInventoryDetails(int index) const {
   if (supervisor != nullptr || baker != nullptr) {
     cout << role << " - Accessing ingredient inventory details..." << endl;
-    (ingredientInventory+index)->accessIngredientInventoryDetails();
+    // ingredientInventory[index].accessIngredientInventoryDetails();
+    // ingredientInventory[index].getIngredient().displayIngredientDetails();
+    ingredientInventory->accessIngredientInventoryDetails(index); 
   } else {
     cout << "Only supervisor or baker can access ingredient inventory details." << endl;
   }

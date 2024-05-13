@@ -33,7 +33,7 @@ class Ingredient {
     bool getCountable() const;
 
     // mutator
-    void setCostPerPiece(double);
+    void setCostPerUnit(double);
     void setWeight(double);
     void setPiece(int);
 };
