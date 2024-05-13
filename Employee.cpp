@@ -66,7 +66,6 @@ void Employee::setIngredientCostToInventoryIngredientCost() {
     for (int j = 0; j < bakeryItems[i].getIngredientCount(); j++) {
       for (int k = 0; k < ingredientInventory[0].getIngredientInventoryCount(); k++) {
         if(bakeryItems[i].getIngredient(j)->getName() == ingredientInventory[k].getIngredient().getName()) {
-          cout << setprecision(2) << fixed;
           cout << "Ingredient " << bakeryItems[i].getIngredient(j)->getName() << "'s cost of " << bakeryItems[i].getBakeryItemName() << " has been set to RM " << ingredientInventory->getIngredientCost(k) << endl;
           bakeryItems[i].getIngredient(j)->setCostPerUnit(ingredientInventory->getIngredientCost(k));
         }
