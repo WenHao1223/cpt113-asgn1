@@ -374,6 +374,8 @@ int main () {
   // DATE_YYYYMMDD = today's date
   employees[2].showReceipt(DATE_YYYYMMDD, 1);
   employees[2].showReceipt("20240510", 1);
+  employees[1].showReceipt("20240510", 1);
+  employees[0].showReceipt("20240510", 1);
 
   // Done: show total debit
   // employees[2].showTotalDebit();

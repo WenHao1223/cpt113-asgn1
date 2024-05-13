@@ -43,6 +43,7 @@ class Employee {
     Employee(string employeeID, string name, string role);
 
     // member functions
+    // accessible by all roles
     void displayEmployeeDetails() const;
     void setIngredientCostToInventoryIngredientCost();
     void startBakery();
@@ -102,6 +103,8 @@ class Employee {
     void showDiscountBasedOnCartTotalPrice() const;
     void applyDiscount(int choice);
     double calculateDiscountedTotalPrice() const;
+
+    // accessible by supervisor or cashier only
     void showReceipt(string date, int oderNo = orderNo) const;
 
     // accessor

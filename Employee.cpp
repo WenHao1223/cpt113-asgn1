@@ -1120,27 +1120,32 @@ void Employee::checkout() {
 }
 
 void Employee::showReceipt(string date, int orderNo) const {
-  // read from files/receipts/receipt-20240513-1.txt
-  string receiptFileName = "files/receipts/" + date + "/receipt-" + date + "-" + to_string(orderNo) + ".txt";
-  cout << "Showing receipt..." << endl;
-  cout << "Filename: " << receiptFileName << endl;
-  cout << endl;
-  cout << "**************************************" << endl;
-  cout << endl;
+  if (cashier != nullptr || supervisor != nullptr) {
+    // read from files/receipts/receipt-20240513-1.txt
+    string receiptFileName = "files/receipts/" + date + "/receipt-" + date + "-" + to_string(orderNo) + ".txt";
+    cout << "Showing receipt..." << endl;
+    cout << "Filename: " << receiptFileName << endl;
+    cout << endl;
+    cout << "**************************************" << endl;
+    cout << endl;
 
-  ifstream receiptFile(receiptFileName);
-  if (receiptFile) {
-    string line;
-    while (getline(receiptFile, line)) {
-      cout << line << endl;
+    ifstream receiptFile(receiptFileName);
+    if (receiptFile) {
+      string line;
+      while (getline(receiptFile, line)) {
+        cout << line << endl;
+      }
+      receiptFile.close();
+    } else {
+      cout << "Unable to open file." << endl;
     }
-    receiptFile.close();
-  } else {
-    cout << "Unable to open file." << endl;
-  }
 
-  cout << endl << "**************************************";
-  cout << endl;
+    cout << endl << "**************************************";
+    cout << endl;
+  } else {
+    cout << "Only supervisor or cashier can show receipt." << endl;
+    return;
+  }
 }
 
 string Employee::getEmployeeID() const {
