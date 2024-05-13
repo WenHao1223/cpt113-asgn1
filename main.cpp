@@ -127,8 +127,8 @@ int main () {
   // use only once per program
   // can be started by random employee
   // @TjeEwe inventory file shall be read in Employee::startBakery()
-  // employees[2].startBakery();
-  // cout << endl;
+  employees[2].startBakery();
+  cout << endl;
 
   // Done: set ingredient cost of bakery item to latest ingredient cost from inventory
   // not used anymore as it is done in Employee::startBakery()
@@ -169,8 +169,8 @@ int main () {
   // @TjeEwe need to print ingredient inventory list available
   // and let supervisor choose which ingredient to restock
   // then how many pieces or weight to restock
-  // employees[0].restockIngredientInventory(0, 50003.6);
-  // employees[0].restockIngredientInventory(1, 300);
+  employees[0].restockIngredientInventory(0, 50003.6);
+  employees[0].restockIngredientInventory(1, 300);
   // employees[2].restockIngredientInventory(1, 300);
   // employees[0].checkIngredientInventory();
   // cout << endl;
@@ -232,7 +232,7 @@ int main () {
 
   // Done: bake new bakery item
   // employees[0].accessMenuItem(0);
-  // employees[1].bakeNewBakeryItem(0, 6);
+  employees[1].bakeNewBakeryItem(0, 6);
   // cout << endl;
   // employees[1].bakeNewBakeryItem(0, 2);
   // cout << endl;
@@ -267,7 +267,7 @@ int main () {
   // employees[0].accessMenuItem(2);
   // employees[1].accessIngredientInventoryDetails(1);
   // cout << endl;
-  // employees[2].addBakeryItemToCart(0, 2);
+  employees[2].addBakeryItemToCart(0, 2);
   // employees[2].addBakeryItemToCart(0, 3);
   // employees[2].addBakeryItemToCart(2, 1);
   // cout << endl;
@@ -356,7 +356,7 @@ int main () {
 
   // Done: checkout
   // employees[2].accessMenuItem(0);
-  // employees[2].checkout();
+  employees[2].checkout();
   // employees[2].accessMenuItem(0);
 
   // cout << endl << endl;
@@ -364,9 +364,9 @@ int main () {
   // second order
 
   // employees[2].displayCartDetails();
-  // employees[2].addBakeryItemToCart(0, 3);
+  employees[2].addBakeryItemToCart(0, 3);
   // employees[2].displayCartDetails();
-  // employees[2].checkout();
+  employees[2].checkout();
 
   // Done: show receipt
   // default parameter is referring previous order's receipt
@@ -385,6 +385,9 @@ int main () {
 
   // Done: show total profit per day
   // employees[2].showTotalProfitPerDay();
+
+  // show total balance
+  employees[2].showTotalBalance();
   
   return 0;
 }

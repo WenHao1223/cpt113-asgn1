@@ -187,6 +187,7 @@ void Employee::showTotalProfitPerDay() const {
 
 void Employee::showTotalBalance() const {
   cout << role << " - Showing total balance..." << endl;
+  totalBalance = getTotalBalance();
   cout << "Total balance: RM " << totalBalance << endl;
 }
 
@@ -1164,10 +1165,6 @@ int Employee::getOrderNo() const {
   return orderNo;
 }
 
-double Employee::getTotalBalance() const {
-  return totalBalance;
-}
-
 double Employee::getTotalCredit() const {
   return totalCredit;
 }
@@ -1178,6 +1175,11 @@ double Employee::getTotalDebit() const {
 
 double Employee::getTotalProfitPerDay() const {
   return totalDebit - totalCredit;
+}
+
+double Employee::getTotalBalance() const {
+  totalBalance += getTotalProfitPerDay();
+  return totalBalance;
 }
 
 Employee::~Employee() {
