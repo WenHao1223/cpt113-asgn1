@@ -116,6 +116,10 @@ Ingredient * BakeryItem::getIngredient(int index) const {
   return &ingredient[index];
 }
 
+string BakeryItem::getIngredientName(int index) const {
+  return ingredient[index].getName();
+}
+
 int BakeryItem::getIngredientCount() const {
   return ingredientCount;
 }

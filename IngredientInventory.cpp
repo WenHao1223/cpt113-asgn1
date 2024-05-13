@@ -224,10 +224,6 @@ Ingredient IngredientInventory::getIngredient() {
   return ingredient;
 }
 
-double IngredientInventory::getIngredientCost(int index) const {
-  return ingredientInventory[index].ingredient.getCostPerUnit();
-}
-
 IngredientInventory * IngredientInventory::getIngredientInventory(int index) const {
   return &ingredientInventory[index];
 }

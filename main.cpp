@@ -198,7 +198,7 @@ int main () {
 
   // Done: change bakery item price
   // employees[0].accessMenuItem(1);
-  employees[0].changeBakeryItemPrice(1, 10.0);
+  // employees[0].changeBakeryItemPrice(1, 10.0);
   // employees[0].accessMenuItem(1);
 
   // Done: calculate cost of bakery item
@@ -243,21 +243,22 @@ int main () {
   // employees[0].displayAllEmployeeDetails(employees);
 
   // Done: add bakery item to cart
-  // @WenHao1223 show who to access this function
-  employees[1].addBakeryItemToCart(0, 2);
+  // employees[1].addBakeryItemToCart(0, 2);
   // employees[2].addBakeryItemToCart(0, 2);
   // cout << endl;
   // employees[1].bakeNewBakeryItem(0, 3);
   // @WenHao1223 revise this code
-  // employees[1].bakeNewBakeryItem(2, 3);
+  employees[1].bakeNewBakeryItem(2, 3);
+  employees[0].accessMenuItem(2);
+  employees[1].accessIngredientInventoryDetails(1);
   // cout << endl;
   // employees[2].addBakeryItemToCart(0, 2);
   // employees[2].addBakeryItemToCart(0, 3);
-  // employees[2].addBakeryItemToCart(2, 1);
+  employees[2].addBakeryItemToCart(2, 1);
   // cout << endl;
 
   // Done: display cart details
-  // employees[2].displayCartDetails();
+  employees[2].displayCartDetails();
   // employees[3].displayCartDetails();
 
   // Done: calculate total cost of cart
