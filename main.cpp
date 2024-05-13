@@ -152,8 +152,8 @@ int main () {
   // @TjeEwe need to print ingredient inventory list available
   // and let supervisor choose which ingredient to restock
   // then how many pieces or weight to restock
-  // employees[0].restockIngredientInventory(0, 200.0);
-  // employees[0].restockIngredientInventory(1, 300);
+  employees[0].restockIngredientInventory(0, 50003.6);
+  employees[0].restockIngredientInventory(1, 300);
   // employees[2].restockIngredientInventory(1, 300);
   // employees[0].checkIngredientInventory();
   // cout << endl;
@@ -226,20 +226,20 @@ int main () {
   // employees[0].displayAllEmployeeDetails(employees);
 
   // Done: create new employee by supervisor
-  employees[0].createNewEmployee(employees, "C2", "Bob", "Supervisor");
+  // employees[0].createNewEmployee(employees, "C2", "Bob", "Supervisor");
 
   // Done: change employee role
   // Juin Ewe and Jennie are now Cashiers *^____^*
   // employees[0].changeEmployeeRole(employees, 1, "Cashier");
   // employees[0].changeEmployeeRole(employees, 0, "Baker");
   // employees[0].changeEmployeeRole(employees, 3, "Baker");
-  employees[0].displayAllEmployeeDetails(employees);
+  // employees[0].displayAllEmployeeDetails(employees);
 
   // WIP: delete employees
   // @WenHao1223
-  employees[0].deleteEmployee(employees, 2);
+  // employees[0].deleteEmployee(employees, 2);
   // cout << "now working fine" << endl;
-  employees[0].displayAllEmployeeDetails(employees);
+  // employees[0].displayAllEmployeeDetails(employees);
 
   // Done: add bakery item to cart
   // employees[1].addBakeryItemToCart(0, 2);

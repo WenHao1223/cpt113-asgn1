@@ -159,11 +159,11 @@ void IngredientInventory::addNewInventoryIngredientPiece(string name, double cos
   cout << piece << " piece(s) of ingredient " << name << " has been added into inventory." << endl;
 }
 
-void IngredientInventory::restockIngredientInventory(int index, int quantity) {
+double IngredientInventory::restockIngredientInventory(int index, double quantity) {
   if (quantity < 0) {
     cout << "Restock weight cannot be negative." << endl;
     exit(EXIT_FAILURE);
-    return;
+    return 0;
   }
 
   if (ingredientInventory[index].ingredient.getCountable()) {
@@ -180,6 +180,12 @@ void IngredientInventory::restockIngredientInventory(int index, int quantity) {
   } else {
     cout << "New quantity: " << ingredientInventory[index].ingredient.getWeight() << " gram(s)" << endl;
   }
+
+  // calculate the cost of restock
+  double cost = ingredientInventory[index].ingredient.getCostPerUnit() * quantity;
+  cost = ceil(cost * 100) / 100;
+
+  return cost;
 }
 
 void IngredientInventory::changeIngredientCost(int index, double cost) {

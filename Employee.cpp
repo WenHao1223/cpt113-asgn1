@@ -194,14 +194,20 @@ void Employee::checkIngredientInventory() const {
   }
 }
 
-void Employee::restockIngredientInventory(int index, int quantity) const {
+void Employee::restockIngredientInventory(int index, double quantity) const {
   if (supervisor != nullptr) {
     cout << role << " - Restocking ingredient inventory..." << endl;
     if (quantity < 0) {
       cout << "Quantity cannot be negative." << endl;
       return;
     }
-    ingredientInventory->restockIngredientInventory(index, quantity);
+    double totalCost = ingredientInventory->restockIngredientInventory(index, quantity);
+    cout << "Cost of restock: RM " << totalCost << endl;
+
+    // update total credit
+    totalCredit += totalCost;
+
+    // cout << "Total credit: RM " << totalCredit << endl;
   } else {
     cout << "Only supervisor can restock ingredient inventory." << endl;
   }
