@@ -108,6 +108,9 @@ class Employee {
     double getTotalDebit() const;
     double getTotalProfitPerDay() const;
 
+    // friend function
+    friend int findEmployeeIndex(Employee employees [], string employeeID);
+
     // Destructor
     ~Employee();
 };

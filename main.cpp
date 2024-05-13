@@ -51,6 +51,17 @@ void accessMenuDetails(BakeryItem & item) {
   cout << endl;
 }
 
+int findEmployeeIndex(Employee employees[], string employeeID) {
+  int index = -1;
+  for (int i = 0; i < MAX_EMPLOYEES; i++) {
+    if (employees[i].employeeID == employeeID) {
+      index = i;
+      break;
+    }
+  }
+  return index;
+}
+
 int main () {
   // int numberOfIngredients;
 
@@ -92,10 +103,13 @@ int main () {
   // not used anymore
   // bakeryItems[0].displayBakeryItemDetails();
 
+  // Done: find the index in employees using employeeID
+  // -1 if not found
+  cout << "Employee index: " << findEmployeeIndex(employees, "C1") << endl;
+
   // use only once per program
   // can be started by random employee
   // @TjeEwe inventory file shall be read in Employee::startBakery()
-  // @WenHao1223 create a function to find the index using employeeID
   employees[2].startBakery();
   cout << endl;
 
@@ -231,20 +245,20 @@ int main () {
 
   // Done: add bakery item to cart
   // @WenHao1223 show who to access this function
-  employees[1].addBakeryItemToCart(0, 2);
-  employees[2].addBakeryItemToCart(0, 2);
-  cout << endl;
-  employees[1].bakeNewBakeryItem(0, 3);
+  // employees[1].addBakeryItemToCart(0, 2);
+  // employees[2].addBakeryItemToCart(0, 2);
+  // cout << endl;
+  // employees[1].bakeNewBakeryItem(0, 3);
   // @WenHao1223 revise this code
-  employees[1].bakeNewBakeryItem(2, 3);
-  cout << endl;
-  employees[2].addBakeryItemToCart(0, 2);
-  employees[2].addBakeryItemToCart(0, 3);
-  employees[2].addBakeryItemToCart(2, 1);
-  cout << endl;
+  // employees[1].bakeNewBakeryItem(2, 3);
+  // cout << endl;
+  // employees[2].addBakeryItemToCart(0, 2);
+  // employees[2].addBakeryItemToCart(0, 3);
+  // employees[2].addBakeryItemToCart(2, 1);
+  // cout << endl;
 
   // Done: display cart details
-  employees[2].displayCartDetails();
+  // employees[2].displayCartDetails();
   // employees[3].displayCartDetails();
 
   // Done: calculate total cost of cart
@@ -304,18 +318,18 @@ int main () {
 
   // Done: show available discount based on cart total price
   // extra option as it is used in checkout()
-  employees[2].showDiscountBasedOnCartTotalPrice();
-  cout << endl;
+  // employees[2].showDiscountBasedOnCartTotalPrice();
+  // cout << endl;
 
   // Done: calculate price after discount
   // not using this since it is used in checkout()
   // discount choice based on showDiscountBasedOnCartTotalPrice(), start from 1
-  employees[2].applyDiscount(1);
-  cout << endl;
+  // employees[2].applyDiscount(1);
+  // cout << endl;
 
   // Done: calculate cart total price after discount
   // extra option as it is used in checkout()
-  employees[2].calculateDiscountedTotalPrice();
+  // employees[2].calculateDiscountedTotalPrice();
   // cout << endl;
   // @TjeEwe only show line below to store discounted price
   // double discountedPrice = employees[2].calculateDiscountedTotalPrice();
@@ -323,7 +337,7 @@ int main () {
   // Done: checkout
   // employees[2].accessMenuItem(0);
   // @WenHao1223 print total price in wrong part
-  employees[2].checkout();
+  // employees[2].checkout();
   // employees[2].accessMenuItem(0);
 
   // Done: show receipt
