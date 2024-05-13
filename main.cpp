@@ -139,7 +139,7 @@ int main () {
   // use only once per program
   // can be started by random employee
   // @TjeEwe inventory file shall be read in Employee::startBakery()
-  // employees[2].startBakery();
+  employees[2].startBakery();
   // cout << endl;
 
   // Done: set ingredient cost of bakery item to latest ingredient cost from inventory
@@ -197,7 +197,8 @@ int main () {
   // cout << endl;
 
   // Done: add new ingredient into inventory
-  // employees[0].addNewInventoryIngredientWeight("Salt", 0.01, 500);
+  employees[0].addNewInventoryIngredientWeight("Salt", 0.01, 500);
+  employees[0].addNewInventoryIngredientWeight("TestNewuncountable", 0.01, 500);
   // employees[0].addNewInventoryIngredientPiece("Egg", 0.5, 10);
 
   // Done: Get inventory ingredient list
@@ -423,8 +424,8 @@ int main () {
 
   // Done: access transaction history
   // can be accessed even bakery is not opened
-  employees[0].accessTransactionHistory(DATE_YYYYMMDD);
-  employees[0].accessTransactionHistory("20240510");
+  // employees[0].accessTransactionHistory(DATE_YYYYMMDD);
+  // employees[0].accessTransactionHistory("20240510");
   
   return 0;
 }
