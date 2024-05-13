@@ -168,7 +168,7 @@ int main () {
   // cout << endl;
 
   // Done: add new ingredient into inventory
-  // employees[0].addNewInventoryIngredientWeight("Salt", 0.01, 500);
+  employees[0].addNewInventoryIngredientWeight("Salt", 0.01, 500);
   // employees[0].addNewInventoryIngredientPiece("Egg", 0.5, 10);
 
   // Done: Get inventory ingredient list
@@ -256,8 +256,8 @@ int main () {
   // employees[2].addBakeryItemToCart(2, 1);
   // cout << endl;
 
-  // Done: display cart details
-  employees[2].displayCartDetails();
+  // // Done: display cart details
+  // employees[2].displayCartDetails();
   // employees[3].displayCartDetails();
 
   // Done: calculate total cost of cart
@@ -319,15 +319,20 @@ int main () {
   // extra option as it is used in checkout()
   // employees[2].showDiscountBasedOnCartTotalPrice();
   // cout << endl;
+  // employees[2].showDiscountBasedOnCartTotalPrice();
+  // cout << endl;
 
   // Done: calculate price after discount
   // not using this since it is used in checkout()
   // discount choice based on showDiscountBasedOnCartTotalPrice(), start from 1
   // employees[2].applyDiscount(1);
   // cout << endl;
+  // employees[2].applyDiscount(1);
+  // cout << endl;
 
   // Done: calculate cart total price after discount
   // extra option as it is used in checkout()
+  // employees[2].calculateDiscountedTotalPrice();
   // employees[2].calculateDiscountedTotalPrice();
   // cout << endl;
   // @TjeEwe only show line below to store discounted price
