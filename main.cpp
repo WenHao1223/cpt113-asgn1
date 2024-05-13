@@ -189,17 +189,17 @@ int main () {
 
   // Done: withdraw bakery item
   // employees[0].accessMenuItem(1);
-  employees[0].withdrawBakeryItem(1);
+  // employees[0].withdrawBakeryItem(1);
   // employees[0].accessMenuItem(1);
 
   // Done: enable bakery item
-  employees[0].enableBakeryItem(1);
+  // employees[0].enableBakeryItem(1);
   // employees[0].accessMenuItem(1);
 
   // Done: change bakery item price
   // @WenHao1223 change bakery item price message after done
   // employees[0].accessMenuItem(1);
-  // employees[0].changeBakeryItemPrice(1, 10.0);
+  employees[0].changeBakeryItemPrice(1, 10.0);
   // employees[0].accessMenuItem(1);
 
   // Done: calculate cost of bakery item

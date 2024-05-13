@@ -66,6 +66,7 @@ void Employee::setIngredientCostToInventoryIngredientCost() {
     for (int j = 0; j < bakeryItems[i].getIngredientCount(); j++) {
       for (int k = 0; k < ingredientInventory[0].getIngredientInventoryCount(); k++) {
         if(bakeryItems[i].getIngredient(j)->getName() == ingredientInventory[k].getIngredient().getName()) {
+          cout << setprecision(2) << fixed;
           cout << "Ingredient " << bakeryItems[i].getIngredient(j)->getName() << "'s cost of " << bakeryItems[i].getBakeryItemName() << " has been set to RM " << ingredientInventory->getIngredientCost(k) << endl;
           bakeryItems[i].getIngredient(j)->setCostPerUnit(ingredientInventory->getIngredientCost(k));
         }
@@ -422,6 +423,8 @@ void Employee::changeBakeryItemPrice(int index, double newPrice) {
   if (supervisor != nullptr) {
     cout << role << " - Changing " << bakeryItems[index].getBakeryItemName() << " price..." << endl;
     bakeryItems[index].setPricePerUnit(newPrice);
+    cout << setprecision(2) << fixed;
+    cout << bakeryItems[index].getBakeryItemName() << " price has been changed to RM " << newPrice << "." << endl;
   } else {
     cout << "Only supervisor can change bakery item price." << endl;
   }
