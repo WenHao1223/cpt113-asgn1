@@ -201,7 +201,8 @@ void Employee::startBakery() {
   this->setIngredientCostToInventoryIngredientCost();
   cout << endl;
 
-  cout << "Selling " << ingredientInventory[0].getIngredientInventoryCount() << " items today." << endl;
+  // cout << "Selling " << ingredientInventory[0].getIngredientInventoryCount() << " items today." << endl;
+  cout << "Selling " << bakeryItems[0].getBakeryItemCount() << " items today." << endl;
 }
 
 void Employee::accessMenuList() const {
