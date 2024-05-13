@@ -106,7 +106,7 @@ class Employee {
     void removeBakeryItemFromCart(int index);
     void updateBakeryItemQuantityInCart(int index, int quantity);
     void clearCart();
-    void checkout();
+    void checkout(string dateTime);
     void showDiscountBasedOnCartTotalPrice() const;
     void applyDiscount(int choice);
     double calculateDiscountedTotalPrice() const;

@@ -1014,36 +1014,64 @@ void Employee::accessTransactionHistory (string date) const {
     cout << role << " - Accessing " + date + " transaction history ..." << endl;
     ifstream transactionHistoryFile;
     transactionHistoryFile.open("files/transactions/transaction-"+date+".csv", ios::in);
+
+    if (!transactionHistoryFile) {
+      cout << "Transaction history for " + date + " not found." << endl;
+      return;
+    }
+
     string line;
-    cout << "+-----------+----------------+----------------+--------------------------+----------------+----------------+----------------+" << endl;
+    cout << "+-----------+----------------+----------------+---------------------------------------------------+-----------+----------------+----------------+----------------+" << endl;
     cout << "| " << left << setw(10) << "Order ID" << "| ";
-    cout << left << setw(15) << "Date Time" << "| ";
+    cout << left << setw(15) << "Time" << "| ";
     cout << left << setw(15) << "Cashier ID" << "| ";
-    cout << left << setw(25) << "Items Bought" << "| ";
+    cout << left << setw(50) << "Items Bought" << "| ";
+    cout << left << setw(10) << "Quantity" << "| ";
     cout << left << setw(15) << "Payment Method" << "| ";
     cout << left << setw(15) << "Dine In" << "| ";
     cout << left << setw(15) << "Total Price" << "|" << endl;
-    cout << "+-----------+----------------+----------------+--------------------------+----------------+----------------+----------------+" << endl;
+    cout << "+-----------+----------------+----------------+---------------------------------------------------+-----------+----------------+----------------+----------------+" << endl;
 
     getline(transactionHistoryFile, line); // skip first line (header)
     while (!transactionHistoryFile.eof()) {
+      // orderID
       getline(transactionHistoryFile, line, ',');
       cout << "| " << left << setw(10) << line << "| ";
+      
+      // dateTime
       getline(transactionHistoryFile, line, ' '); // remove date
       getline(transactionHistoryFile, line, ',');
       cout << left << setw(15) << line << "| ";
+      
+      // cashierID
       getline(transactionHistoryFile, line, ',');
       cout << left << setw(15) << line << "| ";
-      getline(transactionHistoryFile, line, ',');
-      cout << left << setw(25) << line << "| ";
+      
+      // itemsBought
+      getline(transactionHistoryFile, line, '"'); // remove first double quote
+      getline(transactionHistoryFile, line, '"'); // get items bought
+      cout << left << setw(50) << line << "| ";
+      getline(transactionHistoryFile, line, ','); // remove trailing comma after double quote
+      
+      // quantity
+      getline(transactionHistoryFile, line, '"'); // remove first double quote
+      getline(transactionHistoryFile, line, '"'); // get quantity
+      cout << left << setw(10) << line << "| ";
+      getline(transactionHistoryFile, line, ','); // remove trailing comma after double quote
+      
+      // paymentMethod
       getline(transactionHistoryFile, line, ',');
       cout << left << setw(15) << line << "| ";
+      
+      // dineIn
       getline(transactionHistoryFile, line, ',');
       cout << left << setw(15) << line << "| ";
+      
+      // totalPrice
       getline(transactionHistoryFile, line);
       cout << left << setw(15) << line << "|" << endl;
-    }
-    cout << "+-----------+----------------+----------------+--------------------------+----------------+----------------+----------------+" << endl;
+  }
+    cout << "+-----------+----------------+----------------+---------------------------------------------------+-----------+----------------+----------------+----------------+" << endl;
     transactionHistoryFile.close();
     
   } else {
@@ -1335,7 +1363,7 @@ double Employee::calculateDiscountedTotalPrice () const {
 
 // @TjeEwe store the transaction details to csv file
 // and create receipt txt file
-void Employee::checkout() {
+void Employee::checkout(string dateTime) {
   if (cashier != nullptr) {
     cout << "Checking out..." << endl;
 
@@ -1420,13 +1448,50 @@ void Employee::checkout() {
     totalDebit += totalPrice;
     // cout << "Total debit: RM " << totalDebit << endl;
 
-    // WIP: update total profit per day, total credit, total debit
+    // finish transaction
+    cout << "Payment method: ";
+    cout << "1 - Cash" << endl;
+    cout << "2 - Credit Card" << endl;
+    cout << "3 - Debit Card" << endl;
+    cout << "4 - TnG" << endl;
+    char paymentMethod;
+    do {
+      cout << "Enter payment method: ";
+      cin >> paymentMethod;
+    } while (paymentMethod < '1' || paymentMethod > '4');
+    cout << endl;
 
-    cout << "Thank you for shopping with us!" << endl;
+    char dineIn;
+    do {
+      cout << "Dine in? (Y/N): ";
+      cin >> dineIn;
+    } while (dineIn != 'Y' && dineIn != 'N');
+    cout << endl;
 
-    // @TjeEwe store transaction details to csv file
     // store transaction details to csv file
     // generate receipt txt file
+    ofstream transactionFile;
+    transactionFile.open("files/transactions/transaction-" + dateTime.substr(0, 8) + ".csv", ios::app);
+    // orderID,dateTime,cashierID,itemsBought,paymentMethod,dineIn,totalPrice
+    // 1,2024-05-10 12:00:00,C1,"Classic Vanilla Cake,Chocolate Cake","2,3",TnG,true,23.0
+    transactionFile << orderNo << "," << dateTime << "," << employeeID << ",\"";
+    for (int i = 0; i < cashier->getCart()->getCartItemCount(); i++) {
+      transactionFile << cashier->getCart()->getBakeryItems()[i].getBakeryItemName();
+      if (i != cashier->getCart()->getCartItemCount() - 1) {
+        transactionFile << ",";
+      }
+    }
+    transactionFile << "\",\"" << cashier->getCart()->getQuantity()[0];
+    for (int i = 1; i < cashier->getCart()->getCartItemCount(); i++) {
+      transactionFile << "," << cashier->getCart()->getQuantity()[i];
+    }
+    transactionFile << "\"," <<
+      (paymentMethod == '1' ? "Cash" : paymentMethod == '2' ? "Credit Card" : paymentMethod == '3' ? "Debit Card" : "TnG")
+      << "," << (dineIn == 'Y' ? "true" : "false") << "," << totalPrice;
+    transactionFile.close();
+
+
+    cout << "Thank you for shopping with us!" << endl;
 
     cashier->getCart()->clearCart();
   } else {

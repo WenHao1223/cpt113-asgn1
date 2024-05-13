@@ -50,6 +50,17 @@ string convertTimeTOYYYY_MM__DD() {
   return buffer;
 }
 
+string convertTimeToYYYY__MM__DD_HH_MM_SS() {
+  // Get current time
+  auto currentTime = time(0);
+  auto* timeNow = localtime(&currentTime);
+
+  char buffer[20];
+  strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", timeNow);
+
+  return buffer;
+}
+
 void accessMenuDetails(BakeryItem & item) {
   cout << item.name << endl;
   cout << item.description << endl;
@@ -280,12 +291,12 @@ int main () {
   // employees[1].addBakeryItemToCart(0, 2);
   // employees[2].addBakeryItemToCart(0, 2);
   // cout << endl;
-  // employees[1].bakeNewBakeryItem(0, 3);
+  employees[1].bakeNewBakeryItem(0, 3);
   // employees[1].bakeNewBakeryItem(2, 3);
   // employees[0].accessMenuItem(2);
   // employees[1].accessIngredientInventoryDetails(1);
   // cout << endl;
-  // employees[2].addBakeryItemToCart(0, 2);
+  employees[2].addBakeryItemToCart(0, 2);
   // employees[2].addBakeryItemToCart(0, 3);
   // employees[2].addBakeryItemToCart(2, 1);
   // cout << endl;
@@ -382,7 +393,7 @@ int main () {
 
   // Done: checkout
   // employees[2].accessMenuItem(0);
-  // employees[2].checkout();
+  // employees[2].checkout(convertTimeToYYYY__MM__DD_HH_MM_SS());
   // employees[2].accessMenuItem(2);
 
   // cout << endl << endl;
@@ -392,7 +403,7 @@ int main () {
   // employees[2].displayCartDetails();
   // employees[2].addBakeryItemToCart(0, 3);
   // employees[2].displayCartDetails();
-  // employees[2].checkout();
+  employees[2].checkout(convertTimeToYYYY__MM__DD_HH_MM_SS());
 
   // Done: show receipt
   // default parameter is referring previous order's receipt
@@ -422,8 +433,9 @@ int main () {
   // employees[0].displayBalanceSheet();
 
   // Done: access transaction history
+  // employees[0].accessTransactionHistory(DATE_YYYYMMDD);
   // can be accessed even bakery is not opened
-  employees[0].accessTransactionHistory(DATE_YYYYMMDD);
+  // except if the date is not available
   employees[0].accessTransactionHistory("20240510");
   
   return 0;
