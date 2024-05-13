@@ -247,18 +247,17 @@ int main () {
   // employees[2].addBakeryItemToCart(0, 2);
   // cout << endl;
   // employees[1].bakeNewBakeryItem(0, 3);
-  // @WenHao1223 revise this code
-  employees[1].bakeNewBakeryItem(2, 3);
-  employees[0].accessMenuItem(2);
-  employees[1].accessIngredientInventoryDetails(1);
+  // employees[1].bakeNewBakeryItem(2, 3);
+  // employees[0].accessMenuItem(2);
+  // employees[1].accessIngredientInventoryDetails(1);
   // cout << endl;
   // employees[2].addBakeryItemToCart(0, 2);
   // employees[2].addBakeryItemToCart(0, 3);
-  employees[2].addBakeryItemToCart(2, 1);
+  // employees[2].addBakeryItemToCart(2, 1);
   // cout << endl;
 
   // Done: display cart details
-  employees[2].displayCartDetails();
+  // employees[2].displayCartDetails();
   // employees[3].displayCartDetails();
 
   // Done: calculate total cost of cart

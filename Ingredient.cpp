@@ -73,7 +73,7 @@ void Ingredient::displayIngredientDetails() const {
     cout << " / gram(s)" << endl;
     cout << "Weight: " << weight << " gram(s)" << endl;
   }
-  cout << "address: " << this << endl;
+  // cout << "address: " << this << endl;
 }
 
 string Ingredient::getName() const {
