@@ -4,7 +4,7 @@
 
 Cart::Cart() {
   bakeryItems = new BakeryItem[Constant::MAX_BAKERY_ITEMS];
-  quantity = new int[Constant::MAX_BAKERY_ITEMS];
+  quantity = new double[Constant::MAX_BAKERY_ITEMS];
 }
 
 void Cart::displayCartDetails() {
@@ -28,6 +28,19 @@ void Cart::addBakeryItemToCart(BakeryItem & item, int quantity) {
 
   bakeryItems[cartItemCount] = item;
   this->quantity[cartItemCount] = quantity;
+  cartItemCount++;
+
+  cout << item.getBakeryItemName() << " added to cart." << endl;
+}
+
+void Cart::addCakeByWeightToCart(BakeryItem & item, double weight) {
+  if (cartItemCount >= Constant::MAX_BAKERY_ITEMS) {
+    cout << "Cart is full." << endl;
+    return;
+  }
+
+  bakeryItems[cartItemCount] = item;
+  this->quantity[cartItemCount] = weight / item.getCake()->getTotalWeight();
   cartItemCount++;
 
   cout << item.getBakeryItemName() << " added to cart." << endl;
@@ -96,7 +109,7 @@ BakeryItem * Cart::getBakeryItems() const {
   return bakeryItems;
 }
 
-int * Cart::getQuantity() const {
+double * Cart::getQuantity() const {
   return quantity;
 }
 
@@ -120,7 +133,7 @@ void Cart::setBakeryItems(BakeryItem * bakeryItems) {
   this->bakeryItems = bakeryItems;
 }
 
-void Cart::setQuantity(int * quantity) {
+void Cart::setQuantity(double * quantity) {
   this->quantity = quantity;
 }
 

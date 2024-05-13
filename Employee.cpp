@@ -180,7 +180,7 @@ void Employee::startBakery() {
   }
   cout << "Discount count: " << discountCount << endl;
   discountFile.close();
-  cout << "Discount file closed." << endl;
+  // cout << "Discount file closed." << endl;
   cout << endl;
 
   // discounts[0] = Discount("Over RM30 Oasis: Enjoy 5\% Off", 30.0, 5.0, "Description 1", false);
@@ -519,13 +519,11 @@ void Employee::createBakeryItem() {
     }
 
     // input total weight for cake
-    int totalWeight;
-    // if (bakeryItemCategory == "Cake") {
-    //   do {
-    //     cout << "Enter total weight of cake (gram): ";
-    //     cin >> totalWeight;
-    //   } while (totalWeight <= 0);
-    // }
+    int totalWeight = 0;
+    if (bakeryItemCategory == "Cake") {
+      cout << "Enter total weight of cake (gram): ";
+      cin >> totalWeight;
+    }
 
     bakeryItems[bakeryItems->getBakeryItemCount()] = BakeryItem(bakeryItemName, bakeryItemCategory, bakeryItemDescription, bakeryItemPricePerUnit, ingredient, numberOfIngredients, recipe, totalWeight);
     // @TjeEwe file handling for new bakery item
@@ -1081,6 +1079,30 @@ void Employee::addBakeryItemToCart (int index, int quantity) {
     cout << quantity << "x " << bakeryItems[index].getBakeryItemName() << " has been added to cart." << endl;
   } else {
     cout << "Only cashier can add bakery item to cart." << endl;
+  }
+}
+
+void Employee::addCakeByWeightToCart(int index, int weight) {
+  cout << role << " - Adding " << weight << "g " << bakeryItems[index].getBakeryItemName() << " to cart..." << endl;
+  if (cashier != nullptr) {
+    // check if bakery item is disabled
+    if (bakeryItems[index].getDisabled()) {
+      cout << "Warning: " << bakeryItems[index].getBakeryItemName() << " is withdrawn." << endl;
+      return;
+    }
+
+    // check if bakery item is enough
+    if (bakeryItems[index].getBakeryItemQuantity() * bakeryItems[index].getCake()->getTotalWeight() < weight) {
+      cout << "Warning: Not enough " << bakeryItems[index].getBakeryItemName() << " in inventory." << endl;
+      cout << "Available: " << bakeryItems[index].getBakeryItemQuantity() << " gram(s)." << endl;
+      cout << "Require " << weight << " gram(s)." << endl;
+      return;
+    }
+
+    cashier->getCart()->addCakeByWeightToCart(bakeryItems[index], weight);
+    cout << weight << "g " << bakeryItems[index].getBakeryItemName() << " has been added to cart." << endl;
+  } else {
+    cout << "Only cashier can add cake by weight to cart." << endl;
   }
 }
 

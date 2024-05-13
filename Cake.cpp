@@ -3,7 +3,7 @@
 Cake::Cake() {
   totalWeight = 0;
 
-  cout << "Cake object created." << endl;
+  // cout << "Cake object created." << endl;
 }
 
 Cake::Cake(int totalWeight) {
@@ -15,19 +15,9 @@ Cake::Cake(int totalWeight) {
   
   this->totalWeight = totalWeight;
 
-  cout << "Cake object with total weight created." << endl;
+  // cout << "Cake object with total weight created." << endl;
 }
 
 int Cake::getTotalWeight() const {
   return totalWeight;
 }
-
-int Cake::getWeightLeft() {
-  return weightLeft;
-}
-
-void Cake::setWeightLeft(int weightLeft) {
-  this->weightLeft = weightLeft;
-}
-
-int Cake::weightLeft = 0;

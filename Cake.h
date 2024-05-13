@@ -9,7 +9,6 @@ using namespace std;
 class Cake {
   private:
     int totalWeight;
-    static int weightLeft;
 
   public:
     // Constructor
@@ -19,10 +18,6 @@ class Cake {
     // member functions
     // accessor
     int getTotalWeight() const;
-    int getWeightLeft();
-
-    // mutator
-    void setWeightLeft(int);
 };
 
 #endif

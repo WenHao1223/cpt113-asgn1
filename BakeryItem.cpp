@@ -134,11 +134,15 @@ string BakeryItem::getIngredientName(int index) const {
   return ingredient[index].getName();
 }
 
+Cake * BakeryItem::getCake() const {
+  return cake;
+}
+
 int BakeryItem::getIngredientCount() const {
   return ingredientCount;
 }
 
-int BakeryItem::getBakeryItemQuantity() const {
+double BakeryItem::getBakeryItemQuantity() const {
   return quantity;
 }
 
@@ -163,7 +167,7 @@ void BakeryItem::setPricePerUnit(double pricePerUnit) {
   this->pricePerUnit = pricePerUnit;
 }
 
-void BakeryItem::setBakeryItemQuantity(int quantity) {
+void BakeryItem::setBakeryItemQuantity(double quantity) {
   this->quantity = quantity;
 }
 

@@ -209,11 +209,11 @@ int main () {
   // before creating new bakery item
   // employees[0].accessMenuList();
   // employees[0].checkIngredientInventory();
-  employees[0].createBakeryItem();
+  // employees[0].createBakeryItem();
   // employees[0].createBakeryItem();
   // employees[0].checkIngredientInventory();
   // after creating new bakery item
-  employees[0].accessMenuList();
+  // employees[0].accessMenuList();
   // employees[0].accessMenuItem(3);
   // cout << endl;
 
@@ -245,8 +245,8 @@ int main () {
 
   // Done: bake new bakery item
   // employees[0].accessMenuItem(0);
-  // employees[1].bakeNewBakeryItem(0, 6);
-  // cout << endl;
+  employees[1].bakeNewBakeryItem(2, 6);
+  cout << endl;
   // employees[1].bakeNewBakeryItem(0, 2);
   // cout << endl;
   // employees[1].bakeNewBakeryItem(1, 2);
@@ -271,22 +271,25 @@ int main () {
   // cout << "now working fine" << endl;
   // employees[0].displayAllEmployeeDetails(employees);
 
+  // add cake to cart by total weight
+  employees[2].addCakeByWeightToCart(2, 200);
+
   // Done: add bakery item to cart
   // employees[1].addBakeryItemToCart(0, 2);
   // employees[2].addBakeryItemToCart(0, 2);
   // cout << endl;
-  // employees[1].bakeNewBakeryItem(0, 3);
+  employees[1].bakeNewBakeryItem(0, 3);
   // employees[1].bakeNewBakeryItem(2, 3);
   // employees[0].accessMenuItem(2);
   // employees[1].accessIngredientInventoryDetails(1);
   // cout << endl;
-  // employees[2].addBakeryItemToCart(0, 2);
+  employees[2].addBakeryItemToCart(0, 2);
   // employees[2].addBakeryItemToCart(0, 3);
   // employees[2].addBakeryItemToCart(2, 1);
   // cout << endl;
 
   // // Done: display cart details
-  // employees[2].displayCartDetails();
+  employees[2].displayCartDetails();
   // employees[3].displayCartDetails();
 
   // Done: calculate total cost of cart
@@ -377,8 +380,8 @@ int main () {
 
   // Done: checkout
   // employees[2].accessMenuItem(0);
-  // employees[2].checkout();
-  // employees[2].accessMenuItem(0);
+  employees[2].checkout();
+  employees[2].accessMenuItem(2);
 
   // cout << endl << endl;
 

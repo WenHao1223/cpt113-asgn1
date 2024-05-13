@@ -10,7 +10,7 @@ using namespace std;
 class Cart {
   private:
     BakeryItem * bakeryItems;
-    int * quantity;
+    double * quantity; // double because user can choose to buy according to weight
     int cartItemCount = 0;
     double totalCost = 0;
     double totalProfit = 0;
@@ -25,6 +25,7 @@ class Cart {
     // member functions
     void displayCartDetails();
     void addBakeryItemToCart(BakeryItem & item, int quantity);
+    void addCakeByWeightToCart(BakeryItem & item, double weight);
     void removeBakeryItemFromCart(int index);
     void updateBakeryItemQuantity(int index, int quantity);
     void clearCart();
@@ -35,7 +36,7 @@ class Cart {
     // accessor
     int getCartItemCount() const;
     BakeryItem * getBakeryItems() const;
-    int * getQuantity() const;
+    double * getQuantity() const;
     double getTotalCost() const;
     double getTotalPrice() const;
     double getTotalProfit() const;
@@ -43,7 +44,7 @@ class Cart {
 
     // mutator
     void setBakeryItems(BakeryItem *);
-    void setQuantity(int *);
+    void setQuantity(double *);
     void setCartItemCount(int);
     void setTotalCost(double);
     void setTotalPrice(double);
