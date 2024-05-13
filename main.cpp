@@ -105,7 +105,7 @@ int main () {
 
   // Done: find the index in employees using employeeID
   // -1 if not found
-  cout << "Employee index: " << findEmployeeIndex(employees, "C1") << endl;
+  // cout << "Employee index: " << findEmployeeIndex(employees, "C1") << endl;
 
   // use only once per program
   // can be started by random employee
@@ -149,20 +149,20 @@ int main () {
   // and let supervisor choose which ingredient to restock
   // then how many pieces or weight to restock
   // employees[0].restockIngredientInventory(0, 200.0);
-  employees[0].restockIngredientInventory(1, 300);
+  // employees[0].restockIngredientInventory(1, 300);
   // employees[2].restockIngredientInventory(1, 300);
-  employees[0].checkIngredientInventory();
+  // employees[0].checkIngredientInventory();
   // cout << endl;
 
   // Done: change ingredient cost
   // @WenHao1223 add space in between new cost and show units (/ grams, / pieces)
   // @WenHao1223 revise this code
-  employees[0].accessIngredientInventoryDetails(1);
-  employees[0].changeIngredientCost(1, 30.0);
+  // employees[0].accessIngredientInventoryDetails(1);
+  // employees[0].changeIngredientCost(1, 30.0);
   // employees[1].changeIngredientCost(0, 30.0);
   // employees[2].changeIngredientCost(0, 30.0);
   // cout << endl;
-  employees[0].accessIngredientInventoryDetails(1);
+  // employees[0].accessIngredientInventoryDetails(1);
   // cout << endl;
 
   // Done: add new ingredient into inventory
@@ -179,7 +179,8 @@ int main () {
   // @WenHao1223 enter ingredient cost -> enter ingredient cost per unit
   // employees[0].accessMenuList();
   // employees[0].checkIngredientInventory();
-  // employees[0].createBakeryItem();
+  employees[0].createBakeryItem();
+  employees[0].checkIngredientInventory();
   // after creating new bakery item
   // employees[0].accessMenuList();
   // employees[0].accessMenuItem(3);

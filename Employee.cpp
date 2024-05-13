@@ -347,10 +347,16 @@ void Employee::createBakeryItem() {
           cout << "Enter ingredient piece: ";
           cin >> ingredientPiece;
           ingredient[i] = Ingredient(ingredientName, ingredientCost, ingredientPiece);
+
+          // add new ingredient to ingredient inventory
+          ingredientInventory->addNewInventoryIngredientPiece(ingredientName, ingredientCost, ingredientPiece);
         } else {
           cout << "Enter ingredient weight in gram(s): ";
           cin >> ingredientWeight;
           ingredient[i] = Ingredient(ingredientName, ingredientCost, ingredientWeight);
+
+          // add new ingredient to ingredient inventory
+          ingredientInventory->addNewInventoryIngredientWeight(ingredientName, ingredientCost, ingredientWeight);
         }
       }
     }
