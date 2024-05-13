@@ -1554,63 +1554,38 @@ void Employee::checkout(string dateTime) {
     receiptFile << "Date: " << dateTime << endl;
     receiptFile << "Transaction by: " << employeeID << endl;
     receiptFile << endl;
-    receiptFile << "No Description                         Quantity           Price (RM)" << endl;
+
+    receiptFile << left << setw(3) << "No" << setw(35) << "Description" << setw(20) << "Quantity" << "Price (RM)" << endl;
     for (int i = 0; i < cashier->getCart()->getCartItemCount(); i++) {
-      receiptFile << i+1 << ". " << cashier->getCart()->getBakeryItems()[i].getBakeryItemName();
-      for (int j = 0; j < 40 - cashier->getCart()->getBakeryItems()[i].getBakeryItemName().length(); j++) {
-        receiptFile << " ";
-      }
-      receiptFile << cashier->getCart()->getQuantity()[i] << "                " << cashier->getCart()->getBakeryItems()[i].getPricePerUnit() *  cashier->getCart()->getQuantity()[i] << endl;
+        receiptFile << left << setw(3) << i+1 << ". ";
+        receiptFile << left << setw(35) << cashier->getCart()->getBakeryItems()[i].getBakeryItemName();
+        receiptFile << left << setw(20) << cashier->getCart()->getQuantity()[i];
+        receiptFile << cashier->getCart()->getBakeryItems()[i].getPricePerUnit() *  cashier->getCart()->getQuantity()[i] << endl;
     }
+
     receiptFile << endl;
     receiptFile << "---------------------------------------------------------------------" << endl;
-    receiptFile << "Subtotal (" << cashier->getCart()->getCartItemCount() << ")";
-    for (int i = 0; i < 60 - to_string(cashier->getCart()->getCartItemCount()).length(); i++) {
-      receiptFile << " ";
-    }
+    string subtotal = "Subtotal (" + to_string(cashier->getCart()->getCartItemCount()) + ")";
+    receiptFile << left << setw(60) << subtotal;
     receiptFile << totalPrice << endl;
     receiptFile << "---------------------------------------------------------------------" << endl;
-    receiptFile << "Discount Summary";
-    for (int i = 0; i < 50; i++) {
-      receiptFile << " ";
-    }
-    receiptFile << "Amount" << endl;
+    receiptFile << left << setw(60) << "Discount Summary" << "Amount" << endl;
     if (choice != 0) {
-      receiptFile << "Discount Name";
-      for (int i = 0; i < 50 - getAvailableDiscount(choice)->getName().length(); i++) {
-        receiptFile << " ";
-      }
-      receiptFile << getAvailableDiscount(choice)->getName() << endl;
-      receiptFile << "Total Discount";
-      for (int i = 0; i < 50 - to_string(cashier->getCart()->getTotalDiscount()).length(); i++) {
-        receiptFile << " ";
-      }
-      receiptFile << cashier->getCart()->getTotalDiscount() << endl;
+      receiptFile << left << setw(60) << "Discount Name" << getAvailableDiscount(choice)->getName() << endl;
+      receiptFile << setprecision(2) << fixed;
+      receiptFile << left << setw(60) << "Total Discount" << cashier->getCart()->getTotalDiscount() << endl;
     }
     receiptFile << "---------------------------------------------------------------------" << endl;
-    receiptFile << "Total";
-    for (int i = 0; i < 60 - to_string(totalPrice).length(); i++) {
-      receiptFile << " ";
-    }
-    receiptFile << totalPrice << endl;
-    receiptFile << "Round Up";
-    for (int i = 0; i < 60 - to_string(totalPrice).length(); i++) {
-      receiptFile << " ";
-    }
-    receiptFile << totalPrice << endl;
-    receiptFile << "AMT DUE";
-    for (int i = 0; i < 60 - to_string(totalPrice).length(); i++) {
-      receiptFile << " ";
-    }
-    receiptFile << totalPrice << endl;
-    receiptFile << "Payment Method";
-    for (int i = 0; i < 50; i++) {
-      receiptFile << " ";
-    }
-    receiptFile << (paymentMethod == '1' ? "Cash" : paymentMethod == '2' ? "Credit Card" : paymentMethod == '3' ? "Debit Card" : "TnG") << endl;
+    receiptFile << left << setw(60) << "Total" << totalPrice << endl;
+    string paymentMethodStr = (paymentMethod == '1' ? "Cash" : paymentMethod == '2' ? "Credit Card" : paymentMethod == '3' ? "Debit Card" : "TnG");
+    receiptFile << left << setw(60) << "Payment Method" << paymentMethodStr << endl;
+    receiptFile << "---------------------------------------------------------------------" << endl;
+    receiptFile << "Thank you for your purchase at our bakery!" << endl;
+    receiptFile << "See you again soon." << endl;
     receiptFile.close();
     
-    cout << "Thank you for shopping with us!" << endl;
+    cout << "Thank you for your purchase at our bakery!" << endl;
+    cout << "See you again soon." << endl << endl;
 
     cashier->getCart()->clearCart();
   } else {
