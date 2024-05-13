@@ -44,12 +44,12 @@ class Employee {
 
     // member functions
     void displayEmployeeDetails() const;
-    void startBakery() const;
+    void setIngredientCostToInventoryIngredientCost();
+    void startBakery();
     void accessMenuList() const;
     void accessMenuItem(int index) const;
     void accessDiscountList() const;
     void accessDiscountDetails(int index) const;
-    void setIngredientCostToInventoryIngredientCost();
 
     // accessible by supervisor or baker only
     void displayIngredientInventoryList() const;

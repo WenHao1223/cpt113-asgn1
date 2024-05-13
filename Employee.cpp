@@ -60,7 +60,21 @@ void Employee::displayEmployeeDetails() const {
   cout << endl;
 }
 
-void Employee::startBakery() const {
+void Employee::setIngredientCostToInventoryIngredientCost() {
+  cout << role << " - Setting ingredient cost to inventory ingredient cost..." << endl;
+  for (int i = 0; i < bakeryItems[0].getBakeryItemCount(); i++) {
+    for (int j = 0; j < bakeryItems[i].getIngredientCount(); j++) {
+      for (int k = 0; k < ingredientInventory[0].getIngredientInventoryCount(); k++) {
+        if(bakeryItems[i].getIngredient(j)->getName() == ingredientInventory[k].getIngredient().getName()) {
+          cout << "Ingredient " << bakeryItems[i].getIngredient(j)->getName() << "'s cost of " << bakeryItems[i].getBakeryItemName() << " has been set to RM " << ingredientInventory->getIngredientCost(k) << endl;
+          bakeryItems[i].getIngredient(j)->setCostPerUnit(ingredientInventory->getIngredientCost(k));
+        }
+      }
+    }
+  }
+}
+
+void Employee::startBakery() {
   cout << "Bakery start operating now." << endl;
 
   orderNo = 0;
@@ -117,6 +131,10 @@ void Employee::startBakery() const {
     exit(EXIT_FAILURE);
   }
 
+  cout << endl;
+  this->setIngredientCostToInventoryIngredientCost();
+  cout << endl;
+
   cout << "Selling " << ingredientInventory[0].getIngredientInventoryCount() << " items today." << endl;
 }
 
@@ -148,20 +166,6 @@ void Employee::accessDiscountDetails(int index) const {
   cout << "Amount: " << discounts[index].getDiscountPercentage() << "%" << endl;
   cout << "Description: " << discounts[index].getDescription() << endl;
   cout << "Active: " << (!discounts[index].getDisabled() ? "Yes" : "No") << endl;
-}
-
-void Employee::setIngredientCostToInventoryIngredientCost() {
-  cout << role << " - Setting ingredient cost to inventory ingredient cost..." << endl;
-  for (int i = 0; i < bakeryItems[0].getBakeryItemCount(); i++) {
-    for (int j = 0; j < bakeryItems[i].getIngredientCount(); j++) {
-      for (int k = 0; k < ingredientInventory[0].getIngredientInventoryCount(); k++) {
-        if(bakeryItems[i].getIngredient(j)->getName() == ingredientInventory[k].getIngredient().getName()) {
-          cout << "Ingredient " << bakeryItems[i].getIngredient(j)->getName() << "'s cost of " << bakeryItems[i].getBakeryItemName() << " has been set to RM " << ingredientInventory->getIngredientCost(k) << endl;
-          bakeryItems[i].getIngredient(j)->setCostPerUnit(ingredientInventory->getIngredientCost(k));
-        }
-      }
-    }
-  }
 }
 
 void Employee::displayIngredientInventoryList() const {

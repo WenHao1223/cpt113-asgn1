@@ -114,7 +114,8 @@ int main () {
   cout << endl;
 
   // Done: set ingredient cost of bakery item to latest ingredient cost from inventory
-  employees[2].setIngredientCostToInventoryIngredientCost();
+  // not used anymore as it is done in Employee::startBakery()
+  // employees[2].setIngredientCostToInventoryIngredientCost();
 
   // Done: Access menu list
   // employees[0].accessMenuList();
@@ -158,10 +159,8 @@ int main () {
   // cout << endl;
 
   // Done: change ingredient cost
-  // @WenHao1223 add space in between new cost and show units (/ grams, / pieces)
-  // @WenHao1223 revise this code
   // employees[0].accessIngredientInventoryDetails(1);
-  employees[0].changeIngredientCost(0, 30.0);
+  // employees[0].changeIngredientCost(0, 30.0);
   // employees[1].changeIngredientCost(0, 30.0);
   // employees[2].changeIngredientCost(0, 30.0);
   // cout << endl;
