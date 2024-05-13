@@ -1349,6 +1349,36 @@ void Employee::applyDiscount(int choice) {
   }
 }
 
+Discount * Employee::getAvailableDiscount (int choice) const {
+  // find the index corresponding to the choice according to option in showDiscountBasedOnCartTotalPrice()
+  bool isDiscountAvailable = false;
+  Discount* availableDiscounts[discounts->getDiscountCount()];
+  int count = 0;
+  for (int i = 0; i < discounts->getDiscountCount(); i++) {
+    if (cashier->getCart()->calculateTotalPrice() >= discounts[i].getMinimumPurchase()) {
+      isDiscountAvailable = true;
+      if (count < discounts->getDiscountCount()) {
+        availableDiscounts[count++] = &discounts[i];
+      }
+    }
+  }
+
+  if (choice > count) {
+    return nullptr;
+  }
+
+  if (cashier != nullptr) {
+    cout << "Getting available discount..." << endl;
+    if (cashier->getCart()->calculateTotalPrice() >= availableDiscounts[choice - 1]->getMinimumPurchase()) {
+      return availableDiscounts[choice - 1];
+    } else {
+      return nullptr;
+    }
+  } else {
+    return nullptr;
+  }
+}
+
 double Employee::calculateDiscountedTotalPrice () const {
   if (cashier != nullptr) {
     cout << "Calculating discounted price..." << endl;
@@ -1361,8 +1391,6 @@ double Employee::calculateDiscountedTotalPrice () const {
   }
 }
 
-// @TjeEwe store the transaction details to csv file
-// and create receipt txt file
 void Employee::checkout(string dateTime) {
   if (cashier != nullptr) {
     cout << "Checking out..." << endl;
@@ -1505,7 +1533,82 @@ void Employee::checkout(string dateTime) {
       << "," << (dineIn == 'Y' ? "true" : "false") << "," << totalPrice;
     transactionFile.close();
 
-
+    // generate receipt txt file
+    // store in files/receipts/[YYYYMMDD]/receipt-[YYYYMMDD]-[orderID].txt
+    string receiptFileName = "files/receipts/receipt-" + dateTime.substr(0, 4) + dateTime.substr(5, 2) + dateTime.substr(8, 2) + "-" + to_string(orderNo) + ".txt";
+    cout << "Generating receipt..." << endl;
+    cout << "Filename: " << receiptFileName << endl;
+    cout << endl;
+    ofstream receiptFile(receiptFileName);
+    receiptFile << "Eid Delights Bakery" << endl;
+    receiptFile << "43-3-12, Persiaran Midlands," << endl;
+    receiptFile << "Taman Midlands," << endl;
+    receiptFile << "10500 Penang" << endl;
+    receiptFile << "Tel : 011 2345 6789" << endl;
+    receiptFile << endl;
+    receiptFile << (dineIn == 'Y' ? "Dine In" : "Take Away") << endl;
+    receiptFile << "--------------------------------------------------------------------" << endl;
+    receiptFile << "Current Invoice" << endl;
+    receiptFile << "R.No: " << orderNo << endl;
+    receiptFile << "Date: " << dateTime << endl;
+    receiptFile << "Transaction by: " << employeeID << endl;
+    receiptFile << endl;
+    receiptFile << "No Description                         Quantity           Price (RM)" << endl;
+    for (int i = 0; i < cashier->getCart()->getCartItemCount(); i++) {
+      receiptFile << i+1 << ". " << cashier->getCart()->getBakeryItems()[i].getBakeryItemName();
+      for (int j = 0; j < 40 - cashier->getCart()->getBakeryItems()[i].getBakeryItemName().length(); j++) {
+        receiptFile << " ";
+      }
+      receiptFile << cashier->getCart()->getQuantity()[i] << "                " << cashier->getCart()->getBakeryItems()[i].getPricePerUnit() *  cashier->getCart()->getQuantity()[i] << endl;
+    }
+    receiptFile << endl;
+    receiptFile << "---------------------------------------------------------------------" << endl;
+    receiptFile << "Subtotal (" << cashier->getCart()->getCartItemCount() << ")";
+    for (int i = 0; i < 60 - to_string(cashier->getCart()->getCartItemCount()).length(); i++) {
+      receiptFile << " ";
+    }
+    receiptFile << totalPrice << endl;
+    receiptFile << "---------------------------------------------------------------------" << endl;
+    receiptFile << "Discount Summary";
+    for (int i = 0; i < 50; i++) {
+      receiptFile << " ";
+    }
+    receiptFile << "Amount" << endl;
+    if (choice != 0) {
+      receiptFile << "Discount Name";
+      for (int i = 0; i < 50 - getAvailableDiscount(choice)->getName().length(); i++) {
+        receiptFile << " ";
+      }
+      receiptFile << getAvailableDiscount(choice)->getName() << endl;
+      receiptFile << "Total Discount";
+      for (int i = 0; i < 50 - to_string(cashier->getCart()->getTotalDiscount()).length(); i++) {
+        receiptFile << " ";
+      }
+      receiptFile << cashier->getCart()->getTotalDiscount() << endl;
+    }
+    receiptFile << "---------------------------------------------------------------------" << endl;
+    receiptFile << "Total";
+    for (int i = 0; i < 60 - to_string(totalPrice).length(); i++) {
+      receiptFile << " ";
+    }
+    receiptFile << totalPrice << endl;
+    receiptFile << "Round Up";
+    for (int i = 0; i < 60 - to_string(totalPrice).length(); i++) {
+      receiptFile << " ";
+    }
+    receiptFile << totalPrice << endl;
+    receiptFile << "AMT DUE";
+    for (int i = 0; i < 60 - to_string(totalPrice).length(); i++) {
+      receiptFile << " ";
+    }
+    receiptFile << totalPrice << endl;
+    receiptFile << "Payment Method";
+    for (int i = 0; i < 50; i++) {
+      receiptFile << " ";
+    }
+    receiptFile << (paymentMethod == '1' ? "Cash" : paymentMethod == '2' ? "Credit Card" : paymentMethod == '3' ? "Debit Card" : "TnG") << endl;
+    receiptFile.close();
+    
     cout << "Thank you for shopping with us!" << endl;
 
     cashier->getCart()->clearCart();

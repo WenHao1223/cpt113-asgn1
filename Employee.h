@@ -109,6 +109,7 @@ class Employee {
     void checkout(string dateTime);
     void showDiscountBasedOnCartTotalPrice() const;
     void applyDiscount(int choice);
+    Discount * getAvailableDiscount(int choice) const;
     double calculateDiscountedTotalPrice() const;
 
     // accessible by supervisor or cashier only
