@@ -78,8 +78,32 @@ void Employee::startBakery() {
   cout << "Bakery start operating now." << endl;
 
   orderNo = 0;
+  
+  // fetch total balance from files/balanceSheet.csv last row last column
+  ifstream balanceSheetFile;
+  balanceSheetFile.open("files/balanceSheet.csv");
+  string line;
+  string lastLine;
+  while (getline(balanceSheetFile, line)) {
+    lastLine = line;
+  }
+  balanceSheetFile.close();
 
-  // @TjeEwe fetch balance from balanceSheet.csv
+  // extract total balance from last line
+  string totalBalanceString;
+  cout << "Last line: " << lastLine << endl;
+
+  for (char c : lastLine) {
+    if (c == ',') {
+      totalBalanceString = "";
+    } else {
+      totalBalanceString += c;
+    }
+  }
+
+  totalBalance = stod(totalBalanceString);
+
+  cout << "Total balance string: " << totalBalanceString << endl;
 
   ingredientInventory[0] = IngredientInventory("Ingredient 1", 0.0005, 100000.0);
   ingredientInventory[1] = IngredientInventory("Ingredient 2", 20.0, 200);
