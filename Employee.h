@@ -81,9 +81,11 @@ class Employee {
     void displayAllEmployeeDetails(Employee employees []) const;
     void deleteEmployee(Employee employees [], int index);
     void addNewDiscount();
+    void accessDiscountFile(int index, string field, string value);
     void editDiscountName(int index, string name);
-    void editDiscountDescription(int index, string description);
+    void editDiscountMinimumPurchase(int index, double minimumPurchase);
     void editDiscountPercentage(int index, double percentage);
+    void editDiscountDescription(int index, string description);
     void disableDiscount(int index);
     void enableDiscount(int index);
     void deleteDiscount(int index);

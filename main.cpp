@@ -180,8 +180,8 @@ int main () {
   // @TjeEwe need to print ingredient inventory list available
   // and let supervisor choose which ingredient to restock
   // then how many pieces or weight to restock
-  employees[0].restockIngredientInventory(0, 50003.6);
-  employees[0].restockIngredientInventory(1, 300);
+  // employees[0].restockIngredientInventory(0, 50003.6);
+  // employees[0].restockIngredientInventory(1, 300);
   // employees[2].restockIngredientInventory(1, 300);
   // employees[0].checkIngredientInventory();
   // cout << endl;
@@ -243,7 +243,7 @@ int main () {
 
   // Done: bake new bakery item
   // employees[0].accessMenuItem(0);
-  employees[1].bakeNewBakeryItem(0, 6);
+  // employees[1].bakeNewBakeryItem(0, 6);
   // cout << endl;
   // employees[1].bakeNewBakeryItem(0, 2);
   // cout << endl;
@@ -278,7 +278,7 @@ int main () {
   // employees[0].accessMenuItem(2);
   // employees[1].accessIngredientInventoryDetails(1);
   // cout << endl;
-  employees[2].addBakeryItemToCart(0, 2);
+  // employees[2].addBakeryItemToCart(0, 2);
   // employees[2].addBakeryItemToCart(0, 3);
   // employees[2].addBakeryItemToCart(2, 1);
   // cout << endl;
@@ -318,12 +318,16 @@ int main () {
   // employees[0].accessDiscountDetails(1);
 
   // Done: add new discount
-  employees[0].addNewDiscount();
+  // employees[0].addNewDiscount();
   // employees[0].accessDiscountList();
   // employees[0].accessDiscountDetails(2);
 
   // Done: edit discount name
   // employees[0].editDiscountName(1, "New Discount");
+  // employees[0].accessDiscountDetails(1);
+
+  // Done: edit minimum purchase
+  employees[0].editDiscountMinimumPurchase(1, 10.0);
   // employees[0].accessDiscountDetails(1);
 
   // Done: edit discount percentage
@@ -339,12 +343,12 @@ int main () {
   // employees[0].accessDiscountDetails(1);
 
   // Done: enable discount
-  // employees[0].enableDiscount(1);
+  employees[0].enableDiscount(1);
   // employees[0].accessDiscountDetails(1);
 
   // Done: delete discount
-  employees[0].deleteDiscount(1);
-  employees[0].accessDiscountList();
+  // employees[0].deleteDiscount(1);
+  // employees[0].accessDiscountList();
 
   // Done: show available discount based on cart total price
   // extra option as it is used in checkout()
@@ -371,7 +375,7 @@ int main () {
 
   // Done: checkout
   // employees[2].accessMenuItem(0);
-  employees[2].checkout();
+  // employees[2].checkout();
   // employees[2].accessMenuItem(0);
 
   // cout << endl << endl;
@@ -379,18 +383,18 @@ int main () {
   // second order
 
   // employees[2].displayCartDetails();
-  employees[2].addBakeryItemToCart(0, 3);
+  // employees[2].addBakeryItemToCart(0, 3);
   // employees[2].displayCartDetails();
-  employees[2].checkout();
+  // employees[2].checkout();
 
   // Done: show receipt
   // default parameter is referring previous order's receipt
   // employees[2].showReceipt(DATE_YYYYMMDD);
   // DATE_YYYYMMDD = today's date
-  employees[2].showReceipt(DATE_YYYYMMDD, 1);
-  employees[2].showReceipt("20240510", 1);
-  employees[1].showReceipt("20240510", 1);
-  employees[0].showReceipt("20240510", 1);
+  // employees[2].showReceipt(DATE_YYYYMMDD, 1);
+  // employees[2].showReceipt("20240510", 1);
+  // employees[1].showReceipt("20240510", 1);
+  // employees[0].showReceipt("20240510", 1);
 
   // Done: show total debit
   // employees[2].showTotalDebit();
@@ -402,9 +406,9 @@ int main () {
   // employees[2].showTotalProfitPerDay();
 
   // show total balance
-  employees[2].showTotalBalance();
+  // employees[2].showTotalBalance();
 
-  employees[2].closeBakery(convertTimeTOYYYY_MM__DD());
+  // employees[2].closeBakery(convertTimeTOYYYY_MM__DD());
   
   return 0;
 }

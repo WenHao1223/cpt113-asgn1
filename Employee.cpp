@@ -1,6 +1,7 @@
 #include <iomanip>
 #include <fstream>
 #include <cmath>
+#include <string>
 
 #include "Discount.h"
 #include "Employee.h"
@@ -723,7 +724,6 @@ void Employee::deleteEmployee(Employee employees [], int index) {
   }
 }
 
-// @TjeEwe file handling if new discount is created
 // @AeroRin input validation
 void Employee::addNewDiscount() {
   if (supervisor != nullptr) {
@@ -771,19 +771,89 @@ void Employee::addNewDiscount() {
   }
 }
 
+void Employee::accessDiscountFile(int index, string field, string value) {
+  ifstream discountFile;
+  discountFile.open("files/discount.csv", ios::in);
+  string line;
+  string newFileLines;
+
+  string name;
+  string minimumPurchase;
+  string discountPercentage;
+  string description;
+  string disabled;
+
+  while (!discountFile.eof()) {
+    getline(discountFile, name, ',');
+    getline(discountFile, minimumPurchase, ',');
+    getline(discountFile, discountPercentage, ',');
+    getline(discountFile, description, ',');
+    getline(discountFile, disabled);
+
+    cout << name << "," << minimumPurchase << "," << discountPercentage << "," << description << "," << disabled << endl;
+
+    if (name == discounts[index].getName()) {
+      if (field == "name") {
+        name = value;
+      } else if (field == "minimumPurchase") {
+        minimumPurchase = value;
+      } else if (field == "discountPercentage") {
+        discountPercentage = value;
+      } else if (field == "description") {
+        description = value;
+      } else if (field == "disabled") {
+        disabled = value;
+      } else {
+        cout << "Invalid field." << endl;
+        return;
+      }
+    }
+
+    newFileLines += name + "," + minimumPurchase + "," + discountPercentage + "," + description + "," + disabled + "\n";
+  }
+  // remove last line
+  newFileLines = newFileLines.substr(0, newFileLines.size()-1);
+  discountFile.close();
+
+  ofstream newDiscountFile;
+  newDiscountFile.open("files/discount.csv");
+  newDiscountFile << newFileLines;
+  newDiscountFile.close();
+}
+
 void Employee::editDiscountName(int index, string newName) {
   if (supervisor != nullptr) {
     cout << role << " - Editing discount name..." << endl;
-    discounts[index].setName(newName);
-    cout << "Name has been updated to '" << discounts[index].getName() << "'" << endl;
+
+    // edit name in files/discount.csv
+    accessDiscountFile(index, "name", newName);
+
   } else {
     cout << "Only supervisor can edit discount name." << endl;
+  }
+}
+
+void Employee::editDiscountMinimumPurchase(int index, double newMinimumPurchase) {
+  if (supervisor != nullptr) {
+    cout << role << " - Editing minimum purchase..." << endl;
+
+    // edit minimum purchase in files/discount.csv
+    accessDiscountFile(index, "minimumPurchase", to_string(newMinimumPurchase));
+
+    discounts[index].setMinimumPurchase(newMinimumPurchase);
+    cout << "Minimum purchase has been updated for discount '" << discounts[index].getName() << "'." << endl;
+  } else {
+    cout << "Only supervisor can edit minimum purchase." << endl;
   }
 }
 
 void Employee::editDiscountPercentage(int index, double newPercentage) {
   if (supervisor != nullptr) {
     cout << role << " - Editing discount percentage..." << endl;
+
+    // edit percentage in files/discount.csv
+    accessDiscountFile(index, "discountPercentage", to_string(newPercentage));
+
     discounts[index].setDiscountPercentage(newPercentage);
     cout << "Percentage has been updated for discount '" << discounts[index].getName() << "'." << endl;
   } else {
@@ -794,6 +864,10 @@ void Employee::editDiscountPercentage(int index, double newPercentage) {
 void Employee::editDiscountDescription(int index, string newDescription) {
   if (supervisor != nullptr) {
     cout << role << " - Editing discount description..." << endl;
+
+    // edit description in files/discount.csv
+    accessDiscountFile(index, "description", newDescription);
+
     discounts[index].setDescription(newDescription);
     cout << "Description has been updated for '" << discounts[index].getName() << "'." << endl;
   } else {
@@ -804,6 +878,10 @@ void Employee::editDiscountDescription(int index, string newDescription) {
 void Employee::disableDiscount(int index) {
   if (supervisor != nullptr) {
     cout << role << " - Disabling discount..." << endl;
+
+    // edit disabled in files/discount.csv
+    accessDiscountFile(index, "disabled", "true");
+
     discounts[index].setDisabled(true);
     cout << "'" << discounts[index].getName() << "' has been disabled." << endl;
   } else {
@@ -814,6 +892,10 @@ void Employee::disableDiscount(int index) {
 void Employee::enableDiscount(int index) {
   if (supervisor != nullptr) {
     cout << role << " - Enabling discount..." << endl;
+
+    // edit disabled in files/discount.csv
+    accessDiscountFile(index, "disabled", "false");
+
     discounts[index].setDisabled(false);
     cout << "'" << discounts[index].getName() << "' has been enabled." << endl;
   } else {
