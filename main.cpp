@@ -153,7 +153,9 @@ int main () {
   // cout << endl;
 
   // Done: add new ingredient into inventory
-  employees[0].addNewInventoryIngredientWeight("Salt", 0.01, 500);
+  // employees[0].addNewInventoryIngredientWeight("Salt", 0.01, 500);
+  employees[0].addNewInventoryIngredientWeight("Salts", 0.01, 500);
+  // employees[0].addNewInventoryIngredientPiece("Egg", 0.01, 500);
   // employees[0].addNewInventoryIngredientPiece("Egg", 0.5, 10);
 
   // Done: Get inventory ingredient list
