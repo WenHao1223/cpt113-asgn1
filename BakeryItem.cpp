@@ -15,9 +15,15 @@ BakeryItem::BakeryItem() {
   // cout << "BakeryItem object has been created." << endl;
 }
 
-BakeryItem::BakeryItem(string name, string description, double pricePerUnit, Ingredient * ingredient, int ingredientCount, string recipe) {
+BakeryItem::BakeryItem(string name, string category, string description, double pricePerUnit, Ingredient * ingredient, int ingredientCount, string recipe) {
   if (name == "") {
     cout << "Name cannot be empty." << endl;
+    exit(EXIT_FAILURE);
+    return;
+  }
+
+  if (category == "") {
+    cout << "Category cannot be empty." << endl;
     exit(EXIT_FAILURE);
     return;
   }
@@ -41,6 +47,7 @@ BakeryItem::BakeryItem(string name, string description, double pricePerUnit, Ing
   }
 
   this->name = name;
+  this->category = category;
   this->description = description;
   this->pricePerUnit = pricePerUnit;
   this->ingredient = ingredient;

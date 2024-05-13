@@ -123,19 +123,19 @@ void Employee::startBakery() {
   Ingredient * ingredient;
 
   numberOfIngredients = 1;
-  bakeryItems[0] = BakeryItem("Item 1", "Description 1", 10.0,
+  bakeryItems[0] = BakeryItem("Item 1", "Cookie", "Description 1", 10.0,
     new Ingredient[numberOfIngredients] {
       Ingredient("Ingredient 1", 0.08, 100.0)
     }, numberOfIngredients, "Recipe 1");
   numberOfIngredients = 3;
-  bakeryItems[1] = BakeryItem("Item 2", "Description 2", 20.0,
+  bakeryItems[1] = BakeryItem("Item 2", "Cookie", "Description 2", 20.0,
     new Ingredient[numberOfIngredients] {
       Ingredient("Ingredient 1 of Item 2", 0.005, 200.0),
       Ingredient("Ingredient 2", 2.0, 3),
       Ingredient("Ingredient 3 of Item 2", 0.02, 400.0)
     }, numberOfIngredients, "Recipe 2");
   numberOfIngredients = 1;
-  bakeryItems[2] = BakeryItem("Item 3", "Description 3", 30.0,
+  bakeryItems[2] = BakeryItem("Item 3", "Cake", "Description 3", 30.0,
     new Ingredient[numberOfIngredients] {
       Ingredient("Ingredient 2", 2.0, 3),
     }, numberOfIngredients, "Recipe 3");
@@ -419,6 +419,14 @@ void Employee::createBakeryItem() {
 
     cout << "Enter bakery item name: ";
     getline(cin, bakeryItemName);
+
+    string bakeryItemCategory;
+    do {
+      cout << "Enter bakery item category (Cookie / Cake): ";
+      cin >> bakeryItemCategory;
+      cin.ignore();
+    } while (bakeryItemCategory != "Cookie" && bakeryItemCategory != "Cake");
+
     cout << "Enter bakery item description: ";
     getline(cin, bakeryItemDescription);
     cout << "Enter bakery item price per unit: RM ";
@@ -510,7 +518,7 @@ void Employee::createBakeryItem() {
       recipe += line + "\n";
     }
 
-    bakeryItems[bakeryItems->getBakeryItemCount()] = BakeryItem(bakeryItemName, bakeryItemDescription, bakeryItemPricePerUnit, ingredient, numberOfIngredients, recipe);
+    bakeryItems[bakeryItems->getBakeryItemCount()] = BakeryItem(bakeryItemName, bakeryItemCategory, bakeryItemDescription, bakeryItemPricePerUnit, ingredient, numberOfIngredients, recipe);
     // @TjeEwe file handling for new bakery item
 
     // cout << "Bakery Item Address (from employee): " << bakeryItems << endl;

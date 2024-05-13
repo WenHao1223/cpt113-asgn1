@@ -5,6 +5,7 @@
 #include <string>
 
 #include "Constant.h"
+#include "Cake.h"
 #include "Ingredient.h"
 #include "IngredientInventory.h"
 
@@ -15,6 +16,7 @@ const int MAX_INGREDIENTS = Constant::MAX_BAKERY_ITEMS;
 class BakeryItem {
   private:
     string name;
+    string category;
     string description;
     double pricePerUnit;
     Ingredient * ingredient = new Ingredient[MAX_INGREDIENTS];
@@ -22,13 +24,14 @@ class BakeryItem {
     int quantity = 0;
     string recipe;
     bool disabled = false;
+    Cake * cake;
     static int bakeryItemCount;
     static BakeryItem * bakeryItems; // pointer from Employee class
         
   public:
     // Constructor
     BakeryItem();
-    BakeryItem(string name, string description, double pricePerUnit, Ingredient * ingredient, int ingredientCount, string recipe);
+    BakeryItem(string name, string category, string description, double pricePerUnit, Ingredient * ingredient, int ingredientCount, string recipe);
 
     // member functions
     void displayBakeryItemDetails() const;
