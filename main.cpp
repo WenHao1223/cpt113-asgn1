@@ -89,7 +89,7 @@ int findEmployeeIndex(Employee employees[], string employeeID) {
 int main () {
   // Done: display current date in YYYYMMDD format
   const string DATE_YYYYMMDD = convertTimeToYYYYMMDD();
-  cout << DATE_YYYYMMDD << endl;
+  // cout << DATE_YYYYMMDD << endl;
 
   // int numberOfIngredients;
 
@@ -347,7 +347,7 @@ int main () {
   // employees[0].accessDiscountDetails(1);
 
   // Done: delete discount
-  employees[0].deleteDiscount(1);
+  // employees[0].deleteDiscount(1);
   // employees[0].accessDiscountList();
 
   // Done: show available discount based on cart total price
@@ -408,7 +408,7 @@ int main () {
   // show total balance
   // employees[2].showTotalBalance();
 
-  // employees[2].closeBakery(convertTimeTOYYYY_MM__DD());
+  employees[2].closeBakery(convertTimeTOYYYY_MM__DD());
   
   return 0;
 }

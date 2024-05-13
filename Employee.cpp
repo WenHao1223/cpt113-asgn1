@@ -102,6 +102,11 @@ void Employee::startBakery() {
     }
   }
 
+  // startup balance
+  if (totalBalanceString == "balance") {
+    totalBalanceString = "5000.0";
+  }
+
   totalBalance = stod(totalBalanceString);
 
   cout << "Total balance string: " << totalBalanceString << endl;
