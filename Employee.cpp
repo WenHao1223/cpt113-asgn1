@@ -326,7 +326,12 @@ void Employee::createBakeryItem() {
       for (int j = 0; j < ingredientInventory->getIngredientInventoryCount(); j++) {
         if (ingredientName ==  ingredientInventory->getIngredientInventoryName(j)) {
           cout << ingredientName << " found in inventory." << endl;
-          cout << "Cost: RM " << ingredientInventory->getIngredientInventoryCost(j) << endl;
+          cout << "Cost: RM " << ingredientInventory->getIngredientInventoryCost(j);
+          if (ingredientInventory[j].getIngredient().getCountable()) {
+            cout << " / piece(s)." << endl;
+          } else {
+            cout << " / gram(s)." << endl;
+          }
           ingredientCost = ingredientInventory->getIngredientInventoryCost(j);
 
           if (ingredientInventory[j].getCountable()) {

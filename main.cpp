@@ -178,10 +178,9 @@ int main () {
   // system will need to login and logout many times to create bakery items
   // @TjeEwe check if user input larger than MAX_BAKERY_ITEMS
   // before creating new bakery item
-  // @WenHao1223 enter ingredient cost -> enter ingredient cost per unit
   // employees[0].accessMenuList();
   // employees[0].checkIngredientInventory();
-  // employees[0].createBakeryItem();
+  employees[0].createBakeryItem();
   // employees[0].checkIngredientInventory();
   // after creating new bakery item
   // employees[0].accessMenuList();
