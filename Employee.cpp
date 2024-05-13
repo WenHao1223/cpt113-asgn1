@@ -814,6 +814,20 @@ void Employee::enableDiscount(int index) {
   }
 }
 
+void Employee::deleteDiscount(int index) {
+  if (supervisor != nullptr) {
+    cout << role << " - Deleting discount..." << endl;
+    cout << "Discount '" << discounts[index].getName() << "' has been deleted." << endl;
+    discounts[index].setName("");
+    discounts[index].setMinimumPurchase(0);
+    discounts[index].setDiscountPercentage(0);
+    discounts[index].setDescription("");
+    discounts[index].setDisabled(false);
+  } else {
+    cout << "Only supervisor can delete discount." << endl;
+  }
+}
+
 // @TjeEwe file handling if new bakery item is created
 // deduct ingredients from inventory
 void Employee::bakeNewBakeryItem(int index, int quantity) {

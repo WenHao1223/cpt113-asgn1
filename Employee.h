@@ -86,6 +86,7 @@ class Employee {
     void editDiscountPercentage(int index, double percentage);
     void disableDiscount(int index);
     void enableDiscount(int index);
+    void deleteDiscount(int index);
 
     // accessible by baker role only
     void bakeNewBakeryItem(int index, int quantity);

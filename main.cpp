@@ -342,6 +342,10 @@ int main () {
   // employees[0].enableDiscount(1);
   // employees[0].accessDiscountDetails(1);
 
+  // Done: delete discount
+  employees[0].deleteDiscount(1);
+  employees[0].accessDiscountList();
+
   // Done: show available discount based on cart total price
   // extra option as it is used in checkout()
   // employees[2].showDiscountBasedOnCartTotalPrice();
