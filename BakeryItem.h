@@ -31,7 +31,7 @@ class BakeryItem {
   public:
     // Constructor
     BakeryItem();
-    BakeryItem(string name, string category, string description, double pricePerUnit, Ingredient * ingredient, int ingredientCount, string recipe);
+    BakeryItem(string name, string category, string description, double pricePerUnit, Ingredient * ingredient, int ingredientCount, string recipe, int totalWeight = 0);
 
     // member functions
     void displayBakeryItemDetails() const;

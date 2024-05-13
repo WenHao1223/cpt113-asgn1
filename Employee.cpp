@@ -134,11 +134,12 @@ void Employee::startBakery() {
       Ingredient("Ingredient 2", 2.0, 3),
       Ingredient("Ingredient 3 of Item 2", 0.02, 400.0)
     }, numberOfIngredients, "Recipe 2");
+  // @TjeEwe when doing file handling, cake need to have totalWeight
   numberOfIngredients = 1;
   bakeryItems[2] = BakeryItem("Item 3", "Cake", "Description 3", 30.0,
     new Ingredient[numberOfIngredients] {
       Ingredient("Ingredient 2", 2.0, 3),
-    }, numberOfIngredients, "Recipe 3");
+    }, numberOfIngredients, "Recipe 3", 1000);
 
   // cout << "Bakery Item Address (from employee): " << bakeryItems << endl;
 
@@ -411,6 +412,7 @@ void Employee::createBakeryItem() {
 
     // create bakery items from user input
     string bakeryItemName;
+    string bakeryItemCategory = "";
     string bakeryItemDescription;
     double bakeryItemPricePerUnit;
     int numberOfIngredients;
@@ -420,18 +422,16 @@ void Employee::createBakeryItem() {
     cout << "Enter bakery item name: ";
     getline(cin, bakeryItemName);
 
-    string bakeryItemCategory;
     do {
       cout << "Enter bakery item category (Cookie / Cake): ";
       cin >> bakeryItemCategory;
-      cin.ignore();
     } while (bakeryItemCategory != "Cookie" && bakeryItemCategory != "Cake");
 
+    cin.ignore();
     cout << "Enter bakery item description: ";
     getline(cin, bakeryItemDescription);
     cout << "Enter bakery item price per unit: RM ";
     cin >> bakeryItemPricePerUnit;
-    cin.ignore();
     cout << "Enter number of ingredients: ";
     cin >> numberOfIngredients;
 
@@ -518,7 +518,16 @@ void Employee::createBakeryItem() {
       recipe += line + "\n";
     }
 
-    bakeryItems[bakeryItems->getBakeryItemCount()] = BakeryItem(bakeryItemName, bakeryItemCategory, bakeryItemDescription, bakeryItemPricePerUnit, ingredient, numberOfIngredients, recipe);
+    // input total weight for cake
+    int totalWeight;
+    // if (bakeryItemCategory == "Cake") {
+    //   do {
+    //     cout << "Enter total weight of cake (gram): ";
+    //     cin >> totalWeight;
+    //   } while (totalWeight <= 0);
+    // }
+
+    bakeryItems[bakeryItems->getBakeryItemCount()] = BakeryItem(bakeryItemName, bakeryItemCategory, bakeryItemDescription, bakeryItemPricePerUnit, ingredient, numberOfIngredients, recipe, totalWeight);
     // @TjeEwe file handling for new bakery item
 
     // cout << "Bakery Item Address (from employee): " << bakeryItems << endl;

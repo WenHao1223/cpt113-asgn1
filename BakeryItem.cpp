@@ -4,18 +4,10 @@
 const int MAX_BAKERY_ITEMS = Constant::MAX_BAKERY_ITEMS;
 
 BakeryItem::BakeryItem() {
-  // name = "";
-  // description = "";
-  // pricePerUnit = 0;
-  // ingredient = nullptr;
-  // ingredientCount = 0;
-  // recipe = "";
-  // disabled = false;
-
   // cout << "BakeryItem object has been created." << endl;
 }
 
-BakeryItem::BakeryItem(string name, string category, string description, double pricePerUnit, Ingredient * ingredient, int ingredientCount, string recipe) {
+BakeryItem::BakeryItem(string name, string category, string description, double pricePerUnit, Ingredient * ingredient, int ingredientCount, string recipe, int totalWeight) {
   if (name == "") {
     cout << "Name cannot be empty." << endl;
     exit(EXIT_FAILURE);
@@ -46,6 +38,17 @@ BakeryItem::BakeryItem(string name, string category, string description, double 
     return;
   }
 
+  if (bakeryItemCount == MAX_BAKERY_ITEMS) {
+    cout << "Bakery Item has reached maximum capacity." << endl;
+    return;
+  }
+
+  if (category == "Cake" && totalWeight <= 0) {
+    cout << "Total weight cannot be zero or negative." << endl;
+    exit(EXIT_FAILURE);
+    return;
+  }
+
   this->name = name;
   this->category = category;
   this->description = description;
@@ -53,6 +56,10 @@ BakeryItem::BakeryItem(string name, string category, string description, double 
   this->ingredient = ingredient;
   this->ingredientCount = ingredientCount;
   this->recipe = recipe;
+
+  if (category == "Cake") {
+    cake = new Cake(totalWeight);
+  }
 
   this->bakeryItems[bakeryItemCount] = *this;
   // cout << "bakeryItemCount: " << bakeryItemCount << endl;
