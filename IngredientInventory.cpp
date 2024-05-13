@@ -1,4 +1,5 @@
 #include <iomanip>
+#include <fstream>
 
 #include "Constant.h"
 #include "IngredientInventory.h"
@@ -101,6 +102,8 @@ void IngredientInventory::checkIngredientInventory() const {
 // @TjeEwe require file handling
 // update inventory.csv
 void IngredientInventory::addNewInventoryIngredientWeight(string name, double cost, double weight) {
+  ofstream addInventory;
+  addInventory.open("files/inventory.csv", ios::app);
   if (name == "") {
     cout << "Name cannot be empty." << endl;
     exit(EXIT_FAILURE);
@@ -119,6 +122,8 @@ void IngredientInventory::addNewInventoryIngredientWeight(string name, double co
     return;
   }
 
+  addInventory << name << "," << cost << "," << weight << ",0\n";
+  addInventory.close();
   ingredientInventory[ingredientInventoryCount] = IngredientInventory(name, cost, weight);
 
   cout << weight << " gram(s) of ingredient " << name << " has been added into inventory." << endl;
