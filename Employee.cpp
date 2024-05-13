@@ -1118,7 +1118,9 @@ void Employee::checkout() {
   }
 }
 
-void Employee::showReceipt() const {
+void Employee::showReceipt(int orderNo) const {
+  // read from receipts/receipt-20240510-1.txt
+  // string receiptFileName = "receipts/receipt-" + to_string(Constant::CURRENT_DATE) + "-" + to_string(orderNo) + ".txt";
 
 }
 
@@ -1132,6 +1134,10 @@ string Employee::getName() const {
 
 string Employee::getRole() const {
   return role;
+}
+
+int Employee::getOrderNo() const {
+  return orderNo;
 }
 
 double Employee::getTotalBalance() const {

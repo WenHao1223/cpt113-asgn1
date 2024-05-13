@@ -102,12 +102,13 @@ class Employee {
     void showDiscountBasedOnCartTotalPrice() const;
     void applyDiscount(int choice);
     double calculateDiscountedTotalPrice() const;
-    void showReceipt() const;
+    void showReceipt(int oderNo = orderNo) const;
 
     // accessor
     string getEmployeeID() const;
     string getName() const;
     string getRole() const;
+    int getOrderNo() const;
     double getTotalBalance() const;
     double getTotalCredit() const;
     double getTotalDebit() const;

@@ -4,6 +4,8 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <cmath>
+#include <ctime>
 #include <cstdlib>
 using namespace std;
 
@@ -24,6 +26,17 @@ class Employee;
 
 // global constant
 const int MAX_EMPLOYEES = Constant::MAX_EMPLOYEES;
+
+string convertTimeToYYMMDD() {
+    // Get current time
+    auto currentTime = time(0);
+    auto* timeNow = localtime(&currentTime);
+
+    char buffer[9];
+    strftime(buffer, sizeof(buffer), "%Y%m%d", timeNow);
+
+    return buffer;
+}
 
 void accessMenuDetails(BakeryItem & item) {
   cout << item.name << endl;
@@ -63,6 +76,9 @@ int findEmployeeIndex(Employee employees[], string employeeID) {
 }
 
 int main () {
+  // Done: display current date in YYYYMMDD format
+  cout << convertTimeToYYMMDD() << endl;
+
   // int numberOfIngredients;
 
   // Done: create employees
@@ -110,8 +126,8 @@ int main () {
   // use only once per program
   // can be started by random employee
   // @TjeEwe inventory file shall be read in Employee::startBakery()
-  employees[2].startBakery();
-  cout << endl;
+  // employees[2].startBakery();
+  // cout << endl;
 
   // Done: set ingredient cost of bakery item to latest ingredient cost from inventory
   // not used anymore as it is done in Employee::startBakery()
@@ -152,8 +168,8 @@ int main () {
   // @TjeEwe need to print ingredient inventory list available
   // and let supervisor choose which ingredient to restock
   // then how many pieces or weight to restock
-  employees[0].restockIngredientInventory(0, 50003.6);
-  employees[0].restockIngredientInventory(1, 300);
+  // employees[0].restockIngredientInventory(0, 50003.6);
+  // employees[0].restockIngredientInventory(1, 300);
   // employees[2].restockIngredientInventory(1, 300);
   // employees[0].checkIngredientInventory();
   // cout << endl;
@@ -245,12 +261,12 @@ int main () {
   // employees[1].addBakeryItemToCart(0, 2);
   // employees[2].addBakeryItemToCart(0, 2);
   // cout << endl;
-  employees[1].bakeNewBakeryItem(0, 3);
+  // employees[1].bakeNewBakeryItem(0, 3);
   // employees[1].bakeNewBakeryItem(2, 3);
   // employees[0].accessMenuItem(2);
   // employees[1].accessIngredientInventoryDetails(1);
   // cout << endl;
-  employees[2].addBakeryItemToCart(0, 2);
+  // employees[2].addBakeryItemToCart(0, 2);
   // employees[2].addBakeryItemToCart(0, 3);
   // employees[2].addBakeryItemToCart(2, 1);
   // cout << endl;
@@ -339,7 +355,7 @@ int main () {
 
   // Done: checkout
   // employees[2].accessMenuItem(0);
-  employees[2].checkout();
+  // employees[2].checkout();
   // employees[2].accessMenuItem(0);
 
   // cout << endl << endl;
@@ -352,16 +368,18 @@ int main () {
   // employees[2].checkout();
 
   // Done: show receipt
+  // default parameter is referring previous order's receipt
   // employees[2].showReceipt();
+  // employees[2].showReceipt(1);
 
   // Done: show total debit
-  employees[2].showTotalDebit();
+  // employees[2].showTotalDebit();
 
   // Done: show total credit
-  employees[2].showTotalCredit();
+  // employees[2].showTotalCredit();
 
   // Done: show total profit per day
-  employees[2].showTotalProfitPerDay();
+  // employees[2].showTotalProfitPerDay();
   
   return 0;
 }
