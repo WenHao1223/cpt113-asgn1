@@ -17,6 +17,7 @@ class Baker {
 
     // member functions
     void startBakery();
+    void closeBakery();
 };
 
 #endif

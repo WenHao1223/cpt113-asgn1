@@ -191,6 +191,35 @@ void Employee::showTotalBalance() const {
   cout << "Total balance: RM " << totalBalance << endl;
 }
 
+void Employee::closeBakery(string date) {
+  cout << "Bakery closing now." << endl;
+
+  if (supervisor != nullptr) {
+    supervisor->closeBakery();
+  } else if (baker != nullptr) {
+    baker->closeBakery();
+  } else if (cashier != nullptr) {
+    cashier->closeBakery();
+  } else {
+    cout << "Not a valid role to close the bakery." << endl;
+    exit(EXIT_FAILURE);
+  }
+
+  // display summary of the day
+  cout << "Summary of the day:" << endl;
+  cout << "Total debit: RM " << totalDebit << endl;
+  cout << "Total credit: RM " << totalCredit << endl;
+  cout << "Total profit per day: RM " << totalProfitPerDay << endl;
+  cout << "Total balance: RM " << totalBalance << endl;
+
+  // append to balanceSheet.csv
+  ofstream balanceSheetFile;
+  balanceSheetFile.open("files/balanceSheet.csv", ios::app);
+  balanceSheetFile << setprecision(2) << fixed;
+  balanceSheetFile << "\n" << date << "," << totalDebit << "," << totalCredit << "," << totalBalance;
+  balanceSheetFile.close();
+}
+
 void Employee::displayIngredientInventoryList() const {
   if (supervisor != nullptr || baker != nullptr) {
     cout << role << " - Displaying ingredient inventory list..." << endl;

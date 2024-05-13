@@ -17,6 +17,7 @@ class Supervisor {
 
     // member functions
     void startBakery();
+    void closeBakery();
 };
 
 #endif

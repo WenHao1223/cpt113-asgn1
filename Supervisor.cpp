@@ -9,3 +9,7 @@ Supervisor::Supervisor(string employeeID, string name) {
 void Supervisor::startBakery() {
   cout << "Supervisor " << name << " (" << employeeID << ") starts the bakery." << endl;
 }
+
+void Supervisor::closeBakery() {
+  cout << "Supervisor " << name << " (" << employeeID << ") closes the bakery." << endl;
+}

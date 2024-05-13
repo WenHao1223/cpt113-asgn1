@@ -19,6 +19,7 @@ class Cashier {
 
     // member functions
     void startBakery();
+    void closeBakery();
 
     // accessor
     Cart * getCart();

@@ -55,6 +55,7 @@ class Employee {
     void showTotalCredit() const;
     void showTotalProfitPerDay() const;
     void showTotalBalance() const;
+    void closeBakery(string date);
 
     // accessible by supervisor or baker only
     void displayIngredientInventoryList() const;

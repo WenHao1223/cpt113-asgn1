@@ -38,6 +38,17 @@ string convertTimeToYYYYMMDD() {
   return buffer;
 }
 
+string convertTimeTOYYYY_MM__DD() {
+  // Get current time
+  auto currentTime = time(0);
+  auto* timeNow = localtime(&currentTime);
+
+  char buffer[11];
+  strftime(buffer, sizeof(buffer), "%Y-%m-%d", timeNow);
+
+  return buffer;
+}
+
 void accessMenuDetails(BakeryItem & item) {
   cout << item.name << endl;
   cout << item.description << endl;
@@ -388,6 +399,8 @@ int main () {
 
   // show total balance
   employees[2].showTotalBalance();
+
+  employees[2].closeBakery(convertTimeTOYYYY_MM__DD());
   
   return 0;
 }
