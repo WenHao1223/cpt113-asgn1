@@ -118,6 +118,10 @@ string BakeryItem::getBakeryItemName() const {
   return name;
 }
 
+string BakeryItem::getBakeryItemCategory() const {
+  return category;
+}
+
 string BakeryItem::getBakeryItemDescription() const {
   return description;
 }

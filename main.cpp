@@ -273,6 +273,7 @@ int main () {
 
   // add cake to cart by total weight
   employees[2].addCakeByWeightToCart(2, 200);
+  employees[2].addCakeByWeightToCart(1, 200);
 
   // Done: add bakery item to cart
   // employees[1].addBakeryItemToCart(0, 2);

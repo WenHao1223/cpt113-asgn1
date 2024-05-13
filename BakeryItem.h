@@ -41,6 +41,7 @@ class BakeryItem {
 
     // accessor
     string getBakeryItemName() const;
+    string getBakeryItemCategory() const;
     string getBakeryItemDescription() const;
     double getPricePerUnit() const;
     Ingredient * getIngredient(int) const;

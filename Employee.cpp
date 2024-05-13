@@ -1091,6 +1091,13 @@ void Employee::addCakeByWeightToCart(int index, int weight) {
       return;
     }
 
+
+    // check if bakery item is cake
+    if (bakeryItems[index].getBakeryItemCategory() != "Cake") {
+      cout << "Warning: " << bakeryItems[index].getBakeryItemName() << " is not a cake." << endl;
+      return;
+    }
+
     // check if bakery item is enough
     if (bakeryItems[index].getBakeryItemQuantity() * bakeryItems[index].getCake()->getTotalWeight() < weight) {
       cout << "Warning: Not enough " << bakeryItems[index].getBakeryItemName() << " in inventory." << endl;
