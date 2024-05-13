@@ -1,0 +1,29 @@
+Milky Bakery
+2-1-11, Plaza Ivory,
+Halaman Bukit Gambir,
+11700 Penang
+Tel : 016 2451233
+
+Take Away
+--------------------------------------------------------------------
+Current Invoice 
+R.No: 5
+Date: 2024-05-13 12:50:00
+Transaction by: C2
+
+No Description                         Quantity           Price (RM)
+1. Chocolate Cake                             2                35.00
+
+2. Vanilla Cookies                            1                10.00
+
+---------------------------------------------------------------------
+Subtotal (2)                                                   45.00
+---------------------------------------------------------------------
+Discount Summary                                              Amount
+Discount Name                                        Over RM30 Oasis
+Total Discount                                                  2.25
+---------------------------------------------------------------------
+Total                                                          42.75
+Round Up                                                       42.75
+AMT DUE                                                        42.75
+Payment Method                                                   TnG

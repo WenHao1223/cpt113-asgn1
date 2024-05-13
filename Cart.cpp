@@ -4,19 +4,26 @@
 
 Cart::Cart() {
   bakeryItems = new BakeryItem[Constant::MAX_BAKERY_ITEMS];
-  quantity = new int[Constant::MAX_BAKERY_ITEMS];
+  quantity = new double[Constant::MAX_BAKERY_ITEMS];
 }
 
 void Cart::displayCartDetails() {
   this->totalPrice = 0;
-  cout << "+----+--------------------------+----------+------------+------------------+" << endl;
-  cout << "| " << setw(3) << left << "No" << "| " << setw(25) << left << "Name" << "| " << setw(9) << left << "Quantity" << "| " << setw(11) << left << "Price (RM)" << "| " << setw(16) << left << "Amount (RM)" << " |" << endl;
-  cout << "+----+--------------------------+----------+------------+------------------+" << endl;
+  cout << "+----+--------------------------+--------------------------+------------+------------------+" << endl;
+  cout << "| " << setw(3) << left << "No" << "| " << setw(25) << left << "Name" << "| " << setw(25) << left << "Quantity" << "| " << setw(11) << left << "Price (RM)" << "| " << setw(16) << left << "Amount (RM)" << " |" << endl;
+  cout << "+----+--------------------------+--------------------------+------------+------------------+" << endl;
   for (int i = 0; i < cartItemCount; i++) {
     cout << setprecision(2) << fixed;
-    cout << "| " << setw(3) << left << i+1 << "| " << setw(25) << left << bakeryItems[i].getBakeryItemName() << "| " << setw(9) << left << quantity[i] << "| " << setw(11) << left << bakeryItems[i].getPricePerUnit() << "| " << setw(16) << left << bakeryItems[i].getPricePerUnit() * quantity[i] << " |" << endl;
+    // check if quantity is a whole number
+    if (quantity[i] == (int)quantity[i]) {
+      string displayedQuantity = to_string((int)quantity[i]) + "x";
+      cout << "| " << setw(3) << left << i+1 << "| " << setw(25) << left << bakeryItems[i].getBakeryItemName() << "| " << setw(25) << left << displayedQuantity << "| " << setw(11) << left << bakeryItems[i].getPricePerUnit() << "| " << setw(16) << left << bakeryItems[i].getPricePerUnit() * quantity[i] << " |" << endl;
+    } else {
+      string displayedQuantity = (((int)quantity[i] != 0) ? (to_string((int)quantity[i]) + "x  +  ") : "") + to_string(((int)(quantity[i] * 1000) - ((int)quantity[i] * 1000))) + " g";
+      cout << "| " << setw(3) << left << i+1 << "| " << setw(25) << left << bakeryItems[i].getBakeryItemName() << "| " << setw(25) << left << displayedQuantity << "| " << setw(11) << left << bakeryItems[i].getPricePerUnit() << "| " << setw(16) << left << bakeryItems[i].getPricePerUnit() * quantity[i] << " |" << endl;
+    }
   }
-  cout << "+----+--------------------------+----------+------------+------------------+" << endl;
+  cout << "+----+--------------------------+--------------------------+------------+------------------+" << endl;
   cout << "Total Price: RM " << setprecision(2) << fixed << this->calculateTotalPrice() << endl;
 }
 
@@ -28,6 +35,19 @@ void Cart::addBakeryItemToCart(BakeryItem & item, int quantity) {
 
   bakeryItems[cartItemCount] = item;
   this->quantity[cartItemCount] = quantity;
+  cartItemCount++;
+
+  cout << item.getBakeryItemName() << " added to cart." << endl;
+}
+
+void Cart::addCakeByWeightToCart(BakeryItem & item, double weight) {
+  if (cartItemCount >= Constant::MAX_BAKERY_ITEMS) {
+    cout << "Cart is full." << endl;
+    return;
+  }
+
+  bakeryItems[cartItemCount] = item;
+  this->quantity[cartItemCount] = weight / item.getCake()->getTotalWeight();
   cartItemCount++;
 
   cout << item.getBakeryItemName() << " added to cart." << endl;
@@ -57,7 +77,11 @@ void Cart::updateBakeryItemQuantity(int index, int quantity) {
 }
 
 void Cart::clearCart() {
-  *this = Cart();
+  cartItemCount = 0;
+  totalCost = 0;
+  totalPrice = 0;
+  totalProfit = 0;
+  totalDiscount = 0;
 }
 
 double Cart::calculateTotalCost() {
@@ -92,7 +116,7 @@ BakeryItem * Cart::getBakeryItems() const {
   return bakeryItems;
 }
 
-int * Cart::getQuantity() const {
+double * Cart::getQuantity() const {
   return quantity;
 }
 
@@ -116,7 +140,7 @@ void Cart::setBakeryItems(BakeryItem * bakeryItems) {
   this->bakeryItems = bakeryItems;
 }
 
-void Cart::setQuantity(int * quantity) {
+void Cart::setQuantity(double * quantity) {
   this->quantity = quantity;
 }
 

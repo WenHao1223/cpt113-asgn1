@@ -4,20 +4,18 @@
 const int MAX_BAKERY_ITEMS = Constant::MAX_BAKERY_ITEMS;
 
 BakeryItem::BakeryItem() {
-  // name = "";
-  // description = "";
-  // pricePerUnit = 0;
-  // ingredient = nullptr;
-  // ingredientCount = 0;
-  // recipe = "";
-  // disabled = false;
-
   // cout << "BakeryItem object has been created." << endl;
 }
 
-BakeryItem::BakeryItem(string name, string description, double pricePerUnit, Ingredient * ingredient, int ingredientCount, string recipe) {
+BakeryItem::BakeryItem(string name, string category, string description, double pricePerUnit, Ingredient * ingredient, int ingredientCount, string recipe, int totalWeight) {
   if (name == "") {
     cout << "Name cannot be empty." << endl;
+    exit(EXIT_FAILURE);
+    return;
+  }
+
+  if (category == "") {
+    cout << "Category cannot be empty." << endl;
     exit(EXIT_FAILURE);
     return;
   }
@@ -40,12 +38,28 @@ BakeryItem::BakeryItem(string name, string description, double pricePerUnit, Ing
     return;
   }
 
+  if (bakeryItemCount == MAX_BAKERY_ITEMS) {
+    cout << "Bakery Item has reached maximum capacity." << endl;
+    return;
+  }
+
+  if (category == "Cake" && totalWeight <= 0) {
+    cout << "Total weight cannot be zero or negative." << endl;
+    exit(EXIT_FAILURE);
+    return;
+  }
+
   this->name = name;
+  this->category = category;
   this->description = description;
   this->pricePerUnit = pricePerUnit;
   this->ingredient = ingredient;
   this->ingredientCount = ingredientCount;
   this->recipe = recipe;
+
+  if (category == "Cake") {
+    cake = new Cake(totalWeight);
+  }
 
   this->bakeryItems[bakeryItemCount] = *this;
   // cout << "bakeryItemCount: " << bakeryItemCount << endl;
@@ -87,8 +101,25 @@ double BakeryItem::calculateProfit() const {
   return pricePerUnit - calculateCost();
 }
 
+// @TjeEwe require file handling
+// update inventory.csv cost of ingredient
+void BakeryItem::setIngredientCostToInventoryIngredientCost(IngredientInventory * inventoryIngredient) {
+  for (int i = 0; i < ingredientCount; i++) {
+    for (int j = 0; j < inventoryIngredient->getIngredientInventoryCount(); j++) {
+      if (ingredient[i].getName() == inventoryIngredient[j].getName()) {
+        cout << "Ingredient " << ingredient[i].getName() << " cost has been set to RM " << inventoryIngredient[j].getCostPerUnit() << endl;
+        ingredient[i].setCostPerUnit(inventoryIngredient[j].getCostPerUnit());
+      }
+    }
+  }
+}
+
 string BakeryItem::getBakeryItemName() const {
   return name;
+}
+
+string BakeryItem::getBakeryItemCategory() const {
+  return category;
 }
 
 string BakeryItem::getBakeryItemDescription() const {
@@ -103,11 +134,19 @@ Ingredient * BakeryItem::getIngredient(int index) const {
   return &ingredient[index];
 }
 
+string BakeryItem::getIngredientName(int index) const {
+  return ingredient[index].getName();
+}
+
+Cake * BakeryItem::getCake() const {
+  return cake;
+}
+
 int BakeryItem::getIngredientCount() const {
   return ingredientCount;
 }
 
-int BakeryItem::getBakeryItemQuantity() const {
+double BakeryItem::getBakeryItemQuantity() const {
   return quantity;
 }
 
@@ -132,7 +171,7 @@ void BakeryItem::setPricePerUnit(double pricePerUnit) {
   this->pricePerUnit = pricePerUnit;
 }
 
-void BakeryItem::setBakeryItemQuantity(int quantity) {
+void BakeryItem::setBakeryItemQuantity(double quantity) {
   this->quantity = quantity;
 }
 

@@ -1,4 +1,7 @@
 #include <iomanip>
+#include <string>
+#include <fstream>
+#include <cmath>
 
 #include "Discount.h"
 #include "Employee.h"
@@ -43,8 +46,6 @@ Employee::Employee(string employeeID, string name, string role) {
   } else {
     cashier = new Cashier(employeeID, name);
   }
-
-  // cout << "work fine constructor" << endl;
 }
 
 void Employee::displayEmployeeDetails() const {
@@ -60,12 +61,54 @@ void Employee::displayEmployeeDetails() const {
   cout << endl;
 }
 
-void Employee::startBakery() const {
+void Employee::setIngredientCostToInventoryIngredientCost() {
+  cout << role << " - Setting ingredient cost to inventory ingredient cost..." << endl;
+  for (int i = 0; i < bakeryItems[0].getBakeryItemCount(); i++) {
+    for (int j = 0; j < bakeryItems[i].getIngredientCount(); j++) {
+      for (int k = 0; k < ingredientInventory[0].getIngredientInventoryCount(); k++) {
+        if(bakeryItems[i].getIngredient(j)->getName() == ingredientInventory[k].getIngredient().getName()) {
+          cout << "Ingredient " << bakeryItems[i].getIngredient(j)->getName() << "'s cost of " << bakeryItems[i].getBakeryItemName() << " has been set to RM " << ingredientInventory->getIngredientInventoryCost(k) << endl;
+          bakeryItems[i].getIngredient(j)->setCostPerUnit(ingredientInventory->getIngredientInventoryCost(k));
+        }
+      }
+    }
+  }
+}
+
+void Employee::startBakery() {
   cout << "Bakery start operating now." << endl;
+  cout << endl;
 
   orderNo = 0;
+  
+  // fetch total balance from files/balanceSheet.csv last row last column
+  ifstream balanceSheetFile;
+  balanceSheetFile.open("files/balanceSheet.csv");
+  string line;
+  string lastLine;
+  while (getline(balanceSheetFile, line)) {
+    lastLine = line;
+  }
+  balanceSheetFile.close();
 
-  // @TjeEwe fetch balance from balanceSheet.csv
+  // extract total balance from last line
+  string totalBalanceString;
+  for (char c : lastLine) {
+    if (c == ',') {
+      totalBalanceString = "";
+    } else {
+      totalBalanceString += c;
+    }
+  }
+
+  // startup balance
+  if (totalBalanceString == "balance") {
+    totalBalanceString = "5000.0";
+  }
+
+  totalBalance = stod(totalBalanceString);
+
+  cout << "Balance: RM " << totalBalanceString << endl;
 
   ingredientInventory[0] = IngredientInventory("Ingredient 1", 0.0005, 100000.0);
   ingredientInventory[1] = IngredientInventory("Ingredient 2", 20.0, 200);
@@ -80,21 +123,23 @@ void Employee::startBakery() const {
   Ingredient * ingredient;
 
   numberOfIngredients = 1;
-  bakeryItems[0] = BakeryItem("Item 1", "Description 1", 10.0,
+  bakeryItems[0] = BakeryItem("Item 1", "Cookie", "Description 1", 10.0,
     new Ingredient[numberOfIngredients] {
       Ingredient("Ingredient 1", 0.08, 100.0)
     }, numberOfIngredients, "Recipe 1");
   numberOfIngredients = 3;
-  bakeryItems[1] = BakeryItem("Item 2", "Description 2", 20.0,
+  bakeryItems[1] = BakeryItem("Item 2", "Cookie", "Description 2", 20.0,
     new Ingredient[numberOfIngredients] {
       Ingredient("Ingredient 1 of Item 2", 0.005, 200.0),
       Ingredient("Ingredient 2", 2.0, 3),
       Ingredient("Ingredient 3 of Item 2", 0.02, 400.0)
     }, numberOfIngredients, "Recipe 2");
-  bakeryItems[2] = BakeryItem("Item 3", "Description 3", 30.0,
+  // @TjeEwe when doing file handling, cake need to have totalWeight
+  numberOfIngredients = 1;
+  bakeryItems[2] = BakeryItem("Item 3", "Cake", "Description 3", 30.0,
     new Ingredient[numberOfIngredients] {
       Ingredient("Ingredient 2", 2.0, 3),
-    }, numberOfIngredients, "Recipe 3");
+    }, numberOfIngredients, "Recipe 3", 1000);
 
   // cout << "Bakery Item Address (from employee): " << bakeryItems << endl;
 
@@ -102,9 +147,44 @@ void Employee::startBakery() const {
 
   // cout << "Address of discounts (from employee): " << discounts << endl;
 
-  // @TjeEwe need fetch this from file instead
-  discounts[0] = Discount("Over RM30 Oasis: Enjoy 5\% Off", 30.0, 5.0, "Description 1", false);
-  discounts[1] = Discount("Fifty-Fiver Flourish: 10\% Discount", 50.0, 10.0, "Description 2", false);
+  // read from file/discount.csv
+  ifstream discountFile;
+  discountFile.open("files/discount.csv", ios::in);
+  cout << endl;
+  cout << "Reading discount file..." << endl;
+  string discountLine;
+  string discountName;
+  double discountMinimumPurchase;
+  double discountPercentage;
+  string discountDescription;
+  bool discountDisabled;
+  int discountCount = 0;
+
+  getline(discountFile, discountLine); // skip first line (header)
+  while (!discountFile.eof()) {
+    getline(discountFile, discountName, ',');
+    getline(discountFile, discountLine, ',');
+    discountMinimumPurchase = stod(discountLine);
+    getline(discountFile, discountLine, ',');
+    discountPercentage = stod(discountLine);
+    getline(discountFile, discountDescription, ',');
+    getline(discountFile, discountLine);
+    discountDisabled = (discountLine == "true");
+
+    if (discountName != "") {
+      cout << "Discount '" << discountName << "' has been added." << endl;
+      // cout << discountName << "," << discountMinimumPurchase << "," << discountPercentage << "," << discountDescription << "," << discountDisabled << endl;
+      discounts[discountCount] = Discount(discountName, discountMinimumPurchase, discountPercentage, discountDescription, discountDisabled);
+      discountCount++;
+    }
+  }
+  cout << "Discount count: " << discountCount << endl;
+  discountFile.close();
+  // cout << "Discount file closed." << endl;
+  cout << endl;
+
+  // discounts[0] = Discount("Over RM30 Oasis: Enjoy 5\% Off", 30.0, 5.0, "Description 1", false);
+  // discounts[1] = Discount("Fifty-Fiver Flourish: 10\% Discount", 50.0, 10.0, "Description 2", false);
 
   if (supervisor != nullptr) {
     supervisor->startBakery();
@@ -116,6 +196,10 @@ void Employee::startBakery() const {
     cout << "Not a valid role to start the bakery." << endl;
     exit(EXIT_FAILURE);
   }
+
+  cout << endl;
+  this->setIngredientCostToInventoryIngredientCost();
+  cout << endl;
 
   cout << "Selling " << ingredientInventory[0].getIngredientInventoryCount() << " items today." << endl;
 }
@@ -150,6 +234,57 @@ void Employee::accessDiscountDetails(int index) const {
   cout << "Active: " << (!discounts[index].getDisabled() ? "Yes" : "No") << endl;
 }
 
+void Employee::showTotalDebit() const {
+  cout << role << " - Showing total debit..." << endl;
+  cout << "Total debit: RM " << totalDebit << endl;
+}
+
+void Employee::showTotalCredit() const {
+  cout << role << " - Showing total credit..." << endl;
+  cout << "Total credit: RM " << totalCredit << endl;
+}
+
+void Employee::showTotalProfitPerDay() const {
+  cout << role << " - Showing total profit per day..." << endl;
+  totalProfitPerDay = getTotalProfitPerDay();
+  cout << "Total profit per day: RM " << totalProfitPerDay << endl;
+}
+
+void Employee::showTotalBalance() const {
+  cout << role << " - Showing total balance..." << endl;
+  totalBalance = getTotalBalance();
+  cout << "Total balance: RM " << totalBalance << endl;
+}
+
+void Employee::closeBakery(string date) {
+  cout << "Bakery closing now." << endl;
+
+  if (supervisor != nullptr) {
+    supervisor->closeBakery();
+  } else if (baker != nullptr) {
+    baker->closeBakery();
+  } else if (cashier != nullptr) {
+    cashier->closeBakery();
+  } else {
+    cout << "Not a valid role to close the bakery." << endl;
+    exit(EXIT_FAILURE);
+  }
+
+  // display summary of the day
+  cout << "Summary of the day:" << endl;
+  cout << "Total debit: RM " << totalDebit << endl;
+  cout << "Total credit: RM " << totalCredit << endl;
+  cout << "Total profit per day: RM " << totalProfitPerDay << endl;
+  cout << "Total balance: RM " << totalBalance << endl;
+
+  // append to balanceSheet.csv
+  ofstream balanceSheetFile;
+  balanceSheetFile.open("files/balanceSheet.csv", ios::app);
+  balanceSheetFile << setprecision(2) << fixed;
+  balanceSheetFile << "\n" << date << "," << totalDebit << "," << totalCredit << "," << totalBalance;
+  balanceSheetFile.close();
+}
+
 void Employee::displayIngredientInventoryList() const {
   if (supervisor != nullptr || baker != nullptr) {
     cout << role << " - Displaying ingredient inventory list..." << endl;
@@ -162,7 +297,7 @@ void Employee::displayIngredientInventoryList() const {
 void Employee::accessIngredientInventoryDetails(int index) const {
   if (supervisor != nullptr || baker != nullptr) {
     cout << role << " - Accessing ingredient inventory details..." << endl;
-    (ingredientInventory+index)->accessIngredientInventoryDetails();
+    ingredientInventory->accessIngredientInventoryDetails(index); 
   } else {
     cout << "Only supervisor or baker can access ingredient inventory details." << endl;
   }
@@ -177,20 +312,26 @@ void Employee::checkIngredientInventory() const {
   }
 }
 
-void Employee::restockIngredientInventory(int index, int quantity) const {
+void Employee::restockIngredientInventory(int index, double quantity) const {
   if (supervisor != nullptr) {
     cout << role << " - Restocking ingredient inventory..." << endl;
     if (quantity < 0) {
       cout << "Quantity cannot be negative." << endl;
       return;
     }
-    ingredientInventory->restockIngredientInventory(index, quantity);
+    double totalCost = ingredientInventory->restockIngredientInventory(index, quantity);
+    cout << "Cost of restock: RM " << totalCost << endl;
+
+    // update total credit
+    totalCredit += totalCost;
+
+    // cout << "Total credit: RM " << totalCredit << endl;
   } else {
     cout << "Only supervisor can restock ingredient inventory." << endl;
   }
 }
 
-void Employee::changeIngredientCost(int index, double cost) const {
+void Employee::changeIngredientCost(int index, double cost) {
   if (supervisor != nullptr) {
     cout << role << " - Changing ingredient cost..." << endl;
     if (cost < 0) {
@@ -198,6 +339,9 @@ void Employee::changeIngredientCost(int index, double cost) const {
       return;
     }
     ingredientInventory->changeIngredientCost(index, cost);
+
+    // update all bakery items ingredient cost
+    this->setIngredientCostToInventoryIngredientCost();
   } else {
     cout << "Only supervisor can change ingredient cost." << endl;
   }
@@ -268,6 +412,7 @@ void Employee::createBakeryItem() {
 
     // create bakery items from user input
     string bakeryItemName;
+    string bakeryItemCategory = "";
     string bakeryItemDescription;
     double bakeryItemPricePerUnit;
     int numberOfIngredients;
@@ -276,11 +421,17 @@ void Employee::createBakeryItem() {
 
     cout << "Enter bakery item name: ";
     getline(cin, bakeryItemName);
+
+    do {
+      cout << "Enter bakery item category (Cookie / Cake): ";
+      cin >> bakeryItemCategory;
+    } while (bakeryItemCategory != "Cookie" && bakeryItemCategory != "Cake");
+
+    cin.ignore();
     cout << "Enter bakery item description: ";
     getline(cin, bakeryItemDescription);
     cout << "Enter bakery item price per unit: RM ";
     cin >> bakeryItemPricePerUnit;
-    cin.ignore();
     cout << "Enter number of ingredients: ";
     cin >> numberOfIngredients;
 
@@ -304,17 +455,14 @@ void Employee::createBakeryItem() {
       // find ingredient name from ingredient inventory, if found, use the cost
       for (int j = 0; j < ingredientInventory->getIngredientInventoryCount(); j++) {
         if (ingredientName ==  ingredientInventory->getIngredientInventoryName(j)) {
-          cout << "Ingredient found in inventory." << endl;
-          cout << "Cost: RM " << ingredientInventory->getIngredientInventoryCost(j) << endl;
-          cout << "Do you want to use this cost? (Y/N): ";
-          char useCost;
-          cin >> useCost;
-          if (useCost == 'Y' || useCost == 'y') {
-            ingredientCost = ingredientInventory->getIngredientInventoryCost(j);
+          cout << ingredientName << " found in inventory." << endl;
+          cout << "Cost: RM " << ingredientInventory->getIngredientInventoryCost(j);
+          if (ingredientInventory[j].getIngredient().getCountable()) {
+            cout << " / piece(s)." << endl;
           } else {
-            cout << "Enter ingredient cost: RM ";
-            cin >> ingredientCost;
+            cout << " / gram(s)." << endl;
           }
+          ingredientCost = ingredientInventory->getIngredientInventoryCost(j);
 
           if (ingredientInventory[j].getCountable()) {
             cout << "Enter ingredient piece: ";
@@ -345,10 +493,16 @@ void Employee::createBakeryItem() {
           cout << "Enter ingredient piece: ";
           cin >> ingredientPiece;
           ingredient[i] = Ingredient(ingredientName, ingredientCost, ingredientPiece);
+
+          // add new ingredient to ingredient inventory
+          ingredientInventory->addNewInventoryIngredientPiece(ingredientName, ingredientCost, ingredientPiece);
         } else {
           cout << "Enter ingredient weight in gram(s): ";
           cin >> ingredientWeight;
           ingredient[i] = Ingredient(ingredientName, ingredientCost, ingredientWeight);
+
+          // add new ingredient to ingredient inventory
+          ingredientInventory->addNewInventoryIngredientWeight(ingredientName, ingredientCost, ingredientWeight);
         }
       }
     }
@@ -364,7 +518,14 @@ void Employee::createBakeryItem() {
       recipe += line + "\n";
     }
 
-    bakeryItems[bakeryItems->getBakeryItemCount()] = BakeryItem(bakeryItemName, bakeryItemDescription, bakeryItemPricePerUnit, ingredient, numberOfIngredients, recipe);
+    // input total weight for cake
+    int totalWeight = 0;
+    if (bakeryItemCategory == "Cake") {
+      cout << "Enter total weight of cake (gram): ";
+      cin >> totalWeight;
+    }
+
+    bakeryItems[bakeryItems->getBakeryItemCount()] = BakeryItem(bakeryItemName, bakeryItemCategory, bakeryItemDescription, bakeryItemPricePerUnit, ingredient, numberOfIngredients, recipe, totalWeight);
     // @TjeEwe file handling for new bakery item
 
     // cout << "Bakery Item Address (from employee): " << bakeryItems << endl;
@@ -378,6 +539,7 @@ void Employee::withdrawBakeryItem (int index) {
   if (supervisor != nullptr) {
     cout << role << " - Withdrawing " << bakeryItems[index].getBakeryItemName() << "..." << endl;
     bakeryItems[index].setDisabled(true);
+    cout << bakeryItems[index].getBakeryItemName() << " has been withdrawn." << endl;
   } else {
     cout << "Only supervisor can withdraw bakery item." << endl;
   }
@@ -387,6 +549,7 @@ void Employee::enableBakeryItem (int index) {
   if (supervisor != nullptr) {
     cout << role << " - Enabling " << bakeryItems[index].getBakeryItemName() << "..." << endl;
     bakeryItems[index].setDisabled(false);
+    cout << bakeryItems[index].getBakeryItemName() << " has been enabled." << endl;
   } else {
     cout << "Only supervisor can enable bakery item." << endl;
   }
@@ -396,6 +559,8 @@ void Employee::changeBakeryItemPrice(int index, double newPrice) {
   if (supervisor != nullptr) {
     cout << role << " - Changing " << bakeryItems[index].getBakeryItemName() << " price..." << endl;
     bakeryItems[index].setPricePerUnit(newPrice);
+    cout << setprecision(2) << fixed;
+    cout << bakeryItems[index].getBakeryItemName() << " price has been changed to RM " << newPrice << "." << endl;
   } else {
     cout << "Only supervisor can change bakery item price." << endl;
   }
@@ -459,6 +624,7 @@ void Employee::createNewEmployee(Employee * employees, string employeeID, string
       return;
     }
 
+    bool employeeCreated = false;
     for (int i = 0; i < Constant::MAX_EMPLOYEES; i++) {
       // employee id is not unique
       if (employees[i].employeeID == employeeID) {
@@ -469,14 +635,31 @@ void Employee::createNewEmployee(Employee * employees, string employeeID, string
       if (employees[i].employeeID == "") {
         cout << role << " " << name << " created successfully." << endl;
         cout << "at index " << i << " of " << &employees[i] << endl;
-        employees[i] = Employee(employeeID, name, role);
-        cout << "work fine" << endl;
+        // employees[i] = Employee(employeeID, name, role);
+
+        employees[i].employeeID = employeeID;
+        employees[i].name = name;
+        employees[i].role = role;
+
+        if (role == "Supervisor") {
+          employees[i].supervisor = new Supervisor(employeeID, name);
+        } else if (role == "Baker") {
+          employees[i].baker = new Baker(employeeID, name);
+        } else {
+          employees[i].cashier = new Cashier(employeeID, name);
+        }
+
+        employeeCreated = true;
+
         employees[i].displayEmployeeDetails();
         break;
       }
     }
 
-    cout << "Warning: Maximum number of employees reached." << endl;
+    if (!employeeCreated) {
+      cout << "Warning: Maximum number of employees reached." << endl;
+    }
+
   } else {
     cout << "Only supervisor can create new employee." << endl;
   }
@@ -582,14 +765,19 @@ void Employee::deleteEmployee(Employee employees [], int index) {
       return;
     }
 
-    employees[index] = Employee();
-    cout << "Employee has been deleted." << endl;
+    cout << employees[index].role << " " << employees[index].name << " has been deleted." << endl;
+
+    employees[index].name = "";
+    employees[index].role = "";
+    employees[index].employeeID = "";
+    employees[index].supervisor = nullptr;
+    employees[index].baker = nullptr;
+    employees[index].cashier = nullptr;
   } else {
     cout << "Only supervisor can delete employee." << endl;
   }
 }
 
-// @TjeEwe file handling if new discount is created
 // @AeroRin input validation
 void Employee::addNewDiscount() {
   if (supervisor != nullptr) {
@@ -620,6 +808,13 @@ void Employee::addNewDiscount() {
       if (discounts[i].getName() == "") {
         discounts[i] = Discount(discountName, minimumPurchase, discountPercentage, discountDescription, disabled);
         cout << "Discount '" << discountName << "' has been added." << endl;
+
+        // add new discount to files/discount.csv
+        ofstream discountFile;
+        discountFile.open("files/discount.csv", ios::app);
+        discountFile << endl << discountName << "," << minimumPurchase << "," << discountPercentage << "," << discountDescription << "," << (disabled ? "false" : "true");
+        discountFile.close();
+
         return;
       }
     }
@@ -630,19 +825,91 @@ void Employee::addNewDiscount() {
   }
 }
 
+void Employee::accessDiscountFile(int index, string field, string value) {
+  ifstream discountFile;
+  discountFile.open("files/discount.csv", ios::in);
+  string line;
+  string newFileLines;
+
+  string name;
+  string minimumPurchase;
+  string discountPercentage;
+  string description;
+  string disabled;
+
+  while (!discountFile.eof()) {
+    getline(discountFile, name, ',');
+    getline(discountFile, minimumPurchase, ',');
+    getline(discountFile, discountPercentage, ',');
+    getline(discountFile, description, ',');
+    getline(discountFile, disabled);
+
+    cout << name << "," << minimumPurchase << "," << discountPercentage << "," << description << "," << disabled << endl;
+
+    if (name == discounts[index].getName()) {
+      if (field == "name") {
+        name = value;
+      } else if (field == "minimumPurchase") {
+        minimumPurchase = value;
+      } else if (field == "discountPercentage") {
+        discountPercentage = value;
+      } else if (field == "description") {
+        description = value;
+      } else if (field == "disabled") {
+        disabled = value;
+      } else if (field == "deleteAll") {
+        continue;
+      } else {
+        cout << "Invalid field." << endl;
+        return;
+      }
+    }
+
+    newFileLines += name + "," + minimumPurchase + "," + discountPercentage + "," + description + "," + disabled + "\n";
+  }
+  // remove last line
+  newFileLines = newFileLines.substr(0, newFileLines.size()-1);
+  discountFile.close();
+
+  ofstream newDiscountFile;
+  newDiscountFile.open("files/discount.csv");
+  newDiscountFile << newFileLines;
+  newDiscountFile.close();
+}
+
 void Employee::editDiscountName(int index, string newName) {
   if (supervisor != nullptr) {
     cout << role << " - Editing discount name..." << endl;
-    discounts[index].setName(newName);
-    cout << "Name has been updated to '" << discounts[index].getName() << "'" << endl;
+
+    // edit name in files/discount.csv
+    accessDiscountFile(index, "name", newName);
+
   } else {
     cout << "Only supervisor can edit discount name." << endl;
+  }
+}
+
+void Employee::editDiscountMinimumPurchase(int index, double newMinimumPurchase) {
+  if (supervisor != nullptr) {
+    cout << role << " - Editing minimum purchase..." << endl;
+
+    // edit minimum purchase in files/discount.csv
+    accessDiscountFile(index, "minimumPurchase", to_string(newMinimumPurchase));
+
+    discounts[index].setMinimumPurchase(newMinimumPurchase);
+    cout << "Minimum purchase has been updated for discount '" << discounts[index].getName() << "'." << endl;
+  } else {
+    cout << "Only supervisor can edit minimum purchase." << endl;
   }
 }
 
 void Employee::editDiscountPercentage(int index, double newPercentage) {
   if (supervisor != nullptr) {
     cout << role << " - Editing discount percentage..." << endl;
+
+    // edit percentage in files/discount.csv
+    accessDiscountFile(index, "discountPercentage", to_string(newPercentage));
+
     discounts[index].setDiscountPercentage(newPercentage);
     cout << "Percentage has been updated for discount '" << discounts[index].getName() << "'." << endl;
   } else {
@@ -653,6 +920,10 @@ void Employee::editDiscountPercentage(int index, double newPercentage) {
 void Employee::editDiscountDescription(int index, string newDescription) {
   if (supervisor != nullptr) {
     cout << role << " - Editing discount description..." << endl;
+
+    // edit description in files/discount.csv
+    accessDiscountFile(index, "description", newDescription);
+
     discounts[index].setDescription(newDescription);
     cout << "Description has been updated for '" << discounts[index].getName() << "'." << endl;
   } else {
@@ -663,6 +934,10 @@ void Employee::editDiscountDescription(int index, string newDescription) {
 void Employee::disableDiscount(int index) {
   if (supervisor != nullptr) {
     cout << role << " - Disabling discount..." << endl;
+
+    // edit disabled in files/discount.csv
+    accessDiscountFile(index, "disabled", "true");
+
     discounts[index].setDisabled(true);
     cout << "'" << discounts[index].getName() << "' has been disabled." << endl;
   } else {
@@ -673,10 +948,106 @@ void Employee::disableDiscount(int index) {
 void Employee::enableDiscount(int index) {
   if (supervisor != nullptr) {
     cout << role << " - Enabling discount..." << endl;
+
+    // edit disabled in files/discount.csv
+    accessDiscountFile(index, "disabled", "false");
+
     discounts[index].setDisabled(false);
     cout << "'" << discounts[index].getName() << "' has been enabled." << endl;
   } else {
     cout << "Only supervisor can enable discount." << endl;
+  }
+}
+
+void Employee::deleteDiscount(int index) {
+  if (supervisor != nullptr) {
+    cout << role << " - Deleting discount..." << endl;
+
+    // delete discount in files/discount.csv
+    accessDiscountFile(index, "deleteAll", "");
+
+    cout << "Discount '" << discounts[index].getName() << "' has been deleted." << endl;
+    discounts[index].setName("");
+    discounts[index].setMinimumPurchase(0);
+    discounts[index].setDiscountPercentage(0);
+    discounts[index].setDescription("");
+    discounts[index].setDisabled(false);
+
+  } else {
+    cout << "Only supervisor can delete discount." << endl;
+  }
+}
+
+void Employee::displayBalanceSheet() const {
+  if (supervisor != nullptr) {
+    cout << role << " - Displaying balance sheet..." << endl;
+    ifstream balanceSheetFile;
+    balanceSheetFile.open("files/balanceSheet.csv", ios::in);
+    string line;
+    cout << "+----------------+----------------+----------------+----------------+" << endl;
+    cout << "| " << left << setw(15) << "Date" << "| ";
+    cout << left << setw(15) << "Total Debit" << "| ";
+    cout << left << setw(15) << "Total Credit" << "| ";
+    cout << left << setw(15) << "Total Balance" << "|" << endl;
+    cout << "+----------------+----------------+----------------+----------------+" << endl;
+
+    getline(balanceSheetFile, line); // skip first line
+    while (!balanceSheetFile.eof()) {
+      getline(balanceSheetFile, line, ',');
+      cout << "| " << left << setw(15) << line << "| ";
+      getline(balanceSheetFile, line, ',');
+      cout << left << setw(15) << line << "| ";
+      getline(balanceSheetFile, line, ',');
+      cout << left << setw(15) << line << "| ";
+      getline(balanceSheetFile, line);
+      cout << left << setw(15) << line << "|" << endl;
+    }
+    cout << "+----------------+----------------+----------------+----------------+" << endl;
+    balanceSheetFile.close();
+  } else {
+    cout << "Only supervisor can display balance sheet." << endl;
+  }
+}
+
+void Employee::accessTransactionHistory (string date) const {
+  if (supervisor != nullptr) {
+    cout << role << " - Accessing " + date + " transaction history ..." << endl;
+    ifstream transactionHistoryFile;
+    transactionHistoryFile.open("files/transactions/transaction-"+date+".csv", ios::in);
+    string line;
+    cout << "+-----------+----------------+----------------+--------------------------+----------------+----------------+----------------+" << endl;
+    cout << "| " << left << setw(10) << "Order ID" << "| ";
+    cout << left << setw(15) << "Date Time" << "| ";
+    cout << left << setw(15) << "Cashier ID" << "| ";
+    cout << left << setw(25) << "Items Bought" << "| ";
+    cout << left << setw(15) << "Payment Method" << "| ";
+    cout << left << setw(15) << "Dine In" << "| ";
+    cout << left << setw(15) << "Total Price" << "|" << endl;
+    cout << "+-----------+----------------+----------------+--------------------------+----------------+----------------+----------------+" << endl;
+
+    getline(transactionHistoryFile, line); // skip first line (header)
+    while (!transactionHistoryFile.eof()) {
+      getline(transactionHistoryFile, line, ',');
+      cout << "| " << left << setw(10) << line << "| ";
+      getline(transactionHistoryFile, line, ' '); // remove date
+      getline(transactionHistoryFile, line, ',');
+      cout << left << setw(15) << line << "| ";
+      getline(transactionHistoryFile, line, ',');
+      cout << left << setw(15) << line << "| ";
+      getline(transactionHistoryFile, line, ',');
+      cout << left << setw(25) << line << "| ";
+      getline(transactionHistoryFile, line, ',');
+      cout << left << setw(15) << line << "| ";
+      getline(transactionHistoryFile, line, ',');
+      cout << left << setw(15) << line << "| ";
+      getline(transactionHistoryFile, line);
+      cout << left << setw(15) << line << "|" << endl;
+    }
+    cout << "+-----------+----------------+----------------+--------------------------+----------------+----------------+----------------+" << endl;
+    transactionHistoryFile.close();
+    
+  } else {
+    cout << "Only supervisor can access transaction history." << endl;
   }
 }
 
@@ -692,8 +1063,10 @@ void Employee::bakeNewBakeryItem(int index, int quantity) {
     }
 
     // check if ingredient is enough
+    bool foundIngredient;
     int * ingredientInventoryIndex = new int[MAX_INGREDIENTS];
     for (int i = 0; i < bakeryItems[index].getIngredientCount(); i++) {
+      foundIngredient = false;
       for (int j = 0; j < ingredientInventory->getIngredientInventoryCount(); j++) {
         // cout << bakeryItems[index].getIngredient(i)->getName() << " " << ingredientInventory->getIngredientInventoryName(j) << endl;
         if (bakeryItems[index].getIngredient(i)->getName() == ingredientInventory->getIngredientInventoryName(j)) {
@@ -705,7 +1078,10 @@ void Employee::bakeNewBakeryItem(int index, int quantity) {
               cout << "Require " << bakeryItems[index].getIngredient(i)->getPiece() * quantity << " piece(s)." << endl;
               return;
             } else {
+              cout << "Enough " << bakeryItems[index].getIngredient(i)->getName() << " in inventory." << endl;
               ingredientInventoryIndex[i] = j;
+              foundIngredient = true;
+              break;
             }
           } else {
             if (bakeryItems[index].getIngredient(i)->getWeight() * quantity > ingredientInventory->getIngredientInventoryWeight(j)) {
@@ -714,13 +1090,17 @@ void Employee::bakeNewBakeryItem(int index, int quantity) {
               cout << "Require " << bakeryItems[index].getIngredient(i)->getWeight() * quantity << " gram(s)." << endl;
               return;
             } else {
-              ingredientInventoryIndex[i] = j;            
+              cout << "Enough " << bakeryItems[index].getIngredient(i)->getName() << " in inventory." << endl;
+              ingredientInventoryIndex[i] = j;
+              foundIngredient = true;
+              break;
             }
           }
         }
       }
+
       // check if ingredient is not found in inventory
-      if ((i == bakeryItems[index].getIngredientCount() - 1) && (bakeryItems[index].getIngredient(i)->getName() != ingredientInventory->getIngredientInventoryName(i))){
+      if (!foundIngredient) {
         cout << "Warning: Ingredient " << bakeryItems[index].getIngredient(i)->getName() << " not found in inventory." << endl;
         cout << "Please restock ingredient " << bakeryItems[index].getIngredient(i)->getName() << " before baking." << endl;
         return;
@@ -744,17 +1124,16 @@ void Employee::bakeNewBakeryItem(int index, int quantity) {
       // add bakery item quantity
       bakeryItems[index].setBakeryItemQuantity(bakeryItems[index].getBakeryItemQuantity() + quantity);
 
-      cout << "Bakery item " << bakeryItems[index].getBakeryItemName() << " has been baked." << endl;
     }
+    cout << quantity << "x bakery item " << bakeryItems[index].getBakeryItemName() << " has been baked." << endl;
   } else {
     cout << "Only baker can bake bakery item." << endl;
   }
 }
 
 void Employee::addBakeryItemToCart (int index, int quantity) {
+  cout << role << " - Adding " << quantity << "x " << bakeryItems[index].getBakeryItemName() << " to cart..." << endl;
   if (cashier != nullptr) {
-    cout << "Adding " << quantity << "x " << bakeryItems[index].getBakeryItemName() << " to cart..." << endl;
-
     // check if bakery item is disabled
     if (bakeryItems[index].getDisabled()) {
       cout << "Warning: " << bakeryItems[index].getBakeryItemName() << " is withdrawn." << endl;
@@ -770,8 +1149,40 @@ void Employee::addBakeryItemToCart (int index, int quantity) {
     }
 
     cashier->getCart()->addBakeryItemToCart(bakeryItems[index], quantity);
+    cout << quantity << "x " << bakeryItems[index].getBakeryItemName() << " has been added to cart." << endl;
   } else {
     cout << "Only cashier can add bakery item to cart." << endl;
+  }
+}
+
+void Employee::addCakeByWeightToCart(int index, int weight) {
+  cout << role << " - Adding " << weight << "g " << bakeryItems[index].getBakeryItemName() << " to cart..." << endl;
+  if (cashier != nullptr) {
+    // check if bakery item is disabled
+    if (bakeryItems[index].getDisabled()) {
+      cout << "Warning: " << bakeryItems[index].getBakeryItemName() << " is withdrawn." << endl;
+      return;
+    }
+
+
+    // check if bakery item is cake
+    if (bakeryItems[index].getBakeryItemCategory() != "Cake") {
+      cout << "Warning: " << bakeryItems[index].getBakeryItemName() << " is not a cake." << endl;
+      return;
+    }
+
+    // check if bakery item is enough
+    if (bakeryItems[index].getBakeryItemQuantity() * bakeryItems[index].getCake()->getTotalWeight() < weight) {
+      cout << "Warning: Not enough " << bakeryItems[index].getBakeryItemName() << " in inventory." << endl;
+      cout << "Available: " << bakeryItems[index].getBakeryItemQuantity() << " gram(s)." << endl;
+      cout << "Require " << weight << " gram(s)." << endl;
+      return;
+    }
+
+    cashier->getCart()->addCakeByWeightToCart(bakeryItems[index], weight);
+    cout << weight << "g " << bakeryItems[index].getBakeryItemName() << " has been added to cart." << endl;
+  } else {
+    cout << "Only cashier can add cake by weight to cart." << endl;
   }
 }
 
@@ -904,6 +1315,7 @@ void Employee::applyDiscount(int choice) {
     } else {
       cout << "Warning: Purchase doesn't qualify for discount." << endl;
     }
+    cout << endl;
   } else {
     cout << "Only cashier can apply discount." << endl;
   }
@@ -988,19 +1400,25 @@ void Employee::checkout() {
 
     // apply discount
     this->showDiscountBasedOnCartTotalPrice();
+    cout << endl;
     cout << "Enter discount choice (0 to skip): ";
     int choice;
     cin >> choice;
+    cout << endl;
     if (choice != 0) {
       this->applyDiscount(choice);
     }
 
     // calculate total price
     double totalPrice = this->calculateDiscountedTotalPrice();
+    totalPrice = round(totalPrice * 100) / 100;
     cout << "Total price: RM " << totalPrice << endl;
+    cout << endl;
 
-    // update total balance
-    totalBalance += totalPrice;
+    // update total debit
+    // total price is after discount
+    totalDebit += totalPrice;
+    // cout << "Total debit: RM " << totalDebit << endl;
 
     // WIP: update total profit per day, total credit, total debit
 
@@ -1016,8 +1434,33 @@ void Employee::checkout() {
   }
 }
 
-void Employee::showReceipt() const {
+void Employee::showReceipt(string date, int orderNo) const {
+  if (cashier != nullptr || supervisor != nullptr) {
+    // read from files/receipts/receipt-20240513-1.txt
+    string receiptFileName = "files/receipts/" + date + "/receipt-" + date + "-" + to_string(orderNo) + ".txt";
+    cout << "Showing receipt..." << endl;
+    cout << "Filename: " << receiptFileName << endl;
+    cout << endl;
+    cout << "**************************************" << endl;
+    cout << endl;
 
+    ifstream receiptFile(receiptFileName);
+    if (receiptFile) {
+      string line;
+      while (getline(receiptFile, line)) {
+        cout << line << endl;
+      }
+      receiptFile.close();
+    } else {
+      cout << "Unable to open file." << endl;
+    }
+
+    cout << endl << "**************************************";
+    cout << endl;
+  } else {
+    cout << "Only supervisor or cashier can show receipt." << endl;
+    return;
+  }
 }
 
 string Employee::getEmployeeID() const {
@@ -1032,8 +1475,8 @@ string Employee::getRole() const {
   return role;
 }
 
-double Employee::getTotalBalance() const {
-  return totalBalance;
+int Employee::getOrderNo() const {
+  return orderNo;
 }
 
 double Employee::getTotalCredit() const {
@@ -1045,7 +1488,12 @@ double Employee::getTotalDebit() const {
 }
 
 double Employee::getTotalProfitPerDay() const {
-  return totalProfitPerDay;
+  return totalDebit - totalCredit;
+}
+
+double Employee::getTotalBalance() const {
+  totalBalance += getTotalProfitPerDay();
+  return totalBalance;
 }
 
 Employee::~Employee() {

@@ -9,3 +9,7 @@ Baker::Baker(string employeeID, string name) {
 void Baker::startBakery() {
   cout << "Baker " << name << " (" << employeeID << ") starts the bakery." << endl;
 }
+
+void Baker::closeBakery() {
+  cout << "Baker " << name << " (" << employeeID << ") closes the bakery." << endl;
+}

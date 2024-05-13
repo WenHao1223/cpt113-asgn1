@@ -43,12 +43,19 @@ class Employee {
     Employee(string employeeID, string name, string role);
 
     // member functions
+    // accessible by all roles
     void displayEmployeeDetails() const;
-    void startBakery() const;
+    void setIngredientCostToInventoryIngredientCost();
+    void startBakery();
     void accessMenuList() const;
     void accessMenuItem(int index) const;
     void accessDiscountList() const;
     void accessDiscountDetails(int index) const;
+    void showTotalDebit() const;
+    void showTotalCredit() const;
+    void showTotalProfitPerDay() const;
+    void showTotalBalance() const;
+    void closeBakery(string date);
 
     // accessible by supervisor or baker only
     void displayIngredientInventoryList() const;
@@ -56,8 +63,8 @@ class Employee {
     void checkIngredientInventory() const;
 
     // accessibly by supervisor role only
-    void restockIngredientInventory(int index, int quantity) const;
-    void changeIngredientCost(int index, double cost) const;
+    void restockIngredientInventory(int index, double quantity) const;
+    void changeIngredientCost(int index, double cost);
     void addNewInventoryIngredientWeight(string name, double cost, double weight) const;
     void addNewInventoryIngredientPiece(string name, double cost, int piece) const;
     void getAllInventoryIngredientName() const;
@@ -74,17 +81,23 @@ class Employee {
     void displayAllEmployeeDetails(Employee employees []) const;
     void deleteEmployee(Employee employees [], int index);
     void addNewDiscount();
+    void accessDiscountFile(int index, string field, string value);
     void editDiscountName(int index, string name);
-    void editDiscountDescription(int index, string description);
+    void editDiscountMinimumPurchase(int index, double minimumPurchase);
     void editDiscountPercentage(int index, double percentage);
+    void editDiscountDescription(int index, string description);
     void disableDiscount(int index);
     void enableDiscount(int index);
+    void deleteDiscount(int index);
+    void displayBalanceSheet() const;
+    void accessTransactionHistory(string date) const;
 
     // accessible by baker role only
     void bakeNewBakeryItem(int index, int quantity);
 
     // accessible by cashier only
     void addBakeryItemToCart(int index, int quantity);
+    void addCakeByWeightToCart(int index, int weight);
     void displayCartDetails() const;
     void calculateCartTotalCost() const;
     void calculateCartTotalPrice() const;
@@ -97,16 +110,22 @@ class Employee {
     void showDiscountBasedOnCartTotalPrice() const;
     void applyDiscount(int choice);
     double calculateDiscountedTotalPrice() const;
-    void showReceipt() const;
+
+    // accessible by supervisor or cashier only
+    void showReceipt(string date, int oderNo = orderNo) const;
 
     // accessor
     string getEmployeeID() const;
     string getName() const;
     string getRole() const;
+    int getOrderNo() const;
     double getTotalBalance() const;
     double getTotalCredit() const;
     double getTotalDebit() const;
     double getTotalProfitPerDay() const;
+
+    // friend function
+    friend int findEmployeeIndex(Employee employees [], string employeeID);
 
     // Destructor
     ~Employee();

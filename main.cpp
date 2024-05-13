@@ -4,6 +4,8 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <cmath>
+#include <ctime>
 #include <cstdlib>
 using namespace std;
 
@@ -14,6 +16,7 @@ class Employee;
 #include "Constant.h"
 #include "Discount.h"
 #include "Ingredient.h"
+#include "Cake.h"
 #include "BakeryItem.h"
 #include "IngredientInventory.h"
 #include "Cart.h"
@@ -24,6 +27,28 @@ class Employee;
 
 // global constant
 const int MAX_EMPLOYEES = Constant::MAX_EMPLOYEES;
+
+string convertTimeToYYYYMMDD() {
+  // Get current time
+  auto currentTime = time(0);
+  auto* timeNow = localtime(&currentTime);
+
+  char buffer[9];
+  strftime(buffer, sizeof(buffer), "%Y%m%d", timeNow);
+
+  return buffer;
+}
+
+string convertTimeTOYYYY_MM__DD() {
+  // Get current time
+  auto currentTime = time(0);
+  auto* timeNow = localtime(&currentTime);
+
+  char buffer[11];
+  strftime(buffer, sizeof(buffer), "%Y-%m-%d", timeNow);
+
+  return buffer;
+}
 
 void accessMenuDetails(BakeryItem & item) {
   cout << item.name << endl;
@@ -51,7 +76,22 @@ void accessMenuDetails(BakeryItem & item) {
   cout << endl;
 }
 
+int findEmployeeIndex(Employee employees[], string employeeID) {
+  int index = -1;
+  for (int i = 0; i < MAX_EMPLOYEES; i++) {
+    if (employees[i].employeeID == employeeID) {
+      index = i;
+      break;
+    }
+  }
+  return index;
+}
+
 int main () {
+  // Done: display current date in YYYYMMDD format
+  const string DATE_YYYYMMDD = convertTimeToYYYYMMDD();
+  // cout << DATE_YYYYMMDD << endl;
+
   // int numberOfIngredients;
 
   // Done: create employees
@@ -92,12 +132,19 @@ int main () {
   // not used anymore
   // bakeryItems[0].displayBakeryItemDetails();
 
+  // Done: find the index in employees using employeeID
+  // -1 if not found
+  // cout << "Employee index: " << findEmployeeIndex(employees, "C1") << endl;
+
   // use only once per program
   // can be started by random employee
   // @TjeEwe inventory file shall be read in Employee::startBakery()
-  // @WenHao1223 create a function to find the index using employeeID
-  employees[2].startBakery();
-  cout << endl;
+  // employees[2].startBakery();
+  // cout << endl;
+
+  // Done: set ingredient cost of bakery item to latest ingredient cost from inventory
+  // not used anymore as it is done in Employee::startBakery()
+  // employees[2].setIngredientCostToInventoryIngredientCost();
 
   // Done: Access menu list
   // employees[0].accessMenuList();
@@ -123,7 +170,6 @@ int main () {
   // cout << endl;
 
   // Done: check all ingredients in ingredient inventory
-  // @WenHao1223 draw into table format
   // employees[0].checkIngredientInventory();
   // cout << endl;
   // employees[1].checkIngredientInventory();
@@ -135,27 +181,23 @@ int main () {
   // @TjeEwe need to print ingredient inventory list available
   // and let supervisor choose which ingredient to restock
   // then how many pieces or weight to restock
-  // @WenHao1223 mention how many pieces or weight has been restocked
-  // employees[0].restockIngredientInventory(0, 200.0);
+  // employees[0].restockIngredientInventory(0, 50003.6);
   // employees[0].restockIngredientInventory(1, 300);
   // employees[2].restockIngredientInventory(1, 300);
   // employees[0].checkIngredientInventory();
   // cout << endl;
 
   // Done: change ingredient cost
-  // @WenHao1223 add space in between new cost and show units (/ grams, / pieces)
-  // @WenHao1223 revise this code
+  // employees[0].accessIngredientInventoryDetails(1);
   // employees[0].changeIngredientCost(0, 30.0);
   // employees[1].changeIngredientCost(0, 30.0);
   // employees[2].changeIngredientCost(0, 30.0);
   // cout << endl;
-  // employees[0].accessIngredientInventoryDetails(0);
+  // employees[0].accessIngredientInventoryDetails(1);
   // cout << endl;
 
   // Done: add new ingredient into inventory
   // employees[0].addNewInventoryIngredientWeight("Salt", 0.01, 500);
-  employees[0].addNewInventoryIngredientWeight("Salts", 0.01, 500);
-  // employees[0].addNewInventoryIngredientPiece("Egg", 0.01, 500);
   // employees[0].addNewInventoryIngredientPiece("Egg", 0.5, 10);
 
   // Done: Get inventory ingredient list
@@ -165,17 +207,17 @@ int main () {
   // system will need to login and logout many times to create bakery items
   // @TjeEwe check if user input larger than MAX_BAKERY_ITEMS
   // before creating new bakery item
-  // @WenHao1223 enter ingredient cost -> enter ingredient cost per unit
   // employees[0].accessMenuList();
   // employees[0].checkIngredientInventory();
   // employees[0].createBakeryItem();
+  // employees[0].createBakeryItem();
+  // employees[0].checkIngredientInventory();
   // after creating new bakery item
   // employees[0].accessMenuList();
   // employees[0].accessMenuItem(3);
   // cout << endl;
 
   // Done: withdraw bakery item
-  // @WenHao1223 withdraw message after done
   // employees[0].accessMenuItem(1);
   // employees[0].withdrawBakeryItem(1);
   // employees[0].accessMenuItem(1);
@@ -185,7 +227,6 @@ int main () {
   // employees[0].accessMenuItem(1);
 
   // Done: change bakery item price
-  // @WenHao1223 change bakery item price message after done
   // employees[0].accessMenuItem(1);
   // employees[0].changeBakeryItemPrice(1, 10.0);
   // employees[0].accessMenuItem(1);
@@ -204,7 +245,7 @@ int main () {
 
   // Done: bake new bakery item
   // employees[0].accessMenuItem(0);
-  // employees[1].bakeNewBakeryItem(0, 3);
+  // employees[1].bakeNewBakeryItem(2, 6);
   // cout << endl;
   // employees[1].bakeNewBakeryItem(0, 2);
   // cout << endl;
@@ -214,10 +255,8 @@ int main () {
   // Done: display all employee details
   // employees[0].displayAllEmployeeDetails(employees);
 
-  // WIP: create new employee by supervisor
-  // @WenHao1223
+  // Done: create new employee by supervisor
   // employees[0].createNewEmployee(employees, "C2", "Bob", "Supervisor");
-  // cout << "now working fine" << endl;
 
   // Done: change employee role
   // Juin Ewe and Jennie are now Cashiers *^____^*
@@ -229,16 +268,22 @@ int main () {
   // WIP: delete employees
   // @WenHao1223
   // employees[0].deleteEmployee(employees, 2);
+  // cout << "now working fine" << endl;
   // employees[0].displayAllEmployeeDetails(employees);
 
+  // add cake to cart by total weight
+  // employees[2].addCakeByWeightToCart(2, 200);
+  // employees[2].addCakeByWeightToCart(2, 1200);
+  // employees[2].addCakeByWeightToCart(1, 200);
+
   // Done: add bakery item to cart
-  // @WenHao1223 show who to access this function
   // employees[1].addBakeryItemToCart(0, 2);
   // employees[2].addBakeryItemToCart(0, 2);
   // cout << endl;
   // employees[1].bakeNewBakeryItem(0, 3);
-  // // @WenHao1223 revise this code
   // employees[1].bakeNewBakeryItem(2, 3);
+  // employees[0].accessMenuItem(2);
+  // employees[1].accessIngredientInventoryDetails(1);
   // cout << endl;
   // employees[2].addBakeryItemToCart(0, 2);
   // employees[2].addBakeryItemToCart(0, 3);
@@ -288,6 +333,10 @@ int main () {
   // employees[0].editDiscountName(1, "New Discount");
   // employees[0].accessDiscountDetails(1);
 
+  // Done: edit minimum purchase
+  // employees[0].editDiscountMinimumPurchase(1, 10.0);
+  // employees[0].accessDiscountDetails(1);
+
   // Done: edit discount percentage
   // employees[0].editDiscountPercentage(1, 20.0);
   // employees[0].accessDiscountDetails(1);
@@ -304,8 +353,14 @@ int main () {
   // employees[0].enableDiscount(1);
   // employees[0].accessDiscountDetails(1);
 
+  // Done: delete discount
+  // employees[0].deleteDiscount(1);
+  // employees[0].accessDiscountList();
+
   // Done: show available discount based on cart total price
   // extra option as it is used in checkout()
+  // employees[2].showDiscountBasedOnCartTotalPrice();
+  // cout << endl;
   // employees[2].showDiscountBasedOnCartTotalPrice();
   // cout << endl;
 
@@ -314,9 +369,12 @@ int main () {
   // discount choice based on showDiscountBasedOnCartTotalPrice(), start from 1
   // employees[2].applyDiscount(1);
   // cout << endl;
+  // employees[2].applyDiscount(1);
+  // cout << endl;
 
   // Done: calculate cart total price after discount
   // extra option as it is used in checkout()
+  // employees[2].calculateDiscountedTotalPrice();
   // employees[2].calculateDiscountedTotalPrice();
   // cout << endl;
   // @TjeEwe only show line below to store discounted price
@@ -324,12 +382,49 @@ int main () {
 
   // Done: checkout
   // employees[2].accessMenuItem(0);
-  // @WenHao1223 print total price in wrong part
   // employees[2].checkout();
-  // employees[2].accessMenuItem(0);
+  // employees[2].accessMenuItem(2);
+
+  // cout << endl << endl;
+
+  // second order
+
+  // employees[2].displayCartDetails();
+  // employees[2].addBakeryItemToCart(0, 3);
+  // employees[2].displayCartDetails();
+  // employees[2].checkout();
 
   // Done: show receipt
-  // employees[2].showReceipt();
+  // default parameter is referring previous order's receipt
+  // employees[2].showReceipt(DATE_YYYYMMDD);
+  // DATE_YYYYMMDD = today's date
+  // employees[2].showReceipt(DATE_YYYYMMDD, 1);
+  // employees[2].showReceipt("20240510", 1);
+  // employees[1].showReceipt("20240510", 1);
+  // employees[0].showReceipt("20240510", 1);
+
+  // Done: show total debit
+  // employees[2].showTotalDebit();
+
+  // Done: show total credit
+  // employees[2].showTotalCredit();
+
+  // Done: show total profit per day
+  // employees[2].showTotalProfitPerDay();
+
+  // show total balance
+  // employees[2].showTotalBalance();
+
+  // employees[2].closeBakery(convertTimeTOYYYY_MM__DD());
+
+  // Done: display balance sheet
+  // can be accessed even bakery is not opened
+  // employees[0].displayBalanceSheet();
+
+  // Done: access transaction history
+  // can be accessed even bakery is not opened
+  employees[0].accessTransactionHistory(DATE_YYYYMMDD);
+  employees[0].accessTransactionHistory("20240510");
   
   return 0;
 }

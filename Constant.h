@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 namespace Constant {
   static int MAX_EMPLOYEES = 10;
   static int MAX_BAKERY_ITEMS = 10;

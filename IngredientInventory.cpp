@@ -1,5 +1,6 @@
 #include <iomanip>
 #include <fstream>
+#include <cmath>
 
 #include "Constant.h"
 #include "IngredientInventory.h"
@@ -72,31 +73,34 @@ void IngredientInventory::displayIngredientInventoryList() const {
   }
 }
 
-void IngredientInventory::accessIngredientInventoryDetails() const {
-  ingredient.displayIngredientDetails();
+void IngredientInventory::accessIngredientInventoryDetails(int index) const {
+  // cout << "address accessing ingredient inventory: " << &ingredient << endl;
+  ingredientInventory[index].ingredient.displayIngredientDetails();
 }
 
 void IngredientInventory::checkIngredientInventory() const {
   // check all ingredients in inventory
-  cout << setw(5) << left << "No." << setw(20) << left << "Ingredient" << "Quantity" << endl;
+  cout << "+-----+--------------------+-------------------------+" << endl;
+  cout << "| " << setw(3) << left << "No." << " | "
+      << setw(18) << left << "Ingredient" << " | "
+      << setw(12) << left << "Quantity"
+      << setw(13) << right << " |" << endl;
+  cout << "+-----+--------------------+-------------------------+" << endl;
 
   for (int i = 0; i < ingredientInventoryCount; i++) {
-    cout << setw(5) << left << (i+1) << setw(20) << left << ingredientInventory[i].ingredient.getName();
+    cout << "| " << setw(3) << left << (i+1) << " | "
+         << setw(18) << left << ingredientInventory[i].ingredient.getName() << " | ";
+
     // Check if the ingredient is 0 in quantity
     if (ingredientInventory[i].ingredient.getCountable()) {
-      if (ingredientInventory[i].ingredient.getPiece() == 0) {
-        cout << "Out of stock" << endl;
-      } else {
-        cout << ingredientInventory[i].ingredient.getPiece() << " piece(s)" << endl;
-      }
+      cout << setw(12) << right << ingredientInventory[i].ingredient.getPiece();
+      cout << setw(13) << right << "piece(s) |" << endl;
     } else {
-      if (ingredientInventory[i].ingredient.getWeight() == 0) {
-        cout << 0 << endl;
-      } else {
-        cout << ingredientInventory[i].ingredient.getWeight() << " gram(s)" << endl;
-      }
+      cout << setw(12) << right << fixed << setprecision(2) << ingredientInventory[i].ingredient.getWeight();
+      cout << setw(13) << right << "gram(s) |" << endl;
     }
   }
+  cout << "+-----+--------------------+-------------------------+" << endl;
 }
 
 // @TjeEwe require file handling
@@ -165,25 +169,33 @@ void IngredientInventory::addNewInventoryIngredientPiece(string name, double cos
   cout << piece << " piece(s) of ingredient " << name << " has been added into inventory." << endl;
 }
 
-void IngredientInventory::restockIngredientInventory(int index, int quantity) {
+double IngredientInventory::restockIngredientInventory(int index, double quantity) {
   if (quantity < 0) {
     cout << "Restock weight cannot be negative." << endl;
     exit(EXIT_FAILURE);
-    return;
+    return 0;
   }
 
   if (ingredientInventory[index].ingredient.getCountable()) {
     ingredientInventory[index].ingredient.setPiece(ingredientInventory[index].ingredient.getPiece() + quantity);
+    cout << quantity << " piece(s)";
   } else {
     ingredientInventory[index].ingredient.setWeight(ingredientInventory[index].ingredient.getWeight() + quantity);
+    cout << quantity << " gram(s)";
   }
 
-  cout << "Ingredient " << ingredientInventory[index].ingredient.getName() << " has been restocked." << endl;
+  cout << " of " << ingredientInventory[index].ingredient.getName() << " has been restocked." << endl;
   if (ingredientInventory[index].ingredient.getCountable()) {
     cout << "New quantity: " << ingredientInventory[index].ingredient.getPiece() << " piece(s)" << endl;
   } else {
     cout << "New quantity: " << ingredientInventory[index].ingredient.getWeight() << " gram(s)" << endl;
   }
+
+  // calculate the cost of restock
+  double cost = ingredientInventory[index].ingredient.getCostPerUnit() * quantity;
+  cost = ceil(cost * 100) / 100;
+
+  return cost;
 }
 
 void IngredientInventory::changeIngredientCost(int index, double cost) {
@@ -193,11 +205,18 @@ void IngredientInventory::changeIngredientCost(int index, double cost) {
     return;
   }
 
-  ingredientInventory[index].ingredient.setCostPerPiece(cost);
+  ingredientInventory[index].ingredient.setCostPerUnit(cost);
 
   cout << "Cost of ingredient " << ingredientInventory[index].ingredient.getName() << " has been changed." << endl;
   cout << setprecision(2) << fixed;
-  cout << "New cost: RM" << ingredientInventory[index].ingredient.getCostPerUnit() << endl;
+  cout << "New cost: RM " << ingredientInventory[index].ingredient.getCostPerUnit();
+  if (ingredientInventory[index].ingredient.getCountable()) {
+    cout << " / piece(s)" << endl;
+  } else {
+    cout << " / gram(s)" << endl;
+  }
+
+  // cout << "address from ingredient inventory ingredient: " << &ingredientInventory[index].ingredient << endl;
 }
 
 void IngredientInventory::setIngredientInventory(IngredientInventory * ingredientInventory) {
@@ -213,12 +232,17 @@ void IngredientInventory::setIngredientInventoryWeight(int index, double weight)
 }
 
 IngredientInventory * IngredientInventory::getIngredientInventory() {
-  cout << "address: " << ingredientInventory << endl;
+  // cout << "address: " << ingredientInventory << endl;
   return ingredientInventory;
 }
 
 int IngredientInventory::getIngredientInventoryCount() const {
   return ingredientInventoryCount;
+}
+
+Ingredient IngredientInventory::getIngredient() {
+  // cout << "address: " << &ingredient << endl;
+  return ingredient;
 }
 
 IngredientInventory * IngredientInventory::getIngredientInventory(int index) const {

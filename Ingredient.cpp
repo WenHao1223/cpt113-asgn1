@@ -67,12 +67,13 @@ void Ingredient::displayIngredientDetails() const {
   cout << "Name: " << name << endl;
   cout << setprecision(2) << fixed << "Cost: RM " << costPerUnit;
   if (countable) {
-    cout << " / gram(s)" << endl;
+    cout << " / piece(s)" << endl;
     cout << "Piece: " << piece << " piece(s)" << endl;
   } else {
-    cout << " / piece(s)" << endl;
+    cout << " / gram(s)" << endl;
     cout << "Weight: " << weight << " gram(s)" << endl;
   }
+  // cout << "address: " << this << endl;
 }
 
 string Ingredient::getName() const {
@@ -95,7 +96,7 @@ bool Ingredient::getCountable() const {
   return countable;
 }
 
-void Ingredient::setCostPerPiece(double costPerUnit) {
+void Ingredient::setCostPerUnit(double costPerUnit) {
   if (costPerUnit < 0) {
     cout << "Cost cannot be negative." << endl;
     exit(EXIT_FAILURE);
