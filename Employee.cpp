@@ -77,6 +77,7 @@ void Employee::setIngredientCostToInventoryIngredientCost() {
 
 void Employee::startBakery() {
   cout << "Bakery start operating now." << endl;
+  cout << endl;
 
   orderNo = 0;
   
@@ -92,8 +93,6 @@ void Employee::startBakery() {
 
   // extract total balance from last line
   string totalBalanceString;
-  cout << "Last line: " << lastLine << endl;
-
   for (char c : lastLine) {
     if (c == ',') {
       totalBalanceString = "";
@@ -109,7 +108,7 @@ void Employee::startBakery() {
 
   totalBalance = stod(totalBalanceString);
 
-  cout << "Total balance string: " << totalBalanceString << endl;
+  cout << "Balance: RM " << totalBalanceString << endl;
 
   ingredientInventory[0] = IngredientInventory("Ingredient 1", 0.0005, 100000.0);
   ingredientInventory[1] = IngredientInventory("Ingredient 2", 20.0, 200);
@@ -147,9 +146,44 @@ void Employee::startBakery() {
 
   // cout << "Address of discounts (from employee): " << discounts << endl;
 
-  // @TjeEwe need fetch this from file instead
-  discounts[0] = Discount("Over RM30 Oasis: Enjoy 5\% Off", 30.0, 5.0, "Description 1", false);
-  discounts[1] = Discount("Fifty-Fiver Flourish: 10\% Discount", 50.0, 10.0, "Description 2", false);
+  // read from file/discount.csv
+  ifstream discountFile;
+  discountFile.open("files/discount.csv", ios::in);
+  cout << endl;
+  cout << "Reading discount file..." << endl;
+  string discountLine;
+  string discountName;
+  double discountMinimumPurchase;
+  double discountPercentage;
+  string discountDescription;
+  bool discountDisabled;
+  int discountCount = 0;
+
+  getline(discountFile, discountLine); // skip first line (header)
+  while (!discountFile.eof()) {
+    getline(discountFile, discountName, ',');
+    getline(discountFile, discountLine, ',');
+    discountMinimumPurchase = stod(discountLine);
+    getline(discountFile, discountLine, ',');
+    discountPercentage = stod(discountLine);
+    getline(discountFile, discountDescription, ',');
+    getline(discountFile, discountLine);
+    discountDisabled = (discountLine == "true");
+
+    if (discountName != "") {
+      cout << "Discount '" << discountName << "' has been added." << endl;
+      // cout << discountName << "," << discountMinimumPurchase << "," << discountPercentage << "," << discountDescription << "," << discountDisabled << endl;
+      discounts[discountCount] = Discount(discountName, discountMinimumPurchase, discountPercentage, discountDescription, discountDisabled);
+      discountCount++;
+    }
+  }
+  cout << "Discount count: " << discountCount << endl;
+  discountFile.close();
+  cout << "Discount file closed." << endl;
+  cout << endl;
+
+  // discounts[0] = Discount("Over RM30 Oasis: Enjoy 5\% Off", 30.0, 5.0, "Description 1", false);
+  // discounts[1] = Discount("Fifty-Fiver Flourish: 10\% Discount", 50.0, 10.0, "Description 2", false);
 
   if (supervisor != nullptr) {
     supervisor->startBakery();

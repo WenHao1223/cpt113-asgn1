@@ -312,7 +312,7 @@ int main () {
   // employees[2].displayCartDetails();
 
   // Done: access discount list
-  // employees[0].accessDiscountList();
+  employees[0].accessDiscountList();
 
   // Done: display discount details
   // employees[0].accessDiscountDetails(1);
