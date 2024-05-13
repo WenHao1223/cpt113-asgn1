@@ -402,6 +402,7 @@ void Employee::withdrawBakeryItem (int index) {
   if (supervisor != nullptr) {
     cout << role << " - Withdrawing " << bakeryItems[index].getBakeryItemName() << "..." << endl;
     bakeryItems[index].setDisabled(true);
+    cout << bakeryItems[index].getBakeryItemName() << " has been withdrawn." << endl;
   } else {
     cout << "Only supervisor can withdraw bakery item." << endl;
   }
@@ -411,6 +412,7 @@ void Employee::enableBakeryItem (int index) {
   if (supervisor != nullptr) {
     cout << role << " - Enabling " << bakeryItems[index].getBakeryItemName() << "..." << endl;
     bakeryItems[index].setDisabled(false);
+    cout << bakeryItems[index].getBakeryItemName() << " has been enabled." << endl;
   } else {
     cout << "Only supervisor can enable bakery item." << endl;
   }

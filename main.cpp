@@ -180,7 +180,7 @@ int main () {
   // before creating new bakery item
   // employees[0].accessMenuList();
   // employees[0].checkIngredientInventory();
-  employees[0].createBakeryItem();
+  // employees[0].createBakeryItem();
   // employees[0].checkIngredientInventory();
   // after creating new bakery item
   // employees[0].accessMenuList();
@@ -188,13 +188,12 @@ int main () {
   // cout << endl;
 
   // Done: withdraw bakery item
-  // @WenHao1223 withdraw message after done
   // employees[0].accessMenuItem(1);
-  // employees[0].withdrawBakeryItem(1);
+  employees[0].withdrawBakeryItem(1);
   // employees[0].accessMenuItem(1);
 
   // Done: enable bakery item
-  // employees[0].enableBakeryItem(1);
+  employees[0].enableBakeryItem(1);
   // employees[0].accessMenuItem(1);
 
   // Done: change bakery item price
