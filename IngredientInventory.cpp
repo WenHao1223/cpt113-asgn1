@@ -103,7 +103,7 @@ void IngredientInventory::checkIngredientInventory() const {
 // update inventory.csv
 void IngredientInventory::addNewInventoryIngredientWeight(string name, double cost, double weight) {
   ofstream addInventory;
-  addInventory.open("files/inventory.csv", ios::app);
+  addInventory.open("files/IngredientInventory.csv", ios::app);
   if (name == "") {
     cout << "Name cannot be empty." << endl;
     exit(EXIT_FAILURE);
