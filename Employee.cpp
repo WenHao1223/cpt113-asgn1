@@ -155,9 +155,9 @@ void Employee::setIngredientCostToInventoryIngredientCost() {
   for (int i = 0; i < bakeryItems[0].getBakeryItemCount(); i++) {
     for (int j = 0; j < bakeryItems[i].getIngredientCount(); j++) {
       for (int k = 0; k < ingredientInventory[0].getIngredientInventoryCount(); k++) {
-        if (bakeryItems[i].getIngredient(j)->getName() == ingredientInventory[k].getIngredient().getName()) {
-          cout << "Ingredient " << bakeryItems[i].getIngredient(j)->getName() << " cost of " << bakeryItems[i].getBakeryItemName() << " has been set to RM " << ingredientInventory[k].getIngredient().getCostPerUnit() << endl;
-          bakeryItems[i].getIngredient(j)->setCostPerUnit(ingredientInventory[k].getIngredient().getCostPerUnit());
+        if(bakeryItems[i].getIngredient(j)->getName() == ingredientInventory[k].getIngredient().getName()) {
+          cout << "Ingredient " << bakeryItems[i].getIngredient(j)->getName() << "'s cost of " << bakeryItems[i].getBakeryItemName() << " has been set to RM " << ingredientInventory->getIngredientCost(k) << endl;
+          bakeryItems[i].getIngredient(j)->setCostPerUnit(ingredientInventory->getIngredientCost(k));
         }
       }
     }
@@ -176,8 +176,6 @@ void Employee::displayIngredientInventoryList() const {
 void Employee::accessIngredientInventoryDetails(int index) const {
   if (supervisor != nullptr || baker != nullptr) {
     cout << role << " - Accessing ingredient inventory details..." << endl;
-    // ingredientInventory[index].accessIngredientInventoryDetails();
-    // ingredientInventory[index].getIngredient().displayIngredientDetails();
     ingredientInventory->accessIngredientInventoryDetails(index); 
   } else {
     cout << "Only supervisor or baker can access ingredient inventory details." << endl;
@@ -206,7 +204,7 @@ void Employee::restockIngredientInventory(int index, int quantity) const {
   }
 }
 
-void Employee::changeIngredientCost(int index, double cost) const {
+void Employee::changeIngredientCost(int index, double cost) {
   if (supervisor != nullptr) {
     cout << role << " - Changing ingredient cost..." << endl;
     if (cost < 0) {
@@ -214,6 +212,9 @@ void Employee::changeIngredientCost(int index, double cost) const {
       return;
     }
     ingredientInventory->changeIngredientCost(index, cost);
+
+    // update all bakery items ingredient cost
+    this->setIngredientCostToInventoryIngredientCost();
   } else {
     cout << "Only supervisor can change ingredient cost." << endl;
   }

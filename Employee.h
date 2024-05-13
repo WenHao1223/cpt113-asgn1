@@ -58,7 +58,7 @@ class Employee {
 
     // accessibly by supervisor role only
     void restockIngredientInventory(int index, int quantity) const;
-    void changeIngredientCost(int index, double cost) const;
+    void changeIngredientCost(int index, double cost);
     void addNewInventoryIngredientWeight(string name, double cost, double weight) const;
     void addNewInventoryIngredientPiece(string name, double cost, int piece) const;
     void getAllInventoryIngredientName() const;
