@@ -627,8 +627,14 @@ void Employee::deleteEmployee(Employee employees [], int index) {
       return;
     }
 
-    employees[index] = Employee();
-    cout << "Employee has been deleted." << endl;
+    cout << employees[index].role << " " << employees[index].name << " has been deleted." << endl;
+
+    employees[index].name = "";
+    employees[index].role = "";
+    employees[index].employeeID = "";
+    employees[index].supervisor = nullptr;
+    employees[index].baker = nullptr;
+    employees[index].cashier = nullptr;
   } else {
     cout << "Only supervisor can delete employee." << endl;
   }

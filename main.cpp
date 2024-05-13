@@ -225,10 +225,8 @@ int main () {
   // Done: display all employee details
   // employees[0].displayAllEmployeeDetails(employees);
 
-  // WIP: create new employee by supervisor
-  // @WenHao1223
+  // Done: create new employee by supervisor
   employees[0].createNewEmployee(employees, "C2", "Bob", "Supervisor");
-  // cout << "now working fine" << endl;
 
   // Done: change employee role
   // Juin Ewe and Jennie are now Cashiers *^____^*
@@ -239,8 +237,9 @@ int main () {
 
   // WIP: delete employees
   // @WenHao1223
-  // employees[0].deleteEmployee(employees, 2);
-  // employees[0].displayAllEmployeeDetails(employees);
+  employees[0].deleteEmployee(employees, 2);
+  // cout << "now working fine" << endl;
+  employees[0].displayAllEmployeeDetails(employees);
 
   // Done: add bakery item to cart
   // employees[1].addBakeryItemToCart(0, 2);
@@ -343,7 +342,7 @@ int main () {
   // employees[2].checkout();
   // employees[2].accessMenuItem(0);
 
-  cout << endl << endl;
+  // cout << endl << endl;
 
   // second order
 
