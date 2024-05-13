@@ -814,6 +814,7 @@ void Employee::addBakeryItemToCart (int index, int quantity) {
     }
 
     cashier->getCart()->addBakeryItemToCart(bakeryItems[index], quantity);
+    cout << quantity << "x " << bakeryItems[index].getBakeryItemName() << " has been added to cart." << endl;
   } else {
     cout << "Only cashier can add bakery item to cart." << endl;
   }
@@ -948,6 +949,7 @@ void Employee::applyDiscount(int choice) {
     } else {
       cout << "Warning: Purchase doesn't qualify for discount." << endl;
     }
+    cout << endl;
   } else {
     cout << "Only cashier can apply discount." << endl;
   }
@@ -1032,9 +1034,11 @@ void Employee::checkout() {
 
     // apply discount
     this->showDiscountBasedOnCartTotalPrice();
+    cout << endl;
     cout << "Enter discount choice (0 to skip): ";
     int choice;
     cin >> choice;
+    cout << endl;
     if (choice != 0) {
       this->applyDiscount(choice);
     }
@@ -1042,9 +1046,12 @@ void Employee::checkout() {
     // calculate total price
     double totalPrice = this->calculateDiscountedTotalPrice();
     cout << "Total price: RM " << totalPrice << endl;
+    cout << endl;
 
-    // update total balance
-    totalBalance += totalPrice;
+    // update total debit
+    // total price is after discount
+    totalDebit += totalPrice;
+    // cout << "Total debit: RM " << totalDebit << endl;
 
     // WIP: update total profit per day, total credit, total debit
 

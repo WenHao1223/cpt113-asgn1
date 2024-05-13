@@ -57,7 +57,11 @@ void Cart::updateBakeryItemQuantity(int index, int quantity) {
 }
 
 void Cart::clearCart() {
-  *this = Cart();
+  cartItemCount = 0;
+  totalCost = 0;
+  totalPrice = 0;
+  totalProfit = 0;
+  totalDiscount = 0;
 }
 
 double Cart::calculateTotalCost() {

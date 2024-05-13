@@ -215,9 +215,9 @@ int main () {
 
   // Done: bake new bakery item
   // employees[0].accessMenuItem(0);
-  // employees[1].bakeNewBakeryItem(0, 3);
+  employees[1].bakeNewBakeryItem(0, 6);
   // cout << endl;
-  // employees[1].bakeNewBakeryItem(0, 2);
+  employees[1].bakeNewBakeryItem(0, 2);
   // cout << endl;
   // employees[1].bakeNewBakeryItem(1, 2);
   // employees[0].accessMenuItem(0);
@@ -251,13 +251,13 @@ int main () {
   // employees[0].accessMenuItem(2);
   // employees[1].accessIngredientInventoryDetails(1);
   // cout << endl;
-  // employees[2].addBakeryItemToCart(0, 2);
-  // employees[2].addBakeryItemToCart(0, 3);
+  employees[2].addBakeryItemToCart(0, 2);
+  employees[2].addBakeryItemToCart(0, 3);
   // employees[2].addBakeryItemToCart(2, 1);
   // cout << endl;
 
   // Done: display cart details
-  // employees[2].displayCartDetails();
+  employees[2].displayCartDetails();
   // employees[3].displayCartDetails();
 
   // Done: calculate total cost of cart
@@ -335,9 +335,17 @@ int main () {
 
   // Done: checkout
   // employees[2].accessMenuItem(0);
-  // @WenHao1223 print total price in wrong part
-  // employees[2].checkout();
+  employees[2].checkout();
   // employees[2].accessMenuItem(0);
+
+  cout << endl << endl;
+
+  // second order
+
+  employees[2].displayCartDetails();
+  employees[2].addBakeryItemToCart(0, 3);
+  employees[2].displayCartDetails();
+  employees[2].checkout();
 
   // Done: show receipt
   // employees[2].showReceipt();
