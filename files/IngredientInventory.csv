@@ -1,13 +1,13 @@
 name,costPerUnit,weight,piece,countable
-Sugar,2.95,1000.0,0,false
-Flour,1.85,1000.0,0,false
-Eggs,0.7,0.0,3,true
-Butter,10.00,500.0,0,false
-Salt,2.00,300.0,0,false
-Milk,7.50,1000.0,0,false
-Baking powder,4.50,250.0,0,false
-Vanilla extract,3.00,30.0,0,false
-Cocoa powder,22.00,1000.0,0,false
-Lemons,10.00,0.0,3,true
-Ghee,15.00,400.0,0,false
-Pistahchio nuts,53.50,50.0,0,false
+Sugar,0.00295,5000.0,0,false
+Flour,0.00185,5000.0,0,false
+Eggs,0.40,0.0,30,true
+Butter,0.02,1000.0,0,false
+Salt,0.00667,300.0,0,false
+Milk,0.0075,3000.0,0,false
+Baking powder,0.018,1000.0,0,false
+Vanilla extract,0.12,300.0,0,false
+Cocoa powder,0.022,500.0,0,false
+Lemons,1.5,0.0,10,true
+Ghee,0.05,1000.0,0,false
+Pistahchio nuts,0.15,600.0,0,false
