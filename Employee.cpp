@@ -1449,7 +1449,7 @@ void Employee::checkout(string dateTime) {
     // cout << "Total debit: RM " << totalDebit << endl;
 
     // finish transaction
-    cout << "Payment method: ";
+    cout << "Payment method: " << endl;
     cout << "1 - Cash" << endl;
     cout << "2 - Credit Card" << endl;
     cout << "3 - Debit Card" << endl;
@@ -1465,16 +1465,24 @@ void Employee::checkout(string dateTime) {
     do {
       cout << "Dine in? (Y/N): ";
       cin >> dineIn;
-    } while (dineIn != 'Y' && dineIn != 'N');
+    } while (dineIn != 'Y' && dineIn != 'N' && dineIn != 'y' && dineIn != 'n');
     cout << endl;
 
     // store transaction details to csv file
     // generate receipt txt file
     ofstream transactionFile;
-    transactionFile.open("files/transactions/transaction-" + dateTime.substr(0, 8) + ".csv", ios::app);
+    transactionFile.open("files/transactions/transaction-" + dateTime.substr(0, 4) + dateTime.substr(5, 2) + dateTime.substr(8, 2) + ".csv", ios::app);
+
+    // check if file is empty
+    ifstream transactionFileCheck("files/transactions/transaction-" + dateTime.substr(0, 4) + dateTime.substr(5, 2) + dateTime.substr(8, 2) + ".csv");
+    if (transactionFileCheck.peek() == ifstream::traits_type::eof()) {
+      transactionFile << "orderID,dateTime,cashierID,itemsBought,paymentMethod,dineIn,totalPrice";
+    }
+    transactionFileCheck.close();
+
     // orderID,dateTime,cashierID,itemsBought,paymentMethod,dineIn,totalPrice
     // 1,2024-05-10 12:00:00,C1,"Classic Vanilla Cake,Chocolate Cake","2,3",TnG,true,23.0
-    transactionFile << orderNo << "," << dateTime << "," << employeeID << ",\"";
+    transactionFile << endl << orderNo << "," << dateTime << "," << employeeID << ",\"";
     for (int i = 0; i < cashier->getCart()->getCartItemCount(); i++) {
       transactionFile << cashier->getCart()->getBakeryItems()[i].getBakeryItemName();
       if (i != cashier->getCart()->getCartItemCount() - 1) {

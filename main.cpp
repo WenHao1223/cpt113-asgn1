@@ -150,8 +150,8 @@ int main () {
   // use only once per program
   // can be started by random employee
   // @TjeEwe inventory file shall be read in Employee::startBakery()
-  // employees[2].startBakery();
-  // cout << endl;
+  employees[2].startBakery();
+  cout << endl;
 
   // Done: set ingredient cost of bakery item to latest ingredient cost from inventory
   // not used anymore as it is done in Employee::startBakery()
@@ -291,13 +291,13 @@ int main () {
   // employees[1].addBakeryItemToCart(0, 2);
   // employees[2].addBakeryItemToCart(0, 2);
   // cout << endl;
-  employees[1].bakeNewBakeryItem(0, 3);
+  employees[1].bakeNewBakeryItem(0, 10);
   // employees[1].bakeNewBakeryItem(2, 3);
   // employees[0].accessMenuItem(2);
   // employees[1].accessIngredientInventoryDetails(1);
   // cout << endl;
   employees[2].addBakeryItemToCart(0, 2);
-  // employees[2].addBakeryItemToCart(0, 3);
+  employees[2].addBakeryItemToCart(0, 3);
   // employees[2].addBakeryItemToCart(2, 1);
   // cout << endl;
 
@@ -393,7 +393,7 @@ int main () {
 
   // Done: checkout
   // employees[2].accessMenuItem(0);
-  // employees[2].checkout(convertTimeToYYYY__MM__DD_HH_MM_SS());
+  employees[2].checkout(convertTimeToYYYY__MM__DD_HH_MM_SS());
   // employees[2].accessMenuItem(2);
 
   // cout << endl << endl;
@@ -401,7 +401,7 @@ int main () {
   // second order
 
   // employees[2].displayCartDetails();
-  // employees[2].addBakeryItemToCart(0, 3);
+  employees[2].addBakeryItemToCart(0, 3);
   // employees[2].displayCartDetails();
   employees[2].checkout(convertTimeToYYYY__MM__DD_HH_MM_SS());
 
