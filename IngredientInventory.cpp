@@ -162,11 +162,13 @@ void IngredientInventory::restockIngredientInventory(int index, int quantity) {
 
   if (ingredientInventory[index].ingredient.getCountable()) {
     ingredientInventory[index].ingredient.setPiece(ingredientInventory[index].ingredient.getPiece() + quantity);
+    cout << quantity << " piece(s)";
   } else {
     ingredientInventory[index].ingredient.setWeight(ingredientInventory[index].ingredient.getWeight() + quantity);
+    cout << quantity << " gram(s)";
   }
 
-  cout << "Ingredient " << ingredientInventory[index].ingredient.getName() << " has been restocked." << endl;
+  cout << " of " << ingredientInventory[index].ingredient.getName() << " has been restocked." << endl;
   if (ingredientInventory[index].ingredient.getCountable()) {
     cout << "New quantity: " << ingredientInventory[index].ingredient.getPiece() << " piece(s)" << endl;
   } else {

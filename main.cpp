@@ -137,7 +137,7 @@ int main () {
   // cout << endl;
 
   // Done: check all ingredients in ingredient inventory
-  employees[0].checkIngredientInventory();
+  // employees[0].checkIngredientInventory();
   // cout << endl;
   // employees[1].checkIngredientInventory();
   // cout << endl;
@@ -148,8 +148,7 @@ int main () {
   // @TjeEwe need to print ingredient inventory list available
   // and let supervisor choose which ingredient to restock
   // then how many pieces or weight to restock
-  // @WenHao1223 mention how many pieces or weight has been restocked
-  // employees[0].restockIngredientInventory(0, 200.0);
+  employees[0].restockIngredientInventory(0, 200.0);
   // employees[0].restockIngredientInventory(1, 300);
   // employees[2].restockIngredientInventory(1, 300);
   // employees[0].checkIngredientInventory();
