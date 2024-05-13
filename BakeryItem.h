@@ -6,6 +6,7 @@
 
 #include "Constant.h"
 #include "Ingredient.h"
+#include "IngredientInventory.h"
 
 using namespace std;
 
@@ -33,6 +34,7 @@ class BakeryItem {
     void displayBakeryItemDetails() const;
     double calculateCost() const;
     double calculateProfit() const;
+    void setIngredientCostToInventoryIngredientCost(IngredientInventory *);
 
     // accessor
     string getBakeryItemName() const;

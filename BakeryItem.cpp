@@ -87,6 +87,17 @@ double BakeryItem::calculateProfit() const {
   return pricePerUnit - calculateCost();
 }
 
+void BakeryItem::setIngredientCostToInventoryIngredientCost(IngredientInventory * inventoryIngredient) {
+  for (int i = 0; i < ingredientCount; i++) {
+    for (int j = 0; j < inventoryIngredient->getIngredientInventoryCount(); j++) {
+      if (ingredient[i].getName() == inventoryIngredient[j].getName()) {
+        cout << "Ingredient " << ingredient[i].getName() << " cost has been set to RM " << inventoryIngredient[j].getCostPerUnit() << endl;
+        ingredient[i].setCostPerUnit(inventoryIngredient[j].getCostPerUnit());
+      }
+    }
+  }
+}
+
 string BakeryItem::getBakeryItemName() const {
   return name;
 }

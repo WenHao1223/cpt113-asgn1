@@ -195,7 +195,7 @@ void IngredientInventory::changeIngredientCost(int index, double cost) {
     cout << " / gram(s)" << endl;
   }
 
-  cout << "address from ingredient inventory ingredient: " << &ingredientInventory[index].ingredient << endl;
+  // cout << "address from ingredient inventory ingredient: " << &ingredientInventory[index].ingredient << endl;
 }
 
 void IngredientInventory::setIngredientInventory(IngredientInventory * ingredientInventory) {
@@ -211,7 +211,7 @@ void IngredientInventory::setIngredientInventoryWeight(int index, double weight)
 }
 
 IngredientInventory * IngredientInventory::getIngredientInventory() {
-  cout << "address: " << ingredientInventory << endl;
+  // cout << "address: " << ingredientInventory << endl;
   return ingredientInventory;
 }
 
@@ -220,7 +220,7 @@ int IngredientInventory::getIngredientInventoryCount() const {
 }
 
 Ingredient IngredientInventory::getIngredient() {
-  cout << "address: " << &ingredient << endl;
+  // cout << "address: " << &ingredient << endl;
   return ingredient;
 }
 

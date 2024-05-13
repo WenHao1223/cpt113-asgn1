@@ -49,6 +49,7 @@ class Employee {
     void accessMenuItem(int index) const;
     void accessDiscountList() const;
     void accessDiscountDetails(int index) const;
+    void setIngredientCostToInventoryIngredientCost();
 
     // accessible by supervisor or baker only
     void displayIngredientInventoryList() const;

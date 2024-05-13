@@ -150,6 +150,20 @@ void Employee::accessDiscountDetails(int index) const {
   cout << "Active: " << (!discounts[index].getDisabled() ? "Yes" : "No") << endl;
 }
 
+void Employee::setIngredientCostToInventoryIngredientCost() {
+  cout << role << " - Setting ingredient cost to inventory ingredient cost..." << endl;
+  for (int i = 0; i < bakeryItems[0].getBakeryItemCount(); i++) {
+    for (int j = 0; j < bakeryItems[i].getIngredientCount(); j++) {
+      for (int k = 0; k < ingredientInventory[0].getIngredientInventoryCount(); k++) {
+        if (bakeryItems[i].getIngredient(j)->getName() == ingredientInventory[k].getIngredient().getName()) {
+          cout << "Ingredient " << bakeryItems[i].getIngredient(j)->getName() << " cost of " << bakeryItems[i].getBakeryItemName() << " has been set to RM " << ingredientInventory[k].getIngredient().getCostPerUnit() << endl;
+          bakeryItems[i].getIngredient(j)->setCostPerUnit(ingredientInventory[k].getIngredient().getCostPerUnit());
+        }
+      }
+    }
+  }
+}
+
 void Employee::displayIngredientInventoryList() const {
   if (supervisor != nullptr || baker != nullptr) {
     cout << role << " - Displaying ingredient inventory list..." << endl;
@@ -306,17 +320,9 @@ void Employee::createBakeryItem() {
       // find ingredient name from ingredient inventory, if found, use the cost
       for (int j = 0; j < ingredientInventory->getIngredientInventoryCount(); j++) {
         if (ingredientName ==  ingredientInventory->getIngredientInventoryName(j)) {
-          cout << "Ingredient found in inventory." << endl;
+          cout << ingredientName << " found in inventory." << endl;
           cout << "Cost: RM " << ingredientInventory->getIngredientInventoryCost(j) << endl;
-          cout << "Do you want to use this cost? (Y/N): ";
-          char useCost;
-          cin >> useCost;
-          if (useCost == 'Y' || useCost == 'y') {
-            ingredientCost = ingredientInventory->getIngredientInventoryCost(j);
-          } else {
-            cout << "Enter ingredient cost: RM ";
-            cin >> ingredientCost;
-          }
+          ingredientCost = ingredientInventory->getIngredientInventoryCost(j);
 
           if (ingredientInventory[j].getCountable()) {
             cout << "Enter ingredient piece: ";

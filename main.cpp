@@ -113,6 +113,9 @@ int main () {
   employees[2].startBakery();
   cout << endl;
 
+  // Done: set ingredient cost of bakery item to latest ingredient cost from inventory
+  employees[2].setIngredientCostToInventoryIngredientCost();
+
   // Done: Access menu list
   // employees[0].accessMenuList();
   // cout << endl;
@@ -179,8 +182,8 @@ int main () {
   // @WenHao1223 enter ingredient cost -> enter ingredient cost per unit
   // employees[0].accessMenuList();
   // employees[0].checkIngredientInventory();
-  employees[0].createBakeryItem();
-  employees[0].checkIngredientInventory();
+  // employees[0].createBakeryItem();
+  // employees[0].checkIngredientInventory();
   // after creating new bakery item
   // employees[0].accessMenuList();
   // employees[0].accessMenuItem(3);
@@ -216,7 +219,7 @@ int main () {
 
   // Done: bake new bakery item
   // employees[0].accessMenuItem(0);
-  // employees[1].bakeNewBakeryItem(0, 3);
+// employees[1].bakeNewBakeryItem(0, 3);
   // cout << endl;
   // employees[1].bakeNewBakeryItem(0, 2);
   // cout << endl;
