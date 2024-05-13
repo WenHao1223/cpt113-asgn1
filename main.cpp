@@ -197,7 +197,6 @@ int main () {
   // employees[0].accessMenuItem(1);
 
   // Done: change bakery item price
-  // @WenHao1223 change bakery item price message after done
   // employees[0].accessMenuItem(1);
   employees[0].changeBakeryItemPrice(1, 10.0);
   // employees[0].accessMenuItem(1);
@@ -216,7 +215,7 @@ int main () {
 
   // Done: bake new bakery item
   // employees[0].accessMenuItem(0);
-// employees[1].bakeNewBakeryItem(0, 3);
+  // employees[1].bakeNewBakeryItem(0, 3);
   // cout << endl;
   // employees[1].bakeNewBakeryItem(0, 2);
   // cout << endl;
@@ -245,7 +244,7 @@ int main () {
 
   // Done: add bakery item to cart
   // @WenHao1223 show who to access this function
-  // employees[1].addBakeryItemToCart(0, 2);
+  employees[1].addBakeryItemToCart(0, 2);
   // employees[2].addBakeryItemToCart(0, 2);
   // cout << endl;
   // employees[1].bakeNewBakeryItem(0, 3);

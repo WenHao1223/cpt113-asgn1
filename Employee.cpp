@@ -781,9 +781,8 @@ void Employee::bakeNewBakeryItem(int index, int quantity) {
 }
 
 void Employee::addBakeryItemToCart (int index, int quantity) {
+  cout << role << " - Adding " << quantity << "x " << bakeryItems[index].getBakeryItemName() << " to cart..." << endl;
   if (cashier != nullptr) {
-    cout << "Adding " << quantity << "x " << bakeryItems[index].getBakeryItemName() << " to cart..." << endl;
-
     // check if bakery item is disabled
     if (bakeryItems[index].getDisabled()) {
       cout << "Warning: " << bakeryItems[index].getBakeryItemName() << " is withdrawn." << endl;
