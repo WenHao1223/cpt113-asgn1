@@ -245,12 +245,12 @@ int main () {
   // employees[1].addBakeryItemToCart(0, 2);
   // employees[2].addBakeryItemToCart(0, 2);
   // cout << endl;
-  // employees[1].bakeNewBakeryItem(0, 3);
+  employees[1].bakeNewBakeryItem(0, 3);
   // employees[1].bakeNewBakeryItem(2, 3);
   // employees[0].accessMenuItem(2);
   // employees[1].accessIngredientInventoryDetails(1);
   // cout << endl;
-  // employees[2].addBakeryItemToCart(0, 2);
+  employees[2].addBakeryItemToCart(0, 2);
   // employees[2].addBakeryItemToCart(0, 3);
   // employees[2].addBakeryItemToCart(2, 1);
   // cout << endl;
@@ -339,7 +339,7 @@ int main () {
 
   // Done: checkout
   // employees[2].accessMenuItem(0);
-  // employees[2].checkout();
+  employees[2].checkout();
   // employees[2].accessMenuItem(0);
 
   // cout << endl << endl;
@@ -353,6 +353,15 @@ int main () {
 
   // Done: show receipt
   // employees[2].showReceipt();
+
+  // Done: show total debit
+  employees[2].showTotalDebit();
+
+  // Done: show total credit
+  employees[2].showTotalCredit();
+
+  // Done: show total profit per day
+  employees[2].showTotalProfitPerDay();
   
   return 0;
 }

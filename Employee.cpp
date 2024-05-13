@@ -1,4 +1,5 @@
 #include <iomanip>
+#include <cmath>
 
 #include "Discount.h"
 #include "Employee.h"
@@ -165,6 +166,27 @@ void Employee::accessDiscountDetails(int index) const {
   cout << "Amount: " << discounts[index].getDiscountPercentage() << "%" << endl;
   cout << "Description: " << discounts[index].getDescription() << endl;
   cout << "Active: " << (!discounts[index].getDisabled() ? "Yes" : "No") << endl;
+}
+
+void Employee::showTotalDebit() const {
+  cout << role << " - Showing total debit..." << endl;
+  cout << "Total debit: RM " << totalDebit << endl;
+}
+
+void Employee::showTotalCredit() const {
+  cout << role << " - Showing total credit..." << endl;
+  cout << "Total credit: RM " << totalCredit << endl;
+}
+
+void Employee::showTotalProfitPerDay() const {
+  cout << role << " - Showing total profit per day..." << endl;
+  totalProfitPerDay = getTotalProfitPerDay();
+  cout << "Total profit per day: RM " << totalProfitPerDay << endl;
+}
+
+void Employee::showTotalBalance() const {
+  cout << role << " - Showing total balance..." << endl;
+  cout << "Total balance: RM " << totalBalance << endl;
 }
 
 void Employee::displayIngredientInventoryList() const {
@@ -1073,6 +1095,7 @@ void Employee::checkout() {
 
     // calculate total price
     double totalPrice = this->calculateDiscountedTotalPrice();
+    totalPrice = round(totalPrice * 100) / 100;
     cout << "Total price: RM " << totalPrice << endl;
     cout << endl;
 
@@ -1124,7 +1147,7 @@ double Employee::getTotalDebit() const {
 }
 
 double Employee::getTotalProfitPerDay() const {
-  return totalProfitPerDay;
+  return totalDebit - totalCredit;
 }
 
 Employee::~Employee() {

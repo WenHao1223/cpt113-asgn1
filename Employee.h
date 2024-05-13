@@ -50,6 +50,10 @@ class Employee {
     void accessMenuItem(int index) const;
     void accessDiscountList() const;
     void accessDiscountDetails(int index) const;
+    void showTotalDebit() const;
+    void showTotalCredit() const;
+    void showTotalProfitPerDay() const;
+    void showTotalBalance() const;
 
     // accessible by supervisor or baker only
     void displayIngredientInventoryList() const;
