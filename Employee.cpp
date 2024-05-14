@@ -450,9 +450,9 @@ void Employee::startBakery(string date) {
   // discounts[0] = Discount("Over RM30 Oasis: Enjoy 5\% Off", 30.0, 5.0, "Description 1", false);
   // discounts[1] = Discount("Fifty-Fiver Flourish: 10\% Discount", 50.0, 10.0, "Description 2", false);
 
-  cout << "supervisor: " << supervisor << endl;
-  cout << "baker: " << baker << endl;
-  cout << "cashier: " << cashier << endl;
+  // cout << "supervisor: " << supervisor << endl;
+  // cout << "baker: " << baker << endl;
+  // cout << "cashier: " << cashier << endl;
 
   if (supervisor != nullptr) {
     supervisor->startBakery();
