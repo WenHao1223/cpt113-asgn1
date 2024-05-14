@@ -263,8 +263,8 @@ int main () {
 
   // Done: add new ingredient into inventory
   // employees[0].addNewInventoryIngredientWeight("Salt", 0.01, 500);
-  employees[0].addNewInventoryIngredientWeight("TestNewUncountable", 0.01, 500);
-  employees[0].addNewInventoryIngredientPiece("TestNewCountable", 3.1, 50);
+  // employees[0].addNewInventoryIngredientWeight("TestNewUncountable", 0.01, 500);
+  // employees[0].addNewInventoryIngredientPiece("TestNewCountable", 3.1, 50);
   // employees[0].addNewInventoryIngredientPiece("Egg", 0.5, 10);
 
   // Done: Get inventory ingredient list
@@ -276,7 +276,7 @@ int main () {
   // before creating new bakery item
   // employees[0].accessMenuList();
   // employees[0].checkIngredientInventory();
-  // employees[0].createBakeryItem();
+  employees[0].createBakeryItem();
   // employees[0].createBakeryItem();
   // employees[0].checkIngredientInventory();
   // after creating new bakery item
@@ -290,7 +290,7 @@ int main () {
   // employees[0].accessMenuItem(1);
 
   // Done: enable bakery item
-  employees[0].enableBakeryItem(1);
+  // employees[0].enableBakeryItem(1);
   // employees[0].accessMenuItem(1);
 
   // Done: change bakery item price

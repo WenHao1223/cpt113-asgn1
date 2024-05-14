@@ -762,6 +762,14 @@ void Employee::createBakeryItem() {
     cout << "Enter item name: ";
     getline(cin, bakeryItemName);
 
+    // check if item is existing
+    for (int i = 0; i < bakeryItems->getBakeryItemCount(); i++) {
+      if (bakeryItemName == bakeryItems[i].getBakeryItemName()) {
+        cout << "Item already exists." << endl;
+        return;
+      }
+    }
+
     do {
       cout << "Enter category (Cookie / Cake): ";
       cin >> bakeryItemCategory;
@@ -985,7 +993,6 @@ void Employee::accessBakeryItemFile (int index, string field, string value) {
     }
 
     if (name == bakeryItems[index].getBakeryItemName()) {
-      cout << name << "," << field << "," << value << endl;
       if (field == "pricePerUnit") {
         pricePerUnit = value;
       } else if (field == "disabled") {
