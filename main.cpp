@@ -107,37 +107,42 @@ int main () {
   // int numberOfIngredients;
 
   // Done: create employees
-  Employee employees[MAX_EMPLOYEES] = {
-    Employee("S1", "Adam", "Supervisor", "password"),
-    Employee("B1", "Juin Ewe", "Baker", "password"),
-    Employee("C1", "Jennie Ng", "Cashier", "password")
-  };
+  // not use anymore since data fetch from file
+  // Employee employees[MAX_EMPLOYEES] = {
+  //   Employee("S1", "Adam", "Supervisor", "password"),
+  //   Employee("B1", "Juin Ewe", "Baker", "password"),
+  //   Employee("C1", "Jennie Ng", "Cashier", "password")
+  // };
+
+  Employee * employees = new Employee[MAX_EMPLOYEES];
 
   // read employee data from employeeData.csv
-  // employeeID,name,position,password
-  // Employee employees[MAX_EMPLOYEES];
-  // string line;
-  // int employeeCount = 0;
-  // ifstream employeeDataFile("files/employeeData.csv");
-  // if (employeeDataFile) {
-  //   getline(employeeDataFile, line); // skip first line (header)
-  //   while (!employeeDataFile.eof() && employeeCount < MAX_EMPLOYEES) {
-  //     string employeeID;
-  //     string name;
-  //     string position;
-  //     string password;
-  //     getline(employeeDataFile, employeeID, ',');
-  //     getline(employeeDataFile, name, ',');
-  //     getline(employeeDataFile, position, ',');
-  //     getline(employeeDataFile, password);
+  string line;
+  int employeeCount = 0;
+  ifstream employeeDataFile("files/employeeData.csv");
+  if (employeeDataFile) {
+    getline(employeeDataFile, line); // skip first line (header)
+    while (!employeeDataFile.eof() && employeeCount < MAX_EMPLOYEES) {
+      string employeeID;
+      string name;
+      string role;
+      string password;
+      getline(employeeDataFile, employeeID, ',');
+      getline(employeeDataFile, name, ',');
+      getline(employeeDataFile, role, ',');
+      getline(employeeDataFile, password);
 
-  //     employees[employeeCount] = Employee(employeeID, name, position, password);
-  //     employeeCount++;
-  //   }
-  // } else {
-  //   cout << "Error: employeeData.csv not found" << endl;
-  //   return 0;
-  // }
+      employees[employeeCount].setEmployeeID(employeeID);
+      employees[employeeCount].setName(name);
+      employees[employeeCount].setRole(role);
+      employees[employeeCount].setPassword(password);
+
+      employeeCount++;
+    }
+  } else {
+    cout << "Error: employeeData.csv not found" << endl;
+    return 0;
+  }
 
   employees[0].displayAllEmployeeDetails(employees);
 
@@ -340,7 +345,7 @@ int main () {
   // employees[0].displayAllEmployeeDetails(employees);
 
   // add cake to cart by total weight
-  // employees[2].addCakeByWeightToCart(2, 200);
+  employees[2].addCakeByWeightToCart(2, 200);
   // employees[2].addCakeByWeightToCart(2, 1200);
   // employees[2].addCakeByWeightToCart(1, 200);
 
@@ -359,7 +364,7 @@ int main () {
   // cout << endl;
 
   // // Done: display cart details
-  // employees[2].displayCartDetails();
+  employees[2].displayCartDetails();
   // employees[3].displayCartDetails();
 
   // Done: calculate total cost of cart
@@ -393,7 +398,7 @@ int main () {
   // employees[0].accessDiscountDetails(1);
 
   // Done: add new discount
-  employees[0].addNewDiscount();
+  // employees[0].addNewDiscount();
   // employees[0].accessDiscountList();
   // employees[0].accessDiscountDetails(2);
 
@@ -483,7 +488,7 @@ int main () {
   // show total balance
   // employees[2].showTotalBalance();
 
-  // employees[2].closeBakery(convertTimeTOYYYY_MM__DD());
+  employees[2].closeBakery(convertTimeTOYYYY_MM__DD());
 
   // Done: display balance sheet
   // can be accessed even bakery is not opened
@@ -494,6 +499,5 @@ int main () {
   // can be accessed even bakery is not opened
   // except if the date is not available
   // employees[0].accessTransactionHistory("20240510");
-  
   return 0;
 }

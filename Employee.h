@@ -127,6 +127,12 @@ class Employee {
     double getTotalCredit() const;
     double getTotalDebit() const;
 
+    // mutator
+    void setEmployeeID(string employeeID);
+    void setName(string name);
+    void setRole(string role);
+    void setPassword(string password);
+
     // friend function
     friend int findEmployeeIndex(Employee employees [], string employeeID);
 

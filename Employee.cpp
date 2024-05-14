@@ -2172,6 +2172,30 @@ double Employee::getTotalDebit() const {
   return totalDebit;
 }
 
+void Employee::setEmployeeID(string employeeID) {
+  this->employeeID = employeeID;
+}
+
+void Employee::setName(string name) {
+  this->name = name;
+}
+
+void Employee::setRole(string role) {
+  this->role = role;
+
+  if (role == "Supervisor") {
+    this->supervisor = new Supervisor(employeeID, name);
+  } else if (role == "Baker") {
+    this->baker = new Baker(employeeID, name);
+  } else if (role == "Cashier") {
+    this->cashier = new Cashier(employeeID, name);
+  }
+}
+
+void Employee::setPassword (string password) {
+  this->password = password;
+}
+
 Employee::~Employee() {
   delete discounts;
 

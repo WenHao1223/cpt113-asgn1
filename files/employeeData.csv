@@ -1,4 +1,4 @@
-employeeID,name,position,password
+employeeID,name,role,password
 S1,John,Supervisor,1234
 B1,Smith,Baker,password
 C1,Eben,Cashier,12345
