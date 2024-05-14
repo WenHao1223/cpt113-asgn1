@@ -278,7 +278,7 @@ int main () {
   // before creating new bakery item
   // employees[0].accessMenuList();
   // employees[0].checkIngredientInventory();
-  // employees[0].createBakeryItem();
+  employees[0].createBakeryItem();
   // employees[0].createBakeryItem();
   // employees[0].checkIngredientInventory();
   // after creating new bakery item

@@ -759,8 +759,12 @@ void Employee::createBakeryItem() {
     Ingredient * ingredient;
     string recipe;
 
-    cout << "Enter item name: ";
-    getline(cin, bakeryItemName);
+    cin.ignore();
+
+    do {
+      cout << "Enter item name: ";
+      getline(cin, bakeryItemName);
+    } while (bakeryItemName == "");
 
     // check if item is existing
     for (int i = 0; i < bakeryItems->getBakeryItemCount(); i++) {
@@ -776,21 +780,31 @@ void Employee::createBakeryItem() {
     } while (bakeryItemCategory != "Cookie" && bakeryItemCategory != "Cake");
 
     cin.ignore();
-    cout << "Enter description: ";
-    getline(cin, bakeryItemDescription);
-    cout << "Enter price per unit: RM ";
-    cin >> bakeryItemPricePerUnit;
+
+    do {
+      cout << "Enter description: ";
+      getline(cin, bakeryItemDescription);
+    } while (bakeryItemDescription == "");
+
+    do {
+      cout << "Enter price per unit: RM ";
+      cin >> bakeryItemPricePerUnit;
+    } while (bakeryItemPricePerUnit < 0);
 
     // input total weight for cake
     cin.ignore();
     int totalWeight = 0;
     if (bakeryItemCategory == "Cake") {
-      cout << "Enter total weight in gram(s): ";
-      cin >> totalWeight;
+      do {
+        cout << "Enter total weight in gram(s): ";
+        cin >> totalWeight;
+      } while (totalWeight <= 0);
     }
 
-    cout << "Enter number of ingredients: ";
-    cin >> numberOfIngredients;
+    do {
+      cout << "Enter number of ingredients: ";
+      cin >> numberOfIngredients;
+    } while (numberOfIngredients <= 0);
 
     ingredient = new Ingredient[numberOfIngredients];
     for (int i = 0; i < numberOfIngredients; i++) {
@@ -805,8 +819,10 @@ void Employee::createBakeryItem() {
       cout << "--- Ingredient " << i+1 << " ---" << endl;
 
       cin.ignore();
-      cout << "Enter ingredient name: ";
-      getline(cin, ingredientName);
+      do {
+        cout << "Enter ingredient name: ";
+        getline(cin, ingredientName);
+      } while (ingredientName == "");
 
 
       // find ingredient name from ingredient inventory, if found, use the cost
@@ -822,12 +838,16 @@ void Employee::createBakeryItem() {
           ingredientCost = ingredientInventory->getIngredientInventoryCost(j);
 
           if (ingredientInventory[j].getIngredient().getCountable()) {
-            cout << "Enter ingredient piece: ";
-            cin >> ingredientPiece;
+            do {
+              cout << "Enter ingredient piece: ";
+              cin >> ingredientPiece;
+            } while (ingredientPiece <= 0);
             ingredient[i] = Ingredient(ingredientName, ingredientCost, ingredientPiece);
           } else {
-            cout << "Enter ingredient weight in gram(s): ";
-            cin >> ingredientWeight;
+            do {
+              cout << "Enter ingredient weight in gram(s): ";
+              cin >> ingredientWeight;
+            } while (ingredientWeight <= 0);
             ingredient[i] = Ingredient(ingredientName, ingredientCost, ingredientWeight);
           }
         }
@@ -835,8 +855,10 @@ void Employee::createBakeryItem() {
 
       // if ingredient name not found in inventory, ask user to input cost
       if (ingredientCost == 0) {
-        cout << "Enter ingredient cost per Unit: RM ";
-        cin >> ingredientCost;
+        do {
+          cout << "Enter ingredient cost per Unit: RM ";
+          cin >> ingredientCost;
+        } while (ingredientCost < 0);
 
         // ask user is the ingredient in piece or weight
         do {
@@ -847,15 +869,19 @@ void Employee::createBakeryItem() {
         countable = (countableInput == '1');
 
         if (countable) {
-          cout << "Enter ingredient piece: ";
-          cin >> ingredientPiece;
+          do {
+            cout << "Enter ingredient piece: ";
+            cin >> ingredientPiece;
+          } while (ingredientPiece <= 0);
           ingredient[i] = Ingredient(ingredientName, ingredientCost, ingredientPiece);
 
           // add new ingredient to ingredient inventory
           ingredientInventory->addNewInventoryIngredientPiece(ingredientName, ingredientCost, ingredientPiece);
         } else {
-          cout << "Enter ingredient weight in gram(s): ";
-          cin >> ingredientWeight;
+          do {
+            cout << "Enter ingredient weight in gram(s): ";
+            cin >> ingredientWeight;
+          } while (ingredientWeight <= 0);
           ingredient[i] = Ingredient(ingredientName, ingredientCost, ingredientWeight);
 
           // add new ingredient to ingredient inventory
@@ -865,13 +891,30 @@ void Employee::createBakeryItem() {
     }
 
     // enable user to type multiline recipe
-    cout << "Enter recipe (press CTRL+Z then Enter on Windows, or CTRL+D on Unix, to exit): " << endl;
-    string line;
-    while (getline(cin, line)) {
-      if (cin.eof()) {
-        break;
+    cin.ignore();
+    do {
+      recipe = "";
+      cout << "Enter recipe (press CTRL+Z then Enter on Windows, or CTRL+D on Unix, to exit): " << endl;
+      string line;
+      while (getline(cin, line)) {
+        if (cin.eof()) {
+          break;
+        }
+        recipe += line + "\n";
       }
-      recipe += line + "\n";
+      cin.clear();
+    } while (recipe == "");
+
+    // confirmation
+    char confirm;
+    do {
+      cout << "Confirm to create bakery item? (Y/N): ";
+      cin >> confirm;
+    } while (confirm != 'Y' && confirm != 'N' && confirm != 'y' && confirm != 'n');
+
+    if (confirm == 'N' || confirm == 'n') {
+      cout << "Bakery item creation cancelled." << endl;
+      return;
     }
 
     bakeryItems[bakeryItems->getBakeryItemCount()] = BakeryItem(bakeryItemName, bakeryItemCategory, bakeryItemDescription, bakeryItemPricePerUnit, ingredient, numberOfIngredients, recipe, totalWeight);
@@ -883,9 +926,9 @@ void Employee::createBakeryItem() {
       for (int i = 0; i < numberOfIngredients; i++) {
         cakeFile << ingredient[i].getName() << ",";
         if (ingredient[i].getCountable()) {
-          cakeFile << ingredient[i].getPiece() << ";";
+          cakeFile << ingredient[i].getPiece();
         } else {
-          cakeFile << ingredient[i].getWeight() << ";";
+          cakeFile << ingredient[i].getWeight();
         }
         if (i != numberOfIngredients - 1) {
           cakeFile << ";";
