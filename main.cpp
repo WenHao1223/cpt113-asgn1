@@ -276,7 +276,7 @@ int main () {
   // before creating new bakery item
   // employees[0].accessMenuList();
   // employees[0].checkIngredientInventory();
-  employees[0].createBakeryItem();
+  // employees[0].createBakeryItem();
   // employees[0].createBakeryItem();
   // employees[0].checkIngredientInventory();
   // after creating new bakery item
@@ -393,7 +393,7 @@ int main () {
   // employees[0].accessDiscountDetails(1);
 
   // Done: add new discount
-  // employees[0].addNewDiscount();
+  employees[0].addNewDiscount();
   // employees[0].accessDiscountList();
   // employees[0].accessDiscountDetails(2);
 

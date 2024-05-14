@@ -1298,8 +1298,17 @@ void Employee::addNewDiscount() {
 
     cout << "Enter discount name: ";
     getline(cin, discountName);
+
+    // check if discount name is existing
+    for (int i = 0; i < Constant::MAX_DISCOUNTS; i++) {
+      if (discounts[i].getName() == discountName) {
+        cout << "Discount name already exists." << endl;
+        return;
+      }
+    }
+
     cout << "Enter minimum purchase amount: RM ";
-    cin >> minimumPurchase;
+    cin >> minimumPurchase;    
     cout << "Enter discount percentage (%): ";
     cin >> discountPercentage;
     cin.ignore();
