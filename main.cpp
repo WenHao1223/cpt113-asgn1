@@ -212,7 +212,7 @@ int main () {
   // employees[2].setIngredientCostToInventoryIngredientCost();
 
   // Done: Access menu list
-  employees[0].accessMenuList();
+  // employees[0].accessMenuList();
   // cout << endl;
 
   // Done: Access menu details
@@ -247,7 +247,8 @@ int main () {
   // and let supervisor choose which ingredient to restock
   // then how many pieces or weight to restock
   // employees[0].restockIngredientInventory(0, 50003.6);
-  employees[0].restockIngredientInventory(1, 300);
+  employees[0].restockIngredientInventory(2, 300);
+  employees[0].restockIngredientInventory(1, 3200);
   // employees[2].restockIngredientInventory(1, 300);
   // employees[0].checkIngredientInventory();
   // cout << endl;
@@ -262,8 +263,8 @@ int main () {
   // cout << endl;
 
   // Done: add new ingredient into inventory
-  employees[0].addNewInventoryIngredientWeight("Salt", 0.01, 500);
-  employees[0].addNewInventoryIngredientWeight("TestNewuncountable", 0.01, 500);
+  // employees[0].addNewInventoryIngredientWeight("Salt", 0.01, 500);
+  // employees[0].addNewInventoryIngredientWeight("TestNewuncountable", 0.01, 500);
   // employees[0].addNewInventoryIngredientPiece("Egg", 0.5, 10);
 
   // Done: Get inventory ingredient list
@@ -322,8 +323,8 @@ int main () {
   // employees[0].displayAllEmployeeDetails(employees);
 
   // Done: create new employee by supervisor
-  employees[0].createNewEmployee(employees, "C2", "Bob", "Supervisor", "password");
-  employees[3].login("C2", "password");
+  // employees[0].createNewEmployee(employees, "C2", "Bob", "Supervisor", "password");
+  // employees[3].login("C2", "password");
 
   // Done: change employee role
   // Juin Ewe and Jennie are now Cashiers *^____^*

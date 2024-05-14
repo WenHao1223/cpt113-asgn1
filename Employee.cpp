@@ -583,7 +583,58 @@ void Employee::checkIngredientInventory() const {
   }
 }
 
-void Employee::restockIngredientInventory(int index, double quantity) const {
+void Employee::accessIngredientInventoryFile(int index, string field, string value) {
+  ifstream ingredientInventoryFile;
+  ingredientInventoryFile.open("files/IngredientInventory.csv", ios::in);
+  string line;
+  string newFileLines;
+
+  string name;
+  string costPerUnit;
+  string weight;
+  string piece;
+  string countable;
+
+  while (!ingredientInventoryFile.eof()) {
+    getline(ingredientInventoryFile, name, ',');
+    getline(ingredientInventoryFile, costPerUnit, ',');
+    getline(ingredientInventoryFile, weight, ',');
+    getline(ingredientInventoryFile, piece, ',');
+    getline(ingredientInventoryFile, countable);
+
+    if (name == ingredientInventory->getIngredientInventoryName(index)) {
+      cout << name << "," << field << "," << value << endl;
+      if (field == "name") {
+        name = value;
+      } else if (field == "costPerUnit") {
+        costPerUnit = value;
+      } else if (field == "weight") {
+        weight = value;
+      } else if (field == "piece") {
+        piece = value;
+      } else if (field == "countable") {
+        countable = value;
+      } else if (field == "deleteAll") {
+        continue;
+      } else {
+        cout << "Invalid field." << endl;
+        return;
+      }
+    }
+
+    newFileLines += name + "," + costPerUnit + "," + weight + "," + piece + "," + countable + "\n";
+  }
+  // remove last line
+  newFileLines = newFileLines.substr(0, newFileLines.size()-1);
+  ingredientInventoryFile.close();
+
+  ofstream newIngredientInventoryFile;
+  newIngredientInventoryFile.open("files/IngredientInventory.csv");
+  newIngredientInventoryFile << newFileLines;
+  newIngredientInventoryFile.close();
+}
+
+void Employee::restockIngredientInventory(int index, double quantity) {
   if (supervisor != nullptr) {
     cout << role << " - Restocking ingredient inventory..." << endl;
     if (quantity < 0) {
@@ -591,6 +642,13 @@ void Employee::restockIngredientInventory(int index, double quantity) const {
       return;
     }
     double totalCost = ingredientInventory->restockIngredientInventory(index, quantity);
+
+    if ((ingredientInventory+index)->getIngredient().getCountable()) {
+      accessIngredientInventoryFile(index, "piece", to_string(ingredientInventory->getIngredientInventoryPiece(index)));
+    } else {
+      accessIngredientInventoryFile(index, "weight", to_string((int)(ingredientInventory->getIngredientInventoryWeight(index))));
+    }
+
     cout << "Cost of restock: RM " << totalCost << endl;
 
     // update total credit
