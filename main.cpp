@@ -333,15 +333,14 @@ int main () {
 
   // Done: change employee role
   // Juin Ewe and Jennie are now Cashiers *^____^*
-  employees[0].changeEmployeeRole(employees, 1, "Cashier");
+  // employees[0].changeEmployeeRole(employees, 1, "Cashier");
   // employees[0].changeEmployeeRole(employees, 0, "Baker");
   // employees[0].changeEmployeeRole(employees, 3, "Baker");
   // employees[0].displayAllEmployeeDetails(employees);
 
   // WIP: delete employees
   // @WenHao1223
-  // employees[0].deleteEmployee(employees, 2);
-  // cout << "now working fine" << endl;
+  employees[0].deleteEmployee(employees, 2);
   // employees[0].displayAllEmployeeDetails(employees);
 
   // add cake to cart by total weight

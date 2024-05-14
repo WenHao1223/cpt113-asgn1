@@ -1209,6 +1209,7 @@ void Employee::accessEmployeeDataFile (int index, string field, string value) {
       } else if (field == "password") {
         password = value;
       } else if (field == "deleteAll") {
+        lineCount++;
         continue;
       } else {
         cout << "Invalid field." << endl;
@@ -1333,6 +1334,9 @@ void Employee::deleteEmployee(Employee employees [], int index) {
       cout << "Warning: Cannot delete supervisor account." << endl;
       return;
     }
+
+    // file handling
+    accessEmployeeDataFile(index, "deleteAll", "");
 
     cout << employees[index].role << " " << employees[index].name << " has been deleted." << endl;
 
