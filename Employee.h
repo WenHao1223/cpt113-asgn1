@@ -22,6 +22,7 @@ class Employee {
     string employeeID;
     string name;
     string role;
+    string password;
     Supervisor * supervisor = nullptr;
     Baker * baker = nullptr;
     Cashier * cashier = nullptr;
@@ -40,11 +41,12 @@ class Employee {
   public:
     // Constructor
     Employee();
-    Employee(string employeeID, string name, string role);
+    Employee(string employeeID, string name, string role, string password);
 
     // member functions
     // accessible by all roles
     void displayEmployeeDetails() const;
+    bool login(string employeeID, string password);
     void setIngredientCostToInventoryIngredientCost();
     void startBakery(string date);
     void accessMenuList() const;
@@ -76,7 +78,7 @@ class Employee {
     void calculateBakeryItemProfit(int index) const;
     void compareCostVsProfit(int index) const;
     void compareCostVsPrice(int index) const;
-    void createNewEmployee(Employee * employees, string employeeID, string name, string role);
+    void createNewEmployee(Employee * employees, string employeeID, string name, string role, string password);
     void changeEmployeeRole(Employee employees [], int index, string role);
     void displayAllEmployeeDetails(Employee employees []) const;
     void deleteEmployee(Employee employees [], int index);
