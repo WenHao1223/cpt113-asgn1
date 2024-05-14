@@ -99,6 +99,39 @@ int findEmployeeIndex(Employee employees[], string employeeID) {
   return index;
 }
 
+int login (Employee employees[]) {
+  cout << "Employee list: " << endl;
+  for (int i = 0; i < MAX_EMPLOYEES; i++) {
+    if (employees[i].getName() != "") {
+      cout << i+1 << ". " << employees[i].getName() << endl;
+    }
+  }
+  int employeeChoice;
+
+  do {
+    cout << "Choose employee: ";
+    cin >> employeeChoice;
+    if (employeeChoice < 1 || employeeChoice > MAX_EMPLOYEES || employees[employeeChoice-1].getName() == "") {
+      cout << "Invalid choice. Please try again." << endl;
+    }
+    
+    string employeeID;
+    cout << "Enter employee ID: ";
+    cin >> employeeID;
+
+    string password;
+    cout << "Enter password: ";
+    cin >> password;
+    if (employees[employeeChoice-1].login(employeeID, password)) {
+      break;
+    } else {
+      cout << "Invalid employee ID or password. Please try again." << endl;
+    }
+  } while (true);
+
+  return employeeChoice-1;
+}
+
 int main () {
   // Done: display current date in YYYYMMDD format
   const string DATE_YYYYMMDD = convertTimeToYYYYMMDD();
@@ -151,25 +184,7 @@ int main () {
   // }
 
   // Done: login
-  cout << "Employee list: " << endl;
-  for (int i = 0; i < MAX_EMPLOYEES; i++) {
-    if (employees[i].getName() != "") {
-      cout << i+1 << ". " << employees[i].getName() << endl;
-    }
-  }
-  // @AeroRin input validation
-  cout << "Choose employee: ";
-  int employeeChoice;
-  cin >> employeeChoice;
-  string employeeID;
-  string password;
-  cout << "Enter employee ID: ";
-  cin >> employeeID;
-  cout << "Enter password: ";
-  cin >> password;
-  // @TjeEwe .login() will return true if login is successful
-  // then only start accessing other functions
-  employees[employeeChoice-1].login(employeeID, password);
+  int employeeID = login(employees);
 
   // employees[0].login("S1", "password");
   // employees[0].login("B1", "password"); // wrong id
@@ -205,8 +220,8 @@ int main () {
 
   // use only once per program
   // can be started by random employee
-  employees[2].startBakery(convertTimeTOYYYY_MM__DD());
-  cout << endl;
+  // employees[2].startBakery(convertTimeTOYYYY_MM__DD());
+  // cout << endl;
 
   // Done: set ingredient cost of bakery item to latest ingredient cost from inventory
   // not used anymore as it is done in Employee::startBakery()
@@ -349,12 +364,12 @@ int main () {
   // employees[1].addBakeryItemToCart(0, 2);
   // employees[2].addBakeryItemToCart(0, 2);
   // cout << endl;
-  employees[1].bakeNewBakeryItem(1, 4);
+  // employees[1].bakeNewBakeryItem(1, 4);
   // employees[1].bakeNewBakeryItem(2, 3);
   // employees[0].accessMenuItem(2);
   // employees[1].accessIngredientInventoryDetails(1);
   // cout << endl;
-  employees[2].addBakeryItemToCart(1, 2);
+  // employees[2].addBakeryItemToCart(1, 2);
   // employees[2].addBakeryItemToCart(0, 3);
   // employees[2].addBakeryItemToCart(2, 1);
   // cout << endl;
@@ -451,7 +466,7 @@ int main () {
 
   // Done: checkout
   // employees[2].accessMenuItem(0);
-  employees[2].checkout(convertTimeToYYYY__MM__DD_HH_MM_SS());
+  // employees[2].checkout(convertTimeToYYYY__MM__DD_HH_MM_SS());
   // employees[2].accessMenuItem(2);
 
   // cout << endl << endl;
