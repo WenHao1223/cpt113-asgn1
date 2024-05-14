@@ -106,8 +106,6 @@ void IngredientInventory::checkIngredientInventory() const {
 // @TjeEwe require file handling
 // update inventory.csv
 void IngredientInventory::addNewInventoryIngredientWeight(string name, double cost, double weight) {
-  ofstream addInventory;
-  addInventory.open("files/IngredientInventory.csv", ios::app);
   if (name == "") {
     cout << "Name cannot be empty." << endl;
     exit(EXIT_FAILURE);
@@ -125,9 +123,21 @@ void IngredientInventory::addNewInventoryIngredientWeight(string name, double co
     exit(EXIT_FAILURE);
     return;
   }
+  
+  // Check if ingredient already exists in inventory
+  // Check ingredient inventory name from ingredientInventory
+  for (int i = 0; i < ingredientInventoryCount; i++) {
+    if (ingredientInventory[i].ingredient.getName() == name) {
+      cout << "Ingredient " << name << " already exists in inventory." << endl;
+      return;
+    }
+  }
 
-  addInventory << name << "," << cost << "," << weight << ",0\n";
+  ofstream addInventory;
+  addInventory.open("files/IngredientInventory.csv", ios::app);
+  addInventory << "\n" << name << "," << cost << "," << weight << ",0,false";
   addInventory.close();
+
   ingredientInventory[ingredientInventoryCount] = IngredientInventory(name, cost, weight);
 
   cout << weight << " gram(s) of ingredient " << name << " has been added into inventory." << endl;

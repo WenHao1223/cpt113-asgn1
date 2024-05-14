@@ -138,8 +138,6 @@ void Employee::startBakery(string date) {
       balanceString = "5000.0";
     }
 
-    cout << "Starting balance: RM " << balanceString << endl;
-
   } else {
     cout << "Starting balance: RM " << balanceString << endl;
     totalDebit = 0;
@@ -148,9 +146,46 @@ void Employee::startBakery(string date) {
 
   totalBalance = stod(balanceString);
 
-  ingredientInventory[0] = IngredientInventory("Ingredient 1", 0.0005, 100000.0);
-  ingredientInventory[1] = IngredientInventory("Ingredient 2", 20.0, 200);
-  ingredientInventory[2] = IngredientInventory("Ingredient 3", 30.0, 0.0);
+  // fetch ingredient inventory from files/ingredientInventory.csv
+  ifstream ingredientInventoryFile;
+  ingredientInventoryFile.open("files/ingredientInventory.csv");
+  cout << endl;
+  cout << "Reading ingredient inventory file..." << endl;
+  string ingredientInventoryLine;
+  string ingredInvName;
+  double ingredInvCost;
+  double ingredInvWeight;
+  int ingredInvPiece;
+  bool ingredInvCountable;
+  int ingredInvCount = 0;
+
+  getline(ingredientInventoryFile, ingredientInventoryLine); // skip first line (header)
+  while (getline(ingredientInventoryFile, ingredInvName, ',')) {
+    getline(ingredientInventoryFile, ingredientInventoryLine, ',');
+    ingredInvCost = stod(ingredientInventoryLine);
+    getline(ingredientInventoryFile, ingredientInventoryLine, ',');
+    ingredInvWeight = stod(ingredientInventoryLine);
+    getline(ingredientInventoryFile, ingredientInventoryLine, ',');
+    ingredInvPiece = stoi(ingredientInventoryLine);
+    getline(ingredientInventoryFile, ingredientInventoryLine);
+    ingredInvCountable = (ingredientInventoryLine == "true");
+
+    if (ingredInvName != "") {
+      cout << "Ingredient '" << ingredInvName << "' has been added." << endl;
+      if (ingredInvCountable) {
+        ingredientInventory[ingredInvCount] = IngredientInventory(ingredInvName, ingredInvCost, ingredInvPiece);
+      } else {
+        ingredientInventory[ingredInvCount] = IngredientInventory(ingredInvName, ingredInvCost, ingredInvWeight);
+      }
+      cout << ingredInvName << "," << ingredInvCost << "," << ingredInvWeight << "," << ingredInvPiece << "," << ingredInvCountable << endl;
+      ingredInvCount++;
+    }
+  }
+  ingredientInventoryFile.close();
+
+  // for (int i = 0; i < ingredientInventory[0].getIngredientInventoryCount(); i++) {
+  //   cout << "Ingredient Inventory address: " << &ingredientInventory[i] << endl;
+  // }
 
   bakeryItems->setBakeryItems(bakeryItems);
 
@@ -163,7 +198,7 @@ void Employee::startBakery(string date) {
   numberOfIngredients = 1;
   bakeryItems[0] = BakeryItem("Item 1", "Cookie", "Description 1", 10.0,
     new Ingredient[numberOfIngredients] {
-      Ingredient("Ingredient 1", 0.08, 100.0)
+      Ingredient("Sugar", 0.08, 100.0)
     }, numberOfIngredients, "Recipe 1");
   numberOfIngredients = 3;
   bakeryItems[1] = BakeryItem("Item 2", "Cookie", "Description 2", 20.0,
@@ -179,7 +214,11 @@ void Employee::startBakery(string date) {
       Ingredient("Ingredient 2", 2.0, 3),
     }, numberOfIngredients, "Recipe 3", 1000);
 
-  // cout << "Bakery Item Address (from employee): " << bakeryItems << endl;
+  // for (int i = 0; i < bakeryItems[0].getBakeryItemCount(); i++) {
+  //   cout << "Item address: " << &bakeryItems[i] << endl;
+  // }
+
+  // cout << "Bakery Item Address (from employee): " << this->bakeryItems << endl;
 
   discounts = new Discount[Constant::MAX_DISCOUNTS];
 
@@ -199,8 +238,7 @@ void Employee::startBakery(string date) {
   int discountCount = 0;
 
   getline(discountFile, discountLine); // skip first line (header)
-  while (!discountFile.eof()) {
-    getline(discountFile, discountName, ',');
+  while (getline(discountFile, discountName, ',')) {
     getline(discountFile, discountLine, ',');
     discountMinimumPurchase = stod(discountLine);
     getline(discountFile, discountLine, ',');
