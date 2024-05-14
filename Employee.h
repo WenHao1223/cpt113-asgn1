@@ -72,6 +72,7 @@ class Employee {
     void addNewInventoryIngredientPiece(string name, double cost, int piece);
     void getAllInventoryIngredientName() const;
     void createBakeryItem();
+    void accessBakeryItemFile(int index, string field, string value);
     void withdrawBakeryItem(int index);
     void enableBakeryItem(int index);
     void changeBakeryItemPrice(int index, double newPrice);

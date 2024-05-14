@@ -277,7 +277,7 @@ int main () {
   // before creating new bakery item
   // employees[0].accessMenuList();
   // employees[0].checkIngredientInventory();
-  employees[0].createBakeryItem();
+  // employees[0].createBakeryItem();
   // employees[0].createBakeryItem();
   // employees[0].checkIngredientInventory();
   // after creating new bakery item
@@ -296,7 +296,7 @@ int main () {
 
   // Done: change bakery item price
   // employees[0].accessMenuItem(1);
-  // employees[0].changeBakeryItemPrice(1, 10.0);
+  employees[0].changeBakeryItemPrice(1, 10.0);
   // employees[0].accessMenuItem(1);
 
   // Done: calculate cost of bakery item

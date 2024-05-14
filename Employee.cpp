@@ -645,6 +645,7 @@ void Employee::restockIngredientInventory(int index, double quantity) {
     }
     double totalCost = ingredientInventory->restockIngredientInventory(index, quantity);
 
+    // file handling
     if ((ingredientInventory+index)->getIngredient().getCountable()) {
       accessIngredientInventoryFile(index, "piece", to_string(ingredientInventory->getIngredientInventoryPiece(index)));
     } else {
@@ -671,7 +672,7 @@ void Employee::changeIngredientCost(int index, double cost) {
     }
     ingredientInventory->changeIngredientCost(index, cost);
 
-    // file handling inside function
+    // file handling
     accessIngredientInventoryFile(index, "costPerUnit", to_string(cost));
 
     // update all bakery items ingredient cost
@@ -728,9 +729,7 @@ void Employee::addNewInventoryIngredientPiece(string name, double cost, int piec
       return;
     }
 
-    // file handling
-    accessIngredientInventoryFile(0, "addNewRow", name + "," + to_string(cost) + ",0," + to_string(piece) + ",true");
-
+    // file handling inside function
     ingredientInventory->addNewInventoryIngredientPiece(name, cost, piece);
   } else {
     cout << "Only supervisor can add new inventory ingredient." << endl;
@@ -928,10 +927,103 @@ void Employee::createBakeryItem() {
   }
 }
 
+void Employee::accessBakeryItemFile (int index, string field, string value) {
+  ifstream bakeryItemFile;
+  if (bakeryItems[index].getBakeryItemCategory() == "Cake") {
+    bakeryItemFile.open("files/cake.csv", ios::in);
+  } else {
+    bakeryItemFile.open("files/cookie.csv", ios::in);
+  }
+  string line;
+  string newFileLines;
+
+  string name;
+  string description;
+  string pricePerUnit;
+  string ingredients;
+  string recipe;
+  string disabled;
+  string totalWeight;
+
+  if (!bakeryItemFile) {
+    cout << "File not found." << endl;
+    return;
+  } else {
+    getline(bakeryItemFile, line); // skip first line (header)
+    newFileLines += line + "\n";
+  }
+
+  while (!bakeryItemFile.eof()) {
+    // name
+    getline(bakeryItemFile, name, ',');
+
+    // description
+    getline(bakeryItemFile, line, '"');
+    getline(bakeryItemFile, description, '"');
+
+    // price per unit
+    getline(bakeryItemFile, line, ',');
+    getline(bakeryItemFile, pricePerUnit, ',');
+
+    // ingredients
+    getline(bakeryItemFile, line, '"');
+    getline(bakeryItemFile, ingredients, '"');
+
+    // recipe
+    getline(bakeryItemFile, line, '"');
+    getline(bakeryItemFile, recipe, '"');
+    
+    if (bakeryItems[index].getBakeryItemCategory() == "Cake") {
+      // disabled
+      getline(bakeryItemFile, line, ',');
+      getline(bakeryItemFile, disabled, ',');
+
+      // total weight
+      getline(bakeryItemFile, totalWeight);
+    } else {
+      // disabled
+      getline(bakeryItemFile, disabled);
+    }
+
+    if (name == bakeryItems[index].getBakeryItemName()) {
+      cout << name << "," << field << "," << value << endl;
+      if (field == "pricePerUnit") {
+        pricePerUnit = value;
+      } else if (field == "disabled") {
+        disabled = value;
+      } else if (field == "deleteAll") {
+        continue;
+      } else {
+        cout << "Invalid field." << endl;
+        return;
+      }
+    }
+
+    newFileLines += name + ",\"" + description + "\"," + pricePerUnit + ",\"" + ingredients + "\",\"" + recipe + "\"," + disabled + "," + totalWeight + "\n";
+  }
+
+  // remove last line
+  newFileLines = newFileLines.substr(0, newFileLines.size()-1);
+  bakeryItemFile.close();
+
+  ofstream newBakeryItemFile;
+  if (bakeryItems[index].getBakeryItemCategory() == "Cake") {
+    newBakeryItemFile.open("files/cake.csv");
+  } else {
+    newBakeryItemFile.open("files/cookie.csv");
+  }
+  newBakeryItemFile << newFileLines;
+  newBakeryItemFile.close();
+}
+
 void Employee::withdrawBakeryItem (int index) {
   if (supervisor != nullptr) {
     cout << role << " - Withdrawing " << bakeryItems[index].getBakeryItemName() << "..." << endl;
     bakeryItems[index].setDisabled(true);
+
+    // file handling
+    accessBakeryItemFile(index, "disabled", "true");
+
     cout << bakeryItems[index].getBakeryItemName() << " has been withdrawn." << endl;
   } else {
     cout << "Only supervisor can withdraw bakery item." << endl;
@@ -942,6 +1034,10 @@ void Employee::enableBakeryItem (int index) {
   if (supervisor != nullptr) {
     cout << role << " - Enabling " << bakeryItems[index].getBakeryItemName() << "..." << endl;
     bakeryItems[index].setDisabled(false);
+
+    // file handling
+    accessBakeryItemFile(index, "disabled", "false");
+
     cout << bakeryItems[index].getBakeryItemName() << " has been enabled." << endl;
   } else {
     cout << "Only supervisor can enable bakery item." << endl;
@@ -952,6 +1048,10 @@ void Employee::changeBakeryItemPrice(int index, double newPrice) {
   if (supervisor != nullptr) {
     cout << role << " - Changing " << bakeryItems[index].getBakeryItemName() << " price..." << endl;
     bakeryItems[index].setPricePerUnit(newPrice);
+
+    // file handling
+    accessBakeryItemFile(index, "pricePerUnit", to_string(newPrice));
+
     cout << setprecision(2) << fixed;
     cout << bakeryItems[index].getBakeryItemName() << " price has been changed to RM " << newPrice << "." << endl;
   } else {
