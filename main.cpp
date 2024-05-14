@@ -291,12 +291,12 @@ int main () {
   // employees[0].accessMenuItem(1);
 
   // Done: enable bakery item
-  // employees[0].enableBakeryItem(1);
+  employees[0].enableBakeryItem(1);
   // employees[0].accessMenuItem(1);
 
   // Done: change bakery item price
   // employees[0].accessMenuItem(1);
-  employees[0].changeBakeryItemPrice(1, 10.0);
+  // employees[0].changeBakeryItemPrice(1, 10.0);
   // employees[0].accessMenuItem(1);
 
   // Done: calculate cost of bakery item
