@@ -203,7 +203,6 @@ int main () {
 
   // use only once per program
   // can be started by random employee
-  // @TjeEwe inventory file shall be read in Employee::startBakery()
   employees[2].startBakery(convertTimeTOYYYY_MM__DD());
   cout << endl;
 
@@ -446,7 +445,7 @@ int main () {
   // employees[2].calculateDiscountedTotalPrice();
   // employees[2].calculateDiscountedTotalPrice();
   // cout << endl;
-  // @TjeEwe only show line below to store discounted price
+  // not needed since integrated in checkout function
   // double discountedPrice = employees[2].calculateDiscountedTotalPrice();
 
   // Done: checkout

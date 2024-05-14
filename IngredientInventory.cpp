@@ -142,8 +142,6 @@ void IngredientInventory::addNewInventoryIngredientWeight(string name, double co
   cout << weight << " gram(s) of ingredient " << name << " has been added into inventory." << endl;
 }
 
-// @TjeEwe require file handling **DONE**
-// update inventory.csv
 void IngredientInventory::addNewInventoryIngredientPiece(string name, double cost, int piece) {
   if (name == "") {
     cout << "Name cannot be empty." << endl;

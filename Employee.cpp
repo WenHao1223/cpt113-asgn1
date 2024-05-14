@@ -315,7 +315,6 @@ void Employee::startBakery(string date) {
   //     Ingredient("Ingredient 2", 2.0, 3),
   //     Ingredient("Ingredient 3 of Item 2", 0.02, 400.0)
   //   }, numberOfIngredients, "Recipe 2");
-  // // @TjeEwe when doing file handling, cake need to have totalWeight
   // numberOfIngredients = 1;
   // bakeryItems[2] = BakeryItem("Item 3", "Cake", "Description 3", 30.0,
   //   new Ingredient[numberOfIngredients] {
@@ -1579,8 +1578,6 @@ void Employee::accessTransactionHistory (string date) const {
   }
 }
 
-// @TjeEwe file handling if new bakery item is created
-// deduct ingredients from inventory
 void Employee::bakeNewBakeryItem(int index, int quantity) {
   if (baker != nullptr) {
     cout << role << " - Baking " << quantity << "x " << bakeryItems[index].getBakeryItemName() << "..." << endl;
