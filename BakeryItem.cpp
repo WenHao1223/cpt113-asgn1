@@ -65,7 +65,7 @@ BakeryItem::BakeryItem(string name, string category, string description, double 
   // cout << "bakeryItemCount: " << bakeryItemCount << endl;
   bakeryItemCount++;
 
-  // cout << "Bakery Item " << name << " has been added." << endl;
+  cout << category << " " << name << " has been added." << endl;
 }
 
 void BakeryItem::displayBakeryItemDetails() const {

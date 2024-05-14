@@ -198,11 +198,12 @@ void Employee::startBakery(string date) {
       } else {
         ingredientInventory[ingredInvCount] = IngredientInventory(ingredInvName, ingredInvCost, ingredInvWeight);
       }
-      cout << ingredInvName << "," << ingredInvCost << "," << ingredInvWeight << "," << ingredInvPiece << "," << ingredInvCountable << endl;
       ingredInvCount++;
     }
   }
   ingredientInventoryFile.close();
+  cout << "Ingredient inventory count: " << ingredInvCount << endl;
+  cout << "Ingredient inventory file closed." << endl;
 
   // for (int i = 0; i < ingredientInventory[0].getIngredientInventoryCount(); i++) {
   //   cout << "Ingredient Inventory address: " << &ingredientInventory[i] << endl;
@@ -232,24 +233,22 @@ void Employee::startBakery(string date) {
 
   getline(bakeryItemFile, cakeLine); // skip first line (header)
   while (!bakeryItemFile.eof()) {
+    // name
     getline(bakeryItemFile, cakeName, ',');
 
+    // description
     getline(bakeryItemFile, cakeLine, '"');
     getline(bakeryItemFile, cakeDescription, '"');
 
+    // price per unit
+    getline(bakeryItemFile, cakeLine, ',');
     getline(bakeryItemFile, cakeLine, ',');
     cakePricePerUnit = stod(cakeLine);
 
-    getline(bakeryItemFile, cakeLine, ',');
+    // ingredients
     getline(bakeryItemFile, cakeLine, '"');
     getline(bakeryItemFile, cakeLine, '"');
-    cout << "Ingredients: " << cakeLine << endl;
-    // split cakeLine by ;
-    // Flour,250.00;Sugar,225.00;Butter,225.00;Eggs,4;Vanilla extract,10.00;Baking powder,10.00;Milk,120.00
-    // Ingredient("Flour", 0.08, 250.0)
-    // Ingredient("Sugar", 0.08, 225.0)
-    // Change the data to construtor form by splitting ;
-    // calculate how many ingredients are there
+
     for (int i = 0; i < cakeLine.size(); i++) {
       if (cakeLine[i] == ';') {
         ingredientCount++;
@@ -261,10 +260,6 @@ void Employee::startBakery(string date) {
     
     for (int i = 0; i < cakeLine.size(); i++) {
       if (cakeLine[i] == ';') {
-        // cout << "Ingredient: " << temp << endl;
-        // split temp by ,
-        // Flour,250.00
-        // Ingredient("Flour", 0.08, 250.0)
         string ingredientName = temp.substr(0, temp.find(","));
 
         string ingredientWeightString = temp.substr(temp.find(",") + 1);
@@ -290,21 +285,22 @@ void Employee::startBakery(string date) {
       }
     }
 
+    // recipe
     getline(bakeryItemFile, cakeLine, '"');
     getline(bakeryItemFile, cakeRecipe, '"');
     
+    // disabled
     getline(bakeryItemFile, cakeLine, ',');
     getline(bakeryItemFile, cakeLine, ',');
     cakeDisabled = (cakeLine == "true");
 
+    // total weight
     getline(bakeryItemFile, cakeLine);
     cakeTotalWeight = stoi(cakeLine);
-    break;
+    
+    bakeryItems[bakeryItemCount] = BakeryItem(cakeName, "Cake", cakeDescription, cakePricePerUnit, ingredients, ingredientCount, cakeRecipe, cakeTotalWeight);
   }
-    // Ingredient("Sugar", 0.08, 100.0)
 
-  // cake file data
-  // Classic Vanilla Cake,"Delight in the timeless elegance of our Classic Vanilla Cake. Moist and tender, with a rich vanilla flavor that enchants the palate with every bite.",15.00,"Flour,250.00;Sugar,225.00;Butter,225.00;Eggs,4;Vanilla extract,10.00;Baking powder,10.00;Milk,120.00","1.Add flour, sugar, baking powder, butter, vanilla extract and salt in a large bowl and mix\n2.Add eggs, milk and mix with low speed\n3.Mix till smooth and insert batter in heated pan\n4.Bake the cake within 40 minutes until golden\n5.Remove from the oven and allow to cool for about 10 minutes\n6.Apply frosting with Vanilla Frosting",false,800
   
   // numberOfIngredients = 1;
   // bakeryItems[0] = BakeryItem("Item 1", "Cookie", "Description 1", 10.0,

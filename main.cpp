@@ -119,7 +119,7 @@ int main () {
   //   cout << "employees[" << i << "] address: " << &employees[i] << endl;
   // }
 
-  // login
+  // Done: login
   cout << "Employee list: " << endl;
   for (int i = 0; i < MAX_EMPLOYEES; i++) {
     if (employees[i].getName() != "") {
@@ -127,18 +127,18 @@ int main () {
     }
   }
   // @AeroRin input validation
-  cout << "Choose employee: ";
-  int employeeChoice;
-  cin >> employeeChoice;
-  string employeeID;
-  string password;
-  cout << "Enter employee ID: ";
-  cin >> employeeID;
-  cout << "Enter password: ";
-  cin >> password;
+  // cout << "Choose employee: ";
+  // int employeeChoice;
+  // cin >> employeeChoice;
+  // string employeeID;
+  // string password;
+  // cout << "Enter employee ID: ";
+  // cin >> employeeID;
+  // cout << "Enter password: ";
+  // cin >> password;
   // @TjeEwe .login() will return true if login is successful
   // then only start accessing other functions
-  employees[employeeChoice-1].login(employeeID, password);
+  // employees[employeeChoice-1].login(employeeID, password);
 
   // employees[0].login("S1", "password");
   // employees[0].login("B1", "password"); // wrong id
@@ -175,8 +175,8 @@ int main () {
   // use only once per program
   // can be started by random employee
   // @TjeEwe inventory file shall be read in Employee::startBakery()
-  // employees[2].startBakery(convertTimeTOYYYY_MM__DD());
-  // cout << endl;
+  employees[2].startBakery(convertTimeTOYYYY_MM__DD());
+  cout << endl;
 
   // Done: set ingredient cost of bakery item to latest ingredient cost from inventory
   // not used anymore as it is done in Employee::startBakery()
