@@ -1780,7 +1780,6 @@ void Employee::addCakeByWeightToCart(int index, int weight) {
       return;
     }
 
-
     // check if bakery item is cake
     if (bakeryItems[index].getBakeryItemCategory() != "Cake") {
       cout << "Warning: " << bakeryItems[index].getBakeryItemName() << " is not a cake." << endl;

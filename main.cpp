@@ -143,9 +143,6 @@ int main () {
     cout << "Error: employeeData.csv not found" << endl;
     return 0;
   }
-
-  employees[0].displayAllEmployeeDetails(employees);
-
   cout << endl;
 
   // cout << "employees address: " << &employees << endl;
@@ -161,18 +158,18 @@ int main () {
     }
   }
   // @AeroRin input validation
-  // cout << "Choose employee: ";
-  // int employeeChoice;
-  // cin >> employeeChoice;
-  // string employeeID;
-  // string password;
-  // cout << "Enter employee ID: ";
-  // cin >> employeeID;
-  // cout << "Enter password: ";
-  // cin >> password;
+  cout << "Choose employee: ";
+  int employeeChoice;
+  cin >> employeeChoice;
+  string employeeID;
+  string password;
+  cout << "Enter employee ID: ";
+  cin >> employeeID;
+  cout << "Enter password: ";
+  cin >> password;
   // @TjeEwe .login() will return true if login is successful
   // then only start accessing other functions
-  // employees[employeeChoice-1].login(employeeID, password);
+  employees[employeeChoice-1].login(employeeID, password);
 
   // employees[0].login("S1", "password");
   // employees[0].login("B1", "password"); // wrong id
@@ -340,7 +337,7 @@ int main () {
 
   // WIP: delete employees
   // @WenHao1223
-  employees[0].deleteEmployee(employees, 2);
+  // employees[0].deleteEmployee(employees, 2);
   // employees[0].displayAllEmployeeDetails(employees);
 
   // add cake to cart by total weight
