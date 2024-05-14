@@ -186,33 +186,123 @@ void Employee::startBakery(string date) {
   // for (int i = 0; i < ingredientInventory[0].getIngredientInventoryCount(); i++) {
   //   cout << "Ingredient Inventory address: " << &ingredientInventory[i] << endl;
   // }
-
-  bakeryItems->setBakeryItems(bakeryItems);
-
   // print address of ingredientInventory
   // cout << "Ingredient Inventory address (from employee): " << ingredientInventory << endl;
 
-  int numberOfIngredients;
-  Ingredient * ingredient;
+  bakeryItems->setBakeryItems(bakeryItems);
+  Ingredient * ingredients;
+  // fetch bakery items (cake)
+  // Read from file/cake.csv
+  ifstream bakeryItemFile;
+  bakeryItemFile.open("files/cake.csv");
+  cout << endl;
+  cout << "Reading cake file..." << endl;
+  string cakeLine;
+  string cakeName;
+  string cakeDescription;
+  double cakePricePerUnit;
+  string cakeIngredients;
+  string cakeRecipe;
+  bool cakeDisabled;
+  int cakeTotalWeight;
+  int ingredientCount = 0;
+  int bakeryItemCount = 0;
+  string temp;
 
-  numberOfIngredients = 1;
-  bakeryItems[0] = BakeryItem("Item 1", "Cookie", "Description 1", 10.0,
-    new Ingredient[numberOfIngredients] {
-      Ingredient("Sugar", 0.08, 100.0)
-    }, numberOfIngredients, "Recipe 1");
-  numberOfIngredients = 3;
-  bakeryItems[1] = BakeryItem("Item 2", "Cookie", "Description 2", 20.0,
-    new Ingredient[numberOfIngredients] {
-      Ingredient("Ingredient 1 of Item 2", 0.005, 200.0),
-      Ingredient("Ingredient 2", 2.0, 3),
-      Ingredient("Ingredient 3 of Item 2", 0.02, 400.0)
-    }, numberOfIngredients, "Recipe 2");
-  // @TjeEwe when doing file handling, cake need to have totalWeight
-  numberOfIngredients = 1;
-  bakeryItems[2] = BakeryItem("Item 3", "Cake", "Description 3", 30.0,
-    new Ingredient[numberOfIngredients] {
-      Ingredient("Ingredient 2", 2.0, 3),
-    }, numberOfIngredients, "Recipe 3", 1000);
+  getline(bakeryItemFile, cakeLine); // skip first line (header)
+  while (!bakeryItemFile.eof()) {
+    getline(bakeryItemFile, cakeName, ',');
+
+    getline(bakeryItemFile, cakeLine, '"');
+    getline(bakeryItemFile, cakeDescription, '"');
+
+    getline(bakeryItemFile, cakeLine, ',');
+    cakePricePerUnit = stod(cakeLine);
+
+    getline(bakeryItemFile, cakeLine, ',');
+    getline(bakeryItemFile, cakeLine, '"');
+    getline(bakeryItemFile, cakeLine, '"');
+    cout << "Ingredients: " << cakeLine << endl;
+    // split cakeLine by ;
+    // Flour,250.00;Sugar,225.00;Butter,225.00;Eggs,4;Vanilla extract,10.00;Baking powder,10.00;Milk,120.00
+    // Ingredient("Flour", 0.08, 250.0)
+    // Ingredient("Sugar", 0.08, 225.0)
+    // Change the data to construtor form by splitting ;
+    // calculate how many ingredients are there
+    for (int i = 0; i < cakeLine.size(); i++) {
+      if (cakeLine[i] == ';') {
+        ingredientCount++;
+      }
+    }
+
+    ingredients = new Ingredient[ingredientCount];
+    int ingredientIndex = 0;
+    
+    for (int i = 0; i < cakeLine.size(); i++) {
+      if (cakeLine[i] == ';') {
+        // cout << "Ingredient: " << temp << endl;
+        // split temp by ,
+        // Flour,250.00
+        // Ingredient("Flour", 0.08, 250.0)
+        string ingredientName = temp.substr(0, temp.find(","));
+
+        string ingredientWeightString = temp.substr(temp.find(",") + 1);
+        double ingredientWeight = stod(ingredientWeightString);
+        //check item is countable or not
+        bool countable = false;
+        if ((int)ingredientWeight == ingredientWeight) {
+          countable = true;
+        }
+
+        string ingredientPieceString = temp.substr(temp.find(",") + 1);
+        int ingredientPiece = stoi(ingredientPieceString);
+
+        if (countable) {
+          ingredients[ingredientIndex] = Ingredient(ingredientName, 0, ingredientPiece);
+        } else {
+          ingredients[ingredientIndex] = Ingredient(ingredientName, 0, ingredientWeight);
+        }
+        ingredientIndex++;
+        temp = "";
+      } else {
+        temp += cakeLine[i];
+      }
+    }
+
+    getline(bakeryItemFile, cakeLine, '"');
+    getline(bakeryItemFile, cakeRecipe, '"');
+    
+    getline(bakeryItemFile, cakeLine, ',');
+    getline(bakeryItemFile, cakeLine, ',');
+    cakeDisabled = (cakeLine == "true");
+
+    getline(bakeryItemFile, cakeLine);
+    cakeTotalWeight = stoi(cakeLine);
+    break;
+  }
+    // Ingredient("Sugar", 0.08, 100.0)
+
+  // cake file data
+  // Classic Vanilla Cake,"Delight in the timeless elegance of our Classic Vanilla Cake. Moist and tender, with a rich vanilla flavor that enchants the palate with every bite.",15.00,"Flour,250.00;Sugar,225.00;Butter,225.00;Eggs,4;Vanilla extract,10.00;Baking powder,10.00;Milk,120.00","1.Add flour, sugar, baking powder, butter, vanilla extract and salt in a large bowl and mix\n2.Add eggs, milk and mix with low speed\n3.Mix till smooth and insert batter in heated pan\n4.Bake the cake within 40 minutes until golden\n5.Remove from the oven and allow to cool for about 10 minutes\n6.Apply frosting with Vanilla Frosting",false,800
+  
+  // numberOfIngredients = 1;
+  // bakeryItems[0] = BakeryItem("Item 1", "Cookie", "Description 1", 10.0,
+  //   new Ingredient[numberOfIngredients] {
+  //     Ingredient("Sugar", 0.08, 100.0)
+  //   }, numberOfIngredients, "Recipe 1");
+  // numberOfIngredients = 3;
+  // bakeryItems[1] = BakeryItem("Item 2", "Cookie", "Description 2", 20.0,
+  //   new Ingredient[numberOfIngredients] {
+  //     Ingredient("Ingredient 1 of Item 2", 0.005, 200.0),
+  //     Ingredient("Ingredient 2", 2.0, 3),
+  //     Ingredient("Ingredient 3 of Item 2", 0.02, 400.0)
+  //   }, numberOfIngredients, "Recipe 2");
+  // // @TjeEwe when doing file handling, cake need to have totalWeight
+  // numberOfIngredients = 1;
+  // bakeryItems[2] = BakeryItem("Item 3", "Cake", "Description 3", 30.0,
+  //   new Ingredient[numberOfIngredients] {
+  //     Ingredient("Ingredient 2", 2.0, 3),
+  //   }, numberOfIngredients, "Recipe 3", 1000);
 
   // for (int i = 0; i < bakeryItems[0].getBakeryItemCount(); i++) {
   //   cout << "Item address: " << &bakeryItems[i] << endl;
