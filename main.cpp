@@ -328,7 +328,7 @@ int main () {
   // employees[0].displayAllEmployeeDetails(employees);
 
   // Done: create new employee by supervisor
-  // employees[0].createNewEmployee(employees, "C2", "Bob", "Supervisor", "password");
+  // employees[0].createNewEmployee(employees, "C3", "Bob", "Supervisor", "password");
   // employees[3].login("C2", "password");
 
   // Done: change employee role
@@ -345,7 +345,7 @@ int main () {
   // employees[0].displayAllEmployeeDetails(employees);
 
   // add cake to cart by total weight
-  employees[2].addCakeByWeightToCart(2, 200);
+  // employees[2].addCakeByWeightToCart(2, 200);
   // employees[2].addCakeByWeightToCart(2, 1200);
   // employees[2].addCakeByWeightToCart(1, 200);
 
@@ -364,7 +364,7 @@ int main () {
   // cout << endl;
 
   // // Done: display cart details
-  employees[2].displayCartDetails();
+  // employees[2].displayCartDetails();
   // employees[3].displayCartDetails();
 
   // Done: calculate total cost of cart
@@ -488,7 +488,7 @@ int main () {
   // show total balance
   // employees[2].showTotalBalance();
 
-  employees[2].closeBakery(convertTimeTOYYYY_MM__DD());
+  // employees[2].closeBakery(convertTimeTOYYYY_MM__DD());
 
   // Done: display balance sheet
   // can be accessed even bakery is not opened

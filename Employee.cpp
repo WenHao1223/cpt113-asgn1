@@ -1139,13 +1139,17 @@ void Employee::createNewEmployee(Employee * employees, string employeeID, string
 
       if (employees[i].employeeID == "") {
         cout << role << " " << name << " created successfully." << endl;
-        cout << "at index " << i << " of " << &employees[i] << endl;
-        // employees[i] = Employee(employeeID, name, role);
 
         employees[i].employeeID = employeeID;
         employees[i].name = name;
         employees[i].role = role;
         employees[i].password = password;
+
+        // file handling
+        ofstream employeeDataFile;
+        employeeDataFile.open("files/employeeData.csv", ios::app);
+        employeeDataFile << "\n" << employeeID << "," << name << "," << role << "," << password;
+        employeeDataFile.close();
 
         if (role == "Supervisor") {
           employees[i].supervisor = new Supervisor(employeeID, name);
