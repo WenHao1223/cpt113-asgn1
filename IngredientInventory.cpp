@@ -103,8 +103,6 @@ void IngredientInventory::checkIngredientInventory() const {
   cout << "+-----+--------------------+-------------------------+" << endl;
 }
 
-// @TjeEwe require file handling
-// update inventory.csv
 void IngredientInventory::addNewInventoryIngredientWeight(string name, double cost, double weight) {
   if (name == "") {
     cout << "Name cannot be empty." << endl;
@@ -133,6 +131,7 @@ void IngredientInventory::addNewInventoryIngredientWeight(string name, double co
     }
   }
 
+  // file handling
   ofstream addInventory;
   addInventory.open("files/IngredientInventory.csv", ios::app);
   addInventory << "\n" << name << "," << cost << "," << weight << ",0,false";
@@ -163,6 +162,12 @@ void IngredientInventory::addNewInventoryIngredientPiece(string name, double cos
     exit(EXIT_FAILURE);
     return;
   }
+
+  // file handling
+  ofstream addInventory;
+  addInventory.open("files/IngredientInventory.csv", ios::app);
+  addInventory << "\n" << name << "," << cost << ",0," << piece << ",false";
+  addInventory.close();
 
   ingredientInventory[ingredientInventoryCount] = IngredientInventory(name, cost, piece);
 

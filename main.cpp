@@ -247,15 +247,15 @@ int main () {
   // and let supervisor choose which ingredient to restock
   // then how many pieces or weight to restock
   // employees[0].restockIngredientInventory(0, 50003.6);
-  employees[0].restockIngredientInventory(2, 300);
-  employees[0].restockIngredientInventory(1, 3200);
+  // employees[0].restockIngredientInventory(2, 300);
+  // employees[0].restockIngredientInventory(1, 3200);
   // employees[2].restockIngredientInventory(1, 300);
   // employees[0].checkIngredientInventory();
   // cout << endl;
 
   // Done: change ingredient cost
   // employees[0].accessIngredientInventoryDetails(1);
-  employees[0].changeIngredientCost(0, 30.0);
+  // employees[0].changeIngredientCost(0, 30.0);
   // employees[1].changeIngredientCost(0, 30.0);
   // employees[2].changeIngredientCost(0, 30.0);
   // cout << endl;
@@ -264,7 +264,8 @@ int main () {
 
   // Done: add new ingredient into inventory
   // employees[0].addNewInventoryIngredientWeight("Salt", 0.01, 500);
-  // employees[0].addNewInventoryIngredientWeight("TestNewuncountable", 0.01, 500);
+  employees[0].addNewInventoryIngredientWeight("TestNewUncountable", 0.01, 500);
+  employees[0].addNewInventoryIngredientPiece("TestNewCountable", 3.1, 50);
   // employees[0].addNewInventoryIngredientPiece("Egg", 0.5, 10);
 
   // Done: Get inventory ingredient list

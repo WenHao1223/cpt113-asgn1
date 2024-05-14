@@ -624,6 +624,7 @@ void Employee::accessIngredientInventoryFile(int index, string field, string val
 
     newFileLines += name + "," + costPerUnit + "," + weight + "," + piece + "," + countable + "\n";
   }
+
   // remove last line
   newFileLines = newFileLines.substr(0, newFileLines.size()-1);
   ingredientInventoryFile.close();
@@ -669,7 +670,7 @@ void Employee::changeIngredientCost(int index, double cost) {
     }
     ingredientInventory->changeIngredientCost(index, cost);
 
-    // file handling
+    // file handling inside function
     accessIngredientInventoryFile(index, "costPerUnit", to_string(cost));
 
     // update all bakery items ingredient cost
@@ -679,7 +680,7 @@ void Employee::changeIngredientCost(int index, double cost) {
   }
 };
 
-void Employee::addNewInventoryIngredientWeight(string name, double cost, double weight) const {
+void Employee::addNewInventoryIngredientWeight(string name, double cost, double weight) {
   if (supervisor != nullptr) {
     cout << role << " - Adding new inventory ingredient (weight)..." << endl;
     // name cannot be empty
@@ -697,13 +698,17 @@ void Employee::addNewInventoryIngredientWeight(string name, double cost, double 
       cout << "Weight cannot be negative." << endl;
       return;
     }
+
+    // file handling inside function
     ingredientInventory->addNewInventoryIngredientWeight(name, cost, weight);
+
+    // file handling
   } else {
     cout << "Only supervisor can add new inventory ingredient." << endl;
   }
 }
 
-void Employee::addNewInventoryIngredientPiece(string name, double cost, int piece) const {
+void Employee::addNewInventoryIngredientPiece(string name, double cost, int piece) {
   if (supervisor != nullptr) {
     cout << role << " - Adding new inventory ingredient (piece)..." << endl;
     // name cannot be empty
@@ -721,6 +726,10 @@ void Employee::addNewInventoryIngredientPiece(string name, double cost, int piec
       cout << "Piece cannot be negative." << endl;
       return;
     }
+
+    // file handling
+    accessIngredientInventoryFile(0, "addNewRow", name + "," + to_string(cost) + ",0," + to_string(piece) + ",true");
+
     ingredientInventory->addNewInventoryIngredientPiece(name, cost, piece);
   } else {
     cout << "Only supervisor can add new inventory ingredient." << endl;

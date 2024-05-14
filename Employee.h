@@ -68,8 +68,8 @@ class Employee {
     void accessIngredientInventoryFile(int index, string field, string value);
     void restockIngredientInventory(int index, double quantity);
     void changeIngredientCost(int index, double cost);
-    void addNewInventoryIngredientWeight(string name, double cost, double weight) const;
-    void addNewInventoryIngredientPiece(string name, double cost, int piece) const;
+    void addNewInventoryIngredientWeight(string name, double cost, double weight);
+    void addNewInventoryIngredientPiece(string name, double cost, int piece);
     void getAllInventoryIngredientName() const;
     void createBakeryItem();
     void withdrawBakeryItem(int index);
