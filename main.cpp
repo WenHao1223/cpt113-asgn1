@@ -255,7 +255,7 @@ int main () {
 
   // Done: change ingredient cost
   // employees[0].accessIngredientInventoryDetails(1);
-  // employees[0].changeIngredientCost(0, 30.0);
+  employees[0].changeIngredientCost(0, 30.0);
   // employees[1].changeIngredientCost(0, 30.0);
   // employees[2].changeIngredientCost(0, 30.0);
   // cout << endl;

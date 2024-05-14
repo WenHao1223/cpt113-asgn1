@@ -662,17 +662,20 @@ void Employee::restockIngredientInventory(int index, double quantity) {
 
 void Employee::changeIngredientCost(int index, double cost) {
   if (supervisor != nullptr) {
-    cout << role << " - Changing ingredient cost..." << endl;
+    cout << role << " - Changing ingredient cost per unit..." << endl;
     if (cost < 0) {
       cout << "Cost cannot be negative." << endl;
       return;
     }
     ingredientInventory->changeIngredientCost(index, cost);
 
+    // file handling
+    accessIngredientInventoryFile(index, "costPerUnit", to_string(cost));
+
     // update all bakery items ingredient cost
     this->setIngredientCostToInventoryIngredientCost();
   } else {
-    cout << "Only supervisor can change ingredient cost." << endl;
+    cout << "Only supervisor can change ingredient cost per unit." << endl;
   }
 };
 
@@ -1476,10 +1479,18 @@ void Employee::bakeNewBakeryItem(int index, int quantity) {
           if (bakeryItems[index].getIngredient(i)->getCountable()) {
             ingredientInventory->setIngredientInventoryPiece(ingredientInventoryIndex[i], ingredientInventory->getIngredientInventoryPiece(ingredientInventoryIndex[i]) - bakeryItems[index].getIngredient(i)->getPiece() * quantity);
             cout << bakeryItems[index].getIngredient(i)->getPiece() * quantity << " pieces of ingredient " << bakeryItems[index].getIngredient(i)->getName() << " has been used." << endl;
+
+            // file handling
+            accessIngredientInventoryFile(index, "piece", to_string(ingredientInventory->getIngredientInventoryPiece(ingredientInventoryIndex[i])));
+
             cout << "Remaining: " << ingredientInventory->getIngredientInventoryPiece(ingredientInventoryIndex[i]) << " pieces." << endl;
           } else {
             ingredientInventory->setIngredientInventoryWeight(ingredientInventoryIndex[i], ingredientInventory->getIngredientInventoryWeight(ingredientInventoryIndex[i]) - bakeryItems[index].getIngredient(i)->getWeight() * quantity);
             cout << bakeryItems[index].getIngredient(i)->getWeight() * quantity << " gram(s) of ingredient " << bakeryItems[index].getIngredient(i)->getName() << " has been used." << endl;
+
+            // file handling
+            accessIngredientInventoryFile(index, "piece", to_string(ingredientInventory->getIngredientInventoryWeight(ingredientInventoryIndex[i])));
+
             cout << "Remaining: " << ingredientInventory->getIngredientInventoryWeight(ingredientInventoryIndex[i]) << " gram(s)." << endl;
           }
         }
