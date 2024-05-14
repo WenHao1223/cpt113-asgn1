@@ -120,25 +120,25 @@ int main () {
   // }
 
   // login
-  cout << "Employee list: " << endl;
-  for (int i = 0; i < MAX_EMPLOYEES; i++) {
-    if (employees[i].getName() != "") {
-      cout << i+1 << ". " << employees[i].getName() << endl;
-    }
-  }
-  // @AeroRin input validation
-  cout << "Choose employee: ";
-  int employeeChoice;
-  cin >> employeeChoice;
-  string employeeID;
-  string password;
-  cout << "Enter employee ID: ";
-  cin >> employeeID;
-  cout << "Enter password: ";
-  cin >> password;
-  // @TjeEwe .login() will return true if login is successful
-  // then only start accessing other functions
-  employees[employeeChoice-1].login(employeeID, password);
+  // cout << "Employee list: " << endl;
+  // for (int i = 0; i < MAX_EMPLOYEES; i++) {
+  //   if (employees[i].getName() != "") {
+  //     cout << i+1 << ". " << employees[i].getName() << endl;
+  //   }
+  // }
+  // // @AeroRin input validation
+  // cout << "Choose employee: ";
+  // int employeeChoice;
+  // cin >> employeeChoice;
+  // string employeeID;
+  // string password;
+  // cout << "Enter employee ID: ";
+  // cin >> employeeID;
+  // cout << "Enter password: ";
+  // cin >> password;
+  // // @TjeEwe .login() will return true if login is successful
+  // // then only start accessing other functions
+  // employees[employeeChoice-1].login(employeeID, password);
 
   // employees[0].login("S1", "password");
   // employees[0].login("B1", "password"); // wrong id
@@ -175,7 +175,7 @@ int main () {
   // use only once per program
   // can be started by random employee
   // @TjeEwe inventory file shall be read in Employee::startBakery()
-  // employees[2].startBakery(convertTimeTOYYYY_MM__DD());
+  employees[2].startBakery(convertTimeTOYYYY_MM__DD());
   // cout << endl;
 
   // Done: set ingredient cost of bakery item to latest ingredient cost from inventory
@@ -218,7 +218,7 @@ int main () {
   // and let supervisor choose which ingredient to restock
   // then how many pieces or weight to restock
   // employees[0].restockIngredientInventory(0, 50003.6);
-  employees[0].restockIngredientInventory(1, 300);
+  // employees[0].restockIngredientInventory(1, 300);
   // employees[2].restockIngredientInventory(1, 300);
   // employees[0].checkIngredientInventory();
   // cout << endl;
@@ -233,9 +233,11 @@ int main () {
   // cout << endl;
 
   // Done: add new ingredient into inventory
-  employees[0].addNewInventoryIngredientWeight("Salt", 0.01, 500);
-  employees[0].addNewInventoryIngredientWeight("TestNewuncountable", 0.01, 500);
-  // employees[0].addNewInventoryIngredientPiece("Egg", 0.5, 10);
+  // employees[0].addNewInventoryIngredientWeight("Salt", 0.01, 500);
+  // employees[0].addNewInventoryIngredientWeight("TestNewuncountable", 0.01, 500);
+  // employees[0].addNewInventoryIngredientPiece("Eggs", 0.5, 10);
+  // employees[0].addNewInventoryIngredientPiece("TestNewCountable", 0.5, 10);
+
 
   // Done: Get inventory ingredient list
   // employees[0].getAllInventoryIngredientName();
@@ -293,8 +295,8 @@ int main () {
   // employees[0].displayAllEmployeeDetails(employees);
 
   // Done: create new employee by supervisor
-  employees[0].createNewEmployee(employees, "C2", "Bob", "Supervisor", "password");
-  employees[3].login("C2", "password");
+  // employees[0].createNewEmployee(employees, "C2", "Bob", "Supervisor", "password");
+  // employees[3].login("C2", "password");
 
   // Done: change employee role
   // Juin Ewe and Jennie are now Cashiers *^____^*

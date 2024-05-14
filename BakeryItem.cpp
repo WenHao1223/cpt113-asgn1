@@ -1,6 +1,8 @@
 #include "Constant.h"
 #include "BakeryItem.h"
 
+#include<fstream>
+
 const int MAX_BAKERY_ITEMS = Constant::MAX_BAKERY_ITEMS;
 
 BakeryItem::BakeryItem() {
@@ -101,8 +103,6 @@ double BakeryItem::calculateProfit() const {
   return pricePerUnit - calculateCost();
 }
 
-// @TjeEwe require file handling
-// update inventory.csv cost of ingredient
 void BakeryItem::setIngredientCostToInventoryIngredientCost(IngredientInventory * inventoryIngredient) {
   for (int i = 0; i < ingredientCount; i++) {
     for (int j = 0; j < inventoryIngredient->getIngredientInventoryCount(); j++) {

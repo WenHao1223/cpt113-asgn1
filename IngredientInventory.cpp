@@ -103,7 +103,7 @@ void IngredientInventory::checkIngredientInventory() const {
   cout << "+-----+--------------------+-------------------------+" << endl;
 }
 
-// @TjeEwe require file handling
+// @TjeEwe require file handling **DONE**
 // update inventory.csv
 void IngredientInventory::addNewInventoryIngredientWeight(string name, double cost, double weight) {
   if (name == "") {
@@ -143,7 +143,7 @@ void IngredientInventory::addNewInventoryIngredientWeight(string name, double co
   cout << weight << " gram(s) of ingredient " << name << " has been added into inventory." << endl;
 }
 
-// @TjeEwe require file handling
+// @TjeEwe require file handling **DONE**
 // update inventory.csv
 void IngredientInventory::addNewInventoryIngredientPiece(string name, double cost, int piece) {
   if (name == "") {
@@ -163,6 +163,20 @@ void IngredientInventory::addNewInventoryIngredientPiece(string name, double cos
     exit(EXIT_FAILURE);
     return;
   }
+
+  // Check if ingredient already exists in inventory
+  // Check ingredient inventory name from ingredientInventory
+  for (int i = 0; i < ingredientInventoryCount; i++) {
+    if (ingredientInventory[i].ingredient.getName() == name) {
+      cout << "Ingredient " << name << " already exists in inventory." << endl;
+      return;
+    }
+  }
+
+  ofstream addInventory;
+  addInventory.open("files/IngredientInventory.csv", ios::app);
+  addInventory << "\n" << name << "," << cost << "," << piece << ",0,false";
+  addInventory.close();
 
   ingredientInventory[ingredientInventoryCount] = IngredientInventory(name, cost, piece);
 
