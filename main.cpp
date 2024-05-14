@@ -148,14 +148,14 @@ int main () {
   //   cout << "employees[" << i << "] address: " << &employees[i] << endl;
   // }
 
-  // login
-  // cout << "Employee list: " << endl;
-  // for (int i = 0; i < MAX_EMPLOYEES; i++) {
-  //   if (employees[i].getName() != "") {
-  //     cout << i+1 << ". " << employees[i].getName() << endl;
-  //   }
-  // }
-  // // @AeroRin input validation
+  // Done: login
+  cout << "Employee list: " << endl;
+  for (int i = 0; i < MAX_EMPLOYEES; i++) {
+    if (employees[i].getName() != "") {
+      cout << i+1 << ". " << employees[i].getName() << endl;
+    }
+  }
+  // @AeroRin input validation
   // cout << "Choose employee: ";
   // int employeeChoice;
   // cin >> employeeChoice;
@@ -165,8 +165,8 @@ int main () {
   // cin >> employeeID;
   // cout << "Enter password: ";
   // cin >> password;
-  // // @TjeEwe .login() will return true if login is successful
-  // // then only start accessing other functions
+  // @TjeEwe .login() will return true if login is successful
+  // then only start accessing other functions
   // employees[employeeChoice-1].login(employeeID, password);
 
   // employees[0].login("S1", "password");
@@ -247,8 +247,8 @@ int main () {
   // and let supervisor choose which ingredient to restock
   // then how many pieces or weight to restock
   // employees[0].restockIngredientInventory(0, 50003.6);
-  employees[0].restockIngredientInventory(2, 300);
-  employees[0].restockIngredientInventory(1, 3200);
+  // employees[0].restockIngredientInventory(2, 300);
+  // employees[0].restockIngredientInventory(1, 3200);
   // employees[2].restockIngredientInventory(1, 300);
   // employees[0].checkIngredientInventory();
   // cout << endl;
@@ -265,9 +265,7 @@ int main () {
   // Done: add new ingredient into inventory
   // employees[0].addNewInventoryIngredientWeight("Salt", 0.01, 500);
   // employees[0].addNewInventoryIngredientWeight("TestNewuncountable", 0.01, 500);
-  // employees[0].addNewInventoryIngredientPiece("Eggs", 0.5, 10);
-  // employees[0].addNewInventoryIngredientPiece("TestNewCountable", 0.5, 10);
-
+  // employees[0].addNewInventoryIngredientPiece("Egg", 0.5, 10);
 
   // Done: Get inventory ingredient list
   // employees[0].getAllInventoryIngredientName();
@@ -278,7 +276,7 @@ int main () {
   // before creating new bakery item
   // employees[0].accessMenuList();
   // employees[0].checkIngredientInventory();
-  // employees[0].createBakeryItem();
+  employees[0].createBakeryItem();
   // employees[0].createBakeryItem();
   // employees[0].checkIngredientInventory();
   // after creating new bakery item
@@ -485,7 +483,7 @@ int main () {
   // show total balance
   // employees[2].showTotalBalance();
 
-  employees[2].closeBakery(convertTimeTOYYYY_MM__DD());
+  // employees[2].closeBakery(convertTimeTOYYYY_MM__DD());
 
   // Done: display balance sheet
   // can be accessed even bakery is not opened

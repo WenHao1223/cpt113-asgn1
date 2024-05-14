@@ -749,19 +749,28 @@ void Employee::createBakeryItem() {
     Ingredient * ingredient;
     string recipe;
 
-    cout << "Enter bakery item name: ";
+    cout << "Enter item name: ";
     getline(cin, bakeryItemName);
 
     do {
-      cout << "Enter bakery item category (Cookie / Cake): ";
+      cout << "Enter category (Cookie / Cake): ";
       cin >> bakeryItemCategory;
     } while (bakeryItemCategory != "Cookie" && bakeryItemCategory != "Cake");
 
     cin.ignore();
-    cout << "Enter bakery item description: ";
+    cout << "Enter description: ";
     getline(cin, bakeryItemDescription);
-    cout << "Enter bakery item price per unit: RM ";
+    cout << "Enter price per unit: RM ";
     cin >> bakeryItemPricePerUnit;
+
+    // input total weight for cake
+    cin.ignore();
+    int totalWeight = 0;
+    if (bakeryItemCategory == "Cake") {
+      cout << "Enter total weight (gram(s)): ";
+      cin >> totalWeight;
+    }
+
     cout << "Enter number of ingredients: ";
     cin >> numberOfIngredients;
 
@@ -808,7 +817,7 @@ void Employee::createBakeryItem() {
 
       // if ingredient name not found in inventory, ask user to input cost
       if (ingredientCost == 0) {
-        cout << "Enter ingredient cost: RM ";
+        cout << "Enter ingredient cost per Unit: RM ";
         cin >> ingredientCost;
 
         // ask user is the ingredient in piece or weight
@@ -839,20 +848,12 @@ void Employee::createBakeryItem() {
 
     // enable user to type multiline recipe
     cout << "Enter recipe (press CTRL+Z then Enter on Windows, or CTRL+D on Unix, to exit): " << endl;
-    cin.ignore();
     string line;
     while (getline(cin, line)) {
       if (cin.eof()) {
         break;
       }
       recipe += line + "\n";
-    }
-
-    // input total weight for cake
-    int totalWeight = 0;
-    if (bakeryItemCategory == "Cake") {
-      cout << "Enter total weight of cake (gram): ";
-      cin >> totalWeight;
     }
 
     bakeryItems[bakeryItems->getBakeryItemCount()] = BakeryItem(bakeryItemName, bakeryItemCategory, bakeryItemDescription, bakeryItemPricePerUnit, ingredient, numberOfIngredients, recipe, totalWeight);
@@ -862,7 +863,7 @@ void Employee::createBakeryItem() {
     if (bakeryItemCategory == "Cake") {
       ofstream cakeFile;
       cakeFile.open("files/cake.csv", ios::app);
-      cakeFile << bakeryItemName << ",\"" << bakeryItemDescription << "\"," << bakeryItemPricePerUnit << ",\"";
+      cakeFile << "\n" << bakeryItemName << ",\"" << bakeryItemDescription << "\"," << bakeryItemPricePerUnit << ",\"";
       for (int i = 0; i < numberOfIngredients; i++) {
         cakeFile << ingredient[i].getName() << ",";
         if (ingredient[i].getCountable()) {
@@ -871,21 +872,36 @@ void Employee::createBakeryItem() {
           cakeFile << ingredient[i].getWeight() << ";";
         }
       }
-      cakeFile << "\",\"" << recipe << "\"," << (bakeryItems->getBakeryItemCount() == 0 ? "false" : "true") << "," << totalWeight << endl;
+      cakeFile << "\",\"" << recipe << "\"," << (bakeryItems->getBakeryItemCount() == 0 ? "false" : "true") << "," << totalWeight;
       cakeFile.close();
     } else {
       ofstream cookieFile;
       cookieFile.open("files/cookie.csv", ios::app);
-      cookieFile << bakeryItemName << ",\"" << bakeryItemDescription << "\"," << bakeryItemPricePerUnit << ",\"";
+      cookieFile << "\n" << bakeryItemName << ",\"" << bakeryItemDescription << "\"," << bakeryItemPricePerUnit << ",\"";
       for (int i = 0; i < numberOfIngredients; i++) {
         cookieFile << ingredient[i].getName() << ",";
         if (ingredient[i].getCountable()) {
-          cookieFile << ingredient[i].getPiece() << ";";
+          cookieFile << ingredient[i].getPiece();
+          if (i != numberOfIngredients - 1) {
+            cookieFile << ";";
+          }
         } else {
-          cookieFile << ingredient[i].getWeight() << ";";
+          cookieFile << ingredient[i].getWeight();
+          if (i != numberOfIngredients - 1) {
+            cookieFile << ";";
+          }
         }
       }
-      cookieFile << "\",\"" << recipe << "\"," << (bakeryItems->getBakeryItemCount() == 0 ? "false" : "true") << "," << totalWeight << endl;
+      // Replace \n with \\n using .find and .replace
+      auto pos = recipe.find("\n");
+      while (pos != string::npos) {
+        recipe.replace(pos, 1, "\\n");
+        pos = recipe.find("\n", pos + 2);
+      }
+      if (recipe[recipe.size()-1] == '\n') {
+        recipe = recipe.substr(0, recipe.size()-1);
+      }
+      cookieFile << "\",\"" << recipe << "\"," << (bakeryItems->getBakeryItemCount() == 0 ? "false" : "true");
       cookieFile.close();
     }
   } else {

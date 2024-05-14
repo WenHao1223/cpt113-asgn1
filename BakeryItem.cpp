@@ -47,6 +47,7 @@ BakeryItem::BakeryItem(string name, string category, string description, double 
 
   if (category == "Cake" && totalWeight <= 0) {
     cout << "Total weight cannot be zero or negative." << endl;
+    cout << "Total weight: " << totalWeight << endl;
     exit(EXIT_FAILURE);
     return;
   }
