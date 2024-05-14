@@ -90,7 +90,7 @@ void Cart::addBakeryItemToCart(BakeryItem & item, int quantity) {
  * @param item The BakeryItem object representing the cake to be added.
  * @param weight The weight of the cake to be added.
  * 
- * @return void
+ * @return None.
  * 
  * @note The function assumes that the BakeryItem object passed as a parameter is valid and has a valid Cake object associated with it.
  */
@@ -117,7 +117,7 @@ void Cart::addCakeByWeightToCart(BakeryItem & item, double weight) {
  * @brief Removes a bakery item from the cart at the specified index.
  * 
  * @param index The index of the bakery item to be removed.
- * @return void
+ * @return None.
  * 
  * @note If the index is invalid (less than 0 or greater than or equal to the cart item count),
  *       an error message will be displayed and no item will be removed.
@@ -340,7 +340,7 @@ void Cart::setCartItemCount(int cartItemCount) {
  * 
  * @param totalCost The total cost of the cart.
  * 
- * @return void
+ * @return None.
  */
 void Cart::setTotalCost(double totalCost) {
   this->totalCost = totalCost;

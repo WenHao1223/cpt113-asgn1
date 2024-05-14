@@ -444,7 +444,7 @@ void BakeryItem::setRecipe(string recipe) {
  * @brief Sets the disabled status of the bakery item.
  * 
  * @param disabled The disabled status to set.
- * @return void
+ * @return None.
  */
 void BakeryItem::setDisabled(bool disabled) {
   this->disabled = disabled;
