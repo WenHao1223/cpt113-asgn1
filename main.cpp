@@ -349,12 +349,12 @@ int main () {
   // employees[1].addBakeryItemToCart(0, 2);
   // employees[2].addBakeryItemToCart(0, 2);
   // cout << endl;
-  // employees[1].bakeNewBakeryItem(0, 10);
+  employees[1].bakeNewBakeryItem(1, 4);
   // employees[1].bakeNewBakeryItem(2, 3);
   // employees[0].accessMenuItem(2);
   // employees[1].accessIngredientInventoryDetails(1);
   // cout << endl;
-  // employees[2].addBakeryItemToCart(0, 2);
+  employees[2].addBakeryItemToCart(1, 2);
   // employees[2].addBakeryItemToCart(0, 3);
   // employees[2].addBakeryItemToCart(2, 1);
   // cout << endl;
@@ -394,7 +394,7 @@ int main () {
   // employees[0].accessDiscountDetails(1);
 
   // Done: add new discount
-  employees[0].addNewDiscount();
+  // employees[0].addNewDiscount();
   // employees[0].accessDiscountList();
   // employees[0].accessDiscountDetails(2);
 
@@ -451,7 +451,7 @@ int main () {
 
   // Done: checkout
   // employees[2].accessMenuItem(0);
-  // employees[2].checkout(convertTimeToYYYY__MM__DD_HH_MM_SS());
+  employees[2].checkout(convertTimeToYYYY__MM__DD_HH_MM_SS());
   // employees[2].accessMenuItem(2);
 
   // cout << endl << endl;

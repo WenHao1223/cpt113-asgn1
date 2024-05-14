@@ -503,6 +503,18 @@ void Employee::accessDiscountDetails(int index) const {
   cout << "Active: " << (!discounts[index].getDisabled() ? "Yes" : "No") << endl;
 }
 
+int Employee::getAvailableDiscountCount() const {
+  bool isDiscountAvailable = false;
+  int count = 0;
+  for (int i = 0; i < discounts->getDiscountCount(); i++) {
+    if (cashier->getCart()->calculateTotalPrice() >= discounts[i].getMinimumPurchase()) {
+      isDiscountAvailable = true;
+      count++;
+    }
+  }
+  return count;
+}
+
 void Employee::showTotalDebit() const {
   cout << role << " - Showing total debit..." << endl;
   cout << "Total debit: RM " << totalDebit << endl;
@@ -1435,7 +1447,7 @@ void Employee::addNewDiscount() {
       cout << "Enter discount description: ";
       getline(cin, discountDescription);
     } while (discountDescription == "");
-    
+
     char available;
     do {
       cout << "Is the discount available now? (Y/N): ";
@@ -1738,7 +1750,7 @@ void Employee::bakeNewBakeryItem(int index, int quantity) {
         // cout << bakeryItems[index].getIngredient(i)->getName() << " " << ingredientInventory->getIngredientInventoryName(j) << endl;
         if (bakeryItems[index].getIngredient(i)->getName() == ingredientInventory->getIngredientInventoryName(j)) {
           cout << "Ingredient " << bakeryItems[index].getIngredient(i)->getName() << " found in inventory." << endl;
-          if (bakeryItems[index].getIngredient(i)->getCountable()) {
+          if ((ingredientInventory+j)->getIngredient().getCountable()) {
             if (bakeryItems[index].getIngredient(i)->getPiece() * quantity > ingredientInventory->getIngredientInventoryPiece(j)) {
               cout << "Not enough " << bakeryItems[index].getIngredient(i)->getName() << " in inventory." << endl;
               cout << "Available: " << ingredientInventory->getIngredientInventoryPiece(j) << " piece(s)." << endl;
@@ -2014,7 +2026,6 @@ Discount * Employee::getAvailableDiscount (int choice) const {
   }
 
   if (cashier != nullptr) {
-    cout << "Getting available discount..." << endl;
     if (cashier->getCart()->calculateTotalPrice() >= availableDiscounts[choice - 1]->getMinimumPurchase()) {
       return availableDiscounts[choice - 1];
     } else {
@@ -2054,9 +2065,13 @@ void Employee::checkout(string dateTime) {
             cout << "Require " << cashier->getCart()->getQuantity()[i] << " bakery item(s)." << endl;
 
             // ask user to skip buying
-            cout << "Do you want to skip buying this item? (Y/N): ";
             char skip;
-            cin >> skip;
+
+            do {
+              cout << "Do you want to skip buying this item? (Y/N): ";
+              cin >> skip;
+            } while (skip != 'Y' && skip != 'y' && skip != 'N' && skip != 'n');
+
             if (skip == 'Y' || skip == 'y') {
               // remove this item from cart
               cashier->getCart()->removeBakeryItemFromCart(i);
@@ -2092,9 +2107,13 @@ void Employee::checkout(string dateTime) {
 
     // @AeroRin input validation
     // exit from checking out if want to cancel
-    cout << "Do you want to proceed? (Y/N): ";
     char proceed;
-    cin >> proceed;
+
+    do {
+      cout << "Do you want to proceed? (Y/N): ";
+      cin >> proceed;
+    } while (proceed != 'Y' && proceed != 'y' && proceed != 'N' && proceed != 'n');
+
     if (proceed == 'N' || proceed == 'n') {
       cout << "Checkout has been cancelled." << endl;
       return;
@@ -2103,17 +2122,21 @@ void Employee::checkout(string dateTime) {
     // apply discount
     this->showDiscountBasedOnCartTotalPrice();
     cout << endl;
-    cout << "Enter discount choice (0 to skip): ";
     int choice;
-    cin >> choice;
-    cout << endl;
-    if (choice != 0) {
-      this->applyDiscount(choice);
-    }
+
+    do {
+      cout << "Enter discount choice (0 to skip): ";
+      cin >> choice;
+      if (!(choice <= 0 || choice > this->getAvailableDiscountCount())) {
+        cout << endl;
+        this->applyDiscount(choice);
+      }
+    } while (choice < 0 || choice > this->getAvailableDiscountCount());
 
     // calculate total price
     double totalPrice = this->calculateDiscountedTotalPrice();
     totalPrice = round(totalPrice * 100) / 100;
+    cout << endl;
     cout << "Total price: RM " << totalPrice << endl;
     cout << endl;
 
@@ -2154,8 +2177,8 @@ void Employee::checkout(string dateTime) {
     } else {
       // set orderNo to the last orderNo in the file
       string line;
-      while (getline(transactionFileCheck, line)) {
-        cout << line << endl;
+      while (!transactionFileCheck.eof()) {
+        getline(transactionFileCheck, line);
       }
 
       // if line.substr(0, line.find(',')) is not a number, default is 0

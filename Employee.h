@@ -53,6 +53,7 @@ class Employee {
     void accessMenuItem(int index) const;
     void accessDiscountList() const;
     void accessDiscountDetails(int index) const;
+    int getAvailableDiscountCount() const;
     void showTotalDebit() const;
     void showTotalCredit() const;
     void showTotalProfitPerDay() const;
