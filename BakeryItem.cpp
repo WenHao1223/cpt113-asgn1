@@ -1,9 +1,19 @@
-#include "Constant.h"
-#include "BakeryItem.h"
+#include "Constant.h" // Include the Constant header file.
+#include "BakeryItem.h" // Include the BakeryItem header file.
 
-#include<fstream>
+#include <fstream> // For file handling.
 
-const int MAX_BAKERY_ITEMS = Constant::MAX_BAKERY_ITEMS;
+const int MAX_BAKERY_ITEMS = Constant::MAX_BAKERY_ITEMS; // Define the maximum number of bakery items.
+
+/**
+ * @file BakeryItem.cpp
+ * @brief Implementation file for the BakeryItem class.
+ */
+
+/**
+ * @class BakeryItem
+ * @brief Represents a bakery item.
+ */
 
 BakeryItem::BakeryItem() {
   // cout << "BakeryItem object has been created." << endl;
@@ -61,6 +71,21 @@ BakeryItem::BakeryItem(string name, string category, string description, double 
   cout << category << " " << name << " has been added." << endl;
 }
 
+/**
+ * @brief Constructs a new BakeryItem object.
+ * 
+ * @param name The name of the bakery item.
+ * @param category The category of the bakery item.
+ * @param description The description of the bakery item.
+ * @param pricePerUnit The price per unit of the bakery item.
+ * @param ingredient An array of ingredients used in the bakery item.
+ * @param ingredientCount The number of ingredients in the bakery item.
+ * @param recipe The recipe for making the bakery item.
+ * @param disabled Indicates whether the bakery item is disabled or not.
+ * @param totalWeight The total weight of the bakery item (only applicable for cakes).
+ * 
+ * @return None.
+ */
 BakeryItem::BakeryItem(string name, string category, string description, double pricePerUnit, Ingredient * ingredient, int ingredientCount, string recipe, bool disabled, int totalWeight) {
   if (name == "") {
     cout << "Name cannot be empty." << endl;
