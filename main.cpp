@@ -150,7 +150,7 @@ int main () {
   // use only once per program
   // can be started by random employee
   // @TjeEwe inventory file shall be read in Employee::startBakery()
-  employees[2].startBakery();
+  employees[2].startBakery(convertTimeTOYYYY_MM__DD());
   cout << endl;
 
   // Done: set ingredient cost of bakery item to latest ingredient cost from inventory
@@ -193,7 +193,7 @@ int main () {
   // and let supervisor choose which ingredient to restock
   // then how many pieces or weight to restock
   // employees[0].restockIngredientInventory(0, 50003.6);
-  // employees[0].restockIngredientInventory(1, 300);
+  employees[0].restockIngredientInventory(1, 300);
   // employees[2].restockIngredientInventory(1, 300);
   // employees[0].checkIngredientInventory();
   // cout << endl;
@@ -426,7 +426,7 @@ int main () {
   // show total balance
   // employees[2].showTotalBalance();
 
-  // employees[2].closeBakery(convertTimeTOYYYY_MM__DD());
+  employees[2].closeBakery(convertTimeTOYYYY_MM__DD());
 
   // Done: display balance sheet
   // can be accessed even bakery is not opened
@@ -436,7 +436,7 @@ int main () {
   // employees[0].accessTransactionHistory(DATE_YYYYMMDD);
   // can be accessed even bakery is not opened
   // except if the date is not available
-  employees[0].accessTransactionHistory("20240510");
+  // employees[0].accessTransactionHistory("20240510");
   
   return 0;
 }

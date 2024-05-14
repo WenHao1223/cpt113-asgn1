@@ -75,7 +75,7 @@ void Employee::setIngredientCostToInventoryIngredientCost() {
   }
 }
 
-void Employee::startBakery() {
+void Employee::startBakery(string date) {
   cout << "Bakery start operating now." << endl;
   cout << endl;
 
@@ -91,24 +91,62 @@ void Employee::startBakery() {
   }
   balanceSheetFile.close();
 
-  // extract total balance from last line
-  string totalBalanceString;
-  for (char c : lastLine) {
-    if (c == ',') {
-      totalBalanceString = "";
-    } else {
-      totalBalanceString += c;
+  // extract data from last line
+  // using substr
+  string dateString = lastLine.substr(0, lastLine.find(","));
+  string debitString = lastLine.substr(lastLine.find(",") + 1, lastLine.find(",", lastLine.find(",") + 1) - lastLine.find(",") - 1);
+  string creditString = lastLine.substr(lastLine.find(",", lastLine.find(",") + 1) + 1, lastLine.find(",", lastLine.find(",", lastLine.find(",") + 1) + 1) - lastLine.find(",", lastLine.find(",") + 1) - 1);
+  string balanceString = lastLine.substr(lastLine.find(",", lastLine.find(",", lastLine.find(",") + 1) + 1) + 1);
+
+  // check if dateString is the same as today's date
+  if (dateString == date) {
+    totalDebit = stod(debitString);
+    totalCredit = stod(creditString);
+
+    // delete last line from balanceSheet.csv
+    ifstream balanceSheetFile;
+    balanceSheetFile.open("files/balanceSheet.csv");
+    string tempLines;
+    string line;
+    while (getline(balanceSheetFile, line)) {
+      if (line != lastLine) {
+        tempLines += line + "\n";
+      }
     }
+    balanceSheetFile.close();
+
+    ofstream balanceSheetFileWrite;
+    balanceSheetFileWrite.open("files/balanceSheet.csv");
+    // remove last \n from tempLines
+    tempLines = tempLines.substr(0, tempLines.size() - 1);
+    balanceSheetFileWrite << tempLines;
+    balanceSheetFileWrite.close();
+
+    // read balance from balanceSheet.csv
+    // extract data from last line after confirming last line is previous date
+    // using substr
+    balanceSheetFile.open("files/balanceSheet.csv");
+    while (getline(balanceSheetFile, line)) {
+      lastLine = line;
+    }
+    balanceSheetFile.close();
+
+    balanceString = lastLine.substr(lastLine.find(",", lastLine.find(",", lastLine.find(",") + 1) + 1) + 1);
+
+    // startup balance
+    if (balanceString == "balance") {
+      balanceString = "5000.0";
+    }
+
+    cout << "Starting balance: RM " << balanceString << endl;
+
+  } else {
+    cout << "Starting balance: RM " << balanceString << endl;
+    totalDebit = 0;
+    totalCredit = 0;
   }
 
-  // startup balance
-  if (totalBalanceString == "balance") {
-    totalBalanceString = "5000.0";
-  }
-
-  totalBalance = stod(totalBalanceString);
-
-  cout << "Balance: RM " << totalBalanceString << endl;
+  totalBalance = stod(balanceString);
 
   ingredientInventory[0] = IngredientInventory("Ingredient 1", 0.0005, 100000.0);
   ingredientInventory[1] = IngredientInventory("Ingredient 2", 20.0, 200);
@@ -247,14 +285,14 @@ void Employee::showTotalCredit() const {
 
 void Employee::showTotalProfitPerDay() const {
   cout << role << " - Showing total profit per day..." << endl;
-  totalProfitPerDay = getTotalProfitPerDay();
+  totalProfitPerDay = totalDebit - totalCredit;
   cout << "Total profit per day: RM " << totalProfitPerDay << endl;
 }
 
 void Employee::showTotalBalance() const {
   cout << role << " - Showing total balance..." << endl;
-  totalBalance = getTotalBalance();
-  cout << "Total balance: RM " << totalBalance << endl;
+  // since bakery is not closed, totalProfitPerDay is not added to totalBalance
+  cout << "Total balance: RM " << totalBalance + totalProfitPerDay << endl;
 }
 
 void Employee::closeBakery(string date) {
@@ -275,7 +313,9 @@ void Employee::closeBakery(string date) {
   cout << "Summary of the day:" << endl;
   cout << "Total debit: RM " << totalDebit << endl;
   cout << "Total credit: RM " << totalCredit << endl;
+  totalProfitPerDay = totalDebit - totalCredit;
   cout << "Total profit per day: RM " << totalProfitPerDay << endl;
+  totalBalance += totalProfitPerDay;
   cout << "Total balance: RM " << totalBalance << endl;
 
   // append to balanceSheet.csv
@@ -1512,7 +1552,13 @@ void Employee::checkout(string dateTime) {
       while (getline(transactionFileCheck, line)) {
         cout << line << endl;
       }
-      orderNo = stoi(line.substr(0, line.find(','))) + 1;
+
+      // if line.substr(0, line.find(',')) is not a number, default is 0
+      if (line.substr(0, line.find(',')) == "orderID") {
+        orderNo = 1;
+      } else {
+        orderNo = stoi(line.substr(0, line.find(','))) + 1;
+      }
     }
     transactionFileCheck.close();
 
@@ -1557,7 +1603,7 @@ void Employee::checkout(string dateTime) {
 
     receiptFile << left << setw(3) << "No" << setw(35) << "Description" << setw(20) << "Quantity" << "Price (RM)" << endl;
     for (int i = 0; i < cashier->getCart()->getCartItemCount(); i++) {
-        receiptFile << left << setw(3) << i+1 << ". ";
+        receiptFile << left << setw(3) << to_string(i+1) + ". ";
         receiptFile << left << setw(35) << cashier->getCart()->getBakeryItems()[i].getBakeryItemName();
         receiptFile << left << setw(20) << cashier->getCart()->getQuantity()[i];
         receiptFile << cashier->getCart()->getBakeryItems()[i].getPricePerUnit() *  cashier->getCart()->getQuantity()[i] << endl;
@@ -1571,7 +1617,7 @@ void Employee::checkout(string dateTime) {
     receiptFile << "---------------------------------------------------------------------" << endl;
     receiptFile << left << setw(60) << "Discount Summary" << "Amount" << endl;
     if (choice != 0) {
-      receiptFile << left << setw(60) << "Discount Name" << getAvailableDiscount(choice)->getName() << endl;
+      receiptFile << left << setw(40) << "Discount Name" << getAvailableDiscount(choice)->getName() << endl;
       receiptFile << setprecision(2) << fixed;
       receiptFile << left << setw(60) << "Total Discount" << cashier->getCart()->getTotalDiscount() << endl;
     }
@@ -1644,15 +1690,6 @@ double Employee::getTotalCredit() const {
 
 double Employee::getTotalDebit() const {
   return totalDebit;
-}
-
-double Employee::getTotalProfitPerDay() const {
-  return totalDebit - totalCredit;
-}
-
-double Employee::getTotalBalance() const {
-  totalBalance += getTotalProfitPerDay();
-  return totalBalance;
 }
 
 Employee::~Employee() {

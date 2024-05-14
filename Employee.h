@@ -46,7 +46,7 @@ class Employee {
     // accessible by all roles
     void displayEmployeeDetails() const;
     void setIngredientCostToInventoryIngredientCost();
-    void startBakery();
+    void startBakery(string date);
     void accessMenuList() const;
     void accessMenuItem(int index) const;
     void accessDiscountList() const;
@@ -120,10 +120,8 @@ class Employee {
     string getName() const;
     string getRole() const;
     int getOrderNo() const;
-    double getTotalBalance() const;
     double getTotalCredit() const;
     double getTotalDebit() const;
-    double getTotalProfitPerDay() const;
 
     // friend function
     friend int findEmployeeIndex(Employee employees [], string employeeID);
