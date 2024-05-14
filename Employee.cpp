@@ -45,7 +45,6 @@ Employee::Employee(string employeeID, string name, string role, string password)
   this->name = name;
   this->role = role;
   this->password = password;
-  // cout << "Employee " << name << " has been added." << endl;
 
   if (role == "Supervisor") {
     supervisor = new Supervisor(employeeID, name);
@@ -54,6 +53,8 @@ Employee::Employee(string employeeID, string name, string role, string password)
   } else {
     cashier = new Cashier(employeeID, name);
   }
+
+  cout << role << " " << name << " has been added." << endl;
 }
 
 void Employee::displayEmployeeDetails() const {
@@ -142,7 +143,6 @@ void Employee::startBakery(string date) {
 
     // read balance from balanceSheet.csv
     // extract data from last line after confirming last line is previous date
-    // using substr
     balanceSheetFile.open("files/balanceSheet.csv");
     while (getline(balanceSheetFile, line)) {
       lastLine = line;
@@ -198,11 +198,11 @@ void Employee::startBakery(string date) {
       } else {
         ingredientInventory[ingredInvCount] = IngredientInventory(ingredInvName, ingredInvCost, ingredInvWeight);
       }
-      cout << ingredInvName << "," << ingredInvCost << "," << ingredInvWeight << "," << ingredInvPiece << "," << ingredInvCountable << endl;
       ingredInvCount++;
     }
   }
   ingredientInventoryFile.close();
+  cout << "Ingredient inventory count: " << ingredInvCount << endl;
 
   // for (int i = 0; i < ingredientInventory[0].getIngredientInventoryCount(); i++) {
   //   cout << "Ingredient Inventory address: " << &ingredientInventory[i] << endl;
@@ -211,100 +211,97 @@ void Employee::startBakery(string date) {
   // cout << "Ingredient Inventory address (from employee): " << ingredientInventory << endl;
 
   bakeryItems->setBakeryItems(bakeryItems);
-  // Ingredient * ingredients;
+  Ingredient * ingredients;
   // // fetch bakery items (cake)
   // // Read from file/cake.csv
-  // ifstream bakeryItemFile;
-  // bakeryItemFile.open("files/cake.csv");
-  // cout << endl;
-  // cout << "Reading cake file..." << endl;
-  // string cakeLine;
-  // string cakeName;
-  // string cakeDescription;
-  // double cakePricePerUnit;
-  // string cakeIngredients;
-  // string cakeRecipe;
-  // bool cakeDisabled;
-  // int cakeTotalWeight;
-  // int ingredientCount = 0;
-  // int bakeryItemCount = 0;
-  // string temp;
+  ifstream bakeryItemFile;
+  bakeryItemFile.open("files/cake.csv");
+  cout << endl;
+  cout << "Reading cake file..." << endl;
+  string cakeLine;
+  string cakeName;
+  string cakeDescription;
+  double cakePricePerUnit;
+  string cakeIngredients;
+  string cakeRecipe;
+  bool cakeDisabled;
+  int cakeTotalWeight;
+  int ingredientCount = 0;
+  int bakeryItemCount = 0;
+  string temp;
 
-  // getline(bakeryItemFile, cakeLine); // skip first line (header)
-  // while (!bakeryItemFile.eof()) {
-  //   getline(bakeryItemFile, cakeName, ',');
+  getline(bakeryItemFile, cakeLine); // skip first line (header)
+  while (!bakeryItemFile.eof()) {
+    // name
+    getline(bakeryItemFile, cakeName, ',');
 
-  //   getline(bakeryItemFile, cakeLine, '"');
-  //   getline(bakeryItemFile, cakeDescription, '"');
+    // description
+    getline(bakeryItemFile, cakeLine, '"');
+    getline(bakeryItemFile, cakeDescription, '"');
 
-  //   getline(bakeryItemFile, cakeLine, ',');
-  //   cakePricePerUnit = stod(cakeLine);
+    // price per unit
+    getline(bakeryItemFile, cakeLine, ',');
+    getline(bakeryItemFile, cakeLine, ',');
+    cakePricePerUnit = stod(cakeLine);
 
-  //   getline(bakeryItemFile, cakeLine, ',');
-  //   getline(bakeryItemFile, cakeLine, '"');
-  //   getline(bakeryItemFile, cakeLine, '"');
-  //   cout << "Ingredients: " << cakeLine << endl;
-  //   // split cakeLine by ;
-  //   // Flour,250.00;Sugar,225.00;Butter,225.00;Eggs,4;Vanilla extract,10.00;Baking powder,10.00;Milk,120.00
-  //   // Ingredient("Flour", 0.08, 250.0)
-  //   // Ingredient("Sugar", 0.08, 225.0)
-  //   // Change the data to construtor form by splitting ;
-  //   // calculate how many ingredients are there
-  //   for (int i = 0; i < cakeLine.size(); i++) {
-  //     if (cakeLine[i] == ';') {
-  //       ingredientCount++;
-  //     }
-  //   }
+    // ingredients
+    getline(bakeryItemFile, cakeLine, '"');
+    getline(bakeryItemFile, cakeLine, '"');
 
-  //   ingredients = new Ingredient[ingredientCount];
-  //   int ingredientIndex = 0;
+    for (int i = 0; i < cakeLine.size(); i++) {
+      if (cakeLine[i] == ';') {
+        ingredientCount++;
+      }
+    }
+
+    ingredients = new Ingredient[ingredientCount];
+    int ingredientIndex = 0;
     
-  //   for (int i = 0; i < cakeLine.size(); i++) {
-  //     if (cakeLine[i] == ';') {
-  //       // cout << "Ingredient: " << temp << endl;
-  //       // split temp by ,
-  //       // Flour,250.00
-  //       // Ingredient("Flour", 0.08, 250.0)
-  //       string ingredientName = temp.substr(0, temp.find(","));
+    for (int i = 0; i < cakeLine.size(); i++) {
+      if (cakeLine[i] == ';') {
+        string ingredientName = temp.substr(0, temp.find(","));
 
-  //       string ingredientWeightString = temp.substr(temp.find(",") + 1);
-  //       double ingredientWeight = stod(ingredientWeightString);
-  //       //check item is countable or not
-  //       bool countable = false;
-  //       if ((int)ingredientWeight == ingredientWeight) {
-  //         countable = true;
-  //       }
+        string ingredientWeightString = temp.substr(temp.find(",") + 1);
+        double ingredientWeight = stod(ingredientWeightString);
+        //check item is countable or not
+        bool countable = false;
+        if ((int)ingredientWeight == ingredientWeight) {
+          countable = true;
+        }
 
-  //       string ingredientPieceString = temp.substr(temp.find(",") + 1);
-  //       int ingredientPiece = stoi(ingredientPieceString);
+        string ingredientPieceString = temp.substr(temp.find(",") + 1);
+        int ingredientPiece = stoi(ingredientPieceString);
 
-  //       if (countable) {
-  //         ingredients[ingredientIndex] = Ingredient(ingredientName, 0, ingredientPiece);
-  //       } else {
-  //         ingredients[ingredientIndex] = Ingredient(ingredientName, 0, ingredientWeight);
-  //       }
-  //       ingredientIndex++;
-  //       temp = "";
-  //     } else {
-  //       temp += cakeLine[i];
-  //     }
-  //   }
+        if (countable) {
+          ingredients[ingredientIndex] = Ingredient(ingredientName, 0, ingredientPiece);
+        } else {
+          ingredients[ingredientIndex] = Ingredient(ingredientName, 0, ingredientWeight);
+        }
+        ingredientIndex++;
+        temp = "";
+      } else {
+        temp += cakeLine[i];
+      }
+    }
 
-  //   getline(bakeryItemFile, cakeLine, '"');
-  //   getline(bakeryItemFile, cakeRecipe, '"');
-    
-  //   getline(bakeryItemFile, cakeLine, ',');
-  //   getline(bakeryItemFile, cakeLine, ',');
-  //   cakeDisabled = (cakeLine == "true");
+      // recipe
+      getline(bakeryItemFile, cakeLine, '"');
+      getline(bakeryItemFile, cakeRecipe, '"');
+      
+      // disabled
+      getline(bakeryItemFile, cakeLine, ',');
+      getline(bakeryItemFile, cakeLine, ',');
+      cakeDisabled = (cakeLine == "true");
 
-  //   getline(bakeryItemFile, cakeLine);
-  //   cakeTotalWeight = stoi(cakeLine);
-  //   break;
-  // }
-    // Ingredient("Sugar", 0.08, 100.0)
 
-  // cake file data
-  // Classic Vanilla Cake,"Delight in the timeless elegance of our Classic Vanilla Cake. Moist and tender, with a rich vanilla flavor that enchants the palate with every bite.",15.00,"Flour,250.00;Sugar,225.00;Butter,225.00;Eggs,4;Vanilla extract,10.00;Baking powder,10.00;Milk,120.00","1.Add flour, sugar, baking powder, butter, vanilla extract and salt in a large bowl and mix\n2.Add eggs, milk and mix with low speed\n3.Mix till smooth and insert batter in heated pan\n4.Bake the cake within 40 minutes until golden\n5.Remove from the oven and allow to cool for about 10 minutes\n6.Apply frosting with Vanilla Frosting",false,800
+      // total weight
+      getline(bakeryItemFile, cakeLine);
+      cakeTotalWeight = stoi(cakeLine);
+
+      bakeryItems[bakeryItemCount] = BakeryItem(cakeName, "Cake", cakeDescription, cakePricePerUnit, ingredients, ingredientCount, cakeRecipe, cakeDisabled, cakeTotalWeight);
+    }
+  bakeryItemFile.close();
+  cout << "Cake count: " << bakeryItemCount << endl;
   
   // numberOfIngredients = 1;
   // bakeryItems[0] = BakeryItem("Item 1", "Cookie", "Description 1", 10.0,
@@ -324,6 +321,87 @@ void Employee::startBakery(string date) {
   //   new Ingredient[numberOfIngredients] {
   //     Ingredient("Ingredient 2", 2.0, 3),
   //   }, numberOfIngredients, "Recipe 3", 1000);
+
+  // reading from file/cookie.csv
+  ifstream cookieFile;
+  cookieFile.open("files/cookie.csv");
+  cout << endl;
+  cout << "Reading cookie file..." << endl;
+  string cookieLine;
+  string cookieName;
+  string cookieDescription;
+  double cookiePricePerUnit;
+  string cookieIngredients;
+  string cookieRecipe;
+  bool cookieDisabled;
+
+  getline(cookieFile, cookieLine); // skip first line (header)
+  while (!cookieFile.eof()) {
+    // name
+    getline(cookieFile, cookieName, ',');
+
+    // description
+    getline(cookieFile, cookieLine, '"');
+    getline(cookieFile, cookieDescription, '"');
+
+    // price per unit
+    getline(cookieFile, cookieLine, ',');
+    getline(cookieFile, cookieLine, ',');
+    cookiePricePerUnit = stod(cookieLine);
+
+    // ingredients
+    getline(cookieFile, cookieLine, '"');
+    getline(cookieFile, cookieLine, '"');
+
+    for (int i = 0; i < cookieLine.size(); i++) {
+      if (cookieLine[i] == ';') {
+        ingredientCount++;
+      }
+    }
+
+    ingredients = new Ingredient[ingredientCount];
+    int ingredientIndex = 0;
+    
+    for (int i = 0; i < cookieLine.size(); i++) {
+      if (cookieLine[i] == ';') {
+        string ingredientName = temp.substr(0, temp.find(","));
+
+        string ingredientWeightString = temp.substr(temp.find(",") + 1);
+        double ingredientWeight = stod(ingredientWeightString);
+        //check item is countable or not
+        bool countable = false;
+        if ((int)ingredientWeight == ingredientWeight) {
+          countable = true;
+        }
+
+        string ingredientPieceString = temp.substr(temp.find(",") + 1);
+        int ingredientPiece = stoi(ingredientPieceString);
+
+        if (countable) {
+          ingredients[ingredientIndex] = Ingredient(ingredientName, 0, ingredientPiece);
+        } else {
+          ingredients[ingredientIndex] = Ingredient(ingredientName, 0, ingredientWeight);
+        }
+        ingredientIndex++;
+        temp = "";
+      } else {
+        temp += cookieLine[i];
+      }
+    }
+
+    // recipe
+    getline(cookieFile, cookieLine, '"');
+    getline(cookieFile, cookieRecipe, '"');
+    
+    // disabled
+    getline(cookieFile, cookieLine, ',');
+    getline(cookieFile, cookieLine);
+    cookieDisabled = (cookieLine == "true");
+
+    bakeryItems[bakeryItemCount] = BakeryItem(cookieName, "Cookie", cookieDescription, cookiePricePerUnit, ingredients, ingredientCount, cookieRecipe, cookieDisabled);
+  }
+  cookieFile.close();
+  cout << "Cookie count: " << bakeryItemCount << endl;
 
   // for (int i = 0; i < bakeryItems[0].getBakeryItemCount(); i++) {
   //   cout << "Item address: " << &bakeryItems[i] << endl;
@@ -372,6 +450,10 @@ void Employee::startBakery(string date) {
 
   // discounts[0] = Discount("Over RM30 Oasis: Enjoy 5\% Off", 30.0, 5.0, "Description 1", false);
   // discounts[1] = Discount("Fifty-Fiver Flourish: 10\% Discount", 50.0, 10.0, "Description 2", false);
+
+  cout << "supervisor: " << supervisor << endl;
+  cout << "baker: " << baker << endl;
+  cout << "cashier: " << cashier << endl;
 
   if (supervisor != nullptr) {
     supervisor->startBakery();
@@ -502,7 +584,58 @@ void Employee::checkIngredientInventory() const {
   }
 }
 
-void Employee::restockIngredientInventory(int index, double quantity) const {
+void Employee::accessIngredientInventoryFile(int index, string field, string value) {
+  ifstream ingredientInventoryFile;
+  ingredientInventoryFile.open("files/IngredientInventory.csv", ios::in);
+  string line;
+  string newFileLines;
+
+  string name;
+  string costPerUnit;
+  string weight;
+  string piece;
+  string countable;
+
+  while (!ingredientInventoryFile.eof()) {
+    getline(ingredientInventoryFile, name, ',');
+    getline(ingredientInventoryFile, costPerUnit, ',');
+    getline(ingredientInventoryFile, weight, ',');
+    getline(ingredientInventoryFile, piece, ',');
+    getline(ingredientInventoryFile, countable);
+
+    if (name == ingredientInventory->getIngredientInventoryName(index)) {
+      cout << name << "," << field << "," << value << endl;
+      if (field == "name") {
+        name = value;
+      } else if (field == "costPerUnit") {
+        costPerUnit = value;
+      } else if (field == "weight") {
+        weight = value;
+      } else if (field == "piece") {
+        piece = value;
+      } else if (field == "countable") {
+        countable = value;
+      } else if (field == "deleteAll") {
+        continue;
+      } else {
+        cout << "Invalid field." << endl;
+        return;
+      }
+    }
+
+    newFileLines += name + "," + costPerUnit + "," + weight + "," + piece + "," + countable + "\n";
+  }
+  // remove last line
+  newFileLines = newFileLines.substr(0, newFileLines.size()-1);
+  ingredientInventoryFile.close();
+
+  ofstream newIngredientInventoryFile;
+  newIngredientInventoryFile.open("files/IngredientInventory.csv");
+  newIngredientInventoryFile << newFileLines;
+  newIngredientInventoryFile.close();
+}
+
+void Employee::restockIngredientInventory(int index, double quantity) {
   if (supervisor != nullptr) {
     cout << role << " - Restocking ingredient inventory..." << endl;
     if (quantity < 0) {
@@ -510,6 +643,13 @@ void Employee::restockIngredientInventory(int index, double quantity) const {
       return;
     }
     double totalCost = ingredientInventory->restockIngredientInventory(index, quantity);
+
+    if ((ingredientInventory+index)->getIngredient().getCountable()) {
+      accessIngredientInventoryFile(index, "piece", to_string(ingredientInventory->getIngredientInventoryPiece(index)));
+    } else {
+      accessIngredientInventoryFile(index, "weight", to_string((int)(ingredientInventory->getIngredientInventoryWeight(index))));
+    }
+
     cout << "Cost of restock: RM " << totalCost << endl;
 
     // update total credit

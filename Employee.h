@@ -65,7 +65,8 @@ class Employee {
     void checkIngredientInventory() const;
 
     // accessibly by supervisor role only
-    void restockIngredientInventory(int index, double quantity) const;
+    void accessIngredientInventoryFile(int index, string field, string value);
+    void restockIngredientInventory(int index, double quantity);
     void changeIngredientCost(int index, double cost);
     void addNewInventoryIngredientWeight(string name, double cost, double weight) const;
     void addNewInventoryIngredientPiece(string name, double cost, int piece) const;

@@ -7,6 +7,7 @@
 #include <cmath>
 #include <ctime>
 #include <cstdlib>
+#include <fstream>
 using namespace std;
 
 // forward declaration
@@ -112,6 +113,34 @@ int main () {
     Employee("C1", "Jennie Ng", "Cashier", "password")
   };
 
+  // read employee data from employeeData.csv
+  // employeeID,name,position,password
+  // Employee employees[MAX_EMPLOYEES];
+  // string line;
+  // int employeeCount = 0;
+  // ifstream employeeDataFile("files/employeeData.csv");
+  // if (employeeDataFile) {
+  //   getline(employeeDataFile, line); // skip first line (header)
+  //   while (!employeeDataFile.eof() && employeeCount < MAX_EMPLOYEES) {
+  //     string employeeID;
+  //     string name;
+  //     string position;
+  //     string password;
+  //     getline(employeeDataFile, employeeID, ',');
+  //     getline(employeeDataFile, name, ',');
+  //     getline(employeeDataFile, position, ',');
+  //     getline(employeeDataFile, password);
+
+  //     employees[employeeCount] = Employee(employeeID, name, position, password);
+  //     employeeCount++;
+  //   }
+  // } else {
+  //   cout << "Error: employeeData.csv not found" << endl;
+  //   return 0;
+  // }
+
+  employees[0].displayAllEmployeeDetails(employees);
+
   cout << endl;
 
   // cout << "employees address: " << &employees << endl;
@@ -176,7 +205,7 @@ int main () {
   // can be started by random employee
   // @TjeEwe inventory file shall be read in Employee::startBakery()
   employees[2].startBakery(convertTimeTOYYYY_MM__DD());
-  // cout << endl;
+  cout << endl;
 
   // Done: set ingredient cost of bakery item to latest ingredient cost from inventory
   // not used anymore as it is done in Employee::startBakery()
@@ -218,7 +247,8 @@ int main () {
   // and let supervisor choose which ingredient to restock
   // then how many pieces or weight to restock
   // employees[0].restockIngredientInventory(0, 50003.6);
-  // employees[0].restockIngredientInventory(1, 300);
+  employees[0].restockIngredientInventory(2, 300);
+  employees[0].restockIngredientInventory(1, 3200);
   // employees[2].restockIngredientInventory(1, 300);
   // employees[0].checkIngredientInventory();
   // cout << endl;
