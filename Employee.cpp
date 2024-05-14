@@ -142,7 +142,6 @@ void Employee::startBakery(string date) {
 
     // read balance from balanceSheet.csv
     // extract data from last line after confirming last line is previous date
-    // using substr
     balanceSheetFile.open("files/balanceSheet.csv");
     while (getline(balanceSheetFile, line)) {
       lastLine = line;
@@ -297,10 +296,10 @@ void Employee::startBakery(string date) {
     // total weight
     getline(bakeryItemFile, cakeLine);
     cakeTotalWeight = stoi(cakeLine);
-    
+
     bakeryItems[bakeryItemCount] = BakeryItem(cakeName, "Cake", cakeDescription, cakePricePerUnit, ingredients, ingredientCount, cakeRecipe, cakeTotalWeight);
   }
-
+  bakeryItemFile.close();
   
   // numberOfIngredients = 1;
   // bakeryItems[0] = BakeryItem("Item 1", "Cookie", "Description 1", 10.0,
@@ -320,6 +319,86 @@ void Employee::startBakery(string date) {
   //   new Ingredient[numberOfIngredients] {
   //     Ingredient("Ingredient 2", 2.0, 3),
   //   }, numberOfIngredients, "Recipe 3", 1000);
+
+  // reading from file/cookie.csv
+  ifstream cookieFile;
+  cookieFile.open("files/cookie.csv");
+  cout << endl;
+  cout << "Reading cookie file..." << endl;
+  string cookieLine;
+  string cookieName;
+  string cookieDescription;
+  double cookiePricePerUnit;
+  string cookieIngredients;
+  string cookieRecipe;
+  bool cookieDisabled;
+
+  getline(cookieFile, cookieLine); // skip first line (header)
+  while (!cookieFile.eof()) {
+    // name
+    getline(cookieFile, cookieName, ',');
+
+    // description
+    getline(cookieFile, cookieLine, '"');
+    getline(cookieFile, cookieDescription, '"');
+
+    // price per unit
+    getline(cookieFile, cookieLine, ',');
+    getline(cookieFile, cookieLine, ',');
+    cookiePricePerUnit = stod(cookieLine);
+
+    // ingredients
+    getline(cookieFile, cookieLine, '"');
+    getline(cookieFile, cookieLine, '"');
+
+    for (int i = 0; i < cookieLine.size(); i++) {
+      if (cookieLine[i] == ';') {
+        ingredientCount++;
+      }
+    }
+
+    ingredients = new Ingredient[ingredientCount];
+    int ingredientIndex = 0;
+    
+    for (int i = 0; i < cookieLine.size(); i++) {
+      if (cookieLine[i] == ';') {
+        string ingredientName = temp.substr(0, temp.find(","));
+
+        string ingredientWeightString = temp.substr(temp.find(",") + 1);
+        double ingredientWeight = stod(ingredientWeightString);
+        //check item is countable or not
+        bool countable = false;
+        if ((int)ingredientWeight == ingredientWeight) {
+          countable = true;
+        }
+
+        string ingredientPieceString = temp.substr(temp.find(",") + 1);
+        int ingredientPiece = stoi(ingredientPieceString);
+
+        if (countable) {
+          ingredients[ingredientIndex] = Ingredient(ingredientName, 0, ingredientPiece);
+        } else {
+          ingredients[ingredientIndex] = Ingredient(ingredientName, 0, ingredientWeight);
+        }
+        ingredientIndex++;
+        temp = "";
+      } else {
+        temp += cookieLine[i];
+      }
+    }
+
+    // recipe
+    getline(cookieFile, cookieLine, '"');
+    getline(cookieFile, cookieRecipe, '"');
+    
+    // disabled
+    getline(cookieFile, cookieLine, ',');
+    getline(cookieFile, cookieLine);
+    cookieDisabled = (cookieLine == "true");
+
+    bakeryItems[bakeryItemCount] = BakeryItem(cookieName, "Cookie", cookieDescription, cookiePricePerUnit, ingredients, ingredientCount, cookieRecipe);
+  }
+  cookieFile.close();
 
   // for (int i = 0; i < bakeryItems[0].getBakeryItemCount(); i++) {
   //   cout << "Item address: " << &bakeryItems[i] << endl;
