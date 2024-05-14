@@ -139,12 +139,15 @@ void Employee::startBakery(string date) {
     }
 
   } else {
-    cout << "Starting balance: RM " << balanceString << endl;
     totalDebit = 0;
     totalCredit = 0;
   }
 
   totalBalance = stod(balanceString);
+  cout << "Starting balance: RM " << balanceString << endl;
+  cout << "Starting debit: RM " << totalDebit << endl;
+  cout << "Starting credit: RM " << totalCredit << endl;
+  cout << endl;
 
   // fetch ingredient inventory from files/ingredientInventory.csv
   ifstream ingredientInventoryFile;
