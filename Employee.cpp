@@ -202,7 +202,6 @@ void Employee::startBakery(string date) {
   }
   ingredientInventoryFile.close();
   cout << "Ingredient inventory count: " << ingredInvCount << endl;
-  cout << "Ingredient inventory file closed." << endl;
 
   // for (int i = 0; i < ingredientInventory[0].getIngredientInventoryCount(); i++) {
   //   cout << "Ingredient Inventory address: " << &ingredientInventory[i] << endl;
@@ -297,9 +296,10 @@ void Employee::startBakery(string date) {
     getline(bakeryItemFile, cakeLine);
     cakeTotalWeight = stoi(cakeLine);
 
-    bakeryItems[bakeryItemCount] = BakeryItem(cakeName, "Cake", cakeDescription, cakePricePerUnit, ingredients, ingredientCount, cakeRecipe, cakeTotalWeight);
+    bakeryItems[bakeryItemCount] = BakeryItem(cakeName, "Cake", cakeDescription, cakePricePerUnit, ingredients, ingredientCount, cakeRecipe, cakeDisabled, cakeTotalWeight);
   }
   bakeryItemFile.close();
+  cout << "Cake count: " << bakeryItemCount << endl;
   
   // numberOfIngredients = 1;
   // bakeryItems[0] = BakeryItem("Item 1", "Cookie", "Description 1", 10.0,
@@ -396,9 +396,10 @@ void Employee::startBakery(string date) {
     getline(cookieFile, cookieLine);
     cookieDisabled = (cookieLine == "true");
 
-    bakeryItems[bakeryItemCount] = BakeryItem(cookieName, "Cookie", cookieDescription, cookiePricePerUnit, ingredients, ingredientCount, cookieRecipe);
+    bakeryItems[bakeryItemCount] = BakeryItem(cookieName, "Cookie", cookieDescription, cookiePricePerUnit, ingredients, ingredientCount, cookieRecipe, cookieDisabled);
   }
   cookieFile.close();
+  cout << "Cookie count: " << bakeryItemCount << endl;
 
   // for (int i = 0; i < bakeryItems[0].getBakeryItemCount(); i++) {
   //   cout << "Item address: " << &bakeryItems[i] << endl;

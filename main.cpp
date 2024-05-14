@@ -183,7 +183,7 @@ int main () {
   // employees[2].setIngredientCostToInventoryIngredientCost();
 
   // Done: Access menu list
-  // employees[0].accessMenuList();
+  employees[0].accessMenuList();
   // cout << endl;
 
   // Done: Access menu details
