@@ -779,7 +779,7 @@ void Employee::createBakeryItem() {
     cin.ignore();
     int totalWeight = 0;
     if (bakeryItemCategory == "Cake") {
-      cout << "Enter total weight (gram(s)): ";
+      cout << "Enter total weight in gram(s): ";
       cin >> totalWeight;
     }
 
@@ -815,7 +815,7 @@ void Employee::createBakeryItem() {
           }
           ingredientCost = ingredientInventory->getIngredientInventoryCost(j);
 
-          if (ingredientInventory[j].getCountable()) {
+          if (ingredientInventory[j].getIngredient().getCountable()) {
             cout << "Enter ingredient piece: ";
             cin >> ingredientPiece;
             ingredient[i] = Ingredient(ingredientName, ingredientCost, ingredientPiece);
@@ -869,9 +869,7 @@ void Employee::createBakeryItem() {
     }
 
     bakeryItems[bakeryItems->getBakeryItemCount()] = BakeryItem(bakeryItemName, bakeryItemCategory, bakeryItemDescription, bakeryItemPricePerUnit, ingredient, numberOfIngredients, recipe, totalWeight);
-    // @TjeEwe file handling for new bakery item
-    // update cake.csv and cookie.csv
-    // check the category of bakery item
+
     if (bakeryItemCategory == "Cake") {
       ofstream cakeFile;
       cakeFile.open("files/cake.csv", ios::app);
@@ -883,6 +881,18 @@ void Employee::createBakeryItem() {
         } else {
           cakeFile << ingredient[i].getWeight() << ";";
         }
+        if (i != numberOfIngredients - 1) {
+          cakeFile << ";";
+        }
+      }
+      // Replace \n with \\n using .find and .replace
+      auto pos = recipe.find("\n");
+      while (pos != string::npos) {
+        recipe.replace(pos, 1, "\\n");
+        pos = recipe.find("\n", pos + 2);
+      }
+      if (recipe[recipe.size()-1] == '\n') {
+        recipe = recipe.substr(0, recipe.size()-1);
       }
       cakeFile << "\",\"" << recipe << "\"," << (bakeryItems->getBakeryItemCount() == 0 ? "false" : "true") << "," << totalWeight;
       cakeFile.close();
@@ -894,14 +904,11 @@ void Employee::createBakeryItem() {
         cookieFile << ingredient[i].getName() << ",";
         if (ingredient[i].getCountable()) {
           cookieFile << ingredient[i].getPiece();
-          if (i != numberOfIngredients - 1) {
-            cookieFile << ";";
-          }
         } else {
           cookieFile << ingredient[i].getWeight();
-          if (i != numberOfIngredients - 1) {
-            cookieFile << ";";
-          }
+        }
+        if (i != numberOfIngredients - 1) {
+          cookieFile << ";";
         }
       }
       // Replace \n with \\n using .find and .replace

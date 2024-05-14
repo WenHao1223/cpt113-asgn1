@@ -9,6 +9,58 @@ BakeryItem::BakeryItem() {
   // cout << "BakeryItem object has been created." << endl;
 }
 
+BakeryItem::BakeryItem(string name, string category, string description, double pricePerUnit, Ingredient * ingredient, int ingredientCount, string recipe, bool disabled) {
+  if (name == "") {
+    cout << "Name cannot be empty." << endl;
+    exit(EXIT_FAILURE);
+    return;
+  }
+
+  if (category == "") {
+    cout << "Category cannot be empty." << endl;
+    exit(EXIT_FAILURE);
+    return;
+  }
+
+  if (pricePerUnit < 0) {
+    cout << "Price per unit cannot be negative." << endl;
+    exit(EXIT_FAILURE);
+    return;
+  }
+
+  if (ingredient == nullptr) {
+    cout << "Ingredient cannot be empty." << endl;
+    exit(EXIT_FAILURE);
+    return;
+  }
+
+  if (ingredientCount < 0) {
+    cout << "Number of ingredients cannot be negative." << endl;
+    exit(EXIT_FAILURE);
+    return;
+  }
+
+  if (bakeryItemCount == MAX_BAKERY_ITEMS) {
+    cout << "Bakery Item has reached maximum capacity." << endl;
+    return;
+  }
+
+  this->name = name;
+  this->category = category;
+  this->description = description;
+  this->pricePerUnit = pricePerUnit;
+  this->ingredient = ingredient;
+  this->ingredientCount = ingredientCount;
+  this->recipe = recipe;
+  this->disabled = disabled;
+
+  this->bakeryItems[bakeryItemCount] = *this;
+  // cout << "bakeryItemCount: " << bakeryItemCount << endl;
+  bakeryItemCount++;
+
+  cout << category << " " << name << " has been added." << endl;
+}
+
 BakeryItem::BakeryItem(string name, string category, string description, double pricePerUnit, Ingredient * ingredient, int ingredientCount, string recipe, bool disabled, int totalWeight) {
   if (name == "") {
     cout << "Name cannot be empty." << endl;
