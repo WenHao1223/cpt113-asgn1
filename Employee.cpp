@@ -1406,8 +1406,11 @@ void Employee::addNewDiscount() {
     string discountDescription;
     bool disabled;
 
-    cout << "Enter discount name: ";
-    getline(cin, discountName);
+    do {
+      cin.ignore();
+      cout << "Enter discount name: ";
+      getline(cin, discountName);
+    } while (discountName == "");
 
     // check if discount name is existing
     for (int i = 0; i < Constant::MAX_DISCOUNTS; i++) {
@@ -1417,16 +1420,29 @@ void Employee::addNewDiscount() {
       }
     }
 
-    cout << "Enter minimum purchase amount: RM ";
-    cin >> minimumPurchase;    
-    cout << "Enter discount percentage (%): ";
-    cin >> discountPercentage;
+    do {
+      cout << "Enter minimum purchase amount: RM ";
+      cin >> minimumPurchase;
+    } while (minimumPurchase < 0);
+
+    do {
+      cout << "Enter discount percentage (%): ";
+      cin >> discountPercentage;
+    } while (discountPercentage < 0);
+
     cin.ignore();
-    cout << "Enter discount description: ";
-    getline(cin, discountDescription);
-    cout << "Is the discount available now? (Y/N): ";
+    do {
+      cout << "Enter discount description: ";
+      getline(cin, discountDescription);
+    } while (discountDescription == "");
+    
     char available;
-    cin >> available;
+    do {
+      cout << "Is the discount available now? (Y/N): ";
+      cin >> available;
+      disabled = (available == 'N' || available == 'n');
+    } while (available != 'Y' && available != 'y' && available != 'N' && available != 'n');
+
     disabled = (available == 'N' || available == 'n');  
 
     for (int i = 0; i < Constant::MAX_DISCOUNTS; i++) {
