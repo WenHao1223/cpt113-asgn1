@@ -485,7 +485,7 @@ int main () {
   // show total balance
   // employees[2].showTotalBalance();
 
-  // employees[2].closeBakery(convertTimeTOYYYY_MM__DD());
+  employees[2].closeBakery(convertTimeTOYYYY_MM__DD());
 
   // Done: display balance sheet
   // can be accessed even bakery is not opened
