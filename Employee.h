@@ -81,6 +81,7 @@ class Employee {
     void compareCostVsProfit(int index) const;
     void compareCostVsPrice(int index) const;
     void createNewEmployee(Employee * employees, string employeeID, string name, string role, string password);
+    void accessEmployeeDataFile(int index, string field, string value);
     void changeEmployeeRole(Employee employees [], int index, string role);
     void displayAllEmployeeDetails(Employee employees []) const;
     void deleteEmployee(Employee employees [], int index);

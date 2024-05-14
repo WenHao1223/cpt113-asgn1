@@ -1175,6 +1175,61 @@ void Employee::createNewEmployee(Employee * employees, string employeeID, string
   }
 }
 
+void Employee::accessEmployeeDataFile (int index, string field, string value) {
+  ifstream employeeDataFile;
+  employeeDataFile.open("files/employeeData.csv", ios::in);
+  string line;
+  string newFileLines;
+  int lineCount = 0;
+
+  string employeeID;
+  string name;
+  string role;
+  string password;
+
+  if (!employeeDataFile) {
+    cout << "files/employeeData.csv not found." << endl;
+    return;
+  } else {
+    getline(employeeDataFile, line); // skip first line (header)
+    newFileLines += line + "\n";
+  }
+
+  while (!employeeDataFile.eof()) {
+    getline(employeeDataFile, employeeID, ',');
+    getline(employeeDataFile, name, ',');
+    getline(employeeDataFile, role, ',');
+    getline(employeeDataFile, password);
+
+    if (lineCount == index) {
+      if (field == "name") {
+        name = value;
+      } else if (field == "role") {
+        role = value;
+      } else if (field == "password") {
+        password = value;
+      } else if (field == "deleteAll") {
+        continue;
+      } else {
+        cout << "Invalid field." << endl;
+        return;
+      }
+    }
+    lineCount++;
+
+    newFileLines += employeeID + "," + name + "," + role + "," + password + "\n";
+  }
+
+  // remove last line
+  newFileLines = newFileLines.substr(0, newFileLines.size()-1);
+  employeeDataFile.close();
+
+  ofstream newEmployeeDataFile;
+  newEmployeeDataFile.open("files/employeeData.csv");
+  newEmployeeDataFile << newFileLines;
+  newEmployeeDataFile.close();
+}
+
 // @TjeEwe file handling if employee role is changed
 void Employee::changeEmployeeRole (Employee employees [], int index, string role) {
   if (supervisor != nullptr) {
@@ -1217,6 +1272,10 @@ void Employee::changeEmployeeRole (Employee employees [], int index, string role
     }
 
     employees[index].role = role;
+
+    // file handling
+    accessEmployeeDataFile(index, "role", role);
+
     cout << employees[index].name << "'s role has been changed to " << role << "." << endl;
   } else {
     cout << "Only supervisor can change employee role." << endl;
