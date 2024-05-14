@@ -107,9 +107,9 @@ int main () {
 
   // Done: create employees
   Employee employees[MAX_EMPLOYEES] = {
-    Employee("S1", "Adam", "Supervisor"),
-    Employee("B1", "Juin Ewe", "Baker"),
-    Employee("C1", "Jennie Ng", "Cashier")
+    Employee("S1", "Adam", "Supervisor", "password"),
+    Employee("B1", "Juin Ewe", "Baker", "password"),
+    Employee("C1", "Jennie Ng", "Cashier", "password")
   };
 
   cout << endl;
@@ -118,6 +118,31 @@ int main () {
   // for (int i = 0; i < MAX_EMPLOYEES; i++) {
   //   cout << "employees[" << i << "] address: " << &employees[i] << endl;
   // }
+
+  // login
+  cout << "Employee list: " << endl;
+  for (int i = 0; i < MAX_EMPLOYEES; i++) {
+    if (employees[i].getName() != "") {
+      cout << i+1 << ". " << employees[i].getName() << endl;
+    }
+  }
+  // @AeroRin input validation
+  cout << "Choose employee: ";
+  int employeeChoice;
+  cin >> employeeChoice;
+  string employeeID;
+  string password;
+  cout << "Enter employee ID: ";
+  cin >> employeeID;
+  cout << "Enter password: ";
+  cin >> password;
+  // @TjeEwe .login() will return true if login is successful
+  // then only start accessing other functions
+  employees[employeeChoice-1].login(employeeID, password);
+
+  // employees[0].login("S1", "password");
+  // employees[0].login("B1", "password"); // wrong id
+  // employees[2].login("C1", "password123"); // wrong password
 
   // Done: show employee id
   // @TjeEwe useful for showing different menu options based on employee id
@@ -150,8 +175,8 @@ int main () {
   // use only once per program
   // can be started by random employee
   // @TjeEwe inventory file shall be read in Employee::startBakery()
-  employees[2].startBakery(convertTimeTOYYYY_MM__DD());
-  cout << endl;
+  // employees[2].startBakery(convertTimeTOYYYY_MM__DD());
+  // cout << endl;
 
   // Done: set ingredient cost of bakery item to latest ingredient cost from inventory
   // not used anymore as it is done in Employee::startBakery()
@@ -268,7 +293,8 @@ int main () {
   // employees[0].displayAllEmployeeDetails(employees);
 
   // Done: create new employee by supervisor
-  // employees[0].createNewEmployee(employees, "C2", "Bob", "Supervisor");
+  employees[0].createNewEmployee(employees, "C2", "Bob", "Supervisor", "password");
+  employees[3].login("C2", "password");
 
   // Done: change employee role
   // Juin Ewe and Jennie are now Cashiers *^____^*
@@ -292,13 +318,13 @@ int main () {
   // employees[1].addBakeryItemToCart(0, 2);
   // employees[2].addBakeryItemToCart(0, 2);
   // cout << endl;
-  employees[1].bakeNewBakeryItem(0, 10);
+  // employees[1].bakeNewBakeryItem(0, 10);
   // employees[1].bakeNewBakeryItem(2, 3);
   // employees[0].accessMenuItem(2);
   // employees[1].accessIngredientInventoryDetails(1);
   // cout << endl;
-  employees[2].addBakeryItemToCart(0, 2);
-  employees[2].addBakeryItemToCart(0, 3);
+  // employees[2].addBakeryItemToCart(0, 2);
+  // employees[2].addBakeryItemToCart(0, 3);
   // employees[2].addBakeryItemToCart(2, 1);
   // cout << endl;
 
@@ -394,7 +420,7 @@ int main () {
 
   // Done: checkout
   // employees[2].accessMenuItem(0);
-  employees[2].checkout(convertTimeToYYYY__MM__DD_HH_MM_SS());
+  // employees[2].checkout(convertTimeToYYYY__MM__DD_HH_MM_SS());
   // employees[2].accessMenuItem(2);
 
   // cout << endl << endl;
@@ -402,9 +428,9 @@ int main () {
   // second order
 
   // employees[2].displayCartDetails();
-  employees[2].addBakeryItemToCart(0, 3);
+  // employees[2].addBakeryItemToCart(0, 3);
   // employees[2].displayCartDetails();
-  employees[2].checkout(convertTimeToYYYY__MM__DD_HH_MM_SS());
+  // employees[2].checkout(convertTimeToYYYY__MM__DD_HH_MM_SS());
 
   // Done: show receipt
   // default parameter is referring previous order's receipt
@@ -427,7 +453,7 @@ int main () {
   // show total balance
   // employees[2].showTotalBalance();
 
-  employees[2].closeBakery(convertTimeTOYYYY_MM__DD());
+  // employees[2].closeBakery(convertTimeTOYYYY_MM__DD());
 
   // Done: display balance sheet
   // can be accessed even bakery is not opened

@@ -13,9 +13,10 @@ Employee::Employee() {
   employeeID = "";
   name = "";
   role = "";
+  password = "";
 }
 
-Employee::Employee(string employeeID, string name, string role) {
+Employee::Employee(string employeeID, string name, string role, string password) {
   if (employeeID == "") {
     cout << "Employee ID cannot be empty." << endl;
     exit(EXIT_FAILURE);
@@ -34,9 +35,16 @@ Employee::Employee(string employeeID, string name, string role) {
     return;
   }
 
+  if (password == "") {
+    cout << "Password cannot be empty." << endl;
+    exit(EXIT_FAILURE);
+    return;
+  }
+
   this->employeeID = employeeID;
   this->name = name;
   this->role = role;
+  this->password = password;
   // cout << "Employee " << name << " has been added." << endl;
 
   if (role == "Supervisor") {
@@ -54,11 +62,21 @@ void Employee::displayEmployeeDetails() const {
   cout << "Position: " << role << endl;
 
   // hide after done testing
-  cout << "Supervisor: " << supervisor << endl;
-  cout << "Baker: " << baker << endl;
-  cout << "Cashier: " << cashier << endl;
+  // cout << "Supervisor: " << supervisor << endl;
+  // cout << "Baker: " << baker << endl;
+  // cout << "Cashier: " << cashier << endl;
 
   cout << endl;
+}
+
+bool Employee::login(string employeeID, string password) {
+  if (this->employeeID == employeeID && this->password == password) {
+    cout << "Login successful." << endl;
+    return true;
+  } else {
+    cout << "Login failed." << endl;
+    return false;
+  }
 }
 
 void Employee::setIngredientCostToInventoryIngredientCost() {
@@ -684,7 +702,7 @@ void Employee::compareCostVsPrice(int index) const {
 
 // @TjeEwe file handling if new employee is created
 // update employeeData.csv
-void Employee::createNewEmployee(Employee * employees, string employeeID, string name, string role) {
+void Employee::createNewEmployee(Employee * employees, string employeeID, string name, string role, string password) {
   if (supervisor != nullptr) {
     cout << this->role << " - Creating new employee..." << endl;
 
@@ -706,6 +724,12 @@ void Employee::createNewEmployee(Employee * employees, string employeeID, string
       return;
     }
 
+    // check if password is empty
+    if (password == "") {
+      cout << "Password cannot be empty." << endl;
+      return;
+    }
+
     bool employeeCreated = false;
     for (int i = 0; i < Constant::MAX_EMPLOYEES; i++) {
       // employee id is not unique
@@ -722,6 +746,7 @@ void Employee::createNewEmployee(Employee * employees, string employeeID, string
         employees[i].employeeID = employeeID;
         employees[i].name = name;
         employees[i].role = role;
+        employees[i].password = password;
 
         if (role == "Supervisor") {
           employees[i].supervisor = new Supervisor(employeeID, name);
