@@ -45,7 +45,6 @@ Employee::Employee(string employeeID, string name, string role, string password)
   this->name = name;
   this->role = role;
   this->password = password;
-  // cout << "Employee " << name << " has been added." << endl;
 
   if (role == "Supervisor") {
     supervisor = new Supervisor(employeeID, name);
@@ -54,6 +53,8 @@ Employee::Employee(string employeeID, string name, string role, string password)
   } else {
     cashier = new Cashier(employeeID, name);
   }
+
+  cout << role << " " << name << " has been added." << endl;
 }
 
 void Employee::displayEmployeeDetails() const {
@@ -448,6 +449,10 @@ void Employee::startBakery(string date) {
 
   // discounts[0] = Discount("Over RM30 Oasis: Enjoy 5\% Off", 30.0, 5.0, "Description 1", false);
   // discounts[1] = Discount("Fifty-Fiver Flourish: 10\% Discount", 50.0, 10.0, "Description 2", false);
+
+  cout << "supervisor: " << supervisor << endl;
+  cout << "baker: " << baker << endl;
+  cout << "cashier: " << cashier << endl;
 
   if (supervisor != nullptr) {
     supervisor->startBakery();

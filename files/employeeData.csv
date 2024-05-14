@@ -1,6 +1,6 @@
 employeeID,name,position,password
 S1,John,Supervisor,1234
 B1,Smith,Baker,password
-B2,Sam,Baker,password123
 C1,Eben,Cashier,12345
+B2,Sam,Baker,password123
 C2,Jack,Cashier,123456

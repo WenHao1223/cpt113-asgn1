@@ -5,6 +5,7 @@ Cashier::Cashier(string employeeID, string name) {
   this->name = name;
   this->cart = new Cart();
   // cout << "Cashier " << name << " has been added." << endl;
+  cout << "address: " << this << endl;
 }
 
 void Cashier::startBakery() {

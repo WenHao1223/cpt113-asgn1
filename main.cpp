@@ -7,6 +7,7 @@
 #include <cmath>
 #include <ctime>
 #include <cstdlib>
+#include <fstream>
 using namespace std;
 
 // forward declaration
@@ -111,6 +112,34 @@ int main () {
     Employee("B1", "Juin Ewe", "Baker", "password"),
     Employee("C1", "Jennie Ng", "Cashier", "password")
   };
+
+  // read employee data from employeeData.csv
+  // employeeID,name,position,password
+  // Employee employees[MAX_EMPLOYEES];
+  // string line;
+  // int employeeCount = 0;
+  // ifstream employeeDataFile("files/employeeData.csv");
+  // if (employeeDataFile) {
+  //   getline(employeeDataFile, line); // skip first line (header)
+  //   while (!employeeDataFile.eof() && employeeCount < MAX_EMPLOYEES) {
+  //     string employeeID;
+  //     string name;
+  //     string position;
+  //     string password;
+  //     getline(employeeDataFile, employeeID, ',');
+  //     getline(employeeDataFile, name, ',');
+  //     getline(employeeDataFile, position, ',');
+  //     getline(employeeDataFile, password);
+
+  //     employees[employeeCount] = Employee(employeeID, name, position, password);
+  //     employeeCount++;
+  //   }
+  // } else {
+  //   cout << "Error: employeeData.csv not found" << endl;
+  //   return 0;
+  // }
+
+  employees[0].displayAllEmployeeDetails(employees);
 
   cout << endl;
 
