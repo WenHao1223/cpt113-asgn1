@@ -32,10 +32,10 @@ namespace Constant {
   /**
    * @brief Maximum number of ingredients in the inventory.
    */
-  static int MAX_INGREDIENTS_INVENTORY = 20;
+  static int MAX_INGREDIENTS_INVENTORY = 25;
 
   /**
-   * @brief Maximum number of ingredients.
+   * @brief Maximum number of ingredients in a bakery item.
    */
   static int MAX_INGREDIENTS = 10;
 
