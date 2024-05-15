@@ -86,7 +86,7 @@ Employee::Employee(string employeeID, string name, string role, string password)
     cashier = new Cashier(employeeID, name);
   }
 
-  cout << role << " " << name << " has been added." << endl;
+  // cout << role << " '" << name << "' has been added." << endl;
 }
 
 /**
@@ -261,7 +261,7 @@ void Employee::startBakery(string date) {
 
     // check if ingredient name is empty
     if (ingredInvName != "") {
-      cout << "Ingredient '" << ingredInvName << "' has been added." << endl;
+      // cout << "Ingredient '" << ingredInvName << "' has been added." << endl;
       // check if ingredient is countable or not
       if (ingredInvCountable) {
         ingredientInventory[ingredInvCount] = IngredientInventory(ingredInvName, ingredInvCost, ingredInvPiece);
@@ -512,7 +512,7 @@ void Employee::startBakery(string date) {
 
     // check if discount name is empty
     if (discountName != "") {
-      cout << "Discount '" << discountName << "' has been added." << endl;
+      // cout << "Discount '" << discountName << "' has been added." << endl;
 
       // add to discounts
       discounts[discountCount] = Discount(discountName, discountMinimumPurchase, discountPercentage, discountDescription, discountDisabled);
@@ -577,9 +577,6 @@ void Employee::accessMenuList() const {
  */
 void Employee::accessMenuItem(int index) {
   cout << role << " - Accessing menu details..." << endl;
-
-  cout << "Name: " << bakeryItems[index].getBakeryItemName() << endl;
-  cout << "address: " << bakeryItems+index << endl;
 
   // Display the details of the menu item at the given index.
   accessMenuDetails(bakeryItems+index);
@@ -2013,7 +2010,7 @@ void Employee::addNewDiscount() {
       if (discounts[i].getName() == "") {
         // store new discount in the first empty slot
         discounts[i] = Discount(discountName, minimumPurchase, discountPercentage, discountDescription, disabled);
-        cout << "Discount '" << discountName << "' has been added." << endl;
+        // cout << "Discount '" << discountName << "' has been added." << endl;
 
         // add new discount to files/discount.csv
         ofstream discountFile; // Output file stream for the discount file
