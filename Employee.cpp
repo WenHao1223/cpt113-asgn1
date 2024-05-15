@@ -377,10 +377,11 @@ void Employee::startBakery(string date) {
     cakeTotalWeight = stoi(cakeLine);
 
     // add to bakery items
-    bakeryItems[bakeryItemCount] = BakeryItem(cakeName, "Cake", cakeDescription, cakePricePerUnit, ingredients, ingredientCount, cakeRecipe, cakeDisabled, cakeTotalWeight);
+    bakeryItems[bakeryItemCount++] = BakeryItem(cakeName, "Cake", cakeDescription, cakePricePerUnit, ingredients, ingredientCount, cakeRecipe, cakeDisabled, cakeTotalWeight);
   }
+  int cakeCount = bakeryItemCount; // Integer to store the count of cakes
   bakeryItemFile.close();
-  cout << "Cake count: " << bakeryItemCount << endl;
+  cout << "Cake count: " << cakeCount << endl;
 
   // Fetch bakery items (cookie)
   // Read from file/cookie.csv
@@ -468,10 +469,11 @@ void Employee::startBakery(string date) {
     cookieDisabled = (cookieLine == "true");
 
     // add to bakery items
-    bakeryItems[bakeryItemCount] = BakeryItem(cookieName, "Cookie", cookieDescription, cookiePricePerUnit, ingredients, ingredientCount, cookieRecipe, cookieDisabled);
+    bakeryItems[bakeryItemCount++] = BakeryItem(cookieName, "Cookie", cookieDescription, cookiePricePerUnit, ingredients, ingredientCount, cookieRecipe, cookieDisabled);
   }
+  int cookieCount = bakeryItemCount - cakeCount; // Integer to store the count of cookies
   cookieFile.close();
-  cout << "Cookie count: " << bakeryItemCount << endl;
+  cout << "Cookie count: " << cookieCount << endl;
 
   // Array of discounts
   discounts = new Discount[Constant::MAX_DISCOUNTS];

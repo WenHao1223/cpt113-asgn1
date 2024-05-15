@@ -110,7 +110,7 @@ Ingredient::Ingredient(string name, double costPerUnit, int piece) {
  */
 void Ingredient::displayIngredientDetails() const {
   cout << "Name: " << name << endl;
-  cout << setprecision(2) << fixed << "Cost: RM " << costPerUnit;
+  cout << fixed << "Cost: RM " << costPerUnit;
 
   // Check if the ingredient is countable.
   if (countable) {

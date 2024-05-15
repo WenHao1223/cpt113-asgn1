@@ -31,10 +31,14 @@ const int MAX_EMPLOYEES = Constant::MAX_EMPLOYEES;
 void displaySupervisorMenu();
 void displayBakerMenu();
 void displayCashierMenu();
+
 void processSupervisorChoice(Employee* employee, int employeeID);
 void processBakerChoice();
 void processCashierChoice();
+
+// For Supervisor
 void checkBakeryItem(Employee* employees, int employeeID);
+void InventoryManagement(Employee* employees, int employeeID);
 
 string convertTimeToYYYYMMDD() {
   // Get current time
@@ -78,6 +82,7 @@ void accessMenuDetails(BakeryItem & item) {
   cout << "Price: RM " << setprecision(2) << fixed << item.pricePerUnit << endl;
   cout << "Ingredients: ";
   for (int i = 0; i < item.ingredientCount; i++) {
+    cout << item.ingredient[i].getCountable() << endl;
     // display ingredient details as 200g sugar, 1 egg, 1 cup flour
     if (item.ingredient[i].getCountable()) {
       cout << item.ingredient[i].getPiece() << "x " << item.ingredient[i].getName();
@@ -94,13 +99,14 @@ void accessMenuDetails(BakeryItem & item) {
   } else {
     cout << "Available." << endl;
   }
+  cout << "==========================================================\n";
   cout << endl;
 }
 
 int findEmployeeIndex(Employee employees[], string employeeID) {
   int index = -1;
   for (int i = 0; i < MAX_EMPLOYEES; i++) {
-    if (employees[i].employeeID == employeeID) {
+    if (employees[i].getEmployeeID() == employeeID) {
       index = i;
       break;
     }
@@ -282,6 +288,7 @@ void processSupervisorChoice(Employee* employee, int employeeID){
         break;
       case '2':
         // Inventory Management
+        InventoryManagement(employee, employeeID);
         break;
       case '3':
         // Menu Items Management
@@ -365,9 +372,89 @@ void checkBakeryItem(Employee* employees, int employeeID) {
   employees[employeeID].accessMenuList();
   cout << endl;
 
-  // View Cost, Piece/ Weight
+  // Show bakery item details
   cout << "Enter the index of the bakery item to view details: ";
   cin >> index;
   cout << endl;
+  // Got Bug here
   employees[employeeID].accessMenuItem(index-1);
+}
+
+void InventoryManagement(Employee* employees, int employeeID){
+  char inventoryMenuChoice; // Menu Option
+  int inventoryChoice; // IngredientInventory Option
+  double quantity; // For restocking
+  double newCost; // For editing cost
+  bool exit = false;
+  do{
+    cout << "==========================================================\n";
+    cout << "||                Inventory Management                  ||\n";
+    cout << "==========================================================\n";
+    cout << "1. Display Ingredient Inventory                          |" << endl;
+    cout << "2. Check Ingredient Inventory                            |" << endl;
+    cout << "3. Restock Ingredient Inventory                          |" << endl;
+    cout << "4. Edit Ingredient Inventory (Cost)                      |" << endl;
+    cout << "5. Exit                                                  |" << endl;
+    cout << "==========================================================\n";
+    do{
+      cout << "Enter your choice: ";
+      cin >> inventoryMenuChoice;
+      if (inventoryMenuChoice < '1' || inventoryMenuChoice > '5'){
+        cout << "Invalid choice. Please try again." << endl;
+      }
+    }while(inventoryMenuChoice < '1' || inventoryMenuChoice > '5');
+
+    switch(inventoryMenuChoice){
+      case '1':
+        // Display Ingredient Inventory
+        employees[employeeID].displayIngredientInventoryList();
+        cout << endl;
+
+        // Show ingredient details (Bug: Cost per price too small cannot display)
+        cout << "Enter the index of the ingredient to view details: ";
+        cin >> inventoryChoice;
+        cout << endl;
+        employees[employeeID].accessIngredientInventoryDetails(inventoryChoice-1);
+        break;
+      case '2':
+        // Check Ingredient Inventory (Dispolay if the ingredient 0)
+        employees[employeeID].checkIngredientInventory();
+        break;
+      case '3':
+        // Restock Ingredient Inventory
+        // Show ingredient details
+        employees[employeeID].displayIngredientInventoryList();
+
+        // Ask for the ingredient to restock
+        cout << "Enter the index of the ingredient to restock: ";
+        cin >> inventoryChoice;
+        cout << "Enter the quantity to restock: ";
+        cin >> quantity;
+        cout << endl;
+        employees[employeeID].restockIngredientInventory(inventoryChoice-1, quantity);
+        break;
+      case '4':
+        // Edit Ingredient Inventory (Cost)
+        // Show ingredient details
+        employees[employeeID].displayIngredientInventoryList();
+
+        // Ask for the ingredient to edit cost
+        cout << "Enter the index of the ingredient to edit cost: ";
+        cin >> inventoryChoice;
+        cout << "Enter the new cost: ";
+        cin >> newCost;
+        cout << endl;
+        employees[employeeID].changeIngredientCost(inventoryChoice-1, newCost);
+        break;
+      case '5':
+        // Exit
+        exit = true;
+        break;
+    }
+  
+    if (exit != true){
+      cout << "Do you want to continue? (Y/N): ";
+      cin >> inventoryMenuChoice;
+    }
+  }while(exit != true && (inventoryMenuChoice == 'Y' || inventoryMenuChoice == 'y'));
 }

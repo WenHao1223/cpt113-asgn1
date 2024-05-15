@@ -70,6 +70,7 @@ void accessMenuDetails(BakeryItem & item) {
   cout << "Ingredients: " << endl;
   for (int i = 0; i < item.ingredientCount; i++) {
     // display ingredient details as 200g sugar, 1 egg, 1 cup flour
+    cout << item.ingredient[i].getCountable() << endl;
     if (item.ingredient[i].getCountable()) {
       cout << item.ingredient[i].getPiece() << "x " << item.ingredient[i].getName();
     } else {
