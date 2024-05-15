@@ -298,6 +298,15 @@ class Employee {
      */
     void addNewInventoryIngredientPiece(string name, double cost, int piece);
 
+    /**
+     * @brief Get the All Inventory Ingredient Name
+     * 
+     * This function gets the name of all the inventory ingredients.
+     * 
+     * @param None.
+     * @return None.
+     * 
+     */
     void getAllInventoryIngredientName() const;
 
     /**

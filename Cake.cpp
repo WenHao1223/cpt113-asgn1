@@ -36,7 +36,7 @@ Cake::Cake(int totalWeight) {
 }
 
 /**
- * Returns the total weight of the cake.
+ * @brief Returns the total weight of the cake.
  *
  * @return The total weight of the cake.
  */
