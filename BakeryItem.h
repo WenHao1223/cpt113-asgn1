@@ -185,7 +185,7 @@ class BakeryItem {
      * 
      * @param item The BakeryItem object to access the menu details of.
      */
-    friend void accessMenuDetails(BakeryItem );
+    friend void accessMenuDetails(const BakeryItem *);
 
     // Destructor
     ~BakeryItem();

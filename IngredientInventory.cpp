@@ -405,7 +405,6 @@ void IngredientInventory::setIngredientInventoryWeight(int index, double weight)
  * @return A pointer to the ingredient inventory.
  */
 IngredientInventory * IngredientInventory::getIngredientInventory() {
-  // cout << "address: " << ingredientInventory << endl;
   return ingredientInventory;
 }
 
@@ -424,7 +423,6 @@ int IngredientInventory::getIngredientInventoryCount() const {
  * @return The ingredient.
  */
 Ingredient IngredientInventory::getIngredient() {
-  // cout << "address: " << &ingredient << endl;
   return ingredient;
 }
 

@@ -130,7 +130,7 @@ class Employee {
      * @return None.
      * 
      */
-    void accessMenuItem(int index) const;
+    void accessMenuItem(int index);
 
     /**
      * @brief Access the discount list.
@@ -825,6 +825,33 @@ class Employee {
      * @return The total debit.
      */
     double getTotalDebit() const;
+
+    /**
+     * @brief Accessor for the total number of discount available.
+     * 
+     * This function counts the total number of discounts available in the bakery.
+     * 
+     * @return int 
+     */
+    int getAllDiscountCount() const;
+
+    /**
+     * @brief Accessor for the total number of ingredient inventory.
+     * 
+     * This function counts the total number of ingredient inventory available in the bakery.
+     * 
+     * @return int 
+     */
+    int getAllIngredientInventoryCount() const;
+
+    /**
+     * @brief Accessor for the total number of bakery items.
+     * 
+     * This function counts the total number of bakery items available in the bakery.
+     * 
+     * @return int 
+     */
+    int getAllBakeryItemCount() const;
 
     /**
      * @brief Mutator for the employee ID.
