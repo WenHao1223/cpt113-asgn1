@@ -91,7 +91,7 @@ void accessMenuDetails(BakeryItem & item) {
 int findEmployeeIndex(Employee employees[], string employeeID) {
   int index = -1;
   for (int i = 0; i < MAX_EMPLOYEES; i++) {
-    if (employees[i].employeeID == employeeID) {
+    if (employees[i].getEmployeeID() == employeeID) {
       index = i;
       break;
     }
