@@ -28,6 +28,13 @@ class Employee;
 
 // global constant
 const int MAX_EMPLOYEES = Constant::MAX_EMPLOYEES;
+void displaySupervisorMenu();
+void displayBakerMenu();
+void displayCashierMenu();
+void processSupervisorChoice(Employee* employee, int employeeID);
+void processBakerChoice();
+void processCashierChoice();
+void checkBakeryItem(Employee* employees, int employeeID);
 
 string convertTimeToYYYYMMDD() {
   // Get current time
@@ -63,11 +70,13 @@ string convertTimeToYYYY__MM__DD_HH_MM_SS() {
 }
 
 void accessMenuDetails(BakeryItem & item) {
-  cout << item.name << endl;
-  cout << item.description << endl;
-  cout << item.quantity << " units available." << endl;
-  cout << "RM " << setprecision(2) << fixed << item.pricePerUnit << endl;
-  cout << "Ingredients: " << endl;
+  cout << "==========================================================\n";
+  cout << "Bakey Item: " << item.name << endl;
+  cout << "==========================================================\n";
+  cout << "Description: " << item.description << endl;
+  cout << "Quantity: " << item.quantity << " units available." << endl;
+  cout << "Price: RM " << setprecision(2) << fixed << item.pricePerUnit << endl;
+  cout << "Ingredients: ";
   for (int i = 0; i < item.ingredientCount; i++) {
     // display ingredient details as 200g sugar, 1 egg, 1 cup flour
     if (item.ingredient[i].getCountable()) {
@@ -109,15 +118,15 @@ int login (Employee employees[]) {
   cout << endl;
 
   cout << "Employee list: " << endl;
-  cout << "---------------------------------\n";
-  cout << "| No. | Employee Name           |\n";
-  cout << "---------------------------------\n";
+  cout << "----------------------------------------------------------\n";
+  cout << "| No. | Employee Name                                    |\n";
+  cout << "----------------------------------------------------------\n";
   for (int i = 0; i < MAX_EMPLOYEES; i++) {
     if (employees[i].getName() != "") {
-        cout << "| " << setw(3) << left << i+1 << " | " << setw(23) << left << employees[i].getName() << " |\n";
+        cout << "| " << setw(3) << left << i+1 << " | " << setw(48) << left << employees[i].getName() << " |\n";
     }
   }
-  cout << "---------------------------------\n";
+  cout << "----------------------------------------------------------\n";
 
   int employeeChoice;
 
@@ -135,15 +144,19 @@ int login (Employee employees[]) {
     string password;
     cout << "Enter password: ";
     cin >> password;
+    cout << endl;
+
     if (employees[employeeChoice-1].login(employeeID, password)) {
       break;
     } else {
+      cout << endl;
       cout << "Invalid employee ID or password. Please try again." << endl;
     }
   } while (true);
 
   return employeeChoice-1;
 }
+
 
 int main () {
   // Done: display current date in YYYYMMDD format
@@ -187,8 +200,174 @@ int main () {
   cout << "==========================================================\n";
   cout << "Today's Date: " << DATE_YYYYMMDD << endl;
   cout << "Please login to continue...." << endl;
+
   // Done: login
-  int employeeID = login(employees);
-  employees[employeeID].getEmployeeID();
+  int employeeID = login(employees); // Employee Index
+  employees[employeeID].startBakery(DATE_YYYYMMDD);
+
+  string role = employees[employeeID].getRole();
+
+  if (role == "Supervisor"){
+    processSupervisorChoice(employees, employeeID);
+  }
+  else if (role == "Baker"){
+    displayBakerMenu();
+    processBakerChoice();
+  }
+  else if (role == "Cashier"){
+    displayCashierMenu();
+    processCashierChoice();
+  }
+
   return 0;
+}
+
+void displaySupervisorMenu(){
+  cout << "==========================================================\n";
+  cout << "||                                                      ||\n";
+  cout << "||                   Supervisor Menu                    ||\n";
+  cout << "||                                                      ||\n";
+  cout << "==========================================================\n";
+  cout << "| 1. Check Bakery Item                                   |\n"; // View today's menu items and details
+  cout << "| 2. Inventory Management                                |\n"; // Manage inventory list and details
+  cout << "| 3. Menu Items Management                               |\n"; // Create new menu items, edit and delete existing menu items
+  cout << "| 4. Promotions and Discounts                            |\n";
+  cout << "| 5. Employee Management                                 |\n";
+  cout << "| 6. Reporting and Analytics                             |\n"; // For displaying balance sheet and transaction history
+  cout << "| 7. Quit                                                |\n";
+  cout << "==========================================================\n";
+}
+
+void displayBakerMenu(){
+  cout << "==========================================================\n";
+cout << "||                                                         ||\n";
+cout << "||                        Baker Menu                       ||\n";
+cout << "||                                                         ||\n";
+cout << "=============================================================\n";
+cout << "| 1. Check Bakery Item                                      |\n"; // View today's menu items and details
+cout << "| 2. Inventory Management                                   |\n"; // Display inventory list and details
+cout << "| 3. Cookies and Cakes Management                           |\n"; // For adding today's cookies and cakes
+cout << "| 4. Quit                                                   |\n";
+cout << "=============================================================\n";
+}
+
+void displayCashierMenu(){
+  cout << "==========================================================\n";
+  cout << "||                                                      ||\n";
+  cout << "||                    Cashier Menu                      ||\n";
+  cout << "||                                                      ||\n";
+  cout << "==========================================================\n";
+  cout << "| 1. Check Bakery Item                                   |\n"; // View today's menu items and details
+  cout << "| 2. Process Order                                       |\n"; // For processing customer orders
+  cout << "| 3 . Quit                                                |\n";
+  cout << "==========================================================\n";
+}
+
+void processSupervisorChoice(Employee* employee, int employeeID){
+  char supervisorChoice;
+  bool quit = false;
+  do {
+    displaySupervisorMenu();
+    do {
+      cout << "Enter your choice: ";
+      cin >> supervisorChoice;
+      if (supervisorChoice < '1' || supervisorChoice > '7') {
+        cout << "Invalid choice. Please try again." << endl;
+      }
+    } while (supervisorChoice < '1' || supervisorChoice > '7');
+
+    switch (supervisorChoice) {
+      case '1':
+        checkBakeryItem(employee, employeeID);
+        break;
+      case '2':
+        // Inventory Management
+        break;
+      case '3':
+        // Menu Items Management
+        break;
+      case '4':
+        // Promotions and Discounts
+        break;
+      case '5':
+        // Employee Management
+        break;
+      case '6':
+        // Reporting and Analytics
+        break;
+      case '7':
+        // Quit
+        quit = true;
+        break;
+    }
+    if (quit != true) {
+      cout << "Do you want to continue? (Y/N): ";
+      cin >> supervisorChoice;
+    }
+  } while (quit != true && (supervisorChoice == 'Y' || supervisorChoice == 'y'));
+}
+
+void processBakerChoice(){
+  char bakerChoice;
+  do {
+    do {
+      cout << "Enter your choice: ";
+      cin >> bakerChoice;
+      if (bakerChoice < '1' || bakerChoice > '4') {
+        cout << "Invalid choice. Please try again." << endl;
+      }
+    } while (bakerChoice < '1' || bakerChoice > '4');
+
+    switch (bakerChoice) {
+      case '1':
+        // Check Bakery Item
+        break;
+      case '2':
+        // Inventory Management
+        break;
+      case '3':
+        // Cookies and Cakes Management
+        break;
+      case '4':
+        // Quit
+        break;
+    }
+  } while (bakerChoice != '4');
+}
+
+void processCashierChoice(){
+  char cashierChoice;
+  do {
+    do {
+      cout << "Enter your choice: ";
+      cin >> cashierChoice;
+      if (cashierChoice < '1' || cashierChoice > '4') {
+        cout << "Invalid choice. Please try again." << endl;
+      }
+    } while (cashierChoice < '1' || cashierChoice > '4');
+
+    switch (cashierChoice) {
+      case '1':
+        // Check Bakery Item
+        break;
+      case '2':
+        // Process Order
+        break;
+      case '3':
+        // Quit 
+        break;
+    }
+  } while (cashierChoice != '3');
+}
+
+void checkBakeryItem(Employee* employees, int employeeID) {
+  int index;
+  employees[employeeID].accessMenuList();
+  cout << endl;
+
+  // View Cost, Piece/ Weight
+  cout << "Enter the index of the bakery item to view details: ";
+  cin >> index;
+  cout << endl;
+  employees[employeeID].accessMenuItem(index-1);
 }

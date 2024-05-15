@@ -72,7 +72,7 @@ void Employee::displayEmployeeDetails() const {
 
 bool Employee::login(string employeeID, string password) {
   if (this->employeeID == employeeID && this->password == password) {
-    cout << "Login successful." << endl;
+    cout << "Login successful !" << endl;
     return true;
   } else {
     cout << "Login failed." << endl;
