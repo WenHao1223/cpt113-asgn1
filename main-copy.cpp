@@ -82,7 +82,6 @@ void accessMenuDetails(BakeryItem & item) {
   cout << "Price: RM " << setprecision(2) << fixed << item.pricePerUnit << endl;
   cout << "Ingredients: ";
   for (int i = 0; i < item.ingredientCount; i++) {
-    cout << item.ingredient[i].getCountable() << endl;
     // display ingredient details as 200g sugar, 1 egg, 1 cup flour
     if (item.ingredient[i].getCountable()) {
       cout << item.ingredient[i].getPiece() << "x " << item.ingredient[i].getName();
