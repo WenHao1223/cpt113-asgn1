@@ -284,8 +284,8 @@ void Employee::startBakery(string date) {
 
   // Fetch bakery items (cake)
   // Read from file/cake.csv
-  ifstream bakeryItemFile; // Input file stream for the bakery item file
-  bakeryItemFile.open("files/cake.csv"); // Open the bakery item file in input mode
+  ifstream cakeFile; // Input file stream for the bakery item file
+  cakeFile.open("files/cake.csv"); // Open the bakery item file in input mode
   cout << endl;
 
   cout << "Reading cake file..." << endl;
@@ -297,27 +297,29 @@ void Employee::startBakery(string date) {
   string cakeRecipe; // String to store the recipe of the cake
   bool cakeDisabled; // Boolean to store the disabled status of the cake
   int cakeTotalWeight; // Integer to store the total weight of the cake
-  int ingredientCount = 0; // Integer to store the count of ingredients
+  int ingredientCount; // Integer to store the count of ingredients
   int bakeryItemCount = 0; // Integer to store the count of bakery items
   string temp; // Temporary string to store the ingredients
 
-  getline(bakeryItemFile, cakeLine); // skip first line (header)
-  while (!bakeryItemFile.eof()) {
+  getline(cakeFile, cakeLine); // skip first line (header)
+  while (!cakeFile.eof()) {
+    ingredientCount = 0; // Reset the ingredient count
+
     // name
-    getline(bakeryItemFile, cakeName, ',');
+    getline(cakeFile, cakeName, ',');
 
     // description
-    getline(bakeryItemFile, cakeLine, '"');
-    getline(bakeryItemFile, cakeDescription, '"');
+    getline(cakeFile, cakeLine, '"');
+    getline(cakeFile, cakeDescription, '"');
 
     // price per unit
-    getline(bakeryItemFile, cakeLine, ',');
-    getline(bakeryItemFile, cakeLine, ',');
+    getline(cakeFile, cakeLine, ',');
+    getline(cakeFile, cakeLine, ',');
     cakePricePerUnit = stod(cakeLine);
 
     // ingredients
-    getline(bakeryItemFile, cakeLine, '"');
-    getline(bakeryItemFile, cakeLine, '"');
+    getline(cakeFile, cakeLine, '"');
+    getline(cakeFile, cakeLine, '"');
 
     // count number of ingredients
     for (int i = 0; i < cakeLine.size(); i++) {
@@ -367,23 +369,24 @@ void Employee::startBakery(string date) {
     }
 
     // recipe
-    getline(bakeryItemFile, cakeLine, '"');
-    getline(bakeryItemFile, cakeRecipe, '"');
+    getline(cakeFile, cakeLine, '"');
+    getline(cakeFile, cakeRecipe, '"');
     
     // disabled
-    getline(bakeryItemFile, cakeLine, ',');
-    getline(bakeryItemFile, cakeLine, ',');
+    getline(cakeFile, cakeLine, ',');
+    getline(cakeFile, cakeLine, ',');
     cakeDisabled = (cakeLine == "true");
 
     // total weight
-    getline(bakeryItemFile, cakeLine);
+    getline(cakeFile, cakeLine);
     cakeTotalWeight = stoi(cakeLine);
 
     // add to bakery items
     bakeryItems[bakeryItemCount++] = BakeryItem(cakeName, "Cake", cakeDescription, cakePricePerUnit, ingredients, ingredientCount, cakeRecipe, cakeDisabled, cakeTotalWeight);
   }
+
   int cakeCount = bakeryItemCount; // Integer to store the count of cakes
-  bakeryItemFile.close();
+  cakeFile.close();
   cout << "Cake count: " << cakeCount << endl;
 
   // Fetch bakery items (cookie)
@@ -403,6 +406,8 @@ void Employee::startBakery(string date) {
 
   getline(cookieFile, cookieLine); // skip first line (header)
   while (!cookieFile.eof()) {
+    ingredientCount = 0; // Reset the ingredient count
+
     // name
     getline(cookieFile, cookieName, ',');
 
