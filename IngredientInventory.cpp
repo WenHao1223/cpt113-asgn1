@@ -356,7 +356,7 @@ void IngredientInventory::changeIngredientCost(int index, double cost) {
   ingredientInventory[index].ingredient.setCostPerUnit(cost);
 
   cout << "Cost of ingredient " << ingredientInventory[index].ingredient.getName() << " has been changed." << endl;
-  cout << setprecision(2) << fixed;
+  cout << fixed;
   cout << "New cost: RM " << ingredientInventory[index].ingredient.getCostPerUnit();
 
   // Check if the ingredient is countable
