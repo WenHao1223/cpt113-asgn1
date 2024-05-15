@@ -546,6 +546,7 @@ void InventoryManagement(Employee* employees, int employeeID){
 void BakeryItemManagement(Employee* employees, int employeeID){
   char cont;
   int index;
+  double newPrice;
   char BakeryItemChoice;
   bool exit = false;
   do{
@@ -601,7 +602,9 @@ void BakeryItemManagement(Employee* employees, int employeeID){
         do{
           cout << "Enter the choice of the bakery item to update price: ";
           cin >> index;
-          employees[employeeID].changeBakeryItemPrice(index - 1);
+          cout << "Enter the new price:";
+          cin >> newPrice;
+          employees[employeeID].changeBakeryItemPrice(index - 1, newPrice);
           cout << "Update successful!" << endl;
 
           cout << "Do you want to update the price of another bakery item? (Y/N): ";
