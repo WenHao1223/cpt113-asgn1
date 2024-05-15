@@ -300,7 +300,7 @@ void processSupervisorChoice(Employee* employee, int employeeID){
         break;
       case '3':
         // Menu Items Management
-        // MenuItemsManagement(employee, employeeID);
+        BakeryItemManagement(employee, employeeID);
         break;
       case '4':
         // Promotions and Discounts
@@ -385,14 +385,6 @@ void checkBakeryItem(Employee* employees, int employeeID) {
     employees[employeeID].accessMenuList();
     cout << endl;
 
-    do {
-      cout << "Do you want to view the details of a bakery item? (Y/N): ";
-      cin >> cont;
-      if (cont != 'Y' && cont != 'y' && cont != 'N' && cont != 'n') {
-        cout << "Invalid choice. Please try again." << endl;
-      }
-    } while (cont != 'Y' && cont != 'y' && cont != 'N' && cont != 'n');
-
     if (cont == 'N' || cont == 'n') {
       processSupervisorChoice(employees, employeeID); // Back to display Menu
     } else {
@@ -448,14 +440,6 @@ void InventoryManagement(Employee* employees, int employeeID){
         // Display Ingredient Inventory
         employees[employeeID].displayIngredientInventoryList();
         cout << endl;
-        do{
-          // Show ingredient details
-          cout << "Do you want to view the details of an ingredient? (Y/N): ";
-          cin >> cont;
-          if (cont != 'Y' && cont != 'y' && cont != 'N' && cont != 'n') {
-            cout << "Invalid choice. Please try again." << endl; // Input Validation
-          }
-        }while(cont != 'Y' && cont != 'y' && cont != 'N' && cont != 'n');
 
         // Break if user does not want to view ingredient details
         if (cont == 'N' || cont == 'n') {
@@ -478,7 +462,6 @@ void InventoryManagement(Employee* employees, int employeeID){
               }
             } while(cont == 'Y' || cont == 'y');
         }
-        break;
 
       // Done
       case '2':
@@ -560,52 +543,136 @@ void InventoryManagement(Employee* employees, int employeeID){
   }while(exit != true && (inventoryMenuChoice == 'Y' || inventoryMenuChoice == 'y'));
 }
 
-// void MenuItemManagement(Employee* employees, int employeeID){
-//   char menuItemChoice;
-//   bool exit = false;
-//   do{
-//     cout << "==========================================================\n";
-//     cout << "||                Menu Items Management                  ||\n";
-//     cout << "==========================================================\n";
-//     cout << "1. Add New Bakery Item                                    |" << endl;
-//     cout << "2. Update Bakery Item Price                               |" << endl;
-//     cout << "3. Enable Bakery Item                                     |" << endl;
-//     cout << "4. Disable Bakery Item                                    |" << endl;
-//     cout << "5. Exit                                                   |" << endl;
-//     cout << "==========================================================\n";
-//     do{
-//       cout << "Enter your choice: ";
-//       cin >> menuItemChoice;
-//       if (menuItemChoice < '1' || menuItemChoice > '4'){
-//         cout << "Invalid choice. Please try again." << endl;
-//       }
-//     }while(menuItemChoice < '1' || menuItemChoice > '4');
+void BakeryItemManagement(Employee* employees, int employeeID){
+  char cont;
+  int index;
+  char BakeryItemChoice;
+  bool exit = false;
+  do{
+    cout << "==========================================================\n";
+    cout << "||                Bakery Items Management               ||\n";
+    cout << "==========================================================\n";
+    cout << "| 1. Add New Bakery Item                                 |" << endl;
+    cout << "| 2. Update Bakery Item Price                            |" << endl;
+    cout << "| 3. Enable Bakery Item                                  |" << endl;
+    cout << "| 4. Disable Bakery Item                                 |" << endl;
+    cout << "| 5. Exit                                                |" << endl;
+    cout << "==========================================================\n";
+    do{ // Input Validation
+      cout << "Enter your choice: ";
+      cin >> BakeryItemChoice;
+      if (BakeryItemChoice < '1' || BakeryItemChoice > '5'){
+        cout << "Invalid choice. Please try again." << endl;
+      }
+    }while(BakeryItemChoice < '1' || BakeryItemChoice > '5');
 
-//     switch(menuItemChoice){
-//       case '1':
-//         // Add New Menu Item
-//         employees[employeeID].createBakeryItem();
-//         break;
-//       case '2':
-//         // Update Menu Item Price
-//         employees[employeeID].changeBakeryItemPrice();
-//         break;
-//       case '3':
-//         // Enable Menu Item
-//         employees[employeeID].enableBakeryItem();
-//         break;
-//       case '4':
-//         // Disable Menu Item
-//         employees[employeeID].disableBakeryItem();
-//         break;
-//       case '5':
-//         // Exit
-//         exit = true;
-//         break;
-//     }
-//     if (exit != true){
-//       cout << "Do you want to continue? (Y/N): ";
-//       cin >> menuItemChoice;
-//     }
-//   }while(exit != true && (menuItemChoice == 'Y' || menuItemChoice == 'y'));
-// }
+    switch(BakeryItemChoice){
+      case '1':
+        // Add New Bakery Item
+        employees[employeeID].accessMenuList();
+        cout << "====================================================\n";
+        cout << "||                 Add New Bakery Item             ||\n";
+        cout << "====================================================\n";
+
+        // Do while loop for user multiple create bakery item
+        do{
+          employees[employeeID].createBakeryItem();
+          cout << "Add successful!" << endl;
+
+          cout << "Do you want to add another bakery item? (Y/N): ";
+          cin >> cont;
+          if (cont != 'Y' && cont != 'y'){
+            break;
+          } else {
+            employees[employeeID].accessMenuList();
+            cout << endl;
+          }
+        }while(cont == 'Y' || cont == 'y');
+        break;
+
+      case '2':
+        // Update Bakery Item Price
+        employees[employeeID].accessMenuList();
+        cout << "====================================================\n";
+        cout << "||           Update Bakery Item Price              ||\n";
+        cout << "====================================================\n";
+        //Do while loop for user multiple update price
+        // Ask User to choose the bakery item to update price
+        do{
+          cout << "Enter the choice of the bakery item to update price: ";
+          cin >> index;
+          employees[employeeID].changeBakeryItemPrice(index - 1);
+          cout << "Update successful!" << endl;
+
+          cout << "Do you want to update the price of another bakery item? (Y/N): ";
+          cin >> cont;
+          if (cont != 'Y' && cont != 'y'){
+            break;
+          } else {
+            employees[employeeID].accessMenuList();
+            cout << endl;
+          }
+        }while(cont == 'Y' || cont == 'y');
+        break;
+
+      case '3':
+        // Enable Bakery Item
+        employees[employeeID].accessMenuList();
+        cout << "====================================================\n";
+        cout << "||           Enable Bakery Item                    ||\n";
+        cout << "====================================================\n";
+        //Do while loop for user multiple enable bakery item
+        // Ask User to choose the bakery item to enable
+        do{
+          cout << "Enter the choice of the bakery item to enable: ";
+          cin >> index;
+          employees[employeeID].enableBakeryItem(index - 1);
+          cout << "Enable successful!" << endl;
+
+          cout << "Do you want to enable another bakery item? (Y/N): ";
+          cin >> cont;
+          if (cont != 'Y' && cont != 'y'){
+            break;
+          } else {
+            employees[employeeID].accessMenuList();
+            cout << endl;
+          }
+        }while(cont == 'Y' || cont == 'y');
+        break;
+      
+      case '4':
+        // Disable Bakery Item
+        employees[employeeID].accessMenuList();
+        cout << "====================================================\n";
+        cout << "||           Disable Bakery Item                   ||\n";
+        cout << "====================================================\n";
+        //Do while loop for user multiple disable bakery item
+        // Ask User to choose the bakery item to disable
+        do{
+          cout << "Enter the choice of the bakery item to disable: ";
+          cin >> index;
+          employees[employeeID].withdrawBakeryItem(index - 1);
+          cout << "Disable successful!" << endl;
+
+          cout << "Do you want to disable another bakery item? (Y/N): ";
+          cin >> cont;
+          if (cont != 'Y' && cont != 'y'){
+            break;
+          } else {
+            employees[employeeID].accessMenuList();
+            cout << endl;
+          }
+        }while(cont == 'Y' || cont == 'y');
+        break;
+
+      case '5':
+        // Exit
+        exit = true;
+        break;
+    }
+    if (exit != true){
+      cout << "Do you want to continue in Bakery Items Management Menu? (Y/N): ";
+      cin >> BakeryItemChoice;
+    }
+  }while(exit != true && (BakeryItemChoice == 'Y' || BakeryItemChoice == 'y'));
+}
