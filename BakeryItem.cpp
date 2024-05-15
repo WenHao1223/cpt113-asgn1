@@ -99,7 +99,7 @@ BakeryItem::BakeryItem(string name, string category, string description, double 
   this->bakeryItems[bakeryItemCount] = *this;
   bakeryItemCount++;
 
-  cout << category << " " << name << " has been added." << endl;
+  // cout << category << " " << name << " has been added." << endl;
 }
 
 /**
@@ -189,6 +189,13 @@ BakeryItem::BakeryItem(string name, string category, string description, double 
   bakeryItemCount++;
 
   cout << category << " " << name << " has been added." << endl;
+  cout << category << endl;
+  cout << description << endl;
+  cout << pricePerUnit << endl;
+  cout << ingredientCount << endl;
+  cout << recipe << endl;
+  cout << disabled << endl;
+  cout << this << endl;
 }
 
 /**
