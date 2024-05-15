@@ -118,30 +118,35 @@ BakeryItem::BakeryItem(string name, string category, string description, double 
  * @return None.
  */
 BakeryItem::BakeryItem(string name, string category, string description, double pricePerUnit, Ingredient * ingredient, int ingredientCount, string recipe, bool disabled, int totalWeight) {
+  // Check if the name is empty
   if (name == "") {
     cout << "Name cannot be empty." << endl;
     exit(EXIT_FAILURE); // Exit the program with an error code
     return;
   }
 
+  // Check if the category is empty
   if (category == "") {
     cout << "Category cannot be empty." << endl;
     exit(EXIT_FAILURE); // Exit the program with an error code
     return;
   }
 
+  // Check if the price per unit is negative
   if (pricePerUnit < 0) {
     cout << "Price per unit cannot be negative." << endl;
     exit(EXIT_FAILURE); // Exit the program with an error code
     return;
   }
 
+  // Check if the ingredient is empty
   if (ingredient == nullptr) {
     cout << "Ingredient cannot be empty." << endl;
     exit(EXIT_FAILURE); // Exit the program with an error code
     return;
   }
 
+  // Check if the ingredient count is negative
   if (ingredientCount < 0) {
     cout << "Number of ingredients cannot be negative." << endl;
     exit(EXIT_FAILURE); // Exit the program with an error code
@@ -282,7 +287,6 @@ void BakeryItem::setIngredientCostToInventoryIngredientCost(IngredientInventory 
     }
   }
 }
-
 
 /**
  * @brief Get the name of the bakery item.

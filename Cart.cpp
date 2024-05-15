@@ -382,6 +382,7 @@ void Cart::setTotalDiscount(double totalDiscount) {
  * @return None.
  */
 Cart::~Cart() {
+  // Free the memory allocated for the bakeryItems and quantity arrays
   delete [] bakeryItems;
   delete [] quantity;
 }

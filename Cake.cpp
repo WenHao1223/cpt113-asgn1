@@ -24,7 +24,8 @@ Cake::Cake() {
  * @param totalWeight The total weight of the cake.
  */
 Cake::Cake(int totalWeight) {
-  if (totalWeight <= 0) { // Check if the total weight is zero or negative.
+  // Check if the total weight is zero or negative.
+  if (totalWeight <= 0) {
     cout << "Total weight cannot be zero or negative." << endl;
     cout << "Total weight: " << totalWeight << endl;
     exit(EXIT_FAILURE); // Exit the program.
