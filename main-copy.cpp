@@ -74,36 +74,35 @@ string convertTimeToYYYY__MM__DD_HH_MM_SS() {
   return buffer;
 }
 
-void accessMenuDetails(BakeryItem item) {
-  cout << &item << endl;
-  // cout << "==========================================================\n";
-  cout << "Bakery Item: " << item.name << endl;
-  // cout << "==========================================================\n";
-  // cout << "Description: " << item.description << endl;
-  // cout << "Quantity: " << item.quantity << " units available." << endl;
-  // cout << "Price: RM " << setprecision(2) << fixed << item.pricePerUnit << endl;
-  // cout << "Ingredients: ";
-  // for (int i = 0; i < item.ingredientCount; i++) {
-  //   // display ingredient details as 200g sugar, 1 egg, 1 cup flour
-  //   if (item.ingredient[i].getCountable()) {
-  //     cout << item.ingredient[i].getPiece() << "x " << item.ingredient[i].getName();
-  //   } else {
-  //     cout << item.ingredient[i].getWeight() << "g " << item.ingredient[i].getName();
-  //   }
-  //   if (i < item.ingredientCount - 1) {
-  //     cout << ", ";
-  //   }
-  // }
-  // cout << endl;
+void accessMenuDetails(const BakeryItem * item) {
+  cout << "==========================================================\n";
+  cout << "Bakery Item: " << item->name << endl;
+  cout << "==========================================================\n";
+  cout << "Description: " << item->description << endl;
+  cout << "Quantity: " << item->quantity << " units available." << endl;
+  cout << "Price: RM " << setprecision(2) << fixed << item->pricePerUnit << endl;
+  cout << "Ingredients: ";
+  for (int i = 0; i < item->ingredientCount; i++) {
+    // display ingredient details as 200g sugar, 1 egg, 1 cup flour
+    if (item->ingredient[i].getCountable()) {
+      cout << item->ingredient[i].getPiece() << "x " << item->ingredient[i].getName();
+    } else {
+      cout << item->ingredient[i].getWeight() << "g " << item->ingredient[i].getName();
+    }
+    if (i < item->ingredientCount - 1) {
+      cout << ", ";
+    }
+  }
+  cout << endl;
 
-  // cout << "Status: ";
-  // if (item.disabled) {
-  //   cout << "Sold out." << endl;
-  // } else {
-  //   cout << "Available." << endl;
-  // }
-  // cout << "==========================================================\n";
-  // cout << endl;
+  cout << "Status: ";
+  if (item->disabled) {
+    cout << "Sold out." << endl;
+  } else {
+    cout << "Available." << endl;
+  }
+  cout << "==========================================================\n";
+  cout << endl;
 }
 
 int findEmployeeIndex(Employee employees[], string employeeID) {

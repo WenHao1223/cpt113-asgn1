@@ -8,7 +8,7 @@
 
 const int MAX_BAKERY_ITEMS = Constant::MAX_BAKERY_ITEMS; // Maximum number of bakery items.
 const int MAX_INGREDIENTS_INVENTORY = Constant::MAX_INGREDIENTS_INVENTORY; // Maximum number of ingredients in the inventory.
-void readIngredientNameAndQuantity(string &temp, string cakeLine, Ingredient ingredients[], int &ingredientIndex, int &i);
+
 /**
  * @file Employee.cpp
  * @brief Implementation file for the Employee class.
@@ -132,7 +132,7 @@ bool Employee::login(string employeeID, string password) {
  * @return None.
  */
 void Employee::setIngredientCostToInventoryIngredientCost() {
-  // cout << role << " - Setting ingredient cost to inventory ingredient cost..." << endl;
+  cout << role << " - Setting ingredient cost to inventory ingredient cost..." << endl;
 
   // Iterate through each bakery item.
   for (int i = 0; i < bakeryItems[0].getBakeryItemCount(); i++) {
@@ -142,7 +142,7 @@ void Employee::setIngredientCostToInventoryIngredientCost() {
       for (int k = 0; k < ingredientInventory[0].getIngredientInventoryCount(); k++) {
         // Check if the ingredient in the bakery item matches the ingredient in the inventory.
         if(bakeryItems[i].getIngredient(j)->getName() == ingredientInventory[k].getIngredient().getName()) {
-          // cout << "Ingredient " << bakeryItems[i].getIngredient(j)->getName() << "'s cost of " << bakeryItems[i].getBakeryItemName() << " has been set to RM " << ingredientInventory->getIngredientInventoryCost(k) << endl;
+          cout << "Ingredient " << bakeryItems[i].getIngredient(j)->getName() << "'s cost of " << bakeryItems[i].getBakeryItemName() << " has been set to RM " << ingredientInventory->getIngredientInventoryCost(k) << endl;
 
           // Set the ingredient cost of the bakery item to the corresponding ingredient cost in the inventory.
           bakeryItems[i].getIngredient(j)->setCostPerUnit(ingredientInventory->getIngredientInventoryCost(k));
@@ -159,16 +159,14 @@ void Employee::setIngredientCostToInventoryIngredientCost() {
  * @return void
  */
 void Employee::startBakery(string date) {
-  cout << endl;
   cout << "Bakery start operating now." << endl;
+  cout << endl;
 
   orderNo = 0;
   
   // Fetch the total balance from files/balanceSheet.csv last row last column
   ifstream balanceSheetFile; // Input file stream for the balance sheet file
   balanceSheetFile.open("files/balanceSheet.csv"); // Open the balance sheet file in input mode
-  
-  cout << "Reading balance sheet file..." << endl;
   string line; // String to store each line of the file
   string lastLine; // String to store the last line of the file
   while (getline(balanceSheetFile, line)) {
@@ -229,9 +227,17 @@ void Employee::startBakery(string date) {
     totalCredit = 0;
   }
 
+  // Set total balance
+  totalBalance = stod(balanceString);
+  cout << "Starting balance: RM " << balanceString << endl;
+  cout << "Starting debit: RM " << totalDebit << endl;
+  cout << "Starting credit: RM " << totalCredit << endl;
+  cout << endl;
+
   // Fetch ingredient inventory from files/ingredientInventory.csv
   ifstream ingredientInventoryFile; // Input file stream for the ingredient inventory file
   ingredientInventoryFile.open("files/ingredientInventory.csv"); // Open the ingredient inventory file in input mode
+  cout << endl;
 
   cout << "Reading ingredient inventory file..." << endl;
   string ingredientInventoryLine; // String to store each line of the file
@@ -255,7 +261,7 @@ void Employee::startBakery(string date) {
 
     // check if ingredient name is empty
     if (ingredInvName != "") {
-      // cout << "Ingredient '" << ingredInvName << "' has been added." << endl;
+      cout << "Ingredient '" << ingredInvName << "' has been added." << endl;
       // check if ingredient is countable or not
       if (ingredInvCountable) {
         ingredientInventory[ingredInvCount] = IngredientInventory(ingredInvName, ingredInvCost, ingredInvPiece);
@@ -268,6 +274,7 @@ void Employee::startBakery(string date) {
     }
   }
   ingredientInventoryFile.close();
+  cout << "Ingredient inventory count: " << ingredInvCount << endl;
 
   // Set bakery items to the bakery items array
   bakeryItems->setBakeryItems(bakeryItems);
@@ -279,6 +286,7 @@ void Employee::startBakery(string date) {
   // Read from file/cake.csv
   ifstream bakeryItemFile; // Input file stream for the bakery item file
   bakeryItemFile.open("files/cake.csv"); // Open the bakery item file in input mode
+  cout << endl;
 
   cout << "Reading cake file..." << endl;
   string cakeLine; // String to store each line of the file
@@ -327,6 +335,7 @@ void Employee::startBakery(string date) {
       // check if it is the end of an ingredient
       if (cakeLine[i] == ';') {
         string ingredientName = temp.substr(0, temp.find(",")); // Extract the name of the ingredient
+
         string ingredientWeightString = temp.substr(temp.find(",") + 1); // Extract the weight of the ingredient
         double ingredientWeight = stod(ingredientWeightString); // Convert the weight to a double
 
@@ -372,15 +381,16 @@ void Employee::startBakery(string date) {
 
     // add to bakery items
     bakeryItems[bakeryItemCount++] = BakeryItem(cakeName, "Cake", cakeDescription, cakePricePerUnit, ingredients, ingredientCount, cakeRecipe, cakeDisabled, cakeTotalWeight);
-    cout << bakeryItems[bakeryItemCount-1].getBakeryItemName() << endl;
   }
   int cakeCount = bakeryItemCount; // Integer to store the count of cakes
   bakeryItemFile.close();
+  cout << "Cake count: " << cakeCount << endl;
 
   // Fetch bakery items (cookie)
   // Read from file/cookie.csv
   ifstream cookieFile; // Input file stream for the cookie file
   cookieFile.open("files/cookie.csv"); // Open the cookie file in input mode
+  cout << endl;
 
   cout << "Reading cookie file..." << endl;
   string cookieLine; // String to store each line of the file
@@ -410,14 +420,14 @@ void Employee::startBakery(string date) {
     getline(cookieFile, cookieLine, '"');
 
     for (int i = 0; i < cookieLine.size(); i++) {
-      if (cookieLine[i] == ',') {
+      if (cookieLine[i] == ';') {
         ingredientCount++;
       }
     }
 
     // create ingredients array
     ingredients = new Ingredient[ingredientCount];
-    int ingredientIndex = 0; // Index of the ingredient
+    int ingredientIndex = 0;
     
     // iterate through ingredients
     for (int i = 0; i < cookieLine.size(); i++) {
@@ -466,6 +476,7 @@ void Employee::startBakery(string date) {
   }
   int cookieCount = bakeryItemCount - cakeCount; // Integer to store the count of cookies
   cookieFile.close();
+  cout << "Cookie count: " << cookieCount << endl;
 
   // Array of discounts
   discounts = new Discount[Constant::MAX_DISCOUNTS];
@@ -473,6 +484,7 @@ void Employee::startBakery(string date) {
   // Read from file/discount.csv
   ifstream discountFile; // Input file stream for the discount file
   discountFile.open("files/discount.csv", ios::in); // Open the discount file in input mode
+  cout << endl;
 
   cout << "Reading discount file..." << endl;
   string discountLine; // String to store each line of the file
@@ -495,7 +507,7 @@ void Employee::startBakery(string date) {
 
     // check if discount name is empty
     if (discountName != "") {
-      // cout << "Discount '" << discountName << "' has been added." << endl;
+      cout << "Discount '" << discountName << "' has been added." << endl;
 
       // add to discounts
       discounts[discountCount] = Discount(discountName, discountMinimumPurchase, discountPercentage, discountDescription, discountDisabled);
@@ -504,24 +516,10 @@ void Employee::startBakery(string date) {
       discountCount++;
     }
   }
+  cout << "Discount count: " << discountCount << endl;
   discountFile.close();
   cout << endl;
-  // Set total balance
-  totalBalance = stod(balanceString);
 
-  //Display daily financial summary and bakery operation
-  cout << "======== Daily Financial Summary =======" << endl;
-  cout << " Starting balance: RM " << balanceString << endl;
-  cout << " Starting debit: RM " << totalDebit << endl;
-  cout << " Starting credit: RM " << totalCredit << endl;
-  cout << "========================================" << endl;
-  cout << endl;
-  cout << "=========== Bakery Operation ===========" << endl;
-  cout << " Ingredient inventory count: " << ingredInvCount << endl;
-  cout << " Cake count: " << cakeCount << endl;
-  cout << " Cookie count: " << cookieCount << endl;
-  cout << " Discount count: " << discountCount << endl;
-  cout << "========================================" << endl;
   // Start bakery operation
   if (supervisor != nullptr) {
     supervisor->startBakery();
@@ -538,6 +536,7 @@ void Employee::startBakery(string date) {
 
   // Set ingredient cost of each bakery item to the corresponding ingredient cost in the inventory
   this->setIngredientCostToInventoryIngredientCost();
+  cout << endl;
 
   cout << "Selling " << bakeryItems[0].getBakeryItemCount() << " items today." << endl;
 }
@@ -553,7 +552,7 @@ void Employee::startBakery(string date) {
  * @return None
  */
 void Employee::accessMenuList() const {
-  // cout << role << " - Accessing menu list..." << endl;
+  cout << role << " - Accessing menu list..." << endl;
 
   // Display the bakery items available in the menu.
   for (int i = 0; i < bakeryItems[0].getBakeryItemCount(); i++) {
@@ -571,14 +570,14 @@ void Employee::accessMenuList() const {
  * 
  * @return None
  */
-void Employee::accessMenuItem(int index) const {
+void Employee::accessMenuItem(int index) {
   cout << role << " - Accessing menu details..." << endl;
-  for (int i = 0; i < bakeryItems[0].getBakeryItemCount(); i++) {
-    cout << i+1 << ". " << bakeryItems[i].getBakeryItemName() << endl;
-  }
-  cout << &bakeryItems[index] << endl;
+
+  cout << "Name: " << bakeryItems[index].getBakeryItemName() << endl;
+  cout << "address: " << bakeryItems+index << endl;
+
   // Display the details of the menu item at the given index.
-  accessMenuDetails(bakeryItems[index]);
+  accessMenuDetails(bakeryItems+index);
 }
 
 
@@ -1281,14 +1280,14 @@ void Employee::createBakeryItem() {
         cakeFile << ingredient[i].getName() << ",";
         // check if ingredient is countable or not
         if (ingredient[i].getCountable()) {
-          cakeFile << ingredient[i].getPiece() << ";";
+          cakeFile << ingredient[i].getPiece();
         } else {
-          cakeFile << ingredient[i].getWeight() << ";";
+          cakeFile << ingredient[i].getWeight();
         }
         // check if last ingredient
-        // if (i != numberOfIngredients - 1) {
-        //   cakeFile << ";";
-        // }
+        if (i != numberOfIngredients - 1) {
+          cakeFile << ";";
+        }
       }
 
       // Replace \n with \\n using .find and .replace
@@ -1320,15 +1319,15 @@ void Employee::createBakeryItem() {
 
         // check if ingredient is countable or not
         if (ingredient[i].getCountable()) {
-          cookieFile << ingredient[i].getPiece() << ";";
+          cookieFile << ingredient[i].getPiece();
         } else {
-          cookieFile << ingredient[i].getWeight() << ";";
+          cookieFile << ingredient[i].getWeight();
         }
 
         // check if last ingredient
-        // if (i != numberOfIngredients - 1) {
-        //   cookieFile << ";";
-        // }
+        if (i != numberOfIngredients - 1) {
+          cookieFile << ";";
+        }
       }
 
       // Replace \n with \\n using .find and .replace
@@ -3113,7 +3112,7 @@ void Employee::checkout(string dateTime) {
     // check if file is empty
     if (transactionFileCheck.peek() == ifstream::traits_type::eof()) {
       // set header
-      transactionFile << "orderID,dateTime,cashierID,itemsBought,quantity,paymentMethod,dineIn,totalPrice";
+      transactionFile << "orderID,dateTime,cashierID,itemsBought,paymentMethod,dineIn,totalPrice";
     } else {
       // set orderNo to the last orderNo in the file
       string line; // Variable to store the line

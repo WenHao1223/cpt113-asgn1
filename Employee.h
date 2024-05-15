@@ -130,7 +130,7 @@ class Employee {
      * @return None.
      * 
      */
-    void accessMenuItem(int index) const;
+    void accessMenuItem(int index);
 
     /**
      * @brief Access the discount list.
