@@ -3309,6 +3309,39 @@ double Employee::getTotalDebit() const {
 }
 
 /**
+ * @brief Accessor for the total number of discount available.
+ * 
+ * This function counts the total number of discounts available in the bakery.
+ * 
+ * @return int 
+ */
+int Employee::getAllDiscountCount() const {
+  return discounts->getDiscountCount();
+}
+
+/**
+  * @brief Accessor for the total number of ingredient inventory.
+  * 
+  * This function counts the total number of ingredient inventory available in the bakery.
+  * 
+  * @return int 
+  */
+int Employee::getAllIngredientInventoryCount() const {
+  return ingredientInventory->getIngredientInventoryCount();
+}
+
+/**
+  * @brief Accessor for the total number of bakery items.
+  * 
+  * This function counts the total number of bakery items available in the bakery.
+  * 
+  * @return int 
+  */
+int Employee::getAllBakeryItemCount() const {
+  return bakeryItems->getBakeryItemCount();
+}
+
+/**
   * @brief Mutator for the employee ID.
   * @param employeeID The employee ID to set.
   */
