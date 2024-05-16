@@ -43,6 +43,7 @@ void InventoryManagement(Employee* employees, int employeeID);
 void BakeryItemManagement(Employee* employees, int employeeID);
 void DiscountAndPromotion(Employee*, int);
 void EmployeeManagement(Employee*, int);
+void ReportingAndAnalytics(Employee*, int);
 
 string convertTimeToYYYYMMDD() {
   // Get current time
@@ -295,7 +296,7 @@ void displayCashierMenu(){
   cout << "==========================================================\n";
 }
 
-void processSupervisorChoice(Employee* employee, int employeeID){
+void processSupervisorChoice(Employee* employees, int employeeID){
   char supervisorChoice;
   bool quit = false;
   do {
@@ -310,26 +311,27 @@ void processSupervisorChoice(Employee* employee, int employeeID){
 
     switch (supervisorChoice) {
       case '1':
-        checkBakeryItem(employee, employeeID);
+        checkBakeryItem(employees, employeeID);
         break;
       case '2':
         // Inventory Management
-        InventoryManagement(employee, employeeID);
+        InventoryManagement(employees, employeeID);
         break;
       case '3':
         // Menu Items Management
-        BakeryItemManagement(employee, employeeID);
+        BakeryItemManagement(employees, employeeID);
         break;
       case '4':
         // Promotions and Discounts
-        DiscountAndPromotion(employee, employeeID);
+        DiscountAndPromotion(employees, employeeID);
         break;
       case '5':
         // Employee Management
-        EmployeeManagement(employee, employeeID);
+        EmployeeManagement(employees, employeeID);
         break;
       case '6':
         // Reporting and Analytics
+        ReportingAndAnalytics(employees, employeeID);
         break;
       case '7':
         // Quit
@@ -675,7 +677,7 @@ void BakeryItemManagement(Employee* employees, int employeeID){
         // Disable Bakery Item
         employees[employeeID].accessMenuList();
         cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
-        cout << "|            Disable Bakery Item                   |\n";
+        cout << "|               Disable Bakery Item                |\n";
         cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
         //Do while loop for user multiple disable bakery item
         // Ask User to choose the bakery item to disable
@@ -1144,4 +1146,9 @@ void EmployeeManagement(Employee* employees, int employeeID){
       cin >> employeeMangementChoice;
     }
   }while(exit != true && (employeeMangementChoice == 'Y' || employeeMangementChoice == 'y'));
+}
+
+void ReportingAndAnalytics(Employee* employees, int employeeID){
+  //Show Total Profit per day, Show total credit and total debit, show total balance
+  
 }
