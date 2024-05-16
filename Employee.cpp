@@ -2524,7 +2524,7 @@ void Employee::bakeNewBakeryItem(int index, int quantity) {
             // cout << bakeryItems[index].getIngredient(i)->getWeight() * quantity << " gram(s) of ingredient " << bakeryItems[index].getIngredient(i)->getName() << " has been used." << endl;
 
             // file handling of ingredient inventory file
-            accessIngredientInventoryFile(index, "piece", to_string(ingredientInventory->getIngredientInventoryWeight(ingredientInventoryIndex[i])));
+            accessIngredientInventoryFile(index, "weight", to_string(ingredientInventory->getIngredientInventoryWeight(ingredientInventoryIndex[i])));
 
             // cout << "Remaining: " << ingredientInventory->getIngredientInventoryWeight(ingredientInventoryIndex[i]) << " gram(s)." << endl;
           }
@@ -3327,8 +3327,8 @@ string Employee::getRole() const {
 }
 
 /**
-  * @brief Accessor for the password.
-  * @return The password.
+  * @brief Accessor for the order number.
+  * @return The order number.
   */
 int Employee::getOrderNo() const {
   return orderNo;

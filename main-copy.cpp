@@ -294,7 +294,7 @@ cout << "||                                                         ||\n";
 cout << "=============================================================\n";
 cout << "| 1. Check Bakery Item                                      |\n"; // View today's menu items and details
 cout << "| 2. Inventory Management                                   |\n"; // Display inventory list and details
-cout << "| 3. Cookies and Cakes Management                           |\n"; // For baking today's cookies and cakes
+cout << "| 3. Bake New Cookies and Cakes                             |\n"; // For baking today's cookies and cakes
 cout << "| 4. Quit                                                   |\n";
 cout << "=============================================================\n";
 }
@@ -791,7 +791,6 @@ void DiscountAndPromotion(Employee* employees, int employeeID){
         }while(cont == 'Y' || cont == 'y');
         break;
 
-      // Bug in Edit Discount
       case '2': // Separate function to edit name, min spend, desc, discountPercentange
         do{
           cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
@@ -838,7 +837,7 @@ void DiscountAndPromotion(Employee* employees, int employeeID){
                 if (cont != 'Y' && cont != 'y'){
                   break;
                 } else {
-                  employees[employeeID].accessDiscountList(); // Bug: New Discount dou=esnt update to object ??
+                  employees[employeeID].accessDiscountList();
                 }
               }while(cont == 'Y' || cont == 'y');
               break;
@@ -904,7 +903,7 @@ void DiscountAndPromotion(Employee* employees, int employeeID){
             case '4':
               // Edit Discount Percentage
               employees[employeeID].accessDiscountList();
-              cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\nn";
+              cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
               cout << "|            Edit Discount Percentage              |\n";
               cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\nn";
               //Do while loop for user multiple edit discount percentage
@@ -1251,7 +1250,7 @@ void BakeCookieCake(Employee* employees, int employeeID){
   int index, quantity;
   char cont;
   cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
-  cout << "|           Cookies and Cakes Management           |\n";
+  cout << "|             Bake New Cakes and Cookies           |\n";
   cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
   employees[employeeID].accessMenuList();
 

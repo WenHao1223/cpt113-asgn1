@@ -1,7 +1,7 @@
 name,costPerUnit,weight,piece,countable
 Sugar,0.00295,5000.0,0,false
-Flour,0.00185,27400,2760.000000,false
-Eggs,0.40,0.0,1560.000000,true
+Flour,0.00185,27400,0,false
+Eggs,0.40,0.0,10,true
 Butter,0.02,1000.0,0,false
 Salt,0.00667,300.0,0,false
 Milk,0.0075,3000.0,0,false
