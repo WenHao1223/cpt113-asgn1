@@ -3268,6 +3268,38 @@ void Employee::showReceipt(string date, int orderNo) const {
 }
 
 /**
+  * @brief Move the cart from this cashier to another cashier.
+  * 
+  * This function moves the cart from this cashier to another cashier.
+  * 
+  * @param cashier 
+  */
+void Employee::moveCartFromThisCashierToAnotherCashier(Employee * c) {
+  // Check if the employee is a cashier.
+  if (this->cashier != nullptr) {
+    cout << "Moving cart from " << name << "..." << endl;
+
+    // check if c is a cashier
+    if (c->cashier == nullptr) {
+      cout << "Only cashier can move cart around." << endl;
+      return;
+    }
+
+    // move cart from this cashier to another cashier
+    // using overloaded assignment operator
+    *c->cashier = *this->cashier;
+
+    // clear cart
+    this->cashier->getCart()->clearCart();
+
+    cout << "Cart has been moved from this cashier to another cashier." << endl;
+  } else {
+    cout << "Only cashier can move cart from this cashier to another cashier." << endl;
+  }
+
+}
+
+/**
   * @brief Accessor for the employee ID.
   * @return The employee ID.
   */

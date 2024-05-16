@@ -786,7 +786,16 @@ class Employee {
     void showReceipt(string date, int oderNo = orderNo) const;
 
     /**
-     * @note The folloowing functions are accessor and mutator functions for the Employee class.
+     * @brief Move the cart from this cashier to another cashier.
+     * 
+     * This function moves the cart from this cashier to another cashier.
+     * 
+     * @param cashier 
+     */
+    void moveCartFromThisCashierToAnotherCashier(Employee * c);
+
+    /**
+     * @note The following functions are accessor and mutator functions for the Employee class.
      * 
      */
 
@@ -876,8 +885,6 @@ class Employee {
      * @param password The employee password to set.
      */
     void setPassword(string password);
-
-    // ... (rest of the member functions)
 
     /**
      * @brief Destructor for the Employee class.

@@ -45,6 +45,24 @@ Cart * Cashier::getCart() {
 }
 
 /**
+ * @brief Overloaded assignment operator for the Cashier class.
+ * 
+ * This operator assigns the cart of the given cashier to the current cashier.
+ * 
+ * @param c The cashier object to copy the cart from.
+ * @return A reference to the current cashier object.
+ */
+Cashier & Cashier::operator=(const Cashier & c) {
+  cout << "Assignment operator called." << endl;
+  this->cart = new Cart(*(c.cart)); // deep copy cart
+
+  // clear cart
+  c.cart->clearCart();
+
+  return *this;
+}
+
+/**
  * @brief Destructor for the Cashier class.
  * 
  * Deletes the dynamically allocated cart object.

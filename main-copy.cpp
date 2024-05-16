@@ -240,6 +240,14 @@ int main () {
   employeeID = login(employees); // Employee Index
   employees[employeeID].startBakery(DATE_YYYYMMDD);
 
+  employees[1].bakeNewBakeryItem(2,2);
+  employees[2].addBakeryItemToCart(2,2);
+  employees[2].displayCartDetails();
+  employees[4].displayCartDetails();
+  employees[2].moveCartFromThisCashierToAnotherCashier(employees+4);
+  employees[2].displayCartDetails();
+  employees[4].displayCartDetails();
+
   string role = employees[employeeID].getRole();
 
   if (role == "Supervisor"){
