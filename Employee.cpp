@@ -203,7 +203,7 @@ void Employee::startBakery(string date) {
     ofstream balanceSheetFileWrite;
     balanceSheetFileWrite.open("files/balanceSheet.csv");
     // Remove last \n from tempLines
-    tempLines = tempLines.substr(0, tempLines.size() - 1);
+    tempLines = tempLines.substr(0, tempLines.length() - 1);
     balanceSheetFileWrite << tempLines;
     balanceSheetFileWrite.close();
 
@@ -322,7 +322,7 @@ void Employee::startBakery(string date) {
     getline(cakeFile, cakeLine, '"');
 
     // count number of ingredients
-    for (int i = 0; i < cakeLine.size(); i++) {
+    for (int i = 0; i < cakeLine.length(); i++) {
       if (cakeLine[i] == ';') {
         ingredientCount++;
       }
@@ -333,7 +333,7 @@ void Employee::startBakery(string date) {
     int ingredientIndex = 0; // Index of the ingredient
     
     // iterate through ingredients
-    for (int i = 0; i < cakeLine.size(); i++) {
+    for (int i = 0; i < cakeLine.length(); i++) {
       // check if it is the end of an ingredient
       if (cakeLine[i] == ';') {
         string ingredientName = temp.substr(0, temp.find(",")); // Extract the name of the ingredient
@@ -424,7 +424,7 @@ void Employee::startBakery(string date) {
     getline(cookieFile, cookieLine, '"');
     getline(cookieFile, cookieLine, '"');
 
-    for (int i = 0; i < cookieLine.size(); i++) {
+    for (int i = 0; i < cookieLine.length(); i++) {
       if (cookieLine[i] == ';') {
         ingredientCount++;
       }
@@ -435,7 +435,7 @@ void Employee::startBakery(string date) {
     int ingredientIndex = 0;
     
     // iterate through ingredients
-    for (int i = 0; i < cookieLine.size(); i++) {
+    for (int i = 0; i < cookieLine.length(); i++) {
       // check if it is the end of an ingredient
       if (cookieLine[i] == ';') {
         string ingredientName = temp.substr(0, temp.find(",")); // Extract the name of the ingredient
@@ -815,6 +815,8 @@ void Employee::accessIngredientInventoryFile(int index, string field, string val
   string piece; // String to store the piece of the ingredient.
   string countable; // String to store the countable status of the ingredient.
 
+  getline(ingredientInventoryFile, line); // Skip the first line (header
+  newFileLines += line + "\n"; // Append the first line to the new file lines.
   while (!ingredientInventoryFile.eof()) {
     getline(ingredientInventoryFile, name, ',');
     getline(ingredientInventoryFile, costPerUnit, ',');
@@ -824,6 +826,8 @@ void Employee::accessIngredientInventoryFile(int index, string field, string val
 
     // Check if the name matches the ingredient name at the specified index.
     if (name == ingredientInventory->getIngredientInventoryName(index)) {
+      cout << endl << endl << "editing: " << name << "," << field << "," << value << endl << endl;
+      // here printing the ingredient inventory @WenHao1223
       cout << name << "," << field << "," << value << endl;
       if (field == "name") {
         name = value;
@@ -848,7 +852,7 @@ void Employee::accessIngredientInventoryFile(int index, string field, string val
   }
 
   // Remove last line
-  newFileLines = newFileLines.substr(0, newFileLines.size()-1);
+  newFileLines = newFileLines.substr(0, newFileLines.length()-1);
   ingredientInventoryFile.close();
 
   // Write the new file lines to the ingredient inventory file.
@@ -1310,8 +1314,8 @@ void Employee::createBakeryItem() {
       }
 
       // Check if the last character of the recipe is a newline character.
-      if (recipe[recipe.size()-1] == '\n') {
-        recipe = recipe.substr(0, recipe.size()-1);
+      if (recipe[recipe.length()-1] == '\n') {
+        recipe = recipe.substr(0, recipe.length()-1);
       }
 
       cakeFile << "\",\"" << recipe << "\"," << (bakeryItems->getBakeryItemCount() == 0 ? "false" : "true") << "," << totalWeight;
@@ -1350,8 +1354,8 @@ void Employee::createBakeryItem() {
       }
 
       // Check if the last character of the recipe is a newline character.
-      if (recipe[recipe.size()-1] == '\n') {
-        recipe = recipe.substr(0, recipe.size()-1);
+      if (recipe[recipe.length()-1] == '\n') {
+        recipe = recipe.substr(0, recipe.length()-1);
       }
       cookieFile << "\",\"" << recipe << "\"," << (bakeryItems->getBakeryItemCount() == 0 ? "false" : "true");
       cookieFile.close();
@@ -1454,7 +1458,7 @@ void Employee::accessBakeryItemFile (int index, string field, string value) {
   }
 
   // Remove last line
-  newFileLines = newFileLines.substr(0, newFileLines.size()-1);
+  newFileLines = newFileLines.substr(0, newFileLines.length()-1);
   bakeryItemFile.close();
 
   // Write the new file lines to the bakery item file.
@@ -1770,7 +1774,7 @@ void Employee::accessEmployeeDataFile (int index, string field, string value) {
   }
 
   // Remove last new line break
-  newFileLines = newFileLines.substr(0, newFileLines.size()-1);
+  newFileLines = newFileLines.substr(0, newFileLines.length()-1);
   employeeDataFile.close();
 
   // Write the new file lines to the employee data file.
@@ -2102,7 +2106,7 @@ void Employee::accessDiscountFile(int index, string field, string value) {
   }
 
   // Remove last line
-  newFileLines = newFileLines.substr(0, newFileLines.size()-1);
+  newFileLines = newFileLines.substr(0, newFileLines.length()-1);
   discountFile.close();
 
   // Write the new file lines to the discount file.
@@ -2496,7 +2500,7 @@ void Employee::bakeNewBakeryItem(int index, int quantity) {
 
       // check if ingredient is not found in inventory
       if (!foundIngredient) {
-        cout << "Warning: Ingredient '" << bakeryItems[index].getIngredient(i)->getName() << " 'not found in inventory." << endl;
+        cout << "Warning: Ingredient '" << bakeryItems[index].getIngredient(i)->getName() << "' not found in inventory." << endl;
         cout << "Please restock ingredient '" << bakeryItems[index].getIngredient(i)->getName() << "' before baking." << endl;
         return;
       }
@@ -2508,23 +2512,47 @@ void Employee::bakeNewBakeryItem(int index, int quantity) {
         for (int i = 0; i < bakeryItems[index].getIngredientCount(); i++) {
           // check if ingredient is countable
           if (bakeryItems[index].getIngredient(i)->getCountable()) {
+            cout << bakeryItems[index].getIngredient(i)->getPiece() * quantity << " pieces of ingredient " << bakeryItems[index].getIngredient(i)->getName() << " has been used." << endl;
+            cout << "Original piece: " << ingredientInventory->getIngredientInventoryPiece(ingredientInventoryIndex[i]) << " pieces." << endl;
+            cout << "Remaining: " << ingredientInventory->getIngredientInventoryPiece(ingredientInventoryIndex[i]) - bakeryItems[index].getIngredient(i)->getPiece() * quantity << " pieces." << endl;
             // deduct ingredient piece
             // ingredient piece = ingredient piece - bakery item ingredient piece * quantity
             ingredientInventory->setIngredientInventoryPiece(ingredientInventoryIndex[i], ingredientInventory->getIngredientInventoryPiece(ingredientInventoryIndex[i]) - bakeryItems[index].getIngredient(i)->getPiece() * quantity);
             // cout << bakeryItems[index].getIngredient(i)->getPiece() * quantity << " pieces of ingredient " << bakeryItems[index].getIngredient(i)->getName() << " has been used." << endl;
 
+            // get index of ingredient in inventory
+            int j;
+            for (j = 0; j < ingredientInventory->getIngredientInventoryCount(); j++) {
+              if (bakeryItems[index].getIngredient(i)->getName() == ingredientInventory->getIngredientInventoryName(j)) {
+                ingredientInventoryIndex[i] = j;
+                break;
+              }
+            }
+
             // file handling of ingredient inventory file
-            accessIngredientInventoryFile(index, "piece", to_string(ingredientInventory->getIngredientInventoryPiece(ingredientInventoryIndex[i])));
+            accessIngredientInventoryFile(j, "piece", to_string(ingredientInventory->getIngredientInventoryPiece(ingredientInventoryIndex[i])));
 
             // cout << "Remaining: " << ingredientInventory->getIngredientInventoryPiece(ingredientInventoryIndex[i]) << " pieces." << endl;
           } else {
+            cout << bakeryItems[index].getIngredient(i)->getWeight() * quantity << " gram(s) of ingredient " << bakeryItems[index].getIngredient(i)->getName() << " has been used." << endl;
+            cout << "Original weight: " << ingredientInventory->getIngredientInventoryWeight(ingredientInventoryIndex[i]) << " gram(s)." << endl;
+            cout << "Remaining: " << ingredientInventory->getIngredientInventoryWeight(ingredientInventoryIndex[i]) - bakeryItems[index].getIngredient(i)->getWeight() * quantity << " gram(s)." << endl;
             // deduct ingredient weight
             // ingredient weight = ingredient weight - bakery item ingredient weight * quantity
             ingredientInventory->setIngredientInventoryWeight(ingredientInventoryIndex[i], ingredientInventory->getIngredientInventoryWeight(ingredientInventoryIndex[i]) - bakeryItems[index].getIngredient(i)->getWeight() * quantity);
             // cout << bakeryItems[index].getIngredient(i)->getWeight() * quantity << " gram(s) of ingredient " << bakeryItems[index].getIngredient(i)->getName() << " has been used." << endl;
 
+            // get index of ingredient in inventory
+            int j;
+            for (j = 0; j < ingredientInventory->getIngredientInventoryCount(); j++) {
+              if (bakeryItems[index].getIngredient(i)->getName() == ingredientInventory->getIngredientInventoryName(j)) {
+                ingredientInventoryIndex[i] = j;
+                break;
+              }
+            }
+
             // file handling of ingredient inventory file
-            accessIngredientInventoryFile(index, "weight", to_string(ingredientInventory->getIngredientInventoryWeight(ingredientInventoryIndex[i])));
+            accessIngredientInventoryFile(j, "weight", to_string(ingredientInventory->getIngredientInventoryWeight(ingredientInventoryIndex[i])));
 
             // cout << "Remaining: " << ingredientInventory->getIngredientInventoryWeight(ingredientInventoryIndex[i]) << " gram(s)." << endl;
           }
