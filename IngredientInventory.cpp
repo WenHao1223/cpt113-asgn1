@@ -150,28 +150,28 @@ void IngredientInventory::accessIngredientInventoryDetails(int index) const {
  */
 void IngredientInventory::checkIngredientInventory() const {
   // check all ingredients in inventory
-  cout << "+-----+--------------------+-------------------------+" << endl;
+  cout << "+-----+-----------------------+-------------------------+" << endl;
   cout << "| " << setw(3) << left << "No." << " | "
-      << setw(18) << left << "Ingredient" << " | "
+      << setw(21) << left << "Ingredient" << " | "
       << setw(12) << left << "Quantity"
       << setw(13) << right << " |" << endl;
-  cout << "+-----+--------------------+-------------------------+" << endl;
+  cout << "+-----+-----------------------+-------------------------+" << endl;
 
   // Display the details of each ingredient in the inventory.
   for (int i = 0; i < ingredientInventoryCount; i++) {
     cout << "| " << setw(3) << left << (i+1) << " | "
-      << setw(18) << left << ingredientInventory[i].ingredient.getName() << " | ";
+      << setw(21) << left << ingredientInventory[i].ingredient.getName() << " | ";
 
     // Check if the ingredient is 0 in quantity
     if (ingredientInventory[i].ingredient.getCountable()) {
-      cout << setw(12) << right << ingredientInventory[i].ingredient.getPiece();
-      cout << setw(13) << right << "piece(s) |" << endl;
+      cout << setw(12) << left << ingredientInventory[i].ingredient.getPiece();
+      cout << setw(18) << left << "piece(s)    |" << endl;
     } else {
-      cout << setw(12) << right << fixed << setprecision(2) << ingredientInventory[i].ingredient.getWeight();
-      cout << setw(13) << right << "gram(s) |" << endl;
+      cout << setw(12) << left << fixed << setprecision(2) << ingredientInventory[i].ingredient.getWeight();
+      cout << setw(19) << left << "gram(s)     |" << endl;
     }
   }
-  cout << "+-----+--------------------+-------------------------+" << endl;
+  cout << "+-----+-----------------------+-------------------------+" << endl;
 }
 
 /**

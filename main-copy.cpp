@@ -34,7 +34,7 @@ void displayBakerMenu();
 void displayCashierMenu();
 
 void processSupervisorChoice(Employee* employee, int employeeID);
-void processBakerChoice();
+void processBakerChoice(Employee* employee, int employeeID);
 void processCashierChoice();
 
 // For Supervisor
@@ -45,6 +45,8 @@ void DiscountAndPromotion(Employee*, int);
 void EmployeeManagement(Employee*, int);
 void ReportingAndAnalytics(Employee*, int);
 
+// For Baker
+void BakeCookieCake(Employee* employees, int employeeID);
 string convertTimeToYYYYMMDD() {
   // Get current time
   auto currentTime = time(0);
@@ -97,7 +99,7 @@ void accessMenuDetails(const BakeryItem * item) {
     }
   }
   cout << endl;
-
+  // cout << "Recipe: " << item->recipe << endl;
   cout << "Status: ";
   if (item->disabled) {
     cout << "Sold out." << endl;
@@ -256,11 +258,9 @@ int main () {
     processSupervisorChoice(employees, employeeID);
   }
   else if (role == "Baker"){
-    displayBakerMenu();
-    processBakerChoice();
+    processBakerChoice(employees, employeeID);
   }
   else if (role == "Cashier"){
-    displayCashierMenu();
     processCashierChoice();
   }
   return 0;
@@ -282,14 +282,14 @@ void displaySupervisorMenu(){
 }
 
 void displayBakerMenu(){
-  cout << "==========================================================\n";
+cout << "=============================================================\n";
 cout << "||                                                         ||\n";
 cout << "||                        Baker Menu                       ||\n";
 cout << "||                                                         ||\n";
 cout << "=============================================================\n";
 cout << "| 1. Check Bakery Item                                      |\n"; // View today's menu items and details
 cout << "| 2. Inventory Management                                   |\n"; // Display inventory list and details
-cout << "| 3. Cookies and Cakes Management                           |\n"; // For adding today's cookies and cakes
+cout << "| 3. Cookies and Cakes Management                           |\n"; // For baking today's cookies and cakes
 cout << "| 4. Quit                                                   |\n";
 cout << "=============================================================\n";
 }
@@ -313,7 +313,7 @@ void processSupervisorChoice(Employee* employees, int employeeID){
     displaySupervisorMenu();
     do {
       cout << "Enter your choice: ";
-      cin >> supervisorChoice;
+      cin >> supervisorChoice;  
       if (supervisorChoice < '1' || supervisorChoice > '7') {
         cout << "Invalid choice. Please try again." << endl;
       }
@@ -352,9 +352,10 @@ void processSupervisorChoice(Employee* employees, int employeeID){
   } while (quit != true);
 }
 
-void processBakerChoice(){
+void processBakerChoice(Employee* employees, int employeeID){
   char bakerChoice;
   do {
+    displayBakerMenu();
     do {
       cout << "Enter your choice: ";
       cin >> bakerChoice;
@@ -366,15 +367,19 @@ void processBakerChoice(){
     switch (bakerChoice) {
       case '1':
         // Check Bakery Item
+        checkBakeryItem(employees, employeeID);
         break;
       case '2':
         // Inventory Management
+        InventoryManagement(employees, employeeID);
         break;
       case '3':
         // Cookies and Cakes Management
+        BakeCookieCake(employees, employeeID);
         break;
       case '4':
         // Quit
+        mainPage();
         break;
     }
   } while (bakerChoice != '4');
@@ -497,12 +502,13 @@ void InventoryManagement(Employee* employees, int employeeID){
               }
             } while(cont == 'Y' || cont == 'y');
         }
+        break;
 
       // Done
       case '2':
         // Check Ingredient Inventory (Dispolay if the ingredient 0)
         cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
-        cout << "|           Check Ingredient Inventory            |\n";
+        cout << "|           Check Ingredient Inventory             |\n";
         cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
         employees[employeeID].checkIngredientInventory();
         break;
@@ -1231,4 +1237,29 @@ void ReportingAndAnalytics(Employee* employees, int employeeID){
       cin >> reportingChoice;
     }
   }while (exit != true && (reportingChoice == 'Y' || reportingChoice == 'y'));
+}
+
+void BakeCookieCake(Employee* employees, int employeeID){
+  int index, quantity;
+  cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
+  cout << "|           Cookies and Cakes Management           |\n";
+  cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
+  employees[employeeID].accessMenuList();
+
+  // Do while loop for user multiple create bakery item
+  do{
+    cout << "Enter the choice for the baking item: ";
+    cin >> index;
+    cout << "Enter the amount to bake: ";
+    employees[employeeID].bakeNewBakeryItem(index - 1, quantity);
+
+    cout << endl;
+    cout << "Do you want to add another baking item? (Y/N): ";
+    cin >> index;
+    if (index != 'Y' && index != 'y'){
+      break;
+    } else {
+      cout << endl;
+    }
+  }while(index == 'Y' || index == 'y');
 }
