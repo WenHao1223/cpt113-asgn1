@@ -431,27 +431,27 @@ void checkBakeryItem(Employee* employees, int employeeID) {
     employees[employeeID].accessMenuList();
     cout << endl;
 
-    if (cont == 'N' || cont == 'n') {
-      processSupervisorChoice(employees, employeeID); // Back to display Menu
-    } else {
-      // Ask for the index of the bakery item to view details
-        do{
-          cout << "Enter the choice of the bakery item to view details: ";
-          cin >> index; // Input Validation (Needed)
-          cout << endl;
-          employees[employeeID].accessMenuItem(index - 1);
+    // Ask for the index of the bakery item to view details
+    do{
+      cout << "Press (0) to exit....\n";
+      cout << "Enter the choice of the bakery item to view details: ";
+      cin >> index; // Input Validation (Needed)
+      if (index == 0){ // Allow user to exit
+        break;
+      }
+      cout << endl;
+      employees[employeeID].accessMenuItem(index - 1);
 
-          cout << endl;
-          cout << "Do you want to view the details of another bakery item? (Y/N):";
-          cin >> cont;
-          if (cont != 'Y' && cont != 'y'){
-            break;
-          } else {
-            employees[employeeID].accessMenuList();
-            cout << endl;
-          }
-        } while(cont == 'Y' || cont == 'y');
-    }
+      cout << endl;
+      cout << "Do you want to view the details of another bakery item? (Y/N):";
+      cin >> cont;
+      if (cont != 'Y' && cont != 'y'){
+        break;
+      } else {
+        employees[employeeID].accessMenuList();
+        cout << endl;
+      }
+    } while(cont == 'Y' || cont == 'y');
 }
 
 void InventoryManagement(Employee* employees, int employeeID){
@@ -492,26 +492,28 @@ void InventoryManagement(Employee* employees, int employeeID){
         cout << endl;
 
         // Break if user does not want to view ingredient details
-        if (cont == 'N' || cont == 'n') {
-          break; // Back to Inventory Management Menu
-        } else {
-            do{
-              cout << "Enter the choice of the ingredient to view details: ";
-              cin >> index; // Input Validation (Needed)
-              cout << endl;
-              employees[employeeID].accessIngredientInventoryDetails(index - 1);
+        do{
+          cout << "Press (0) to exit....\n";
+          cout << "Enter the choice of the ingredient to view details: ";
+          cin >> index; // Input Validation (Needed)
 
-              cout << endl;
-              cout << "Do you want to view the details of other ingredient? (Y/N):";
-              cin >> cont;
-              if (cont != 'Y' && cont != 'y'){
-                break;
-              } else {
-                employees[employeeID].displayIngredientInventoryList();
-                cout << endl;
-              }
-            } while(cont == 'Y' || cont == 'y');
-        }
+          if (index == 0){ // Allow user to exit
+            break;
+          }
+          cout << endl;
+          employees[employeeID].accessIngredientInventoryDetails(index - 1);
+
+          cout << endl;
+          cout << "Do you want to view the details of other ingredient? (Y/N):";
+          cin >> cont;
+          if (cont != 'Y' && cont != 'y'){
+            break;
+          } else {
+            employees[employeeID].displayIngredientInventoryList();
+            cout << endl;
+          }
+        } while(cont == 'Y' || cont == 'y');
+        
         break;
 
       // Done
@@ -536,8 +538,14 @@ void InventoryManagement(Employee* employees, int employeeID){
 
         // Do while loop for user multiple restock
         do{
+          cout << "Press (0) to exit....\n";
           cout << "Enter the choice of the ingredient to restock: ";
           cin >> index;
+
+          if (index == 0){ // Allow user to exit
+            break;
+          }
+
           cout << "Enter the quantity to restock: ";
           cin >> quantity;
           cout << endl;
@@ -566,8 +574,14 @@ void InventoryManagement(Employee* employees, int employeeID){
 
         // Do while loop for user multiple edit cost
         do{
+          cout << "Press (0) to exit....\n";
           cout << "Enter the choice of the ingredient to edit cost: ";
           cin >> index;
+
+          if (index == 0){ // Allow user to exit
+            break;
+          }
+
           cout << "Enter the new cost (Per Unit): ";
           cin >> newCost;
           cout << endl;
@@ -655,8 +669,14 @@ void BakeryItemManagement(Employee* employees, int employeeID){
         //Do while loop for user multiple update price
         // Ask User to choose the bakery item to update price
         do{
+          cout << "Press (0) to exit....\n";
           cout << "Enter the choice of the bakery item to update price: ";
           cin >> index;
+
+          if (index == 0){ // Allow user to exit
+            break;
+          }
+
           cout << "Enter the new price:";
           cin >> newPrice;
           employees[employeeID].changeBakeryItemPrice(index - 1, newPrice);
@@ -683,8 +703,14 @@ void BakeryItemManagement(Employee* employees, int employeeID){
         //Do while loop for user multiple enable bakery item
         // Ask User to choose the bakery item to enable
         do{
+          cout << "Press (0) to exit....\n";
           cout << "Enter the choice of the bakery item to enable: ";
           cin >> index;
+
+          if (index == 0){ // Allow user to exit
+            break;
+          }
+
           employees[employeeID].enableBakeryItem(index - 1);
           cout << "Enable successful!" << endl;
 
@@ -709,8 +735,14 @@ void BakeryItemManagement(Employee* employees, int employeeID){
         //Do while loop for user multiple disable bakery item
         // Ask User to choose the bakery item to disable
         do{
+          cout << "Press (0) to exit....\n";
           cout << "Enter the choice of the bakery item to disable: ";
           cin >> index;
+
+          if (index == 0){ // Allow user to exit
+            break;
+          }
+
           employees[employeeID].withdrawBakeryItem(index - 1);
           cout << "Disable successful!" << endl;
 
@@ -824,8 +856,14 @@ void DiscountAndPromotion(Employee* employees, int employeeID){
               //Do while loop for user multiple edit name
               // Ask User to choose the discount to edit name
               do{
+                cout << "Press (0) to exit....\n";
                 cout << "Enter the choice of the discount to edit name: ";
                 cin >> index;
+
+                if (index == 0){ // Allow user to exit
+                  break;
+                }
+
                 cout << "Enter the new name: ";
                 cin.ignore();
                 getline(cin, newName);
@@ -853,8 +891,14 @@ void DiscountAndPromotion(Employee* employees, int employeeID){
               //Do while loop for user multiple edit min spend
               // Ask User to choose the discount to edit min spend
               do{
+                cout << "Press (0) to exit....\n";
                 cout << "Enter the choice of the discount to edit min spend: ";
                 cin >> index;
+
+                if (index == 0){ // Allow user to exit
+                  break;
+                }
+
                 cout << "Enter the new minimum spend: ";
                 cin >> newMinSpend;
                 employees[employeeID].editDiscountMinimumPurchase(index - 1, newMinSpend);
@@ -881,8 +925,14 @@ void DiscountAndPromotion(Employee* employees, int employeeID){
               //Do while loop for user multiple edit description
               // Ask User to choose the discount to edit description
               do{
+                cout << "Press (0) to exit....\n";
                 cout << "Enter the choice of the discount to edit description: ";
                 cin >> index;
+
+                if (index == 0){ // Allow user to exit
+                  break;
+                }
+
                 cout << "Enter the new description: ";
                 cin.ignore();
                 getline(cin, newDesc);
@@ -911,8 +961,14 @@ void DiscountAndPromotion(Employee* employees, int employeeID){
               //Do while loop for user multiple edit discount percentage
               // Ask User to choose the discount to edit discount percentage
               do{
+                cout << "Press (0) to exit....\n";
                 cout << "Enter the choice of the discount to edit discount percentage: ";
                 cin >> index;
+
+                if (index == 0){ // Allow user to exit
+                  break;
+                }
+
                 cout << "Enter the new discount percentage: ";
                 cin >> newDiscountPercentage;
                 employees[employeeID].editDiscountPercentage(index - 1, newDiscountPercentage);
@@ -954,8 +1010,14 @@ void DiscountAndPromotion(Employee* employees, int employeeID){
         //Do while loop for user multiple enable discount
         // Ask User to choose the discount to enable
         do{
+          cout << "Press (0) to exit....\n";
           cout << "Enter the choice of the discount to enable: ";
           cin >> index;
+
+          if (index == 0){ // Allow user to exit
+            break;
+          }
+
           employees[employeeID].enableDiscount(index - 1);
           // cout << "Enable successful!" << endl;
 
@@ -980,8 +1042,14 @@ void DiscountAndPromotion(Employee* employees, int employeeID){
         //Do while loop for user multiple disable discount
         // Ask User to choose the discount to disable
         do{
+          cout << "Press (0) to exit....\n";
           cout << "Enter the choice of the discount to disable: ";
           cin >> index;
+
+          if (index == 0){ // Allow user to exit
+            break;
+          }
+
           employees[employeeID].disableDiscount(index - 1);
           // cout << "Disable successful!" << endl;
 
@@ -1006,8 +1074,14 @@ void DiscountAndPromotion(Employee* employees, int employeeID){
         //Do while loop for user multiple delete discount
         // Ask User to choose the discount to delete
         do{
+          cout << "Press (0) to exit....\n";
           cout << "Enter the choice of the discount to delete: ";
           cin >> index;
+
+          if (index == 0){ // Allow user to exit
+            break;
+          }
+
           employees[employeeID].deleteDiscount(index - 1);
           // cout << "Delete successful!" << endl;
 
@@ -1082,9 +1156,14 @@ void EmployeeManagement(Employee* employees, int employeeID){
         cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
         // Do while loop for user multiple create employee
         do{
+          cout << "Press (0) to exit....\n";
           cout << "Enter the new employee name: ";
           cin.ignore();
           getline(cin, newEmployee);
+
+          if (newEmployee == "0"){ // Allow user to exit
+            break;
+          }
 
           cout << "Enter the new employee role: ";
           getline(cin, newRole);
@@ -1119,8 +1198,14 @@ void EmployeeManagement(Employee* employees, int employeeID){
         employees[employeeID].displayAllEmployeeDetails(employees);
         // Do while loop for user multiple change employee role
         do{
+          cout << "Press (0) to exit....\n";
           cout << "Enter the choice of the employee to change role: ";
           cin >> index;
+
+          if (index == 0){ // Allow user to exit
+            break;
+          }
+
           cout << "Enter the new role: ";
           cin >> newRole;
           employees[employeeID].changeEmployeeRole(employees, index - 1, newRole);
@@ -1145,8 +1230,14 @@ void EmployeeManagement(Employee* employees, int employeeID){
         employees[employeeID].displayAllEmployeeDetails(employees);
         // Do while loop for user multiple delete employee
         do{
+          cout << "Press (0) to exit....\n";
           cout << "Enter the choice of the employee to delete: ";
           cin >> index;
+
+          if (index == 0){ // Allow user to exit
+            break;
+          }
+
           employees[employeeID].deleteEmployee(employees, index - 1);
           // cout << "Delete successful!" << endl;
 
@@ -1258,8 +1349,13 @@ void BakeCookieCake(Employee* employees, int employeeID){
 
   // Do while loop for user multiple create bakery item
   do{
+    cout << "Press (0) to exit....\n";
     cout << "Enter the choice for the baking item: ";
     cin >> index;
+
+    if (index == 0){ // Allow user to exit
+      break;
+    }
 
     cin.ignore();
     cout << "Enter the quantity to bake: "; // Bug: will show quantity negative for cookies
@@ -1295,18 +1391,19 @@ void processOrder(Employee* employees, int employeeID){
     cout << "| 2. Add Cakes by Weight                                 |\n";
     cout << "| 3. Edit item                                           |\n";
     cout << "| 4. Display Cart                                        |\n";
-    cout << "| 5. Checkout                                            |\n";
-    cout << "| 6. Show receipt                                        |\n";
-    cout << "| 7. Exit                                                |\n";
+    cout << "| 5. Transfer Cart                                       |\n";
+    cout << "| 6. Checkout                                            |\n";
+    cout << "| 7. Show receipt                                        |\n";
+    cout << "| 8. Exit                                                |\n";
     cout << "==========================================================\n";
 
     do {
         cout << "Enter your choice: ";
         cin >> cashierChoice;
-        if (cashierChoice < '1' || cashierChoice > '7'){
+        if (cashierChoice < '1' || cashierChoice > '8'){
             cout << "Invalid choice. Please try again." << endl;
         }
-    } while(cashierChoice < '1' || cashierChoice > '7');
+    } while(cashierChoice < '1' || cashierChoice > '8');
 
     bool addMoreItems = true;
     // Switch case for Cashier Order Processing
@@ -1479,11 +1576,15 @@ void processOrder(Employee* employees, int employeeID){
         break;
 
       case '5':
+        // Transfer Cart
+        break;
+
+      case '6':
         // Checkout
         checkout(employees, employeeID);
         break;
 
-      case '6':
+      case '7':
         // Display receipt for previous transaction (Allow user choose date and transaction to view receipt)
         cout << "Enter the date to show receipt (YYYYMMDD): ";
         cin >> date;
@@ -1504,7 +1605,7 @@ void processOrder(Employee* employees, int employeeID){
         employees[employeeID].showReceipt(date, index);
         break;
 
-      case '7':
+      case '8':
         // Exit
         // Check if cart is empty
         // if (employees[employeeID].getCartItemCount() > 0) {
