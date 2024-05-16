@@ -2610,8 +2610,10 @@ void Employee::addBakeryItemToCart (int index, int quantity) {
 
     // check if bakery item is enough
     if (bakeryItems[index].getBakeryItemQuantity() < quantity) {
+      cout << "====================================================" << endl;
       cout << "Warning: Not enough " << bakeryItems[index].getBakeryItemName() << " in inventory." << endl;
       cout << "Available: " << bakeryItems[index].getBakeryItemQuantity() << " item(s)." << endl;
+      cout << "====================================================" << endl;
       // cout << "Require " << quantity << " item(s)." << endl;
       return;
     }
@@ -2654,8 +2656,10 @@ void Employee::addCakeByWeightToCart(int index, int weight) {
 
     // check if bakery item is enough
     if (bakeryItems[index].getBakeryItemQuantity() * bakeryItems[index].getCake()->getTotalWeight() < weight) {
+      cout << "====================================================" << endl;
       cout << "Warning: Not enough " << bakeryItems[index].getBakeryItemName() << " in inventory." << endl;
       cout << "Available: " << bakeryItems[index].getBakeryItemQuantity() << " gram(s)." << endl;
+      cout << "====================================================" << endl;
       // cout << "Require " << weight << " gram(s)." << endl;
       return;
     }
