@@ -560,9 +560,13 @@ void Employee::accessMenuList() const {
   cout << role << " - Accessing menu list..." << endl;
 
   // Display the bakery items available in the menu.
+  cout << "+----------------------------------------+" << endl;
+  cout << "|              Bakery Menu               |" << endl;
+  cout << "+----------------------------------------+" << endl;
   for (int i = 0; i < bakeryItems[0].getBakeryItemCount(); i++) {
-    cout << i+1 << ". " << bakeryItems[i].getBakeryItemName() << endl;
+      cout << "| " << i+1 << ". " << setw(30) << left << bakeryItems[i].getBakeryItemName() << "      |" << endl;
   }
+  cout << "+----------------------------------------+" << endl;
 }
 
 /**
@@ -2472,11 +2476,11 @@ void Employee::bakeNewBakeryItem(int index, int quantity) {
           if ((ingredientInventory+j)->getIngredient().getCountable()) {
             // check if ingredient is enough
             if (bakeryItems[index].getIngredient(i)->getPiece() * quantity > ingredientInventory->getIngredientInventoryPiece(j)) {
-              cout << "=====================================================================" << endl;
+              cout << "===========================================" << endl;
               cout << "Not enough ingredient '" << bakeryItems[index].getIngredient(i)->getName() << "' in inventory." << endl;
               cout << "Available: " << ingredientInventory->getIngredientInventoryPiece(j) << " piece(s)." << endl;
               cout << "Require " << bakeryItems[index].getIngredient(i)->getPiece() * quantity << " piece(s)." << endl;
-              cout << "=====================================================================" << endl;
+              cout << "===========================================" << endl;
               return;
             } else {
               // cout << "Enough " << bakeryItems[index].getIngredient(i)->getName() << " in inventory." << endl;
@@ -2505,7 +2509,7 @@ void Employee::bakeNewBakeryItem(int index, int quantity) {
 
       // check if ingredient is not found in inventory
       if (!foundIngredient) {
-        cout << '===========================================' << endl;
+        cout << "===========================================" << endl;
         cout << "Warning: Ingredient '" << bakeryItems[index].getIngredient(i)->getName() << "' not found in inventory." << endl;
         cout << "Please restock ingredient '" << bakeryItems[index].getIngredient(i)->getName() << "' before baking." << endl;
         cout << "===========================================" << endl;
@@ -2515,6 +2519,7 @@ void Employee::bakeNewBakeryItem(int index, int quantity) {
       // Deduct ingredients from inventory
       // Deduct the ingredient based on the quantity
       if (i == bakeryItems[index].getIngredientCount() - 1) {
+      cout << endl;
       cout << "==========Ingredient Inventory==========" << endl;
         // iterate through all ingredients
         for (int i = 0; i < bakeryItems[index].getIngredientCount(); i++) {

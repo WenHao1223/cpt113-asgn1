@@ -1261,7 +1261,7 @@ void BakeCookieCake(Employee* employees, int employeeID){
     cin >> index;
 
     cin.ignore();
-    cout << "Enter the quantity to bake: "; // Bug: Will show negative (constructor ?)
+    cout << "Enter the quantity to bake: "; // Bug: will show quantity negative for cookies
     cin >> quantity;
     employees[employeeID].bakeNewBakeryItem(index - 1, quantity);
 
@@ -1271,6 +1271,7 @@ void BakeCookieCake(Employee* employees, int employeeID){
     if (cont != 'Y' && cont != 'y'){
       break;
     } else {
+      employees[employeeID].accessMenuList();
       cout << endl;
     }
   }while(cont == 'Y' || cont == 'y');
