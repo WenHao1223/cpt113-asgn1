@@ -178,7 +178,7 @@ BakeryItem::BakeryItem(string name, string category, string description, double 
   this->recipe = recipe;
   this->disabled = disabled;
 
-  // Create a new Cake object if the category is Cake
+  // Create a Cake object if the category is Cake
   if (category == "Cake") {
     cake = Cake(totalWeight);
   }
@@ -347,9 +347,9 @@ string BakeryItem::getIngredientName(int index) const {
 }
 
 /**
- * @brief Get the Cake object associated with this BakeryItem.
- * 
- * @return A pointer to the Cake object.
+ * @brief Get the cake object
+ * @param None.
+ * @return Cake object.
  */
 Cake BakeryItem::getCake() const {
   return cake;
