@@ -142,7 +142,7 @@ void Employee::setIngredientCostToInventoryIngredientCost() {
       for (int k = 0; k < ingredientInventory[0].getIngredientInventoryCount(); k++) {
         // Check if the ingredient in the bakery item matches the ingredient in the inventory.
         if(bakeryItems[i].getIngredient(j)->getName() == ingredientInventory[k].getIngredient().getName()) {
-          cout << "Ingredient " << bakeryItems[i].getIngredient(j)->getName() << "'s cost of " << bakeryItems[i].getBakeryItemName() << " has been set to RM " << ingredientInventory->getIngredientInventoryCost(k) << endl;
+          // cout << "Ingredient " << bakeryItems[i].getIngredient(j)->getName() << "'s cost of " << bakeryItems[i].getBakeryItemName() << " has been set to RM " << ingredientInventory->getIngredientInventoryCost(k) << endl;
 
           // Set the ingredient cost of the bakery item to the corresponding ingredient cost in the inventory.
           bakeryItems[i].getIngredient(j)->setCostPerUnit(ingredientInventory->getIngredientInventoryCost(k));
@@ -596,9 +596,17 @@ void Employee::accessDiscountList() const {
   cout << role << " - Accessing discount list..." << endl;
 
   // Display the discounts available.
+  // Print table header
+  cout << "+-----+--------------------------------------------+" << endl;
+  cout << "| No. | Discount Name                              |" << endl;
+  cout << "+-----+--------------------------------------------+" << endl;
+
+  // Print discounts
   for (int i = 0; i < discounts[0].getDiscountCount(); i++) {
-    cout << i+1 << ". " << discounts[i].getName() << endl;
+    cout << "| " << setw(3) << i+1 << " | " << setw(43) << left << discounts[i].getName() << "|" << endl;
   }
+
+  cout << "+-----+--------------------------------------------+" << endl;
 }
 
 /**
@@ -1682,6 +1690,7 @@ void Employee::createNewEmployee(Employee * employees, string employeeID, string
         employeeCreated = true; // Set the employee created flag to true
 
         // display new employee details
+        cout << endl;
         employees[i].displayEmployeeDetails();
         break;
       }
@@ -2010,7 +2019,7 @@ void Employee::addNewDiscount() {
       if (discounts[i].getName() == "") {
         // store new discount in the first empty slot
         discounts[i] = Discount(discountName, minimumPurchase, discountPercentage, discountDescription, disabled);
-        // cout << "Discount '" << discountName << "' has been added." << endl;
+        cout << "Discount '" << discountName << "' has been added successful!" << endl;
 
         // add new discount to files/discount.csv
         ofstream discountFile; // Output file stream for the discount file
@@ -2065,7 +2074,7 @@ void Employee::accessDiscountFile(int index, string field, string value) {
     getline(discountFile, description, ',');
     getline(discountFile, disabled);
 
-    cout << name << "," << minimumPurchase << "," << discountPercentage << "," << description << "," << disabled << endl;
+    // cout << name << "," << minimumPurchase << "," << discountPercentage << "," << description << "," << disabled << endl;
 
     // Check if the name matches the discount name at the specified index.
     // Check if the field is name, minimumPurchase, discountPercentage, description, or disabled.
@@ -2121,7 +2130,8 @@ void Employee::editDiscountName(int index, string newName) {
 
     // edit name in files/discount.csv
     accessDiscountFile(index, "name", newName);
-
+    discounts[index].setName(newName);
+    cout << "New name has been updated for discount '" << discounts[index].getName() << "'." << endl;
   } else {
     cout << "Only supervisor can edit discount name." << endl;
   }
