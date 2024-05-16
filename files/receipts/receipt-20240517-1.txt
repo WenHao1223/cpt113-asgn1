@@ -1,0 +1,28 @@
+Eid Delights Bakery
+43-3-12, Persiaran Midlands,
+Taman Midlands,
+10500 Penang
+Tel : 011 2345 6789
+
+Take Away
+--------------------------------------------------------------------
+Current Invoice
+R.No: 1
+Date: 2024-05-17
+Transaction by: C1
+
+No Description                        Quantity            Price (RM)
+1. Basbousa Cake                      2                   37.8
+
+---------------------------------------------------------------------
+Subtotal (1)                                                35.91
+---------------------------------------------------------------------
+Discount Summary                                            Amount
+Discount Name                           Over RM30 Oasis: Enjoy 5% Off
+Total Discount                                              1.89
+---------------------------------------------------------------------
+Total                                                       35.91
+Payment Method                                              Credit Card
+---------------------------------------------------------------------
+Thank you for your purchase at our bakery!
+See you again soon.

@@ -79,7 +79,7 @@ void Cart::addBakeryItemToCart(BakeryItem & item, int quantity) {
   cartItemCount++;
 
   // Display a message indicating that the item has been added to the cart
-  cout << item.getBakeryItemName() << " added to cart." << endl;
+  // cout << item.getBakeryItemName() << " added to cart." << endl; // already display in employee.cpp
 }
 
 /**

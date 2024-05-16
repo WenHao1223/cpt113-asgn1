@@ -2598,6 +2598,7 @@ void Employee::bakeNewBakeryItem(int index, int quantity) {
  * @return None.
 */
 void Employee::addBakeryItemToCart (int index, int quantity) {
+  cout << endl;
   cout << role << " - Adding " << quantity << "x " << bakeryItems[index].getBakeryItemName() << " to cart..." << endl;
 
   // Check if the employee is a cashier.
@@ -2638,6 +2639,7 @@ void Employee::addBakeryItemToCart (int index, int quantity) {
  * @return None.
 */
 void Employee::addCakeByWeightToCart(int index, int weight) {
+  cout << endl;
   cout << role << " - Adding " << weight << "g " << bakeryItems[index].getBakeryItemName() << " to cart..." << endl;
 
   // Check if the employee is a cashier.
@@ -3106,6 +3108,7 @@ void Employee::checkout(string dateTime) {
     }
 
     // Apply discount
+    cout << "===========================Transaction Page===========================" << endl;
     this->showDiscountBasedOnCartTotalPrice();
     cout << endl;
 
@@ -3230,7 +3233,7 @@ void Employee::checkout(string dateTime) {
     receiptFile << "Tel : 011 2345 6789" << endl;
     receiptFile << endl;
     receiptFile << (dineIn == 'Y' ? "Dine In" : "Take Away") << endl;
-    receiptFile << "--------------------------------------------------------------------" << endl;
+    receiptFile << "----------------------------------------------------------------------" << endl;
     receiptFile << "Current Invoice" << endl;
     receiptFile << "R.No: " << orderNo << endl;
     receiptFile << "Date: " << dateTime << endl;
@@ -3248,11 +3251,11 @@ void Employee::checkout(string dateTime) {
     }
 
     receiptFile << endl;
-    receiptFile << "---------------------------------------------------------------------" << endl;
+    receiptFile << "-----------------------------------------------------------------------" << endl;
     string subtotal = "Subtotal (" + to_string(cashier->getCart()->getCartItemCount()) + ")"; // Variable to store the subtotal
     receiptFile << left << setw(60) << subtotal;
     receiptFile << totalPrice << endl;
-    receiptFile << "---------------------------------------------------------------------" << endl;
+    receiptFile << "-----------------------------------------------------------------------" << endl;
     receiptFile << left << setw(60) << "Discount Summary" << "Amount" << endl;
     // check if discount is applied
     if (choice != 0) {
@@ -3260,11 +3263,11 @@ void Employee::checkout(string dateTime) {
       receiptFile << setprecision(2) << fixed;
       receiptFile << left << setw(60) << "Total Discount" << cashier->getCart()->getTotalDiscount() << endl;
     }
-    receiptFile << "---------------------------------------------------------------------" << endl;
+    receiptFile << "-----------------------------------------------------------------------" << endl;
     receiptFile << left << setw(60) << "Total" << totalPrice << endl;
     string paymentMethodStr = (paymentMethod == '1' ? "Cash" : paymentMethod == '2' ? "Credit Card" : paymentMethod == '3' ? "Debit Card" : "TnG"); // Variable to store the payment method
     receiptFile << left << setw(60) << "Payment Method" << paymentMethodStr << endl;
-    receiptFile << "---------------------------------------------------------------------" << endl;
+    receiptFile << "-----------------------------------------------------------------------" << endl;
     receiptFile << "Thank you for your purchase at our bakery!" << endl;
     receiptFile << "See you again soon." << endl;
     receiptFile.close();
@@ -3291,7 +3294,7 @@ void Employee::checkout(string dateTime) {
 void Employee::showReceipt(string date, int orderNo) const {
   if (cashier != nullptr || supervisor != nullptr) {
     // read from files/receipts/receipt-[YYYYMMDD]-[orderID].txt
-    string receiptFileName = "files/receipts/" + date + "/receipt-" + date + "-" + to_string(orderNo) + ".txt"; // Variable to store the receipt file name
+    string receiptFileName = "files/receipts/receipt-" + date + "-" + to_string(orderNo) + ".txt"; // Variable to store the receipt file name
     cout << "Showing receipt..." << endl;
     cout << "Filename: " << receiptFileName << endl;
     cout << endl << endl;
@@ -3302,6 +3305,7 @@ void Employee::showReceipt(string date, int orderNo) const {
     if (receiptFile) {
       string line; // Variable to store the line
       // read line by line
+      cout << "----------------------------------------------------------------------" << endl;
       while (getline(receiptFile, line)) {
         cout << line << endl;
       }
@@ -3310,7 +3314,7 @@ void Employee::showReceipt(string date, int orderNo) const {
       cout << "Unable to open file." << endl;
     }
 
-    cout << endl << "**************************************";
+    // cout << endl << "**************************************";
     cout << endl;
   } else {
     cout << "Only supervisor or cashier can show receipt." << endl;

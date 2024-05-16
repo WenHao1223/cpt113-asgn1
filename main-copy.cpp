@@ -51,6 +51,7 @@ void BakeCookieCake(Employee* employees, int employeeID);
 
 // For cashier
 void processOrder(Employee* employees, int employeeID);
+void checkout(Employee* employees, int employeeID);
 
 
 string convertTimeToYYYYMMDD() {
@@ -1284,6 +1285,7 @@ void processOrder(Employee* employees, int employeeID){
   double weight;
   char cont;
   int index;
+  string date;
 
   do {
     cout << "==========================================================\n";
@@ -1301,10 +1303,10 @@ void processOrder(Employee* employees, int employeeID){
     do {
         cout << "Enter your choice: ";
         cin >> cashierChoice;
-        if (cashierChoice < '1' || cashierChoice > '5'){
+        if (cashierChoice < '1' || cashierChoice > '7'){
             cout << "Invalid choice. Please try again." << endl;
         }
-    } while(cashierChoice < '1' || cashierChoice > '5');
+    } while(cashierChoice < '1' || cashierChoice > '7');
 
     bool addMoreItems = true;
     // Switch case for Cashier Order Processing
@@ -1343,15 +1345,24 @@ void processOrder(Employee* employees, int employeeID){
             }
         } while (true); // Loop until valid item type is entered
 
+        cout << endl;
         cout << "Do you want to add more items? (Y/N): ";
         cin >> cont;
         if (cont != 'Y' && cont != 'y') {
           char display;
           addMoreItems = false;
-          cout << "Do you want to display cart details: " << endl;
+          cout << "Do you want to display cart details (Y/N): ";
           cin >> display;
           if (display == 'Y' || display == 'y') {
             employees[employeeID].displayCartDetails();
+            cout << endl;
+          }
+
+          cout << "Press 0 to checkout/ any key to back to Cashier Order Processing: ";
+          cin >> cont;
+          if (cont == '0') {
+            cout << endl;
+            checkout(employees, employeeID);
           }
           break;
         }
@@ -1360,6 +1371,7 @@ void processOrder(Employee* employees, int employeeID){
 
       case '2':
         // Add Cake by Weight
+        employees[1].bakeNewBakeryItem(2, 2); // Check
         employees[employeeID].accessMenuList();
         do {
           cout << "Enter the choice of the cake: ";
@@ -1370,19 +1382,28 @@ void processOrder(Employee* employees, int employeeID){
 
           employees[employeeID].addCakeByWeightToCart(index - 1, weight);
 
+          cout << endl;
           cout << "Do you want to add more cakes by weight? (Y/N): ";
           cin >> cont;
 
           if (cont != 'Y' && cont != 'y') {
             char display;
             addMoreItems = false;
-            cout << "Do you want to display cart details: " << endl;
+            cout << "Do you want to display cart details (Y/N): ";
             cin >> display;
             if (display == 'Y' || display == 'y') {
               employees[employeeID].displayCartDetails();
-              break;
+              cout << endl;
             }
+            cout << "Press 0 to checkout/ any key to back to Cashier Order Processing: ";
+            cin >> cont;
+            if (cont == '0') {
+              cout << endl;
+              checkout(employees, employeeID);
+            }
+            break;
           }
+          break;
         } while (cont == 'Y' || cont == 'y');
         break;
 
@@ -1391,64 +1412,66 @@ void processOrder(Employee* employees, int employeeID){
         // Ask whether delete or edit
         char editOrDelete;
         char cont;
-        cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
-        cout << "|                   Edit Item                      |\n";
-        cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
-        cout << "| 1. Edit Item                                     |\n";
-        cout << "| 2. Delete Item                                   |\n";
-        cout << "| 3. Exit                                          |\n";
-        cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
         do {
-          cout << "Enter your choice: ";
-          cin >> editOrDelete;
-          if (editOrDelete < '1' || editOrDelete > '3') {
-            cout << "Invalid choice. Please try again." << endl;
-          }
-        } while (editOrDelete < '1' || editOrDelete > '3');
+          cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
+          cout << "|                   Edit Item                      |\n";
+          cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
+          cout << "| 1. Edit Item                                     |\n";
+          cout << "| 2. Delete Item                                   |\n";
+          cout << "| 3. Exit                                          |\n";
+          cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
+          do {
+            cout << "Enter your choice: ";
+            cin >> editOrDelete;
+            if (editOrDelete < '1' || editOrDelete > '3') {
+              cout << "Invalid choice. Please try again." << endl;
+            }
+          } while (editOrDelete < '1' || editOrDelete > '3');
 
-        switch(editOrDelete){
-          case '1':
-            // Edit Item
-            // Do while loop for user multiple edit item
-            do {
-              employees[employeeID].displayCartDetails();
-              cout << "Enter the choice of the item to update: ";
-              cin >> index;
-              cout << "Enter the new quantity: ";
-              cin >> quantity;
-              employees[employeeID].updateBakeryItemQuantityInCart(index - 1, quantity);
+          switch(editOrDelete){
+            case '1':
+              // Edit Item
+              // Do while loop for user multiple edit item
+              do {
+                employees[employeeID].displayCartDetails();
+                cout << "Enter the choice of the item to update: ";
+                cin >> index;
+                cout << "Enter the new quantity: ";
+                cin >> quantity;
+                employees[employeeID].updateBakeryItemQuantityInCart(index - 1, quantity);
 
-              cout << "Do you want to edit another item? (Y/N): ";
-              cin >> cont;
-              if (cont != 'Y' && cont != 'y') {
-                break;
-              }
-            } while (cont == 'Y' || cont == 'y');
+                cout << "Do you want to edit another item? (Y/N): ";
+                cin >> cont;
+                if (cont != 'Y' && cont != 'y') {
+                  break;
+                }
+              } while (cont == 'Y' || cont == 'y');
 
-            break;
+              break;
 
-          case '2':
-            // Delete Item
-            // Do while loop for user multiple delete item
-            do {
-              employees[employeeID].displayCartDetails();
-              cout << "Enter the choice of the item to delete: ";
-              cin >> index;
-              employees[employeeID].removeBakeryItemFromCart(index - 1);
+            case '2':
+              // Delete Item
+              // Do while loop for user multiple delete item
+              do {
+                employees[employeeID].displayCartDetails();
+                cout << "Enter the choice of the item to delete: ";
+                cin >> index;
+                employees[employeeID].removeBakeryItemFromCart(index - 1);
 
-              cout << "Do you want to delete another item? (Y/N): ";
-              cin >> cont;
-              if (cont != 'Y' && cont != 'y') {
-                break;
-              }
-            } while (cont == 'Y' || cont == 'y');
-            break;
+                cout << "Do you want to delete another item? (Y/N): ";
+                cin >> cont;
+                if (cont != 'Y' && cont != 'y') {
+                  break;
+                }
+              } while (cont == 'Y' || cont == 'y');
+              break;
 
-          case '3':
-            // Exit
-            exit = true;
-            break;
-        }
+            case '3':
+              // Exit
+              exit = true;
+              break;
+          }        
+        } while (exit != true);
 
       case '4':
         // Display Cart
@@ -1457,24 +1480,64 @@ void processOrder(Employee* employees, int employeeID){
 
       case '5':
         // Checkout
-        employees[employeeID].checkout(convertTimeToYYYYMMDD());
+        checkout(employees, employeeID);
         break;
 
       case '6':
-        // Show Receipt
-        employees[employeeID].showReceipt(convertTimeToYYYYMMDD(), employees[employeeID].getOrderNo());
+        // Display receipt for previous transaction (Allow user choose date and transaction to view receipt)
+        cout << "Enter the date to show receipt (YYYYMMDD): ";
+        cin >> date;
+        
+        // Date Input validation
+        do {
+          if (date.length() != 8) {
+            cout << "Invalid date. Please try again." << endl;
+            cout << "Enter the date to show receipt (YYYYMMDD): ";
+            cin >> date;
+          }
+        } while (date.length() != 8);
+
+        cout << "Enter the order number to show receipt: ";
+        cin >> index; // Use for order number
+
+        cout << endl;
+        employees[employeeID].showReceipt(date, index);
         break;
 
       case '7':
         // Exit
+        // Check if cart is empty
+        // if (employees[employeeID].getCartItemCount() > 0) {
+        //   cout << "Cart is not empty. Do you want to checkout? (Y/N): ";
+        //   cin >> cont;
+        //   if (cont == 'Y' || cont == 'y') {
+        //     employees[employeeID].checkout(convertTimeToYYYYMMDD());
+        //   }
+        // }
         exit = true;
         break;
-      }
 
       if (exit != true) {
-        cout << "Do you want to continue in Cashier Order Processing Menu? (Y/N): ";
+        cout << endl;
+        cout << "Press 0 to checkout/ any key to back to Cashier menu: ";
         cin >> cashierChoice;
+        if (cont == '0') {
+          cout << endl;
+          checkout(employees, employeeID);
+          break;
+        }
       }
+    }
+  } while (exit != true && cont != '0');
+}
 
-  } while (exit != true && (cashierChoice == 'Y' || cashierChoice == 'y'));
+void checkout (Employee* employees, int employeeID){
+  char show;
+  employees[employeeID].checkout(convertTimeTOYYYY_MM__DD());
+  // Display current transaction receipt
+  cout << "Do you want to show receipt? (Y/N): ";
+  cin >> show;
+  if (show == 'Y' || show == 'y') {
+    employees[employeeID].showReceipt(convertTimeToYYYYMMDD(), employees[employeeID].getOrderNo());
+  }
 }

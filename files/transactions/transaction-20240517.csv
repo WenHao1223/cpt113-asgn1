@@ -1,0 +1,2 @@
+orderID,dateTime,cashierID,itemsBought,paymentMethod,dineIn,totalPrice
+1,2024-05-17,C1,"Basbousa Cake","2",Credit Card,false,35.91
