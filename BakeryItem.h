@@ -36,7 +36,7 @@ class BakeryItem {
     double quantity = 0; // Quantity of the bakery item (can be weight)
     string recipe; // Recipe of the bakery item
     bool disabled = false; // Flag to indicate if the bakery item is disabled
-    Cake * cake; // Pointer to a Cake object
+    Cake cake; // Pointer to a Cake object
     static int bakeryItemCount; // Static variable to keep track of the number of bakery items
     static BakeryItem * bakeryItems; // Pointer to an array of BakeryItem objects
         
@@ -113,7 +113,7 @@ class BakeryItem {
      * @brief 
      * @return A pointer to the Cake object.
      */
-    Cake * getCake() const;
+    Cake getCake() const;
     
     /**
      * @brief Get the number of ingredients in the bakery item.

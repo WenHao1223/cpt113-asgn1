@@ -1368,7 +1368,7 @@ void processOrder(Employee* employees, int employeeID){
           cout << "Enter the weight of the cake: ";
           cin >> weight;
 
-          employees[employeeID].addBakeryItemToCart(index - 1, weight);
+          employees[employeeID].addCakeByWeightToCart(index - 1, weight);
           cout << "Add successful!" << endl;
 
           cout << "Do you want to add more cakes by weight? (Y/N): ";

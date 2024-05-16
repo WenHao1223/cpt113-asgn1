@@ -2621,6 +2621,7 @@ void Employee::addBakeryItemToCart (int index, int quantity) {
 */
 void Employee::addCakeByWeightToCart(int index, int weight) {
   cout << role << " - Adding " << weight << "g " << bakeryItems[index].getBakeryItemName() << " to cart..." << endl;
+  // cout << "This cake is " << bakeryItems[index].getCake().getTotalWeight() << "g." << endl;
 
   // Check if the employee is a cashier.
   if (cashier != nullptr) {
@@ -2637,7 +2638,7 @@ void Employee::addCakeByWeightToCart(int index, int weight) {
     }
 
     // check if bakery item is enough
-    if (bakeryItems[index].getBakeryItemQuantity() * bakeryItems[index].getCake()->getTotalWeight() < weight) {
+    if (bakeryItems[index].getBakeryItemQuantity() * bakeryItems[index].getCake().getTotalWeight() < weight) {
       cout << "Warning: Not enough " << bakeryItems[index].getBakeryItemName() << " in inventory." << endl;
       cout << "Available: " << bakeryItems[index].getBakeryItemQuantity() << " gram(s)." << endl;
       // cout << "Require " << weight << " gram(s)." << endl;
