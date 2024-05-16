@@ -86,7 +86,7 @@ Employee::Employee(string employeeID, string name, string role, string password)
     cashier = new Cashier(employeeID, name);
   }
 
-  cout << role << " " << name << " has been added." << endl;
+  // cout << role << " '" << name << "' has been added." << endl;
 }
 
 /**
@@ -261,7 +261,7 @@ void Employee::startBakery(string date) {
 
     // check if ingredient name is empty
     if (ingredInvName != "") {
-      cout << "Ingredient '" << ingredInvName << "' has been added." << endl;
+      // cout << "Ingredient '" << ingredInvName << "' has been added." << endl;
       // check if ingredient is countable or not
       if (ingredInvCountable) {
         ingredientInventory[ingredInvCount] = IngredientInventory(ingredInvName, ingredInvCost, ingredInvPiece);
@@ -284,8 +284,8 @@ void Employee::startBakery(string date) {
 
   // Fetch bakery items (cake)
   // Read from file/cake.csv
-  ifstream bakeryItemFile; // Input file stream for the bakery item file
-  bakeryItemFile.open("files/cake.csv"); // Open the bakery item file in input mode
+  ifstream cakeFile; // Input file stream for the bakery item file
+  cakeFile.open("files/cake.csv"); // Open the bakery item file in input mode
   cout << endl;
 
   cout << "Reading cake file..." << endl;
@@ -297,27 +297,29 @@ void Employee::startBakery(string date) {
   string cakeRecipe; // String to store the recipe of the cake
   bool cakeDisabled; // Boolean to store the disabled status of the cake
   int cakeTotalWeight; // Integer to store the total weight of the cake
-  int ingredientCount = 0; // Integer to store the count of ingredients
+  int ingredientCount; // Integer to store the count of ingredients
   int bakeryItemCount = 0; // Integer to store the count of bakery items
   string temp; // Temporary string to store the ingredients
 
-  getline(bakeryItemFile, cakeLine); // skip first line (header)
-  while (!bakeryItemFile.eof()) {
+  getline(cakeFile, cakeLine); // skip first line (header)
+  while (!cakeFile.eof()) {
+    ingredientCount = 0; // Reset the ingredient count
+
     // name
-    getline(bakeryItemFile, cakeName, ',');
+    getline(cakeFile, cakeName, ',');
 
     // description
-    getline(bakeryItemFile, cakeLine, '"');
-    getline(bakeryItemFile, cakeDescription, '"');
+    getline(cakeFile, cakeLine, '"');
+    getline(cakeFile, cakeDescription, '"');
 
     // price per unit
-    getline(bakeryItemFile, cakeLine, ',');
-    getline(bakeryItemFile, cakeLine, ',');
+    getline(cakeFile, cakeLine, ',');
+    getline(cakeFile, cakeLine, ',');
     cakePricePerUnit = stod(cakeLine);
 
     // ingredients
-    getline(bakeryItemFile, cakeLine, '"');
-    getline(bakeryItemFile, cakeLine, '"');
+    getline(cakeFile, cakeLine, '"');
+    getline(cakeFile, cakeLine, '"');
 
     // count number of ingredients
     for (int i = 0; i < cakeLine.size(); i++) {
@@ -367,23 +369,24 @@ void Employee::startBakery(string date) {
     }
 
     // recipe
-    getline(bakeryItemFile, cakeLine, '"');
-    getline(bakeryItemFile, cakeRecipe, '"');
+    getline(cakeFile, cakeLine, '"');
+    getline(cakeFile, cakeRecipe, '"');
     
     // disabled
-    getline(bakeryItemFile, cakeLine, ',');
-    getline(bakeryItemFile, cakeLine, ',');
+    getline(cakeFile, cakeLine, ',');
+    getline(cakeFile, cakeLine, ',');
     cakeDisabled = (cakeLine == "true");
 
     // total weight
-    getline(bakeryItemFile, cakeLine);
+    getline(cakeFile, cakeLine);
     cakeTotalWeight = stoi(cakeLine);
 
     // add to bakery items
     bakeryItems[bakeryItemCount++] = BakeryItem(cakeName, "Cake", cakeDescription, cakePricePerUnit, ingredients, ingredientCount, cakeRecipe, cakeDisabled, cakeTotalWeight);
   }
+
   int cakeCount = bakeryItemCount; // Integer to store the count of cakes
-  bakeryItemFile.close();
+  cakeFile.close();
   cout << "Cake count: " << cakeCount << endl;
 
   // Fetch bakery items (cookie)
@@ -403,6 +406,8 @@ void Employee::startBakery(string date) {
 
   getline(cookieFile, cookieLine); // skip first line (header)
   while (!cookieFile.eof()) {
+    ingredientCount = 0; // Reset the ingredient count
+
     // name
     getline(cookieFile, cookieName, ',');
 
@@ -507,7 +512,7 @@ void Employee::startBakery(string date) {
 
     // check if discount name is empty
     if (discountName != "") {
-      cout << "Discount '" << discountName << "' has been added." << endl;
+      // cout << "Discount '" << discountName << "' has been added." << endl;
 
       // add to discounts
       discounts[discountCount] = Discount(discountName, discountMinimumPurchase, discountPercentage, discountDescription, discountDisabled);
@@ -570,11 +575,11 @@ void Employee::accessMenuList() const {
  * 
  * @return None
  */
-void Employee::accessMenuItem(int index) const {
+void Employee::accessMenuItem(int index) {
   cout << role << " - Accessing menu details..." << endl;
 
   // Display the details of the menu item at the given index.
-  accessMenuDetails(bakeryItems[index]);
+  accessMenuDetails(bakeryItems+index);
 }
 
 
@@ -2005,7 +2010,7 @@ void Employee::addNewDiscount() {
       if (discounts[i].getName() == "") {
         // store new discount in the first empty slot
         discounts[i] = Discount(discountName, minimumPurchase, discountPercentage, discountDescription, disabled);
-        cout << "Discount '" << discountName << "' has been added." << endl;
+        // cout << "Discount '" << discountName << "' has been added." << endl;
 
         // add new discount to files/discount.csv
         ofstream discountFile; // Output file stream for the discount file
@@ -3253,6 +3258,38 @@ void Employee::showReceipt(string date, int orderNo) const {
 }
 
 /**
+  * @brief Move the cart from this cashier to another cashier.
+  * 
+  * This function moves the cart from this cashier to another cashier.
+  * 
+  * @param cashier 
+  */
+void Employee::moveCartFromThisCashierToAnotherCashier(Employee * c) {
+  // Check if the employee is a cashier.
+  if (this->cashier != nullptr) {
+    cout << "Moving cart from " << name << "..." << endl;
+
+    // check if c is a cashier
+    if (c->cashier == nullptr) {
+      cout << "Only cashier can move cart around." << endl;
+      return;
+    }
+
+    // move cart from this cashier to another cashier
+    // using overloaded assignment operator
+    *c->cashier = *this->cashier;
+
+    // clear cart
+    this->cashier->getCart()->clearCart();
+
+    cout << "Cart has been moved from this cashier to another cashier." << endl;
+  } else {
+    cout << "Only cashier can move cart from this cashier to another cashier." << endl;
+  }
+
+}
+
+/**
   * @brief Accessor for the employee ID.
   * @return The employee ID.
   */
@@ -3298,6 +3335,39 @@ double Employee::getTotalCredit() const {
   */
 double Employee::getTotalDebit() const {
   return totalDebit;
+}
+
+/**
+ * @brief Accessor for the total number of discount available.
+ * 
+ * This function counts the total number of discounts available in the bakery.
+ * 
+ * @return int 
+ */
+int Employee::getAllDiscountCount() const {
+  return discounts->getDiscountCount();
+}
+
+/**
+  * @brief Accessor for the total number of ingredient inventory.
+  * 
+  * This function counts the total number of ingredient inventory available in the bakery.
+  * 
+  * @return int 
+  */
+int Employee::getAllIngredientInventoryCount() const {
+  return ingredientInventory->getIngredientInventoryCount();
+}
+
+/**
+  * @brief Accessor for the total number of bakery items.
+  * 
+  * This function counts the total number of bakery items available in the bakery.
+  * 
+  * @return int 
+  */
+int Employee::getAllBakeryItemCount() const {
+  return bakeryItems->getBakeryItemCount();
 }
 
 /**

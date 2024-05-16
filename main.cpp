@@ -179,11 +179,6 @@ int main () {
   }
   cout << endl;
 
-  // cout << "employees address: " << &employees << endl;
-  // for (int i = 0; i < MAX_EMPLOYEES; i++) {
-  //   cout << "employees[" << i << "] address: " << &employees[i] << endl;
-  // }
-
   // Done: login
   int employeeID = login(employees);
 

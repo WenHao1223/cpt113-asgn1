@@ -356,7 +356,7 @@ void IngredientInventory::changeIngredientCost(int index, double cost) {
   ingredientInventory[index].ingredient.setCostPerUnit(cost);
 
   cout << "Cost of ingredient " << ingredientInventory[index].ingredient.getName() << " has been changed." << endl;
-  cout << setprecision(2) << fixed;
+  cout << fixed;
   cout << "New cost: RM " << ingredientInventory[index].ingredient.getCostPerUnit();
 
   // Check if the ingredient is countable
@@ -405,7 +405,6 @@ void IngredientInventory::setIngredientInventoryWeight(int index, double weight)
  * @return A pointer to the ingredient inventory.
  */
 IngredientInventory * IngredientInventory::getIngredientInventory() {
-  // cout << "address: " << ingredientInventory << endl;
   return ingredientInventory;
 }
 
@@ -424,7 +423,6 @@ int IngredientInventory::getIngredientInventoryCount() const {
  * @return The ingredient.
  */
 Ingredient IngredientInventory::getIngredient() {
-  // cout << "address: " << &ingredient << endl;
   return ingredient;
 }
 

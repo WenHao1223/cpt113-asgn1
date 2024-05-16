@@ -130,7 +130,7 @@ class Employee {
      * @return None.
      * 
      */
-    void accessMenuItem(int index) const;
+    void accessMenuItem(int index);
 
     /**
      * @brief Access the discount list.
@@ -786,7 +786,16 @@ class Employee {
     void showReceipt(string date, int oderNo = orderNo) const;
 
     /**
-     * @note The folloowing functions are accessor and mutator functions for the Employee class.
+     * @brief Move the cart from this cashier to another cashier.
+     * 
+     * This function moves the cart from this cashier to another cashier.
+     * 
+     * @param cashier 
+     */
+    void moveCartFromThisCashierToAnotherCashier(Employee * c);
+
+    /**
+     * @note The following functions are accessor and mutator functions for the Employee class.
      * 
      */
 
@@ -827,6 +836,33 @@ class Employee {
     double getTotalDebit() const;
 
     /**
+     * @brief Accessor for the total number of discount available.
+     * 
+     * This function counts the total number of discounts available in the bakery.
+     * 
+     * @return int 
+     */
+    int getAllDiscountCount() const;
+
+    /**
+     * @brief Accessor for the total number of ingredient inventory.
+     * 
+     * This function counts the total number of ingredient inventory available in the bakery.
+     * 
+     * @return int 
+     */
+    int getAllIngredientInventoryCount() const;
+
+    /**
+     * @brief Accessor for the total number of bakery items.
+     * 
+     * This function counts the total number of bakery items available in the bakery.
+     * 
+     * @return int 
+     */
+    int getAllBakeryItemCount() const;
+
+    /**
      * @brief Mutator for the employee ID.
      * @param employeeID The employee ID to set.
      */
@@ -849,8 +885,6 @@ class Employee {
      * @param password The employee password to set.
      */
     void setPassword(string password);
-
-    // ... (rest of the member functions)
 
     /**
      * @brief Destructor for the Employee class.

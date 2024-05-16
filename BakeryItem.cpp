@@ -99,7 +99,7 @@ BakeryItem::BakeryItem(string name, string category, string description, double 
   this->bakeryItems[bakeryItemCount] = *this;
   bakeryItemCount++;
 
-  cout << category << " " << name << " has been added." << endl;
+  // cout << category << " '" << name << "' has been added." << endl;
 }
 
 /**
@@ -183,12 +183,12 @@ BakeryItem::BakeryItem(string name, string category, string description, double 
     cake = new Cake(totalWeight);
   }
 
+  // cout << category << " '" << name << "' has been added." << endl;
+
   // Add the bakery item to the bakeryItems array
   this->bakeryItems[bakeryItemCount] = *this;
-  // cout << "bakeryItemCount: " << bakeryItemCount << endl;
+  
   bakeryItemCount++;
-
-  cout << category << " " << name << " has been added." << endl;
 }
 
 /**
