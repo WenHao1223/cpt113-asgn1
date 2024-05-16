@@ -128,7 +128,7 @@ int login (Employee employees[]) {
   cout << "+=====================================+\n";
   cout << "|     >_< EMPLOYEE LOGIN PAGE >_<     |\n";
   cout << "+=====================================+\n";
-  cout << "| Employee list:                      |\n";
+  cout << " Employee list:                       \n";
   cout << "---------------------------------------\n";
   cout << "| No. | Employee Name                 |\n";
   cout << "---------------------------------------\n";
@@ -168,11 +168,13 @@ int login (Employee employees[]) {
   return employeeChoice-1;
 }
 
+// Need to do login and logout option
+// When user logout caan let user choose whether close or login with another role
 string mainPage(){
   string loginInput;
   string currentDate = convertTimeTOYYYY_MM__DD();
   cout << "      ______                  .  .  .  .  .  .            \n";
-  cout << "    /       \\               __|__|__|__|__|__|__          \n";
+  cout << "    /       \\               __|__|__|__|__|__|__         \n";
   cout << "    |  o o   |             |~~~~~~~~~~~~~~~~~~~~|         \n";
   cout << "    | o  o o |             |     Happy Eid!     |         \n";
   cout << "    | o o o  |             |____________________|         \n";
@@ -240,13 +242,13 @@ int main () {
   employeeID = login(employees); // Employee Index
   employees[employeeID].startBakery(DATE_YYYYMMDD);
 
-  employees[1].bakeNewBakeryItem(2,2);
-  employees[2].addBakeryItemToCart(2,2);
-  employees[2].displayCartDetails();
-  employees[4].displayCartDetails();
-  employees[2].moveCartFromThisCashierToAnotherCashier(employees+4);
-  employees[2].displayCartDetails();
-  employees[4].displayCartDetails();
+  // employees[1].bakeNewBakeryItem(2,2);
+  // employees[2].addBakeryItemToCart(2,2);
+  // employees[2].displayCartDetails();
+  // employees[4].displayCartDetails();
+  // employees[2].moveCartFromThisCashierToAnotherCashier(employees+4);
+  // employees[2].displayCartDetails();
+  // employees[4].displayCartDetails();
 
   string role = employees[employeeID].getRole();
 
@@ -275,7 +277,7 @@ void displaySupervisorMenu(){
   cout << "| 4. Promotions and Discounts                            |\n";
   cout << "| 5. Employee Management                                 |\n";
   cout << "| 6. Reporting and Analytics                             |\n"; // For displaying balance sheet and transaction history
-  cout << "| 7. Quit                                                |\n";
+  cout << "| 7. Log Out                                             |\n";
   cout << "==========================================================\n";
 }
 
@@ -300,7 +302,7 @@ void displayCashierMenu(){
   cout << "==========================================================\n";
   cout << "| 1. Check Bakery Item                                   |\n"; // View today's menu items and details
   cout << "| 2. Process Order                                       |\n"; // For processing customer orders
-  cout << "| 3 . Quit                                               |\n";
+  cout << "| 3. Quit                                                |\n";
   cout << "==========================================================\n";
 }
 
@@ -342,8 +344,9 @@ void processSupervisorChoice(Employee* employees, int employeeID){
         ReportingAndAnalytics(employees, employeeID);
         break;
       case '7':
-        // Quit
-        quit = true;
+        // LogOut
+        quit = true; // Need to do log out here
+        mainPage();
         break;
     }
   } while (quit != true);
@@ -1157,6 +1160,75 @@ void EmployeeManagement(Employee* employees, int employeeID){
 }
 
 void ReportingAndAnalytics(Employee* employees, int employeeID){
+  char reportingChoice;
+  string date;
+  bool exit = false;
   //Show Total Profit per day, Show total credit and total debit, show total balance
-  
+  do{  
+    cout << "==========================================================\n";
+    cout << "||                 Reporting and Analytics              ||\n";
+    cout << "==========================================================\n";
+    cout << "| 1. Display Current Financial Summary                   |" << endl;
+    cout << "| 2. Display Transaction History                         |" << endl;
+    cout << "| 3. Display Balance Sheet                               |" << endl;
+    cout << "| 4. Exit                                                |" << endl;
+    cout << "==========================================================\n";
+    do{
+      cout << "Enter your choice: ";
+      cin >> reportingChoice;
+      if (reportingChoice < '1' || reportingChoice > '4'){
+        cout << "Invalid choice. Please try again." << endl;
+      }
+    }while(reportingChoice < '1' || reportingChoice > '4');
+
+    // Switch case for Reporting and Analytics
+    switch(reportingChoice){
+      case '1':
+        // Display Current Financial Summary
+        cout << "************Current Financial Summary************\n";
+        employees[employeeID].showTotalDebit();
+        employees[employeeID].showTotalCredit();
+        employees[employeeID].showTotalBalance();
+        employees[employeeID].showTotalProfitPerDay();
+        cout << "*************************************************\n";
+        break;
+
+      case '2':
+        // Display Transaction History
+        // Do while loop for user multiple access transaction history
+        do {
+          do { // Input Validation for YYYYMMDD
+            cout << "Enter the date to access transaction history (YYYYMMDD): ";
+            cin >> date;
+            if (date.length() != 8) {
+              cout << "Invalid date. Please try again." << endl;
+            }
+          } while (date.length() != 8);
+
+          employees[employeeID].accessTransactionHistory(date);
+
+          cout << "Do you want to access another transaction history? (Y/N): ";
+          cin >> reportingChoice;
+          if (reportingChoice != 'Y' && reportingChoice != 'y') {
+            break;
+          }
+        } while (reportingChoice == 'Y' || reportingChoice == 'y');
+        break;
+
+      case '3':
+        // Display Balance Sheet
+        employees[employeeID].displayBalanceSheet();
+        break;
+
+      case '4':
+        // Exit
+        exit = true;
+        break;
+    }
+    if (exit != true){
+      cout << endl;
+      cout << "Do you want to continue in Reporting and Analytics Menu? (Y/N): ";
+      cin >> reportingChoice;
+    }
+  }while (exit != true && (reportingChoice == 'Y' || reportingChoice == 'y'));
 }

@@ -655,7 +655,7 @@ int Employee::getAvailableDiscountCount() const {
  * 
  */
 void Employee::showTotalDebit() const {
-  cout << role << " - Showing total debit..." << endl;
+  // cout << role << " - Showing total debit..." << endl;
   cout << "Total debit: RM " << totalDebit << endl;
 }
 
@@ -667,7 +667,7 @@ void Employee::showTotalDebit() const {
  * 
  */
 void Employee::showTotalCredit() const {
-  cout << role << " - Showing total credit..." << endl;
+  // cout << role << " - Showing total credit..." << endl;
   cout << "Total credit: RM " << totalCredit << endl;
 }
 
@@ -679,7 +679,7 @@ void Employee::showTotalCredit() const {
  * 
  */
 void Employee::showTotalProfitPerDay() const {
-  cout << role << " - Showing total profit per day..." << endl;
+  // cout << role << " - Showing total profit per day..." << endl;
   totalProfitPerDay = totalDebit - totalCredit;
   cout << "Total profit per day: RM " << totalProfitPerDay << endl;
 }
@@ -692,7 +692,7 @@ void Employee::showTotalProfitPerDay() const {
  * 
  */
 void Employee::showTotalBalance() const {
-  cout << role << " - Showing total balance..." << endl;
+  // cout << role << " - Showing total balance..." << endl;
   // since bakery is not closed, totalProfitPerDay is not added to totalBalance
   cout << "Total balance: RM " << totalBalance + totalProfitPerDay << endl;
 }
@@ -2304,7 +2304,7 @@ void Employee::deleteDiscount(int index) {
 void Employee::displayBalanceSheet() const {
   // Check if the employee is a supervisor.
   if (supervisor != nullptr) {
-    cout << role << " - Displaying balance sheet..." << endl;
+    // cout << role << " - Displaying balance sheet..." << endl;
 
     // Display the balance sheet in a table format.
     ifstream balanceSheetFile; // Input file stream for the balance sheet file
@@ -2319,6 +2319,8 @@ void Employee::displayBalanceSheet() const {
     }
 
     // Display the header of the table.
+    cout << endl;
+    cout << "*****************************Balance Sheet***************************\n";
     cout << "+----------------+----------------+----------------+----------------+" << endl;
     cout << "| " << left << setw(15) << "Date" << "| ";
     cout << left << setw(15) << "Total Debit" << "| ";
@@ -2356,6 +2358,7 @@ void Employee::displayBalanceSheet() const {
 void Employee::accessTransactionHistory (string date) const {
   // Check if the employee is a supervisor.
   if (supervisor != nullptr) {
+    cout << endl;
     cout << role << " - Accessing " + date + " transaction history ..." << endl;
 
     ifstream transactionHistoryFile; // Input file stream for the transaction history file
