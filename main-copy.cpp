@@ -113,8 +113,42 @@ void accessMenuDetails(const BakeryItem * item) {
   } else {
     cout << "Available." << endl;
   }
-  cout << "====================================================================================================\n";
   cout << endl;
+
+  // show recipe
+  char showRecipe; // flag of boolean to show recipe
+  do {
+    cout << "Do you want to view the recipe? (Y/N): ";
+    cin >> showRecipe;
+  } while (showRecipe != 'Y' && showRecipe != 'N' && showRecipe != 'y' && showRecipe != 'n');
+
+  if (showRecipe == 'Y' || showRecipe == 'y') {
+    cout << "Recipe: " << endl;
+    
+    // if read \n then go to another line
+    // if read \t then go to next tab
+    if (item->recipe == "") {
+      cout << "No recipe available." << endl;
+    } else {
+      // read char by char
+      for (int i = 0; i < item->recipe.length(); i++) {
+        if (item->recipe[i] == '\\') {
+          if (item->recipe[i+1] == 'n') {
+            // if read \n then go to another line
+            cout << endl;
+          } else if (item->recipe[i+1] == 't') {
+            // if read \t then go to next tab
+            cout << "\t";
+          }
+          i++;
+        } else {
+          cout << item->recipe[i];
+        }
+      }
+    }
+  }
+
+  cout << "====================================================================================================\n";
 }
 
 int findEmployeeIndex(Employee employees[], string employeeID) {
