@@ -160,7 +160,6 @@ void Employee::setIngredientCostToInventoryIngredientCost() {
  */
 void Employee::startBakery(string date) {
   cout << "Bakery start operating now." << endl;
-  cout << endl;
 
   orderNo = 0;
   
@@ -234,7 +233,6 @@ void Employee::startBakery(string date) {
   // Fetch ingredient inventory from files/ingredientInventory.csv
   ifstream ingredientInventoryFile; // Input file stream for the ingredient inventory file
   ingredientInventoryFile.open("files/ingredientInventory.csv"); // Open the ingredient inventory file in input mode
-  cout << endl;
 
   cout << "Reading ingredient inventory file..." << endl;
   string ingredientInventoryLine; // String to store each line of the file
@@ -282,7 +280,6 @@ void Employee::startBakery(string date) {
   // Read from file/cake.csv
   ifstream cakeFile; // Input file stream for the bakery item file
   cakeFile.open("files/cake.csv"); // Open the bakery item file in input mode
-  cout << endl;
 
   cout << "Reading cake file..." << endl;
   string cakeLine; // String to store each line of the file
@@ -388,7 +385,6 @@ void Employee::startBakery(string date) {
   // Read from file/cookie.csv
   ifstream cookieFile; // Input file stream for the cookie file
   cookieFile.open("files/cookie.csv"); // Open the cookie file in input mode
-  cout << endl;
 
   cout << "Reading cookie file..." << endl;
   string cookieLine; // String to store each line of the file
@@ -530,8 +526,6 @@ void Employee::startBakery(string date) {
     cout << "Not a valid role to start the bakery." << endl;
     exit(EXIT_FAILURE); // Exit the program with an error code.
   }
-
-  cout << endl;
 
   // Set ingredient cost of each bakery item to the corresponding ingredient cost in the inventory
   this->setIngredientCostToInventoryIngredientCost();
