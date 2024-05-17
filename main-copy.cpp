@@ -179,18 +179,6 @@ int login (Employee employees[]) {
   return employeeChoice-1;
 }
 
-// Need to do login and logout option
-// When user logout caan let user choose whether close or login with another role
-string mainPage(){
-  string loginInput;
-  
-  cout << "  Please any key to login and continue (0 to Exit): ";
-  getline(cin, loginInput);
-  cout << endl;
-
-  return loginInput;
-}
-
 int main () {
   // Done: display current date in YYYYMMDD format
   const string DATE_YYYYMMDD = convertTimeToYYYYMMDD();
@@ -227,14 +215,6 @@ int main () {
   cout << endl;
 
   int employeeID;
-  string start = mainPage();
-
-  // If user input 0, exit the program
-  if (start == "0") {
-    cout << "Thank you for using Eid Delights Bakery!" << endl;
-    employees[employeeID].closeBakery(DATE_YYYYMMDD);
-    return 0;
-  }
 
   // Done: login
   cout << "Welcome to Eid Delights Bakery!" << endl;
@@ -254,12 +234,14 @@ int main () {
   char q;
   do {
     string currentDate = convertTimeTOYYYY_MM__DD();
+    cout << "                                                           \n";
     cout << "             ______            .  .  .  .  .  .            \n";
     cout << "           /       \\         __|__|__|__|__|__|__         \n";
     cout << "           |  o o   |       |~~~~~~~~~~~~~~~~~~~~|         \n";
     cout << "           | o  o o |       |     Happy Eid!     |         \n";
     cout << "           | o o o  |       |____________________|         \n";
     cout << "           \\______ /                                      \n";
+    cout << "                                                           \n";
     cout << "==========================================================\n";
     cout << "||                                                      ||\n";
     cout << "||                   Eid Delights Bakery                ||\n";
@@ -269,7 +251,8 @@ int main () {
     cout << "  Welcome, " << employees[employeeID].getName() << " (" << employees[employeeID].getRole() << ")!" << endl;
     cout << "==========================================================\n";
     cout << "0 - Quit\n";
-    cout << "1 - Log In\n";
+    cout << "1 - Continue to Menu\n";
+    cout << "2 - Log In to Change Role\n";
     cout << "Enter your choice: ";
     cin >> q;
     cin.ignore();
@@ -281,7 +264,7 @@ int main () {
       employees[employeeID].closeBakery(DATE_YYYYMMDD);
       break;
     }
-    if (q == '1') {
+    if (q == '2') {
       employeeID = login(employees);
       role = employees[employeeID].getRole();
     }
@@ -1538,15 +1521,16 @@ void processOrder(Employee* employees, int employeeID){
       char itemType;
       while(addMoreItems){
         employees[employeeID].accessMenuList();
-        do {
-          cout << "Enter the choice of the item: ";
-          cin >> index;
-          employees[employeeID].addBakeryItemToCart(index - 1, quantity);
-        } while (true); // Loop until valid item type is entered
-
+        cout << "Enter the choice of the item: ";
+        cin >> index;
+        cout << "Enter the quantity: ";
+        cin >> quantity;
+        employees[employeeID].addBakeryItemToCart(index - 1, quantity);
         cout << endl;
+
         cout << "Do you want to add more items? (Y/N): ";
         cin >> cont;
+        cout << endl;
         if (cont != 'Y' && cont != 'y') {
           char display;
           addMoreItems = false;
@@ -1566,6 +1550,7 @@ void processOrder(Employee* employees, int employeeID){
           break;
         }
       }
+
       break;
 
       case '2':
@@ -1616,7 +1601,6 @@ void processOrder(Employee* employees, int employeeID){
         // Edit Item
         // Ask whether delete or edit
         char editOrDelete;
-        char cont;
         do {
           cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
           cout << "|                   Edit Item                      |\n";
@@ -1681,10 +1665,13 @@ void processOrder(Employee* employees, int employeeID){
       case '4':
         // Display Cart
         employees[employeeID].displayCartDetails();
+        cout << "Press any key to EXIT...." << endl;
+        cin >> cont;
         break;
 
       case '5':
         // Transfer Cart
+        // Not Yet Do later evening eat time i do
         break;
 
       case '6':

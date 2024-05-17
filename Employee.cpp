@@ -479,7 +479,6 @@ void Employee::startBakery(string date) {
   // Read from file/discount.csv
   ifstream discountFile; // Input file stream for the discount file
   discountFile.open("files/discount.csv", ios::in); // Open the discount file in input mode
-  cout << endl;
 
   cout << "Reading discount file..." << endl;
   string discountLine; // String to store each line of the file
@@ -540,7 +539,7 @@ void Employee::startBakery(string date) {
   cout << "----------------------------------------" << endl;
   cout << endl;
 
-  cout << "=========== Bakery Summary ==========" << endl;
+  cout << "============ Bakery Summary ============" << endl;
   cout << "Ingredient inventory count: " << ingredInvCount << endl;
   cout << "Cake count: " << cakeCount << endl;
   cout << "Cookie count: " << cookieCount << endl;
