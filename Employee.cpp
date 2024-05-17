@@ -2017,7 +2017,6 @@ void Employee::addNewDiscount() {
     do {
       cout << "Is the discount available now? (Y/N): ";
       cin >> available;
-      disabled = (available == 'N' || available == 'n');
     } while (available != 'Y' && available != 'y' && available != 'N' && available != 'n');
 
     // Set the disabled status based on the availability
