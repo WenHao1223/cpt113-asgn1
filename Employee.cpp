@@ -2195,6 +2195,10 @@ void Employee::editDiscountMinimumPurchase(int index, double newMinimumPurchase)
  * @return None.
  */
 void Employee::editDiscountPercentage(int index, double newPercentage) {
+  if (index < 0 || index >= getAllDiscountCount()) {
+    cout << "Invalid index." << endl;
+    return;
+  }
   // Check if the employee is a supervisor.
   if (supervisor != nullptr) {
     cout << role << " - Editing discount percentage..." << endl;
@@ -2221,6 +2225,10 @@ void Employee::editDiscountPercentage(int index, double newPercentage) {
  * @return None.
  */
 void Employee::editDiscountDescription(int index, string newDescription) {
+  if (index < 0 || index >= getAllDiscountCount()) {
+    cout << "Invalid index." << endl;
+    return;
+  }
   // Check if the employee is a supervisor.
   if (supervisor != nullptr) {
     cout << role << " - Editing discount description..." << endl;
@@ -2246,6 +2254,10 @@ void Employee::editDiscountDescription(int index, string newDescription) {
  * @return None.
  */
 void Employee::disableDiscount(int index) {
+  if (index < 0 || index >= getAllDiscountCount()) {
+    cout << "Invalid index." << endl;
+    return;
+  }
   // Check if the employee is a supervisor.
   if (supervisor != nullptr) {
     cout << role << " - Disabling discount..." << endl;
@@ -2271,6 +2283,10 @@ void Employee::disableDiscount(int index) {
  * @return None.
  */
 void Employee::enableDiscount(int index) {
+  if (index < 0 || index >= getAllDiscountCount()) {
+    cout << "Invalid index." << endl;
+    return;
+  }
   // Check if the employee is a supervisor.
   if (supervisor != nullptr) {
     cout << role << " - Enabling discount..." << endl;
@@ -2296,6 +2312,10 @@ void Employee::enableDiscount(int index) {
  * @return None.
  */
 void Employee::deleteDiscount(int index) {
+  if (index < 0 || index >= getAllDiscountCount()) {
+    cout << "Invalid index." << endl;
+    return;
+  }
   // Check if the employee is a supervisor.
   if (supervisor != nullptr) {
     cout << role << " - Deleting discount..." << endl;
