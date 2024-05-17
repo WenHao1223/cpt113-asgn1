@@ -46,7 +46,8 @@ void Cart::displayCartDetails() {
       cout << "| " << setw(3) << left << i+1 << "| " << setw(25) << left << bakeryItems[i].getBakeryItemName() << "| " << setw(25) << left << displayedQuantity << "| " << setw(11) << left << bakeryItems[i].getPricePerUnit() << "| " << setw(16) << left << bakeryItems[i].getPricePerUnit() * quantity[i] << " |" << endl;
     } else {
       // display quantity as a mixed number
-      string displayedQuantity = (((int)quantity[i] != 0) ? (to_string((int)quantity[i]) + "x  +  ") : "") + to_string(((int)(quantity[i] * 1000) - ((int)quantity[i] * 1000))) + " g";
+      double weight = (quantity[i] - (int)quantity[i]) * bakeryItems[i].getCake().getTotalWeight();
+      string displayedQuantity = (((int)quantity[i] != 0) ? (to_string((int)quantity[i]) + "x  +  ") : "") + to_string((int)(weight)) + " g";
       cout << "| " << setw(3) << left << i+1 << "| " << setw(25) << left << bakeryItems[i].getBakeryItemName() << "| " << setw(25) << left << displayedQuantity << "| " << setw(11) << left << bakeryItems[i].getPricePerUnit() << "| " << setw(16) << left << bakeryItems[i].getPricePerUnit() * quantity[i] << " |" << endl;
     }
   }
