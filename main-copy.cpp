@@ -91,7 +91,7 @@ void accessMenuDetails(const BakeryItem * item) {
   cout << "====================================================================================================\n";
   cout << "Bakery Item: " << item->name << endl;
   cout << "Description: " << item->description << endl;
-  cout << "Quantity: " << item->quantity << " units available." << endl;
+  cout << "Quantity: " << item->quantity << " unit(s) available." << endl;
   cout << "Price: RM " << setprecision(2) << fixed << item->pricePerUnit << endl;
   cout << "Ingredients: ";
   for (int i = 0; i < item->ingredientCount; i++) {
@@ -264,7 +264,6 @@ int main () {
   char q;
   do {
     cout << "==========================================================\n";
-    cout << "  Today's Date: " << DATE_YYYYMMDD << endl;
     cout << "  Welcome, " << employees[employeeID].getName() << " (" << employees[employeeID].getRole() << ")!" << endl;
     cout << "==========================================================\n";
     cout << "0 - Quit\n";
@@ -1525,37 +1524,14 @@ void processOrder(Employee* employees, int employeeID){
     // Switch case for Cashier Order Processing
     switch(cashierChoice){
       case '1':
-      employees[1].bakeNewBakeryItem(2, 2); // Check
+      // employees[1].bakeNewBakeryItem(2, 2); // Check
       char itemType;
       while(addMoreItems){
         employees[employeeID].accessMenuList();
         do {
-          cout << "Enter item type (c for cookie, k for cake): ";
-          cin >> itemType;
-          if (itemType == 'c') {
-            cout << "Enter the choice of the cookie: ";
-            cin >> index;
-
-            cout << "Enter the quantity of cookies:";
-            cin >> quantity;
-            cout << endl;
-
-            employees[employeeID].addBakeryItemToCart(index - 1, quantity);
-            break; // Exit the loop
-
-          } else if (itemType == 'k') {
-              cout << "Enter the choice of the cake: ";
-              cin >> index;
-
-              cout << "Enter the quantity of cake: ";
-              cin >> quantity;
-
-              employees[employeeID].addBakeryItemToCart(index - 1, quantity);
-              break; // Exit the loop
-
-            } else {
-              cout << "Invalid item type. Please try again." << endl;
-            }
+          cout << "Enter the choice of the item: ";
+          cin >> index;
+          employees[employeeID].addBakeryItemToCart(index - 1, quantity);
         } while (true); // Loop until valid item type is entered
 
         cout << endl;
@@ -1584,7 +1560,7 @@ void processOrder(Employee* employees, int employeeID){
 
       case '2':
         // Add Cake by Weight
-        employees[1].bakeNewBakeryItem(2, 2); // Check
+        // employees[1].bakeNewBakeryItem(2, 2); // Check
         employees[employeeID].accessMenuList();
         do {
           cout << "Enter the choice of the cake: ";

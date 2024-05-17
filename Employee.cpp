@@ -2456,6 +2456,12 @@ void Employee::bakeNewBakeryItem(int index, int quantity) {
     cout << endl;
     cout << role << " - Baking " << quantity << "x " << bakeryItems[index].getBakeryItemName() << "..." << endl;
 
+    // check if index is valid
+    if (index < 0 || index >= getAllBakeryItemCount()) {
+      cout << "Invalid index." << endl;
+      return;
+    }
+
     // check if bakery item is disabled
     if (bakeryItems[index].getDisabled()) {
       cout << "Warning: " << bakeryItems[index].getBakeryItemName() << " is withdrawn." << endl;
@@ -2577,12 +2583,11 @@ void Employee::bakeNewBakeryItem(int index, int quantity) {
           }
         }
       }
-
-      // Add bakery item quantity
-      // bakery item quantity = bakery item quantity + quantity
-      bakeryItems[index].setBakeryItemQuantity(bakeryItems[index].getBakeryItemQuantity() + quantity);
-
     }
+    // Add bakery item quantity
+    // bakery item quantity = bakery item quantity + quantity
+    bakeryItems[index].setBakeryItemQuantity(bakeryItems[index].getBakeryItemQuantity() + quantity);
+
     cout << "======================================" << endl;
     cout << quantity << "x bakery item " << bakeryItems[index].getBakeryItemName() << " has been baked." << endl;
   } else {
@@ -2607,6 +2612,12 @@ void Employee::addBakeryItemToCart (int index, int quantity) {
 
   // Check if the employee is a cashier.
   if (cashier != nullptr) {
+    // check if index is valid
+    if (index < 0 || index >= getAllBakeryItemCount()) {
+      cout << "Invalid index." << endl;
+      return;
+    }
+
     // check if bakery item is disabled
     if (bakeryItems[index].getDisabled()) {
       cout << "Warning: " << bakeryItems[index].getBakeryItemName() << " is withdrawn." << endl;
