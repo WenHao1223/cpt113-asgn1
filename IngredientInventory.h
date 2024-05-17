@@ -22,7 +22,6 @@ using namespace std;
  * The class is implemented as a singleton to ensure that there is only one instance of the ingredient inventory.
  * 
  * The IngredientInventory class is derived from the Ingredient class, as each item in the inventory is an ingredient.
- * The class contains an array of Ingredient objects to store the inventory items.
  * 
  * The class also contains static member variables to keep track of the count of ingredients in the inventory and the ingredient inventory itself.
  * 
@@ -33,7 +32,6 @@ using namespace std;
  */
 class IngredientInventory : public Ingredient {
   private:
-    Ingredient ingredient; // The ingredient.
     static int ingredientInventoryCount; // The count of ingredients in the inventory.
     static IngredientInventory * ingredientInventory; // The ingredient inventory.
   public:
@@ -140,11 +138,11 @@ class IngredientInventory : public Ingredient {
      */
     int getIngredientInventoryCount() const;
 
-    /**
-     * @brief Get the ingredient.
-     * @return The ingredient.
-     */
-    Ingredient getIngredient();
+    // /**
+    //  * @brief Get the ingredient.
+    //  * @return The ingredient.
+    //  */
+    // Ingredient getIngredient();
 
     /**
      * @brief Get a specific ingredient in the inventory.

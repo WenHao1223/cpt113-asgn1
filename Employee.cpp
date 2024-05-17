@@ -141,7 +141,7 @@ void Employee::setIngredientCostToInventoryIngredientCost() {
       // Iterate through each ingredient in the inventory.
       for (int k = 0; k < ingredientInventory[0].getIngredientInventoryCount(); k++) {
         // Check if the ingredient in the bakery item matches the ingredient in the inventory.
-        if(bakeryItems[i].getIngredient(j)->getName() == ingredientInventory[k].getIngredient().getName()) {
+        if(bakeryItems[i].getIngredient(j)->getName() == ingredientInventory[k].getName()) {
           // cout << "Ingredient " << bakeryItems[i].getIngredient(j)->getName() << "'s cost of " << bakeryItems[i].getBakeryItemName() << " has been set to RM " << ingredientInventory->getIngredientInventoryCost(k) << endl;
 
           // Set the ingredient cost of the bakery item to the corresponding ingredient cost in the inventory.
@@ -769,7 +769,7 @@ void Employee::displayIngredientInventoryList() const {
  * 
  */
 void Employee::accessIngredientInventoryDetails(int index) const {
-  if (index <= 0 || index >= getAllIngredientInventoryCount()) {
+  if (index < 0 || index >= getAllIngredientInventoryCount()) {
     cout << "Invalid index." << endl;
     return;
   }
@@ -880,7 +880,7 @@ void Employee::accessIngredientInventoryFile(int index, string field, string val
  * @return None.
  */
 void Employee::restockIngredientInventory(int index, double quantity) {
-  if (index <= 0 || index >= getAllIngredientInventoryCount()) {
+  if (index < 0 || index >= getAllIngredientInventoryCount()) {
     cout << "Invalid index." << endl;
     return;
   }
@@ -899,7 +899,7 @@ void Employee::restockIngredientInventory(int index, double quantity) {
 
     // file handling of ingredient inventory file
     // check if ingredient is countable or not
-    if ((ingredientInventory+index)->getIngredient().getCountable()) {
+    if ((ingredientInventory+index)->getCountable()) {
       accessIngredientInventoryFile(index, "piece", to_string(ingredientInventory->getIngredientInventoryPiece(index)));
     } else {
       accessIngredientInventoryFile(index, "weight", to_string((int)(ingredientInventory->getIngredientInventoryWeight(index))));
@@ -925,7 +925,7 @@ void Employee::restockIngredientInventory(int index, double quantity) {
  * @return None.
  */
 void Employee::changeIngredientCost(int index, double cost) {
-  if (index <= 0 || index >= getAllIngredientInventoryCount()) {
+  if (index < 0 || index >= getAllIngredientInventoryCount()) {
     cout << "Invalid index." << endl;
     return;
   }
@@ -1170,7 +1170,7 @@ void Employee::createBakeryItem() {
           cout << "Cost: RM " << ingredientInventory->getIngredientInventoryCost(j);
 
           // check if ingredient is countable or not
-          if (ingredientInventory[j].getIngredient().getCountable()) {
+          if (ingredientInventory[j].getCountable()) {
             cout << " / piece(s)." << endl;
           } else {
             cout << " / gram(s)." << endl;
@@ -1181,7 +1181,7 @@ void Employee::createBakeryItem() {
 
           // ask user to input weight/piece
           // check if ingredient is countable or not
-          if (ingredientInventory[j].getIngredient().getCountable()) {
+          if (ingredientInventory[j].getCountable()) {
             // input ingredient piece
             // ingredient piece must be more than 0
             do {
@@ -1498,7 +1498,7 @@ void Employee::accessBakeryItemFile (int index, string field, string value) {
  * @return None.
  */
 void Employee::withdrawBakeryItem (int index) {
-  if (index <= 0 || index >= getAllBakeryItemCount()) {
+  if (index < 0 || index >= getAllBakeryItemCount()) {
     cout << "Invalid index." << endl;
     return;
   }
@@ -1525,7 +1525,7 @@ void Employee::withdrawBakeryItem (int index) {
  * @return None.
  */
 void Employee::enableBakeryItem (int index) {
-  if (index <= 0 || index >= getAllBakeryItemCount()) {
+  if (index < 0 || index >= getAllBakeryItemCount()) {
     cout << "Invalid index." << endl;
     return;
   }
@@ -1553,7 +1553,7 @@ void Employee::enableBakeryItem (int index) {
  */
 void Employee::changeBakeryItemPrice(int index, double newPrice) {
   // Check if the employee is a supervisor.
-  if (index <= 0 || index >= getAllBakeryItemCount()) {
+  if (index < 0 || index >= getAllBakeryItemCount()) {
     cout << "Invalid index." << endl;
     return;
   }
@@ -1582,7 +1582,7 @@ void Employee::changeBakeryItemPrice(int index, double newPrice) {
  * @return None.
  */
 void Employee::calculateBakeryItemCost(int index) const {
-  if (index <= 0 || index >= getAllBakeryItemCount()) {
+  if (index < 0 || index >= getAllBakeryItemCount()) {
     cout << "Invalid index." << endl;
     return;
   }
@@ -1602,7 +1602,7 @@ void Employee::calculateBakeryItemCost(int index) const {
  * @return None.
  */
 void Employee::calculateBakeryItemProfit(int index) const {
-  if (index <= 0 || index >= getAllBakeryItemCount()) {
+  if (index < 0 || index >= getAllBakeryItemCount()) {
     cout << "Invalid index." << endl;
     return;
   }
@@ -1622,7 +1622,7 @@ void Employee::calculateBakeryItemProfit(int index) const {
  * @return None.
  */
 void Employee::compareCostVsProfit(int index) const {
-  if (index <= 0 || index >= getAllBakeryItemCount()) {
+  if (index < 0 || index >= getAllBakeryItemCount()) {
     cout << "Invalid index." << endl;
     return;
   }
@@ -1648,7 +1648,7 @@ void Employee::compareCostVsProfit(int index) const {
  * @return None.
  */
 void Employee::compareCostVsPrice(int index) const {
-  if (index <= 0 || index >= getAllBakeryItemCount()) {
+  if (index < 0 || index >= getAllBakeryItemCount()) {
     cout << "Invalid index." << endl;
     return;
   }
@@ -2172,7 +2172,7 @@ void Employee::accessDiscountFile(int index, string field, string value) {
  * @return None.
  */
 void Employee::editDiscountName(int index, string newName) {
-  if (index <= 0 || index >= getAllDiscountCount()) {
+  if (index < 0 || index >= getAllDiscountCount()) {
     cout << "Invalid index." << endl;
     return;
   }
@@ -2201,7 +2201,7 @@ void Employee::editDiscountName(int index, string newName) {
  * @return None.
  */
 void Employee::editDiscountMinimumPurchase(int index, double newMinimumPurchase) {
-  if (index <= 0 || index >= getAllDiscountCount()) {
+  if (index < 0 || index >= getAllDiscountCount()) {
     cout << "Invalid index." << endl;
     return;
   }
@@ -2231,7 +2231,7 @@ void Employee::editDiscountMinimumPurchase(int index, double newMinimumPurchase)
  * @return None.
  */
 void Employee::editDiscountPercentage(int index, double newPercentage) {
-  if (index <= 0 || index >= getAllDiscountCount()) {
+  if (index < 0 || index >= getAllDiscountCount()) {
     cout << "Invalid index." << endl;
     return;
   }
@@ -2261,7 +2261,7 @@ void Employee::editDiscountPercentage(int index, double newPercentage) {
  * @return None.
  */
 void Employee::editDiscountDescription(int index, string newDescription) {
-  if (index <= 0 || index >= getAllDiscountCount()) {
+  if (index < 0 || index >= getAllDiscountCount()) {
     cout << "Invalid index." << endl;
     return;
   }
@@ -2290,7 +2290,7 @@ void Employee::editDiscountDescription(int index, string newDescription) {
  * @return None.
  */
 void Employee::disableDiscount(int index) {
-  if (index <= 0 || index >= getAllDiscountCount()) {
+  if (index < 0 || index >= getAllDiscountCount()) {
     cout << "Invalid index." << endl;
     return;
   }
@@ -2319,7 +2319,7 @@ void Employee::disableDiscount(int index) {
  * @return None.
  */
 void Employee::enableDiscount(int index) {
-  if (index <= 0 || index >= getAllDiscountCount()) {
+  if (index < 0 || index >= getAllDiscountCount()) {
     cout << "Invalid index." << endl;
     return;
   }
@@ -2348,7 +2348,7 @@ void Employee::enableDiscount(int index) {
  * @return None.
  */
 void Employee::deleteDiscount(int index) {
-  if (index <= 0 || index >= getAllDiscountCount()) {
+  if (index < 0 || index >= getAllDiscountCount()) {
     cout << "Invalid index." << endl;
     return;
   }
@@ -2547,7 +2547,7 @@ void Employee::bakeNewBakeryItem(int index, int quantity) {
           // cout << "Ingredient " << bakeryItems[index].getIngredient(i)->getName() << " found in inventory." << endl;
 
           // check if ingredient is countable
-          if ((ingredientInventory+j)->getIngredient().getCountable()) {
+          if ((ingredientInventory+j)->getCountable()) {
             // check if ingredient is enough
             if (bakeryItems[index].getIngredient(i)->getPiece() * quantity > ingredientInventory->getIngredientInventoryPiece(j)) {
               cout << "===========================================" << endl;

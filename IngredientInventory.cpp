@@ -22,7 +22,7 @@ const int MAX_INGREDIENTS_INVENTORY = Constant::MAX_INGREDIENTS_INVENTORY; // Th
 IngredientInventory::IngredientInventory() {}
 
 /**
- * @brief Constructs an IngredientInventory object with the specified name, cost, and weight.
+ * @brief Constructs an IngredientInventory object with the specified name, cost, and weight, with inheritance from the Ingredient class.
  * 
  * @param name The name of the ingredient.
  * @param cost The cost of the ingredient.
@@ -36,7 +36,7 @@ IngredientInventory::IngredientInventory() {}
  * is added to the inventory file and the ingredient object is stored in the ingredientInventory
  * array. Finally, a success message is displayed.
  */
-IngredientInventory::IngredientInventory(string name, double cost, double weight) {
+IngredientInventory::IngredientInventory(string name, double cost, double weight) : Ingredient(name, cost, weight) {
   // Check if the name is empty.
   if (name == "") {
     cout << "Name cannot be empty." << endl;
@@ -58,9 +58,6 @@ IngredientInventory::IngredientInventory(string name, double cost, double weight
     return;
   }
 
-  // Create a new ingredient object with the specified name, cost, and weight.
-  this->ingredient = Ingredient(name, cost, weight);
-
   // Add the ingredient to the ingredient inventory array.
   ingredientInventory[ingredientInventoryCount] = *this;
 
@@ -69,7 +66,7 @@ IngredientInventory::IngredientInventory(string name, double cost, double weight
 }
 
 /**
- * @brief Constructs an IngredientInventory object with the specified name, cost, and piece.
+ * @brief Constructs an IngredientInventory object with the specified name, cost, and piece, with inheritance from the Ingredient class.
  * 
  * @param name The name of the ingredient.
  * @param cost The cost of the ingredient.
@@ -83,7 +80,7 @@ IngredientInventory::IngredientInventory(string name, double cost, double weight
  * is added to the inventory file and the ingredient object is stored in the ingredientInventory
  * array. Finally, a success message is displayed.
  */
-IngredientInventory::IngredientInventory(string name, double cost, int piece) {
+IngredientInventory::IngredientInventory(string name, double cost, int piece) : Ingredient(name, cost, piece) {
   // Check if the name is empty.
   if (name == "") {
     cout << "Name cannot be empty." << endl;
@@ -105,8 +102,6 @@ IngredientInventory::IngredientInventory(string name, double cost, int piece) {
     return;
   }
 
-  // Create a new ingredient object with the specified name, cost, and piece.
-  this->ingredient = Ingredient(name, cost, piece);
   
   // Add the ingredient to the ingredient inventory array.
   ingredientInventory[ingredientInventoryCount] = *this;
@@ -127,7 +122,7 @@ void IngredientInventory::displayIngredientInventoryList() const {
   cout << "+-----+---------------------------------------------+" << endl;
 
   for (int i = 0; i < ingredientInventoryCount; i++) {
-    cout << "| " << setw(3) << left << to_string(i+1) + "." << " | " << setw(43) << ingredientInventory[i].ingredient.getName() << " |" << endl;
+    cout << "| " << setw(3) << left << to_string(i+1) + "." << " | " << setw(43) << ingredientInventory[i].getName() << " |" << endl;
   }
   cout << "+-----+---------------------------------------------+" << endl;
 }
@@ -139,7 +134,7 @@ void IngredientInventory::displayIngredientInventoryList() const {
  * @return None
  */
 void IngredientInventory::accessIngredientInventoryDetails(int index) const {
-  ingredientInventory[index].ingredient.displayIngredientDetails();
+  ingredientInventory[index].displayIngredientDetails();
 }
 
 /**
@@ -160,14 +155,14 @@ void IngredientInventory::checkIngredientInventory() const {
   // Display the details of each ingredient in the inventory.
   for (int i = 0; i < ingredientInventoryCount; i++) {
     cout << "| " << setw(3) << left << (i+1) << " | "
-      << setw(21) << left << ingredientInventory[i].ingredient.getName() << " | ";
+      << setw(21) << left << ingredientInventory[i].getName() << " | ";
 
     // Check if the ingredient is 0 in quantity
-    if (ingredientInventory[i].ingredient.getCountable()) {
-      cout << setw(12) << left << ingredientInventory[i].ingredient.getPiece();
+    if (ingredientInventory[i].getCountable()) {
+      cout << setw(12) << left << ingredientInventory[i].getPiece();
       cout << setw(18) << left << "piece(s)    |" << endl;
     } else {
-      cout << setw(12) << left << fixed << setprecision(2) << ingredientInventory[i].ingredient.getWeight();
+      cout << setw(12) << left << fixed << setprecision(2) << ingredientInventory[i].getWeight();
       cout << setw(19) << left << "gram(s)     |" << endl;
     }
   }
@@ -214,7 +209,7 @@ void IngredientInventory::addNewInventoryIngredientWeight(string name, double co
   // Check if ingredient already exists in inventory
   // Check ingredient inventory name from ingredientInventory
   for (int i = 0; i < ingredientInventoryCount; i++) {
-    if (ingredientInventory[i].ingredient.getName() == name) {
+    if (ingredientInventory[i].getName() == name) {
       cout << "Ingredient " << name << " already exists in inventory." << endl;
       return;
     }
@@ -273,7 +268,7 @@ void IngredientInventory::addNewInventoryIngredientPiece(string name, double cos
   // Check if ingredient already exists in inventory
   // Check ingredient inventory name from ingredientInventory
   for (int i = 0; i < ingredientInventoryCount; i++) {
-    if (ingredientInventory[i].ingredient.getName() == name) {
+    if (ingredientInventory[i].getName() == name) {
       cout << "Ingredient " << name << " already exists in inventory." << endl;
       return;
     }
@@ -310,24 +305,24 @@ double IngredientInventory::restockIngredientInventory(int index, double quantit
   }
 
   // restock ingredient
-  if (ingredientInventory[index].ingredient.getCountable()) {
-    ingredientInventory[index].ingredient.setPiece(ingredientInventory[index].ingredient.getPiece() + quantity);
+  if (ingredientInventory[index].getCountable()) {
+    ingredientInventory[index].setPiece(ingredientInventory[index].getPiece() + quantity);
     cout << quantity << " piece(s)";
   } else {
-    ingredientInventory[index].ingredient.setWeight(ingredientInventory[index].ingredient.getWeight() + quantity);
+    ingredientInventory[index].setWeight(ingredientInventory[index].getWeight() + quantity);
     cout << quantity << " gram(s)";
   }
-  cout << " of " << ingredientInventory[index].ingredient.getName() << " has been restocked." << endl;
-  if (ingredientInventory[index].ingredient.getCountable()) {
-    cout << "New quantity: " << ingredientInventory[index].ingredient.getPiece() << " piece(s)" << endl;
+  cout << " of " << ingredientInventory[index].getName() << " has been restocked." << endl;
+  if (ingredientInventory[index].getCountable()) {
+    cout << "New quantity: " << ingredientInventory[index].getPiece() << " piece(s)" << endl;
   } else {
-    cout << "New quantity: " << ingredientInventory[index].ingredient.getWeight() << " gram(s)" << endl;
+    cout << "New quantity: " << ingredientInventory[index].getWeight() << " gram(s)" << endl;
   }
 
   // calculate the cost of restock
   // cost = cost per unit * quantity
   // round up to 2 decimal places
-  double cost = ingredientInventory[index].ingredient.getCostPerUnit() * quantity;
+  double cost = ingredientInventory[index].getCostPerUnit() * quantity;
   cost = ceil(cost * 100) / 100;
 
   // return the cost of restock
@@ -353,14 +348,14 @@ void IngredientInventory::changeIngredientCost(int index, double cost) {
   }
 
   // change the cost of ingredient
-  ingredientInventory[index].ingredient.setCostPerUnit(cost);
+  ingredientInventory[index].setCostPerUnit(cost);
 
-  cout << "Cost of ingredient " << ingredientInventory[index].ingredient.getName() << " has been changed." << endl;
+  cout << "Cost of ingredient " << ingredientInventory[index].getName() << " has been changed." << endl;
   cout << fixed;
-  cout << "New cost: RM " << ingredientInventory[index].ingredient.getCostPerUnit();
+  cout << "New cost: RM " << ingredientInventory[index].getCostPerUnit();
 
   // Check if the ingredient is countable
-  if (ingredientInventory[index].ingredient.getCountable()) {
+  if (ingredientInventory[index].getCountable()) {
     cout << " / piece(s)" << endl;
   } else {
     cout << " / gram(s)" << endl;
@@ -385,7 +380,7 @@ void IngredientInventory::setIngredientInventory(IngredientInventory * ingredien
  * @return None.
  */
 void IngredientInventory::setIngredientInventoryPiece(int index, int piece) {
-  ingredientInventory[index].ingredient.setPiece(piece);
+  ingredientInventory[index].setPiece(piece);
 }
 
 /**
@@ -396,7 +391,7 @@ void IngredientInventory::setIngredientInventoryPiece(int index, int piece) {
  * @return None.
  */
 void IngredientInventory::setIngredientInventoryWeight(int index, double weight) {
-  ingredientInventory[index].ingredient.setWeight(weight);
+  ingredientInventory[index].setWeight(weight);
 }
 
 /**
@@ -418,15 +413,6 @@ int IngredientInventory::getIngredientInventoryCount() const {
 }
 
 /**
- * @brief Get the ingredient.
- * 
- * @return The ingredient.
- */
-Ingredient IngredientInventory::getIngredient() {
-  return ingredient;
-}
-
-/**
  * @brief Get a specific ingredient in the inventory.
  * 
  * @param index The index of the ingredient in the inventory.
@@ -443,7 +429,7 @@ IngredientInventory * IngredientInventory::getIngredientInventory(int index) con
  * @return The name of the specific ingredient in the inventory.
  */
 string IngredientInventory::getIngredientInventoryName (int index) const {
-  return ingredientInventory[index].ingredient.getName();
+  return ingredientInventory[index].getName();
 }
 
 /**
@@ -453,7 +439,7 @@ string IngredientInventory::getIngredientInventoryName (int index) const {
  * @return The cost of the specific ingredient in the inventory.
  */
 double IngredientInventory::getIngredientInventoryCost (int index) const {
-  return ingredientInventory[index].ingredient.getCostPerUnit();
+  return ingredientInventory[index].getCostPerUnit();
 }
 
 /**
@@ -463,7 +449,7 @@ double IngredientInventory::getIngredientInventoryCost (int index) const {
  * @return The number of pieces of the specific ingredient in the inventory.
  */
 int IngredientInventory::getIngredientInventoryPiece (int index) const {
-  return ingredientInventory[index].ingredient.getPiece();
+  return ingredientInventory[index].getPiece();
 }
 
 /**
@@ -473,7 +459,7 @@ int IngredientInventory::getIngredientInventoryPiece (int index) const {
  * @return The weight of the specific ingredient in the inventory.
  */
 double IngredientInventory::getIngredientInventoryWeight (int index) const {
-  return ingredientInventory[index].ingredient.getWeight();
+  return ingredientInventory[index].getWeight();
 }
 
 /**
