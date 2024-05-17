@@ -337,9 +337,7 @@ void Employee::startBakery(string date) {
         // check if ingredient is countable or not
         bool countable = false; // Flag of boolean to store if the ingredient is countable
         // check if ingredientWeightString has decimal
-        if (ingredientWeightString.find(".") != string::npos) {
-          countable = false;
-        } else {
+        if (ingredientWeightString.find(".") == string::npos) {
           countable = true;
         }
 
@@ -436,7 +434,7 @@ void Employee::startBakery(string date) {
 
         // check if ingredient is countable or not
         bool countable = false; // Flag of boolean to store if the ingredient is countable
-        if ((int)ingredientWeight == ingredientWeight) {
+        if (ingredientWeightString.find(".") == string::npos) {
           countable = true;
         }
 
