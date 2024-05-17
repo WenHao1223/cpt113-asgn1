@@ -2165,6 +2165,10 @@ void Employee::editDiscountName(int index, string newName) {
  * @return None.
  */
 void Employee::editDiscountMinimumPurchase(int index, double newMinimumPurchase) {
+  if (index < 0 || index >= getAllDiscountCount()) {
+    cout << "Invalid index." << endl;
+    return;
+  }
   // Check if the employee is a supervisor.
   if (supervisor != nullptr) {
     cout << role << " - Editing minimum purchase..." << endl;
