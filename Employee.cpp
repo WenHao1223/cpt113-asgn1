@@ -477,7 +477,6 @@ void Employee::startBakery(string date) {
   // Read from file/discount.csv
   ifstream discountFile; // Input file stream for the discount file
   discountFile.open("files/discount.csv", ios::in); // Open the discount file in input mode
-  cout << endl;
 
   cout << "Reading discount file..." << endl;
   string discountLine; // String to store each line of the file
@@ -538,7 +537,7 @@ void Employee::startBakery(string date) {
   cout << "----------------------------------------" << endl;
   cout << endl;
 
-  cout << "=========== Bakery Summary ==========" << endl;
+  cout << "============ Bakery Summary ============" << endl;
   cout << "Ingredient inventory count: " << ingredInvCount << endl;
   cout << "Cake count: " << cakeCount << endl;
   cout << "Cookie count: " << cookieCount << endl;
@@ -770,6 +769,10 @@ void Employee::displayIngredientInventoryList() const {
  * 
  */
 void Employee::accessIngredientInventoryDetails(int index) const {
+  if (index <= 0 || index >= getAllIngredientInventoryCount()) {
+    cout << "Invalid index." << endl;
+    return;
+  }
   // Check if the employee is a supervisor or a baker.
   if (supervisor != nullptr || baker != nullptr) {
     cout << role << " - Accessing ingredient inventory details..." << endl;
@@ -877,6 +880,10 @@ void Employee::accessIngredientInventoryFile(int index, string field, string val
  * @return None.
  */
 void Employee::restockIngredientInventory(int index, double quantity) {
+  if (index <= 0 || index >= getAllIngredientInventoryCount()) {
+    cout << "Invalid index." << endl;
+    return;
+  }
   // Check if the employee is a supervisor.
   if (supervisor != nullptr) {
     cout << role << " - Restocking ingredient inventory..." << endl;
@@ -918,6 +925,10 @@ void Employee::restockIngredientInventory(int index, double quantity) {
  * @return None.
  */
 void Employee::changeIngredientCost(int index, double cost) {
+  if (index <= 0 || index >= getAllIngredientInventoryCount()) {
+    cout << "Invalid index." << endl;
+    return;
+  }
   // Check if the employee is a supervisor.
   if (supervisor != nullptr) {
     cout << role << " - Changing ingredient cost per unit..." << endl;
@@ -1487,6 +1498,10 @@ void Employee::accessBakeryItemFile (int index, string field, string value) {
  * @return None.
  */
 void Employee::withdrawBakeryItem (int index) {
+  if (index <= 0 || index >= getAllBakeryItemCount()) {
+    cout << "Invalid index." << endl;
+    return;
+  }
   // Check if the employee is a supervisor.
   if (supervisor != nullptr) {
     cout << role << " - Withdrawing " << bakeryItems[index].getBakeryItemName() << "..." << endl;
@@ -1510,6 +1525,10 @@ void Employee::withdrawBakeryItem (int index) {
  * @return None.
  */
 void Employee::enableBakeryItem (int index) {
+  if (index <= 0 || index >= getAllBakeryItemCount()) {
+    cout << "Invalid index." << endl;
+    return;
+  }
   // Check if the employee is a supervisor.
   if (supervisor != nullptr) {
     cout << role << " - Enabling " << bakeryItems[index].getBakeryItemName() << "..." << endl;
@@ -1534,6 +1553,10 @@ void Employee::enableBakeryItem (int index) {
  */
 void Employee::changeBakeryItemPrice(int index, double newPrice) {
   // Check if the employee is a supervisor.
+  if (index <= 0 || index >= getAllBakeryItemCount()) {
+    cout << "Invalid index." << endl;
+    return;
+  }
   if (supervisor != nullptr) {
     cout << role << " - Changing " << bakeryItems[index].getBakeryItemName() << " price..." << endl;
     bakeryItems[index].setPricePerUnit(newPrice);
@@ -1559,6 +1582,10 @@ void Employee::changeBakeryItemPrice(int index, double newPrice) {
  * @return None.
  */
 void Employee::calculateBakeryItemCost(int index) const {
+  if (index <= 0 || index >= getAllBakeryItemCount()) {
+    cout << "Invalid index." << endl;
+    return;
+  }
   cout << role << " - Calculating " << bakeryItems[index].getBakeryItemName() << " cost..." << endl;
   cout << setprecision(2) << fixed;
   cout << "Total cost: RM " << bakeryItems[index].calculateCost() << endl;
@@ -1575,6 +1602,10 @@ void Employee::calculateBakeryItemCost(int index) const {
  * @return None.
  */
 void Employee::calculateBakeryItemProfit(int index) const {
+  if (index <= 0 || index >= getAllBakeryItemCount()) {
+    cout << "Invalid index." << endl;
+    return;
+  }
   cout << role << " - Calculating " << bakeryItems[index].getBakeryItemName() << " profit..." << endl;
   cout << setprecision(2) << fixed;
   cout << "Total profit: RM " << bakeryItems[index].calculateProfit() << endl;
@@ -1591,6 +1622,10 @@ void Employee::calculateBakeryItemProfit(int index) const {
  * @return None.
  */
 void Employee::compareCostVsProfit(int index) const {
+  if (index <= 0 || index >= getAllBakeryItemCount()) {
+    cout << "Invalid index." << endl;
+    return;
+  }
   cout << role << " - Comparing " << bakeryItems[index].getBakeryItemName() << " cost vs profit..." << endl;
   cout << setprecision(2) << fixed;
   cout << "Total cost: RM " << bakeryItems[index].calculateCost() << endl;
@@ -1613,6 +1648,10 @@ void Employee::compareCostVsProfit(int index) const {
  * @return None.
  */
 void Employee::compareCostVsPrice(int index) const {
+  if (index <= 0 || index >= getAllBakeryItemCount()) {
+    cout << "Invalid index." << endl;
+    return;
+  }
   cout << role << " - Comparing " << bakeryItems[index].getBakeryItemName() << " cost vs price..." << endl;
   cout << setprecision(2) << fixed;
   cout << "Total cost: RM " << bakeryItems[index].calculateCost() << endl;
@@ -2133,6 +2172,10 @@ void Employee::accessDiscountFile(int index, string field, string value) {
  * @return None.
  */
 void Employee::editDiscountName(int index, string newName) {
+  if (index <= 0 || index >= getAllDiscountCount()) {
+    cout << "Invalid index." << endl;
+    return;
+  }
   // Check if the employee is a supervisor.
   if (supervisor != nullptr) {
     cout << role << " - Editing discount name..." << endl;
@@ -2158,6 +2201,10 @@ void Employee::editDiscountName(int index, string newName) {
  * @return None.
  */
 void Employee::editDiscountMinimumPurchase(int index, double newMinimumPurchase) {
+  if (index <= 0 || index >= getAllDiscountCount()) {
+    cout << "Invalid index." << endl;
+    return;
+  }
   // Check if the employee is a supervisor.
   if (supervisor != nullptr) {
     cout << role << " - Editing minimum purchase..." << endl;
@@ -2184,6 +2231,10 @@ void Employee::editDiscountMinimumPurchase(int index, double newMinimumPurchase)
  * @return None.
  */
 void Employee::editDiscountPercentage(int index, double newPercentage) {
+  if (index <= 0 || index >= getAllDiscountCount()) {
+    cout << "Invalid index." << endl;
+    return;
+  }
   // Check if the employee is a supervisor.
   if (supervisor != nullptr) {
     cout << role << " - Editing discount percentage..." << endl;
@@ -2210,6 +2261,10 @@ void Employee::editDiscountPercentage(int index, double newPercentage) {
  * @return None.
  */
 void Employee::editDiscountDescription(int index, string newDescription) {
+  if (index <= 0 || index >= getAllDiscountCount()) {
+    cout << "Invalid index." << endl;
+    return;
+  }
   // Check if the employee is a supervisor.
   if (supervisor != nullptr) {
     cout << role << " - Editing discount description..." << endl;
@@ -2235,6 +2290,10 @@ void Employee::editDiscountDescription(int index, string newDescription) {
  * @return None.
  */
 void Employee::disableDiscount(int index) {
+  if (index <= 0 || index >= getAllDiscountCount()) {
+    cout << "Invalid index." << endl;
+    return;
+  }
   // Check if the employee is a supervisor.
   if (supervisor != nullptr) {
     cout << role << " - Disabling discount..." << endl;
@@ -2260,6 +2319,10 @@ void Employee::disableDiscount(int index) {
  * @return None.
  */
 void Employee::enableDiscount(int index) {
+  if (index <= 0 || index >= getAllDiscountCount()) {
+    cout << "Invalid index." << endl;
+    return;
+  }
   // Check if the employee is a supervisor.
   if (supervisor != nullptr) {
     cout << role << " - Enabling discount..." << endl;
@@ -2285,6 +2348,10 @@ void Employee::enableDiscount(int index) {
  * @return None.
  */
 void Employee::deleteDiscount(int index) {
+  if (index <= 0 || index >= getAllDiscountCount()) {
+    cout << "Invalid index." << endl;
+    return;
+  }
   // Check if the employee is a supervisor.
   if (supervisor != nullptr) {
     cout << role << " - Deleting discount..." << endl;
