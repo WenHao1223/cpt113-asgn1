@@ -337,9 +337,7 @@ void Employee::startBakery(string date) {
         // check if ingredient is countable or not
         bool countable = false; // Flag of boolean to store if the ingredient is countable
         // check if ingredientWeightString has decimal
-        if (ingredientWeightString.find(".") != string::npos) {
-          countable = false;
-        } else {
+        if (ingredientWeightString.find(".") == string::npos) {
           countable = true;
         }
 
@@ -436,7 +434,7 @@ void Employee::startBakery(string date) {
 
         // check if ingredient is countable or not
         bool countable = false; // Flag of boolean to store if the ingredient is countable
-        if ((int)ingredientWeight == ingredientWeight) {
+        if (ingredientWeightString.find(".") == string::npos) {
           countable = true;
         }
 
@@ -1661,8 +1659,8 @@ void Employee::compareCostVsPrice(int index) const {
 
   cout << setprecision(2) << fixed;
 
-  // price percentage = (price / cost) * 100
-  cout << "Price percentage: " << (bakeryItems[index].getPricePerUnit() / bakeryItems[index].calculateCost()) * 100 << "%" << endl;
+  // surplus percentage = (price / cost) * 100
+  cout << "Surplus percentage: " << (bakeryItems[index].getPricePerUnit() / bakeryItems[index].calculateCost()) * 100 << "%" << endl;
 }
 
 /**
@@ -2600,53 +2598,47 @@ void Employee::bakeNewBakeryItem(int index, int quantity) {
       cout << "==========Ingredient Inventory==========" << endl;
         // iterate through all ingredients
         for (int i = 0; i < bakeryItems[index].getIngredientCount(); i++) {
+        // get index of ingredient in inventory
+          for (int j = 0; j < ingredientInventory->getIngredientInventoryCount(); j++) {
+            if (bakeryItems[index].getIngredient(i)->getName() == ingredientInventory->getIngredientInventoryName(j)) {
+              ingredientInventoryIndex[i] = j;
+              break;
+            }
+          }
+
           // check if ingredient is countable
           if (bakeryItems[index].getIngredient(i)->getCountable()) {
-            // cout << bakeryItems[index].getIngredient(i)->getPiece() * quantity << " pieces of ingredient " << bakeryItems[index].getIngredient(i)->getName() << " has been used." << endl;
+            // used piece = bakery item ingredient piece * quantity
+            int usedPiece = bakeryItems[index].getIngredient(i)->getPiece() * quantity;
+            // ingredient piece = ingredient piece - used piece
+            int remainingPiece = ingredientInventory->getIngredientInventoryPiece(ingredientInventoryIndex[i]) - usedPiece;
+
+            cout << usedPiece << " pieces of ingredient " << bakeryItems[index].getIngredient(i)->getName() << " has been used." << endl;
             cout << endl;
             cout << "Original piece: " << ingredientInventory->getIngredientInventoryPiece(ingredientInventoryIndex[i]) << " pieces." << endl;
-            cout << "Remaining: " << ingredientInventory->getIngredientInventoryPiece(ingredientInventoryIndex[i]) - bakeryItems[index].getIngredient(i)->getPiece() * quantity << " pieces." << endl;
-            // deduct ingredient piece
-            // ingredient piece = ingredient piece - bakery item ingredient piece * quantity
-            ingredientInventory->setIngredientInventoryPiece(ingredientInventoryIndex[i], ingredientInventory->getIngredientInventoryPiece(ingredientInventoryIndex[i]) - bakeryItems[index].getIngredient(i)->getPiece() * quantity);
-            // cout << bakeryItems[index].getIngredient(i)->getPiece() * quantity << " pieces of ingredient " << bakeryItems[index].getIngredient(i)->getName() << " has been used." << endl;
+            cout << "Remaining: " << remainingPiece << " pieces." << endl;
 
-            // get index of ingredient in inventory
-            int j;
-            for (j = 0; j < ingredientInventory->getIngredientInventoryCount(); j++) {
-              if (bakeryItems[index].getIngredient(i)->getName() == ingredientInventory->getIngredientInventoryName(j)) {
-                ingredientInventoryIndex[i] = j;
-                break;
-              }
-            }
+            // deduct ingredient piece
+            ingredientInventory->setIngredientInventoryPiece(ingredientInventoryIndex[i], remainingPiece);
 
             // file handling of ingredient inventory file
-            accessIngredientInventoryFile(j, "piece", to_string(ingredientInventory->getIngredientInventoryPiece(ingredientInventoryIndex[i])));
-
-            // cout << "Remaining: " << ingredientInventory->getIngredientInventoryPiece(ingredientInventoryIndex[i]) << " pieces." << endl;
+            accessIngredientInventoryFile(ingredientInventoryIndex[i], "piece", to_string(remainingPiece));
           } else {
-            // cout << bakeryItems[index].getIngredient(i)->getWeight() * quantity << " gram(s) of ingredient " << bakeryItems[index].getIngredient(i)->getName() << " has been used." << endl;
+            // used weight = bakery item ingredient weight * quantity
+            double usedWeight = bakeryItems[index].getIngredient(i)->getWeight() * quantity;
+            // ingredient weight = ingredient weight - used weight
+            double remainingWeight = ingredientInventory->getIngredientInventoryWeight(ingredientInventoryIndex[i]) - usedWeight;
+
+            cout << usedWeight << " gram(s) of ingredient " << bakeryItems[index].getIngredient(i)->getName() << " has been used." << endl;
             cout << endl;
             cout << "Original weight: " << ingredientInventory->getIngredientInventoryWeight(ingredientInventoryIndex[i]) << " gram(s)." << endl;
-            cout << "Remaining: " << ingredientInventory->getIngredientInventoryWeight(ingredientInventoryIndex[i]) - bakeryItems[index].getIngredient(i)->getWeight() * quantity << " gram(s)." << endl;
-            // deduct ingredient weight
-            // ingredient weight = ingredient weight - bakery item ingredient weight * quantity
-            ingredientInventory->setIngredientInventoryWeight(ingredientInventoryIndex[i], ingredientInventory->getIngredientInventoryWeight(ingredientInventoryIndex[i]) - bakeryItems[index].getIngredient(i)->getWeight() * quantity);
-            // cout << bakeryItems[index].getIngredient(i)->getWeight() * quantity << " gram(s) of ingredient " << bakeryItems[index].getIngredient(i)->getName() << " has been used." << endl;
+            cout << "Remaining: " << remainingWeight << " gram(s)." << endl;
 
-            // get index of ingredient in inventory
-            int j;
-            for (j = 0; j < ingredientInventory->getIngredientInventoryCount(); j++) {
-              if (bakeryItems[index].getIngredient(i)->getName() == ingredientInventory->getIngredientInventoryName(j)) {
-                ingredientInventoryIndex[i] = j;
-                break;
-              }
-            }
+            // deduct ingredient weight
+            ingredientInventory->setIngredientInventoryWeight(ingredientInventoryIndex[i], remainingWeight);
 
             // file handling of ingredient inventory file
-            accessIngredientInventoryFile(j, "weight", to_string(ingredientInventory->getIngredientInventoryWeight(ingredientInventoryIndex[i])));
-
-            // cout << "Remaining: " << ingredientInventory->getIngredientInventoryWeight(ingredientInventoryIndex[i]) << " gram(s)." << endl;
+            accessIngredientInventoryFile(ingredientInventoryIndex[i], "weight", to_string(remainingWeight));
           }
         }
       }

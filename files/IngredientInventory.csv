@@ -1,18 +1,18 @@
 name,costPerUnit,weight,piece,countable
-Sugar,0.00295,83850.000000,0,false
-Flour,0.00185,22600.000000,0,false
-Eggs,0.40,0.0,2366,true
-Butter,0.02,10850.000000,0,false
-Salt,0.00667,3000.0,0,false
-Milk,0.0075,9840.000000,0,false
-Baking powder,0.018,16560.000000,0,false
-Vanilla extract,0.12,1850.000000,0,false
+Sugar,0.00295,84550.000000,0,false
+Flour,0.00185,22200.000000,0,false
+Eggs,0.40,0.0,2362,true
+Butter,0.02,19550.000000,0,false
+Salt,0.00667,30000.0,0,false
+Milk,0.0075,9600.000000,0,false
+Baking powder,0.018,66590.000000,0,false
+Vanilla extract,0.12,21840.000000,0,false
 Lemons,1.5,0.0,100,true
-Ghee,0.05,10000.0,0,false
-Pistachio nuts,0.15,6000.0,0,false
-Orange blossom water,0.04,9940.000000,0,false
-Dates,0.022,16400.000000,0,false
-Semolina,0.008,101300.000000,0,false
-Yogurt,0.013,94800.000000,0,false
-Coconut,0.012,12400.000000,0,false
-Rosewater,0.016,12480.000000,0,false
+Ghee,0.05,100000.0,0,false
+Pistachio nuts,0.15,60000.0,0,false
+Orange blossom water,0.04,99399.0000,0,false
+Dates,0.022,20000.00,0,false
+Semolina,0.008,53099.0000,0,false
+Yogurt,0.013,96000.000000,0,false
+Coconut,0.012,13000.000000,0,false
+Rosewater,0.016,12600.000000,0,false
