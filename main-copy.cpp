@@ -1563,10 +1563,16 @@ void processOrder(Employee* employees, int employeeID){
         // employees[1].bakeNewBakeryItem(2, 2); // Check
         employees[employeeID].accessMenuList();
         do {
-          cout << "Enter the choice of the cake: ";
-          cin >> index;
+          do {
+            cout << "Press (0) to exit....\n";
+            cout << "Enter the choice of the cake: ";
+            cin >> index;
+            if (index == 0) {
+              break;
+            }
+          } while (index < 0 || index > employees[employeeID].getAllBakeryItemCount());
 
-          cout << "Enter the weight of the cake: ";
+          cout << "Enter the weight of the cake in gram(s): ";
           cin >> weight;
 
           employees[employeeID].addCakeByWeightToCart(index - 1, weight);

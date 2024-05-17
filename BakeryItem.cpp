@@ -178,9 +178,9 @@ BakeryItem::BakeryItem(string name, string category, string description, double 
   this->recipe = recipe;
   this->disabled = disabled;
 
-  // Create a new Cake object if the category is Cake
+  // Create a Cake object if the category is Cake
   if (category == "Cake") {
-    cake = new Cake(totalWeight);
+    cake = Cake(totalWeight);
   }
 
   // cout << category << " '" << name << "' has been added." << endl;
@@ -207,7 +207,7 @@ void BakeryItem::displayBakeryItemDetails() const {
 
   // Display the total weight if the category is Cake
   if (category == "Cake") {
-    cout << "Total weight: " << cake->getTotalWeight() << "g" << endl;
+    cout << "Total weight: " << cake.getTotalWeight() << "g" << endl;
   }
 
   // Display the ingredients
@@ -347,11 +347,11 @@ string BakeryItem::getIngredientName(int index) const {
 }
 
 /**
- * @brief Get the Cake object associated with this BakeryItem.
- * 
- * @return A pointer to the Cake object.
+ * @brief Get the cake object
+ * @param None.
+ * @return Cake object.
  */
-Cake * BakeryItem::getCake() const {
+Cake BakeryItem::getCake() const {
   return cake;
 }
 

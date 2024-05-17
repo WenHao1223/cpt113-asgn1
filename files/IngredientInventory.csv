@@ -1,17 +1,17 @@
 name,costPerUnit,weight,piece,countable
-Sugar,0.00295,9650.000000,0,false
-Flour,0.00185,25200.000000,0,false
-Eggs,0.40,0.0,2406,true
-Butter,0.02,1175.000000,0,false
+Sugar,0.00295,8850.000000,0,false
+Flour,0.00185,24400.000000,0,false
+Eggs,0.40,0.0,2390,true
+Butter,0.02,275.000000,0,false
 Salt,0.00667,300.0,0,false
-Milk,0.0075,1680.000000,0,false
-Baking powder,0.018,1720.000000,0,false
-Vanilla extract,0.12,240.000000,0,false
+Milk,0.0075,1200.000000,0,false
+Baking powder,0.018,1680.000000,0,false
+Vanilla extract,0.12,200.000000,0,false
 Lemons,1.5,0.0,10,true
 Ghee,0.05,1000.0,0,false
 Pistachio nuts,0.15,600.0,0,false
 Orange blossom water,0.04,1000.000000,0,false
-Dates,0.022,800.000000,0,false
+Dates,0.022,0.000000,0,false
 Semolina,0.008,10400.000000,0,false
 Yogurt,0.013,9600.000000,0,false
 Coconut,0.012,1300.000000,0,false

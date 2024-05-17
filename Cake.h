@@ -19,7 +19,7 @@ using namespace std;
  */
 class Cake {
   private:
-    int totalWeight; /**< The total weight of the cake. */
+    int totalWeight; // The total weight of the cake.
 
   public:
     /**

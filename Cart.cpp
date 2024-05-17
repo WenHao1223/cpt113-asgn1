@@ -106,7 +106,8 @@ void Cart::addCakeByWeightToCart(BakeryItem & item, double weight) {
   // Set the quantity at the current cart item count to the specified weight divided by the total weight of the cake
   // Increment the cart item count
   bakeryItems[cartItemCount] = item;
-  this->quantity[cartItemCount] = weight / item.getCake()->getTotalWeight();
+  cout << "weight: " << weight << " total weight: " << item.getCake().getTotalWeight() << endl;
+  this->quantity[cartItemCount] = weight / item.getCake().getTotalWeight();
   cartItemCount++;
 
   // Display a message indicating that the item has been added to the cart
