@@ -261,15 +261,42 @@ int main () {
 
   string role = employees[employeeID].getRole();
 
-  if (role == "Supervisor"){
-    processSupervisorChoice(employees, employeeID);
-  }
-  else if (role == "Baker"){
-    processBakerChoice(employees, employeeID);
-  }
-  else if (role == "Cashier"){
-    processCashierChoice(employees, employeeID);
-  }
+  char q;
+  do {
+    cout << "==========================================================\n";
+    cout << "  Today's Date: " << DATE_YYYYMMDD << endl;
+    cout << "  Welcome, " << employees[employeeID].getName() << " (" << employees[employeeID].getRole() << ")!" << endl;
+    cout << "==========================================================\n";
+    cout << "0 - Quit\n";
+    cout << "1 - Continue\n";
+    cout << "2 - Log In to Another Role\n";
+    cout << "Enter your choice: ";
+    cin >> q;
+    cin.ignore();
+    cout << endl;
+    cout << "==========================================================\n";
+    cout << endl;
+    if (q == '0') {
+      cout << "Thank you for using Eid Delights Bakery!" << endl;
+      employees[employeeID].closeBakery(DATE_YYYYMMDD);
+      break;
+    }
+    if (q == '2') {
+      employeeID = login(employees);
+      role = employees[employeeID].getRole();
+    }
+    cout << endl;
+    if (role == "Supervisor"){
+      processSupervisorChoice(employees, employeeID);
+    }
+    else if (role == "Baker"){
+      processBakerChoice(employees, employeeID);
+    }
+    else if (role == "Cashier"){
+      processCashierChoice(employees, employeeID);
+    }
+  } while (q != '0');
+
   return 0;
 }
 void displaySupervisorMenu(){
