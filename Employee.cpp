@@ -581,6 +581,10 @@ void Employee::accessMenuList() const {
  * @return None
  */
 void Employee::accessMenuItem(int index) {
+  if (index < 0 || index >= getAllBakeryItemCount()){
+    cout << "Invalid index. << endl";
+    return;
+  }
   cout << role << " - Accessing menu details..." << endl;
 
   // Display the details of the menu item at the given index.
@@ -3418,6 +3422,7 @@ void Employee::showReceipt(string date, int orderNo) const {
 void Employee::moveCartFromThisCashierToAnotherCashier(Employee * c) {
   // Check if the employee is a cashier.
   if (this->cashier != nullptr) {
+    cout << endl;
     cout << "Moving cart from " << name << "..." << endl;
 
     // check if c is a cashier

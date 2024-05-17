@@ -36,7 +36,7 @@ void displayCashierMenu();
 
 void processSupervisorChoice(Employee* employee, int employeeID, int employeeCount);
 void processBakerChoice(Employee* employee, int employeeID);
-void processCashierChoice(Employee* employee, int employeeID);
+void processCashierChoice(Employee* employee, int employeeID, int employeeCount);
 
 // For Supervisor
 void checkBakeryItem(Employee* employees, int employeeID);
@@ -50,7 +50,7 @@ void ReportingAndAnalytics(Employee*, int);
 void BakeCookieCake(Employee* employees, int employeeID);
 
 // For cashier
-void processOrder(Employee* employees, int employeeID);
+void processOrder(Employee* employees, int employeeID, int employeeCount);
 void checkout(Employee* employees, int employeeID);
 
 
@@ -123,6 +123,7 @@ void accessMenuDetails(const BakeryItem * item) {
   } while (showRecipe != 'Y' && showRecipe != 'N' && showRecipe != 'y' && showRecipe != 'n');
 
   if (showRecipe == 'Y' || showRecipe == 'y') {
+    cout << "====================================================================================================" << endl;
     cout << "Recipe: " << endl;
     
     // if read \n then go to another line
@@ -310,7 +311,7 @@ int main () {
       processBakerChoice(employees, employeeID);
     }
     else if (role == "Cashier"){
-      processCashierChoice(employees, employeeID);
+      processCashierChoice(employees, employeeID, employeeCount);
     }
   } while (q != '0');
 
@@ -329,7 +330,7 @@ void displaySupervisorMenu(){
   cout << "| 4. Promotions and Discounts                            |\n";
   cout << "| 5. Employee Management                                 |\n";
   cout << "| 6. Reporting and Analytics                             |\n"; // For displaying balance sheet and transaction history
-  cout << "| 7. Log Out                                             |\n";
+  cout << "| 7. Back to Main Menu                                   |\n";
   cout << "==========================================================\n";
 }
 
@@ -342,7 +343,7 @@ cout << "=============================================================\n";
 cout << "| 1. Check Bakery Item                                      |\n"; // View today's menu items and details
 cout << "| 2. Inventory Management                                   |\n"; // Display inventory list and details
 cout << "| 3. Bake New Cookies and Cakes                             |\n"; // For baking today's cookies and cakes
-cout << "| 4. Log Out                                                |\n";
+cout << "| 4. Back to Main Menu                                      |\n";
 cout << "=============================================================\n";
 }
 
@@ -354,7 +355,7 @@ void displayCashierMenu(){
   cout << "==========================================================\n";
   cout << "| 1. Check Bakery Item                                   |\n"; // View today's menu items and details
   cout << "| 2. Process Order                                       |\n"; // For processing customer orders
-  cout << "| 3. Log Out                                             |\n";
+  cout << "| 3. Back to Main Menu                                   |\n";
   cout << "==========================================================\n";
 }
 
@@ -435,14 +436,14 @@ void processBakerChoice(Employee* employees, int employeeID){
   } while (bakerChoice != '4');
 }
 
-void processCashierChoice(Employee* employees, int employeeID){
+void processCashierChoice(Employee* employees, int employeeID, int employeeCount){
   char cashierChoice;
   do {
     displayCashierMenu();
     do {
       cout << "Enter your choice: ";
       cin >> cashierChoice;
-      if (cashierChoice < '1' || cashierChoice > '4') {
+      if (cashierChoice < '1' || cashierChoice > '3') {
         cout << "Invalid choice. Please try again." << endl;
       }
     } while (cashierChoice < '1' || cashierChoice > '4');
@@ -454,7 +455,7 @@ void processCashierChoice(Employee* employees, int employeeID){
         break;
       case '2':
         // Process Order
-        processOrder(employees, employeeID);
+        processOrder(employees, employeeID, employeeCount);
         break;
       case '3':
         // Quit
@@ -472,7 +473,6 @@ void checkBakeryItem(Employee* employees, int employeeID) {
     cout << "|              Check Bakery Item                   |\n";
     cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
     employees[employeeID].accessMenuList();
-    cout << endl;
 
     // Ask for the index of the bakery item to view details
     do{
@@ -689,7 +689,7 @@ void BakeryItemManagement(Employee* employees, int employeeID){
         // Do while loop for user multiple create bakery item
         do{
           employees[employeeID].createBakeryItem();
-          cout << "Add successful!" << endl;
+          // cout << "Add successful!" << endl;
 
           cout << endl;
           cout << "Do you want to add another bakery item? (Y/N): ";
@@ -1518,7 +1518,7 @@ void BakeCookieCake(Employee* employees, int employeeID){
   }while(cont == 'Y' || cont == 'y');
 }
 
-void processOrder(Employee* employees, int employeeID){
+void processOrder(Employee* employees, int employeeID, int employeeCount){
   bool exit = false;
   char cashierChoice;
   int quantity;
@@ -1701,13 +1701,60 @@ void processOrder(Employee* employees, int employeeID){
       case '4':
         // Display Cart
         employees[employeeID].displayCartDetails();
-        cout << "Press any key to EXIT...." << endl;
+        cout << "Press any key to EXIT....";
         cin >> cont;
         break;
 
       case '5':
         // Transfer Cart
-        // Not Yet Do later evening eat time i do
+        char transferChoice;
+        int transferIndex;
+        cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" << endl;
+        cout << "|                 Transfer Cart                    |" << endl;
+        cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" << endl;
+        cout << "| 1. Select Cashier To Transfer                    |" << endl;
+        cout << "| 2. Cancel Transfer and Return to Menu            |" << endl;
+        cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" << endl;
+        do {
+          cout << "Enter your choice: ";
+          cin >>transferChoice;
+          if (transferChoice < '1' ||transferChoice > '2') {
+            cout << "Invalid choice. Please try again." << endl;
+          }
+        } while (transferChoice < '1' ||transferChoice > '2');
+
+        switch(transferChoice){
+          case '1':
+            // Select Cashier To Transfer
+            // Display all cashier
+            cout << "+-----+--------------------------+" << endl;
+            cout << "| No. | Cashier Name             |" << endl;
+            cout << "+-----+--------------------------+" << endl;
+
+            for (int i = 0; i < employeeCount; i++) {
+                if (employees[i].getRole() == "Cashier") {
+                    cout << "| " << setw(3) << i + 1 << " | " << setw(24) << employees[i].getName() << " |" << endl;
+                }
+            }
+            cout << "+-----+--------------------------+" << endl;
+
+            cout << "Enter the number of the cashier you want to transfer the cart to: ";
+            cin >> transferIndex;
+            cout << "Current Cart: " << endl;
+            employees[employeeID].displayCartDetails();
+
+            cout << endl;
+            cout << "You have chosen to transfer the cart to cashier " << employees[transferIndex - 1].getName() << "." << endl;
+            cout << "Please note that once the cart is transferred, it will be removed from the current cashier." << endl;
+            cout << "Are you sure you want to proceed with the transfer? (Y/N): ";
+            cin >> cont;
+            employees[employeeID].moveCartFromThisCashierToAnotherCashier(employees+transferIndex-1);
+            break;
+
+          case '2':
+            // Cancel Transfer and Return to Menu
+            break;
+        }
         break;
 
       case '6':

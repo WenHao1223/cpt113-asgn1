@@ -53,7 +53,7 @@ Cart * Cashier::getCart() {
  * @return A reference to the current cashier object.
  */
 Cashier & Cashier::operator=(const Cashier & c) {
-  cout << "Assignment operator called." << endl;
+  // cout << "Assignment operator called." << endl;
   this->cart = new Cart(*(c.cart)); // deep copy cart
 
   // clear cart
