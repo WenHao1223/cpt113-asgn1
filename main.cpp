@@ -479,6 +479,14 @@ void checkBakeryItem(Employee* employees, int employeeID) {
       cout << "Press (0) to exit....\n";
       cout << "Enter the choice of the bakery item to view details: ";
       cin >> index; // Input Validation (Needed)
+
+      while(cin.fail()) {
+      cin.clear(); // clear the error state
+      cin.ignore(10, '\n'); // ignore the next 10 characters...
+      cout << "Invalid input. Please enter a valid choice: ";
+      cin >> index;
+      }
+      
       if (index == 0){ // Allow user to exit
         break;
       }
@@ -540,6 +548,13 @@ void InventoryManagement(Employee* employees, int employeeID){
           cout << "Enter the choice of the ingredient to view details: ";
           cin >> index; // Input Validation (Needed)
 
+          while(cin.fail()) {
+            cin.clear(); // clear the error state
+            cin.ignore(10, '\n'); // ignore the next 10 characters...
+            cout << "Invalid input. Please enter a valid choice: ";
+            cin >> index;
+          }
+
           if (index == 0){ // Allow user to exit
             break;
           }
@@ -585,6 +600,12 @@ void InventoryManagement(Employee* employees, int employeeID){
           cout << "Enter the choice of the ingredient to restock: ";
           cin >> index;
 
+          while(cin.fail()) {
+            cin.clear(); // clear the error state
+            cin.ignore(10, '\n'); // ignore the next 10 characters...
+            cout << "Invalid input. Please enter a valid choice: ";
+            cin >> index;
+          }
           if (index == 0){ // Allow user to exit
             break;
           }
@@ -620,6 +641,13 @@ void InventoryManagement(Employee* employees, int employeeID){
           cout << "Press (0) to exit....\n";
           cout << "Enter the choice of the ingredient to edit cost: ";
           cin >> index;
+
+          while(cin.fail()) {
+            cin.clear(); // clear the error state
+            cin.ignore(10, '\n'); // ignore the next 10 characters...
+            cout << "Invalid input. Please enter a valid choice: ";
+            cin >> index;
+          }
 
           if (index == 0){ // Allow user to exit
             break;
@@ -716,6 +744,13 @@ void BakeryItemManagement(Employee* employees, int employeeID){
           cout << "Enter the choice of the bakery item to update price: ";
           cin >> index;
 
+          while(cin.fail()) {
+            cin.clear(); // clear the error state
+            cin.ignore(10, '\n'); // ignore the next 10 characters...
+            cout << "Invalid input. Please enter a valid choice: ";
+            cin >> index;
+          }
+
           if (index == 0){ // Allow user to exit
             break;
           }
@@ -781,6 +816,13 @@ void BakeryItemManagement(Employee* employees, int employeeID){
           cout << "Press (0) to exit....\n";
           cout << "Enter the choice of the bakery item to disable: ";
           cin >> index;
+
+          while(cin.fail()) {
+            cin.clear(); // clear the error state
+            cin.ignore(10, '\n'); // ignore the next 10 characters...
+            cout << "Invalid input. Please enter a valid choice: ";
+            cin >> index;
+          }
 
           if (index == 0){ // Allow user to exit
             break;
@@ -903,6 +945,13 @@ void DiscountAndPromotion(Employee* employees, int employeeID){
                 cout << "Enter the choice of the discount to edit name: ";
                 cin >> index;
 
+                while(cin.fail()) {
+                  cin.clear(); // clear the error state
+                  cin.ignore(10, '\n'); // ignore the next 10 characters...
+                  cout << "Invalid input. Please enter a valid choice: ";
+                  cin >> index;
+                }
+
                 if (index == 0){ // Allow user to exit
                   break;
                 }
@@ -938,6 +987,13 @@ void DiscountAndPromotion(Employee* employees, int employeeID){
                 cout << "Enter the choice of the discount to edit min spend: ";
                 cin >> index;
 
+                while(cin.fail()) {
+                  cin.clear(); // clear the error state
+                  cin.ignore(10, '\n'); // ignore the next 10 characters...
+                  cout << "Invalid input. Please enter a valid choice: ";
+                  cin >> index;
+                }
+
                 if (index == 0){ // Allow user to exit
                   break;
                 }
@@ -971,6 +1027,13 @@ void DiscountAndPromotion(Employee* employees, int employeeID){
                 cout << "Press (0) to exit....\n";
                 cout << "Enter the choice of the discount to edit description: ";
                 cin >> index;
+
+                while(cin.fail()) {
+                  cin.clear(); // clear the error state
+                  cin.ignore(10, '\n'); // ignore the next 10 characters...
+                  cout << "Invalid input. Please enter a valid choice: ";
+                  cin >> index;
+                }
 
                 if (index == 0){ // Allow user to exit
                   break;
@@ -1008,12 +1071,21 @@ void DiscountAndPromotion(Employee* employees, int employeeID){
                 cout << "Enter the choice of the discount to edit discount percentage: ";
                 cin >> index;
 
+                while(cin.fail()) {
+                  cin.clear(); // clear the error state
+                  cin.ignore(10, '\n'); // ignore the next 10 characters...
+                  cout << "Invalid input. Please enter a valid choice: ";
+                  cin >> index;
+                }
+
                 if (index == 0){ // Allow user to exit
                   break;
                 }
 
                 cout << "Enter the new discount percentage: ";
-                cin >> newDiscountPercentage;
+                cin >> 
+                
+                newDiscountPercentage;
                 employees[employeeID].editDiscountPercentage(index - 1, newDiscountPercentage);
                 // cout << "Edit the discount percentage successful!" << endl;
 
@@ -1057,6 +1129,13 @@ void DiscountAndPromotion(Employee* employees, int employeeID){
           cout << "Enter the choice of the discount to enable: ";
           cin >> index;
 
+          while(cin.fail()) {
+            cin.clear(); // clear the error state
+            cin.ignore(10, '\n'); // ignore the next 10 characters...
+            cout << "Invalid input. Please enter a valid choice: ";
+            cin >> index;
+          }
+
           if (index == 0){ // Allow user to exit
             break;
           }
@@ -1089,6 +1168,13 @@ void DiscountAndPromotion(Employee* employees, int employeeID){
           cout << "Enter the choice of the discount to disable: ";
           cin >> index;
 
+          while(cin.fail()) {
+            cin.clear(); // clear the error state
+            cin.ignore(10, '\n'); // ignore the next 10 characters...
+            cout << "Invalid input. Please enter a valid choice: ";
+            cin >> index;
+          }
+
           if (index == 0){ // Allow user to exit
             break;
           }
@@ -1120,6 +1206,13 @@ void DiscountAndPromotion(Employee* employees, int employeeID){
           cout << "Press (0) to exit....\n";
           cout << "Enter the choice of the discount to delete: ";
           cin >> index;
+
+          while(cin.fail()) {
+            cin.clear(); // clear the error state
+            cin.ignore(10, '\n'); // ignore the next 10 characters...
+            cout << "Invalid input. Please enter a valid choice: ";
+            cin >> index;
+          }
 
           if (index == 0){ // Allow user to exit
             break;
@@ -1246,6 +1339,13 @@ void EmployeeManagement(Employee* employees, int employeeID, int employeeCount){
           cout << "Enter the choice of the employee to change role: ";
           cin >> index;
 
+          while(cin.fail()) {
+            cin.clear(); // clear the error state
+            cin.ignore(10, '\n'); // ignore the next 10 characters...
+            cout << "Invalid input. Please enter a valid choice: ";
+            cin >> index;
+         }
+
           if (index == 0){ // Allow user to exit
             break;
           }
@@ -1283,6 +1383,13 @@ void EmployeeManagement(Employee* employees, int employeeID, int employeeCount){
           cout << "Press (0) to exit....\n";
           cout << "Enter the choice of the employee to delete: ";
           cin >> index;
+
+          while(cin.fail()) {
+            cin.clear(); // clear the error state
+            cin.ignore(10, '\n'); // ignore the next 10 characters...
+            cout << "Invalid input. Please enter a valid choice: ";
+            cin >> index;
+          }
 
           if (index == 0){ // Allow user to exit
             break;
@@ -1414,6 +1521,13 @@ void ReportingAndAnalytics(Employee* employees, int employeeID){
                 cout << "Enter the choice of the bakery item to compare cost vs price: ";
                 cin >> index;
 
+                while(cin.fail()) {
+                  cin.clear(); // clear the error state
+                  cin.ignore(10, '\n'); // ignore the next 10 characters...
+                  cout << "Invalid input. Please enter a valid choice: ";
+                  cin >> index;
+                }
+
                 if (index == 0){ // Allow user to exit
                   break;
                 }
@@ -1440,6 +1554,13 @@ void ReportingAndAnalytics(Employee* employees, int employeeID){
                 cout << "Press (0) to exit....\n";
                 cout << "Enter the choice of the bakery item to compare cost vs profit: ";
                 cin >> index;
+
+                while(cin.fail()) {
+                  cin.clear(); // clear the error state
+                  cin.ignore(10, '\n'); // ignore the next 10 characters...
+                  cout << "Invalid input. Please enter a valid choice: ";
+                  cin >> index;
+                }
 
                 if (index == 0){ // Allow user to exit
                   break;
@@ -1496,6 +1617,13 @@ void BakeCookieCake(Employee* employees, int employeeID){
     cout << "Press (0) to exit....\n";
     cout << "Enter the choice for the baking item: ";
     cin >> index;
+
+    while(cin.fail()) {
+      cin.clear(); // clear the error state
+      cin.ignore(10, '\n'); // ignore the next 10 characters...
+      cout << "Invalid input. Please enter a valid choice: ";
+      cin >> index;
+      }
 
     if (index == 0){ // Allow user to exit
       break;
@@ -1563,6 +1691,18 @@ void processOrder(Employee* employees, int employeeID, int employeeCount){
         employees[employeeID].accessMenuList();
         cout << "Enter the choice of the item: ";
         cin >> index;
+
+        while(cin.fail()) { // Input Validation
+          cin.clear(); // clear the error state
+          cin.ignore(10, '\n'); // ignore the next 10 characters...
+          cout << "Invalid input. Please enter a valid choice: ";
+          cin >> index;
+        }
+
+        if (index == 0){ // Allow user to exit
+          break;
+        }
+
         cout << "Enter the quantity: ";
         cin >> quantity;
         employees[employeeID].addBakeryItemToCart(index - 1, quantity);
@@ -1602,6 +1742,14 @@ void processOrder(Employee* employees, int employeeID, int employeeCount){
             cout << "Press (0) to exit....\n";
             cout << "Enter the choice of the cake: ";
             cin >> index;
+
+            while(cin.fail()) {
+              cin.clear(); // clear the error state
+              cin.ignore(10, '\n'); // ignore the next 10 characters...
+              cout << "Invalid input. Please enter a valid choice: ";
+              cin >> index;
+            }
+
             if (index == 0) {
               break;
             }
@@ -1665,6 +1813,18 @@ void processOrder(Employee* employees, int employeeID, int employeeCount){
                 employees[employeeID].displayCartDetails();
                 cout << "Enter the choice of the item to update: ";
                 cin >> index;
+
+                while(cin.fail()) {
+                  cin.clear(); // clear the error state
+                  cin.ignore(10, '\n'); // ignore the next 10 characters...
+                  cout << "Invalid input. Please enter a valid choice: ";
+                  cin >> index;
+                }
+
+                if (index == 0) {
+                  break;
+                }
+
                 cout << "Enter the new quantity: ";
                 cin >> quantity;
                 employees[employeeID].updateBakeryItemQuantityInCart(index - 1, quantity);
@@ -1685,6 +1845,18 @@ void processOrder(Employee* employees, int employeeID, int employeeCount){
                 employees[employeeID].displayCartDetails();
                 cout << "Enter the choice of the item to delete: ";
                 cin >> index;
+
+                while(cin.fail()) {
+                  cin.clear(); // clear the error state
+                  cin.ignore(10, '\n'); // ignore the next 10 characters...
+                  cout << "Invalid input. Please enter a valid choice: ";
+                  cin >> index;
+                }
+
+                if (index == 0) {
+                  break;
+                }
+
                 employees[employeeID].removeBakeryItemFromCart(index - 1);
 
                 cout << "Do you want to delete another item? (Y/N): ";
@@ -1749,6 +1921,13 @@ void processOrder(Employee* employees, int employeeID, int employeeCount){
             cout << "Enter the number of the cashier you want to transfer the cart to: ";
             cin >> transferIndex;
 
+            while(cin.fail()) {
+              cin.clear(); // clear the error state
+              cin.ignore(10, '\n'); // ignore the next 10 characters...
+              cout << "Invalid input. Please enter a valid choice: ";
+              cin >> transferIndex;
+            }
+
             if (transferIndex == 0) {
               break;
             }
@@ -1800,6 +1979,13 @@ void processOrder(Employee* employees, int employeeID, int employeeCount){
 
         cout << "Enter the order number to show receipt: ";
         cin >> index; // Use for order number
+
+        while(cin.fail()) {
+          cin.clear(); // clear the error state
+          cin.ignore(10, '\n'); // ignore the next 10 characters...
+          cout << "Invalid input. Please enter a valid choice: ";
+          cin >> index;
+        }
 
         cout << endl;
         employees[employeeID].showReceipt(date, index);
