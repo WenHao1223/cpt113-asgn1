@@ -1174,6 +1174,7 @@ void EmployeeManagement(Employee* employees, int employeeID, int employeeCount){
             break;
           }
 
+          cout << "Supervisor/ Baker/ Cashier" << endl;
           cout << "Enter the new employee role: ";
           getline(cin, newRole);
 
@@ -1183,7 +1184,7 @@ void EmployeeManagement(Employee* employees, int employeeID, int employeeCount){
           cout << "Enter the new employee password: ";
           cin >> newEmployeePassword;
 
-          employees[employeeID].createNewEmployee(employees, newEmployeeID, newEmployee, newRole, newEmployeePassword);
+          employees[employeeID].createNewEmployee(employees, employeeCount, newEmployeeID, newEmployee, newRole, newEmployeePassword);
           // cout << "Create successful!" << endl;
 
           cout << endl;
@@ -1215,11 +1216,12 @@ void EmployeeManagement(Employee* employees, int employeeID, int employeeCount){
             break;
           }
 
-          if (index < 0 || index >= employeeCount) {
+          if (index < 0 || index > employeeCount) {
             cout << "Invalid index." << endl;
             return;
           }
 
+          cout << "Supervisor/ Baker/ Cashier" << endl;
           cout << "Enter the new role: ";
           cin >> newRole;
           employees[employeeID].changeEmployeeRole(employees, index - 1, newRole);
@@ -1252,7 +1254,7 @@ void EmployeeManagement(Employee* employees, int employeeID, int employeeCount){
             break;
           }
 
-          if (index < 0 || index >= employeeCount) {
+          if (index < 0 || index > employeeCount) {
             cout << "Invalid index." << endl;
             return;
           }

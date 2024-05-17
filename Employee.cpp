@@ -1667,6 +1667,7 @@ void Employee::compareCostVsPrice(int index) const {
  * @brief Creates a new employee with the given details.
  * 
  * @param employees An array of Employee objects.
+ * @param employeeCount The number of employees.
  * @param employeeID The ID of the employee.
  * @param name The name of the employee.
  * @param role The role of the employee.
@@ -1674,7 +1675,7 @@ void Employee::compareCostVsPrice(int index) const {
  * 
  * @return None.
  */
-void Employee::createNewEmployee(Employee * employees, string employeeID, string name, string role, string password) {
+void Employee::createNewEmployee(Employee * employees, int & employeeCount, string employeeID, string name, string role, string password) {
   // Check if the employee is a supervisor.
   if (supervisor != nullptr) {
     cout << this->role << " - Creating new employee..." << endl;
@@ -1750,6 +1751,7 @@ void Employee::createNewEmployee(Employee * employees, string employeeID, string
       cout << "Warning: Maximum number of employees reached." << endl;
     }
 
+    employeeCount++;
   } else {
     cout << "Only supervisor can create new employee." << endl;
   }
@@ -1977,12 +1979,16 @@ void Employee::deleteEmployee(Employee employees [], int index) {
     cout << employees[index].role << " " << employees[index].name << " has been deleted." << endl;
 
     // delete employee object
+    delete employees[index].supervisor;
+    delete employees[index].baker;
+    delete employees[index].cashier;
+
     employees[index].name = "";
     employees[index].role = "";
     employees[index].employeeID = "";
-    employees[index].supervisor = nullptr;
-    employees[index].baker = nullptr;
-    employees[index].cashier = nullptr;
+    // employees[index].supervisor = nullptr;
+    // employees[index].baker = nullptr;
+    // employees[index].cashier = nullptr;
   } else {
     cout << "Only supervisor can delete employee." << endl;
   }

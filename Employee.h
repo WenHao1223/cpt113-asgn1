@@ -409,6 +409,7 @@ class Employee {
      * @brief Creates a new employee with the given details.
      * 
      * @param employees An array of Employee objects.
+     * @param employeeCount The total number of employees.
      * @param employeeID The ID of the employee.
      * @param name The name of the employee.
      * @param role The role of the employee.
@@ -416,7 +417,7 @@ class Employee {
      * 
      * @return None.
      */
-    void createNewEmployee(Employee * employees, string employeeID, string name, string role, string password);
+    void createNewEmployee(Employee * employees, int & employeeCount, string employeeID, string name, string role, string password);
 
     /**
      * @brief Accesses the employee data file and performs a search based on the specified field and value.
