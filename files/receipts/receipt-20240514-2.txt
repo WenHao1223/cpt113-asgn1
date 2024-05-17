@@ -15,7 +15,7 @@ No Description                        Quantity            Price (RM)
 1. Item 1                             3                   30
 
 ---------------------------------------------------------------------
-Subtotal (1)                                                28.5
+Subtotal (1)                                                30
 ---------------------------------------------------------------------
 Discount Summary                                            Amount
 Discount Name                           Over RM30 Oasis: Enjoy 5% Off

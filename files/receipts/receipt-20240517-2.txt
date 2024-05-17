@@ -1,0 +1,26 @@
+Eid Delights Bakery
+43-3-12, Persiaran Midlands,
+Taman Midlands,
+10500 Penang
+Tel : 011 2345 6789
+
+Take Away
+----------------------------------------------------------------------
+Current Invoice
+R.No: 2
+Date: 2024-05-17
+Transaction by: C1
+
+No Description                        Quantity            Price (RM)
+1. Date Cake                          1                   19.4
+
+-----------------------------------------------------------------------
+Subtotal (1)                                                19.4
+-----------------------------------------------------------------------
+Discount Summary                                            Amount
+-----------------------------------------------------------------------
+Total                                                       19.4
+Payment Method                                              Debit Card
+-----------------------------------------------------------------------
+Thank you for your purchase at our bakery!
+See you again soon.

@@ -15,7 +15,7 @@ No Description                        Quantity            Price (RM)
 1. Basbousa Cake                      2                   37.8
 
 ---------------------------------------------------------------------
-Subtotal (1)                                                35.91
+Subtotal (1)                                                37.80
 ---------------------------------------------------------------------
 Discount Summary                                            Amount
 Discount Name                           Over RM30 Oasis: Enjoy 5% Off

@@ -3115,6 +3115,8 @@ void Employee::checkout(string dateTime) {
   if (cashier != nullptr) {
     cout << "Checking out..." << endl;
 
+    double subtotal = 0; // Variable to store the subtotal
+
     // Deduct bakery items in cart from bakery
     // iterate through all bakery items in cart
     for (int i = 0; i < cashier->getCart()->getCartItemCount(); i++) {
@@ -3156,6 +3158,8 @@ void Employee::checkout(string dateTime) {
           }
 
           cout << "Total price: RM " << cashier->getCart()->calculateTotalPrice() << endl;
+
+          subtotal = cashier->getCart()->calculateTotalPrice();
 
           // deduct bakery item quantity from bakery
           // bakery item quantity = bakery item quantity - cart quantity
@@ -3342,9 +3346,9 @@ void Employee::checkout(string dateTime) {
 
     receiptFile << endl;
     receiptFile << "-----------------------------------------------------------------------" << endl;
-    string subtotal = "Subtotal (" + to_string(cashier->getCart()->getCartItemCount()) + ")"; // Variable to store the subtotal
-    receiptFile << left << setw(60) << subtotal;
-    receiptFile << totalPrice << endl;
+    string subtotalString = "Subtotal (" + to_string(cashier->getCart()->getCartItemCount()) + ")"; // Variable to store the subtotal
+    receiptFile << left << setw(60) << subtotalString;
+    receiptFile << subtotal << endl;
     receiptFile << "-----------------------------------------------------------------------" << endl;
     receiptFile << left << setw(60) << "Discount Summary" << "Amount" << endl;
     // check if discount is applied
