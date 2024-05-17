@@ -298,6 +298,7 @@ int main () {
 
   return 0;
 }
+
 void displaySupervisorMenu(){
   cout << "==========================================================\n";
   cout << "||                                                      ||\n";
@@ -323,7 +324,7 @@ cout << "=============================================================\n";
 cout << "| 1. Check Bakery Item                                      |\n"; // View today's menu items and details
 cout << "| 2. Inventory Management                                   |\n"; // Display inventory list and details
 cout << "| 3. Bake New Cookies and Cakes                             |\n"; // For baking today's cookies and cakes
-cout << "| 4. Quit                                                   |\n";
+cout << "| 4. Log Out                                                |\n";
 cout << "=============================================================\n";
 }
 
@@ -335,7 +336,7 @@ void displayCashierMenu(){
   cout << "==========================================================\n";
   cout << "| 1. Check Bakery Item                                   |\n"; // View today's menu items and details
   cout << "| 2. Process Order                                       |\n"; // For processing customer orders
-  cout << "| 3. Quit                                                |\n";
+  cout << "| 3. Log Out                                             |\n";
   cout << "==========================================================\n";
 }
 
@@ -379,7 +380,6 @@ void processSupervisorChoice(Employee* employees, int employeeID){
       case '7':
         // LogOut
         quit = true; // Need to do log out here
-        mainPage();
         break;
     }
   } while (quit != true);

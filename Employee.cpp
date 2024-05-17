@@ -2136,6 +2136,10 @@ void Employee::accessDiscountFile(int index, string field, string value) {
  * @return None.
  */
 void Employee::editDiscountName(int index, string newName) {
+  if (index < 0 || index >= getAllDiscountCount()) {
+    cout << "Invalid index." << endl;
+    return;
+  }
   // Check if the employee is a supervisor.
   if (supervisor != nullptr) {
     cout << role << " - Editing discount name..." << endl;
