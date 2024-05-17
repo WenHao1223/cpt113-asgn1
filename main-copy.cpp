@@ -285,23 +285,23 @@ int main () {
     cout << "  Today's Date: " << currentDate << endl;
     cout << "  Welcome, " << employees[employeeID].getName() << " (" << employees[employeeID].getRole() << ")!" << endl;
     cout << "==========================================================\n";
-    cout << "0 - Quit\n";
     cout << "1 - Continue to Menu\n";
     cout << "2 - Log In to Change Role\n";
+    cout << "3 - Quit\n";
     cout << "Enter your choice: ";
     cin >> q;
     cin.ignore();
     cout << endl;
     cout << "==========================================================\n";
     cout << endl;
-    if (q == '0') {
-      cout << "Thank you for using Eid Delights Bakery!" << endl;
-      employees[employeeID].closeBakery(DATE_YYYYMMDD);
-      break;
-    }
     if (q == '2') {
       employeeID = login(employees);
       role = employees[employeeID].getRole();
+    }
+    if (q == '3') {
+      cout << "Thank you for using Eid Delights Bakery!" << endl;
+      employees[employeeID].closeBakery(DATE_YYYYMMDD);
+      break;
     }
     cout << endl;
     if (role == "Supervisor"){
@@ -1519,6 +1519,10 @@ void BakeCookieCake(Employee* employees, int employeeID){
 }
 
 void processOrder(Employee* employees, int employeeID, int employeeCount){
+  // For index of cashier when transfer cart
+  int cashierIndex[MAX_EMPLOYEES]; 
+  int count = 0;
+
   bool exit = false;
   char cashierChoice;
   int quantity;
@@ -1709,6 +1713,10 @@ void processOrder(Employee* employees, int employeeID, int employeeCount){
         // Transfer Cart
         char transferChoice;
         int transferIndex;
+        int selectedCashierIndex;
+
+        // employees[1].bakeNewBakeryItem(2,2);
+        // employees[2].addBakeryItemToCart(2,2);
         cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" << endl;
         cout << "|                 Transfer Cart                    |" << endl;
         cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" << endl;
@@ -1730,25 +1738,39 @@ void processOrder(Employee* employees, int employeeID, int employeeCount){
             cout << "+-----+--------------------------+" << endl;
             cout << "| No. | Cashier Name             |" << endl;
             cout << "+-----+--------------------------+" << endl;
-
             for (int i = 0; i < employeeCount; i++) {
                 if (employees[i].getRole() == "Cashier") {
-                    cout << "| " << setw(3) << i + 1 << " | " << setw(24) << employees[i].getName() << " |" << endl;
+                  cashierIndex[count] = i; // Store index of cashier
+                  cout << "| " << setw(3) << ++count << " | " << setw(24) << employees[i].getName() << " |" << endl;
                 }
             }
             cout << "+-----+--------------------------+" << endl;
-
+            cout << "Press (0) to exit....\n";
             cout << "Enter the number of the cashier you want to transfer the cart to: ";
             cin >> transferIndex;
+
+            if (transferIndex == 0) {
+              break;
+            }
+            // Validate transferIndex
+            while (transferIndex < 1 || transferIndex > count) {
+              cout << "Invalid index. Please try again." << endl;
+              cout << "Enter the number of the cashier you want to transfer the cart to: ";
+              cin >> transferIndex;
+            }
+
+            selectedCashierIndex = cashierIndex[transferIndex - 1]; // Get index of selected cashier
             cout << "Current Cart: " << endl;
             employees[employeeID].displayCartDetails();
 
             cout << endl;
-            cout << "You have chosen to transfer the cart to cashier " << employees[transferIndex - 1].getName() << "." << endl;
+            cout << "You have chosen to transfer the cart to cashier " << employees[selectedCashierIndex].getName() << "." << endl;
             cout << "Please note that once the cart is transferred, it will be removed from the current cashier." << endl;
             cout << "Are you sure you want to proceed with the transfer? (Y/N): ";
             cin >> cont;
-            employees[employeeID].moveCartFromThisCashierToAnotherCashier(employees+transferIndex-1);
+            employees[employeeID].moveCartFromThisCashierToAnotherCashier(employees + selectedCashierIndex);
+            cout << "Press any key to EXIT....";
+            cin >> cont;
             break;
 
           case '2':
