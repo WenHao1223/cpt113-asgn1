@@ -229,9 +229,6 @@ void Employee::startBakery(string date) {
 
   // Set total balance
   totalBalance = stod(balanceString);
-  cout << "Starting balance: RM " << balanceString << endl;
-  cout << "Starting debit: RM " << totalDebit << endl;
-  cout << "Starting credit: RM " << totalCredit << endl;
   cout << endl;
 
   // Fetch ingredient inventory from files/ingredientInventory.csv
@@ -274,7 +271,6 @@ void Employee::startBakery(string date) {
     }
   }
   ingredientInventoryFile.close();
-  cout << "Ingredient inventory count: " << ingredInvCount << endl;
 
   // Set bakery items to the bakery items array
   bakeryItems->setBakeryItems(bakeryItems);
@@ -387,7 +383,6 @@ void Employee::startBakery(string date) {
 
   int cakeCount = bakeryItemCount; // Integer to store the count of cakes
   cakeFile.close();
-  cout << "Cake count: " << cakeCount << endl;
 
   // Fetch bakery items (cookie)
   // Read from file/cookie.csv
@@ -481,7 +476,6 @@ void Employee::startBakery(string date) {
   }
   int cookieCount = bakeryItemCount - cakeCount; // Integer to store the count of cookies
   cookieFile.close();
-  cout << "Cookie count: " << cookieCount << endl;
 
   // Array of discounts
   discounts = new Discount[Constant::MAX_DISCOUNTS];
@@ -521,7 +515,7 @@ void Employee::startBakery(string date) {
       discountCount++;
     }
   }
-  cout << "Discount count: " << discountCount << endl;
+  
   discountFile.close();
   cout << endl;
 
@@ -543,6 +537,22 @@ void Employee::startBakery(string date) {
   this->setIngredientCostToInventoryIngredientCost();
   cout << endl;
 
+  cout << "=========== Financial Summary ==========" << endl;
+  cout << "Today's date: " << date << endl;
+  cout << "----------------------------------------" << endl;
+  cout << "Starting balance: RM " << balanceString << endl;
+  cout << "Starting debit: RM " << totalDebit << endl;
+  cout << "Starting credit: RM " << totalCredit << endl;
+  cout << "----------------------------------------" << endl;
+  cout << endl;
+
+  cout << "=========== Bakery Summary ==========" << endl;
+  cout << "Ingredient inventory count: " << ingredInvCount << endl;
+  cout << "Cake count: " << cakeCount << endl;
+  cout << "Cookie count: " << cookieCount << endl;
+  cout << "Discount count: " << discountCount << endl;
+  cout << "----------------------------------------" << endl;
+  cout << endl;
   cout << "Selling " << bakeryItems[0].getBakeryItemCount() << " items today." << endl;
 }
 

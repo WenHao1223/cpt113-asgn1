@@ -1642,3 +1642,4 @@ void checkout (Employee* employees, int employeeID){
     employees[employeeID].showReceipt(convertTimeToYYYYMMDD(), employees[employeeID].getOrderNo());
   }
 }
+
