@@ -772,6 +772,10 @@ void Employee::displayIngredientInventoryList() const {
  * 
  */
 void Employee::accessIngredientInventoryDetails(int index) const {
+  if (index <= 0 || index >= getAllIngredientInventoryCount()) {
+    cout << "Invalid index." << endl;
+    return;
+  }
   // Check if the employee is a supervisor or a baker.
   if (supervisor != nullptr || baker != nullptr) {
     cout << role << " - Accessing ingredient inventory details..." << endl;
@@ -879,6 +883,10 @@ void Employee::accessIngredientInventoryFile(int index, string field, string val
  * @return None.
  */
 void Employee::restockIngredientInventory(int index, double quantity) {
+  if (index <= 0 || index >= getAllIngredientInventoryCount()) {
+    cout << "Invalid index." << endl;
+    return;
+  }
   // Check if the employee is a supervisor.
   if (supervisor != nullptr) {
     cout << role << " - Restocking ingredient inventory..." << endl;
@@ -920,6 +928,10 @@ void Employee::restockIngredientInventory(int index, double quantity) {
  * @return None.
  */
 void Employee::changeIngredientCost(int index, double cost) {
+  if (index <= 0 || index >= getAllIngredientInventoryCount()) {
+    cout << "Invalid index." << endl;
+    return;
+  }
   // Check if the employee is a supervisor.
   if (supervisor != nullptr) {
     cout << role << " - Changing ingredient cost per unit..." << endl;

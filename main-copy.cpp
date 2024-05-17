@@ -34,7 +34,7 @@ void displaySupervisorMenu();
 void displayBakerMenu();
 void displayCashierMenu();
 
-void processSupervisorChoice(Employee* employee, int employeeID);
+void processSupervisorChoice(Employee* employee, int employeeID, int employeeCount);
 void processBakerChoice(Employee* employee, int employeeID);
 void processCashierChoice(Employee* employee, int employeeID);
 
@@ -43,7 +43,7 @@ void checkBakeryItem(Employee* employees, int employeeID);
 void InventoryManagement(Employee* employees, int employeeID);
 void BakeryItemManagement(Employee* employees, int employeeID);
 void DiscountAndPromotion(Employee*, int);
-void EmployeeManagement(Employee*, int);
+void EmployeeManagement(Employee*, int, int);
 void ReportingAndAnalytics(Employee*, int);
 
 // For Baker
@@ -141,7 +141,8 @@ int login (Employee employees[]) {
   cout << "---------------------------------------\n";
   cout << "| No. | Employee Name                 |\n";
   cout << "---------------------------------------\n";
-  for (int i = 0; i < MAX_EMPLOYEES; i++) {
+  int i;
+  for (i = 0; i < MAX_EMPLOYEES; i++) {
     if (employees[i].getName() != "") {
         cout << "| " << setw(3) << left << i+1 << " | " << setw(29) << left << employees[i].getName() << " |\n";
     }
@@ -153,8 +154,9 @@ int login (Employee employees[]) {
   do {
     cout << "Choose employee: ";
     cin >> employeeChoice;
-    if (employeeChoice < 1 || employeeChoice > MAX_EMPLOYEES || employees[employeeChoice-1].getName() == "") {
+    if (employeeChoice <= 0 || employeeChoice > i || employees[employeeChoice-1].getName() == "") {
       cout << "Invalid choice. Please try again." << endl;
+      continue;
     }
     
     string employeeID;
@@ -181,19 +183,7 @@ int login (Employee employees[]) {
 // When user logout caan let user choose whether close or login with another role
 string mainPage(){
   string loginInput;
-  string currentDate = convertTimeTOYYYY_MM__DD();
-  cout << "      ______                  .  .  .  .  .  .            \n";
-  cout << "    /       \\               __|__|__|__|__|__|__         \n";
-  cout << "    |  o o   |             |~~~~~~~~~~~~~~~~~~~~|         \n";
-  cout << "    | o  o o |             |     Happy Eid!     |         \n";
-  cout << "    | o o o  |             |____________________|         \n";
-  cout << "    \\______ /                                            \n";
-  cout << "==========================================================\n";
-  cout << "||                                                      ||\n";
-  cout << "||                   Eid Delights Bakery                ||\n";
-  cout << "||                                                      ||\n";
-  cout << "==========================================================\n";
-  cout << "  Today's Date: " << currentDate << endl;
+  
   cout << "  Please any key to login and continue (0 to Exit): ";
   getline(cin, loginInput);
   cout << endl;
@@ -263,12 +253,23 @@ int main () {
 
   char q;
   do {
+    string currentDate = convertTimeTOYYYY_MM__DD();
+    cout << "             ______            .  .  .  .  .  .            \n";
+    cout << "           /       \\         __|__|__|__|__|__|__         \n";
+    cout << "           |  o o   |       |~~~~~~~~~~~~~~~~~~~~|         \n";
+    cout << "           | o  o o |       |     Happy Eid!     |         \n";
+    cout << "           | o o o  |       |____________________|         \n";
+    cout << "           \\______ /                                      \n";
     cout << "==========================================================\n";
+    cout << "||                                                      ||\n";
+    cout << "||                   Eid Delights Bakery                ||\n";
+    cout << "||                                                      ||\n";
+    cout << "==========================================================\n";
+    cout << "  Today's Date: " << currentDate << endl;
     cout << "  Welcome, " << employees[employeeID].getName() << " (" << employees[employeeID].getRole() << ")!" << endl;
     cout << "==========================================================\n";
     cout << "0 - Quit\n";
-    cout << "1 - Continue\n";
-    cout << "2 - Log In to Another Role\n";
+    cout << "1 - Log In\n";
     cout << "Enter your choice: ";
     cin >> q;
     cin.ignore();
@@ -280,13 +281,13 @@ int main () {
       employees[employeeID].closeBakery(DATE_YYYYMMDD);
       break;
     }
-    if (q == '2') {
+    if (q == '1') {
       employeeID = login(employees);
       role = employees[employeeID].getRole();
     }
     cout << endl;
     if (role == "Supervisor"){
-      processSupervisorChoice(employees, employeeID);
+      processSupervisorChoice(employees, employeeID, employeeCount);
     }
     else if (role == "Baker"){
       processBakerChoice(employees, employeeID);
@@ -340,7 +341,7 @@ void displayCashierMenu(){
   cout << "==========================================================\n";
 }
 
-void processSupervisorChoice(Employee* employees, int employeeID){
+void processSupervisorChoice(Employee* employees, int employeeID, int employeeCount){
   char supervisorChoice;
   bool quit = false;
   do {
@@ -371,7 +372,7 @@ void processSupervisorChoice(Employee* employees, int employeeID){
         break;
       case '5':
         // Employee Management
-        EmployeeManagement(employees, employeeID);
+        EmployeeManagement(employees, employeeID, employeeCount);
         break;
       case '6':
         // Reporting and Analytics
@@ -412,7 +413,6 @@ void processBakerChoice(Employee* employees, int employeeID){
         break;
       case '4':
         // Quit
-        mainPage();
         break;
     }
   } while (bakerChoice != '4');
@@ -440,7 +440,7 @@ void processCashierChoice(Employee* employees, int employeeID){
         processOrder(employees, employeeID);
         break;
       case '3':
-        // Quit 
+        // Quit
         break;
     }
   } while (cashierChoice != '3');
@@ -1136,7 +1136,7 @@ void DiscountAndPromotion(Employee* employees, int employeeID){
   }  while (exit != true && (discountChoice == 'Y' || discountChoice == 'y'));
 }
 
-void EmployeeManagement(Employee* employees, int employeeID){
+void EmployeeManagement(Employee* employees, int employeeID, int employeeCount){
   char cont;
   string newEmployee;
   string newRole;
@@ -1232,6 +1232,11 @@ void EmployeeManagement(Employee* employees, int employeeID){
             break;
           }
 
+          if (index < 0 || index >= employeeCount) {
+            cout << "Invalid index." << endl;
+            return;
+          }
+
           cout << "Enter the new role: ";
           cin >> newRole;
           employees[employeeID].changeEmployeeRole(employees, index - 1, newRole);
@@ -1262,6 +1267,11 @@ void EmployeeManagement(Employee* employees, int employeeID){
 
           if (index == 0){ // Allow user to exit
             break;
+          }
+
+          if (index < 0 || index >= employeeCount) {
+            cout << "Invalid index." << endl;
+            return;
           }
 
           employees[employeeID].deleteEmployee(employees, index - 1);
@@ -1740,4 +1750,3 @@ void checkout (Employee* employees, int employeeID){
     employees[employeeID].showReceipt(convertTimeToYYYYMMDD(), employees[employeeID].getOrderNo());
   }
 }
-
