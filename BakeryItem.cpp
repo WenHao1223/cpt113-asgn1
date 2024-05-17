@@ -2,6 +2,7 @@
 #include "BakeryItem.h" // Include the BakeryItem header file.
 
 #include <fstream> // For file handling.
+#include <iomanip> // For input/output manipulation.
 
 const int MAX_BAKERY_ITEMS = Constant::MAX_BAKERY_ITEMS; // Define the maximum number of bakery items.
 

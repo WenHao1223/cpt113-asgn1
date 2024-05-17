@@ -1620,8 +1620,8 @@ void Employee::compareCostVsPrice(int index) const {
 
   cout << setprecision(2) << fixed;
 
-  // price percentage = (price / cost) * 100
-  cout << "Price percentage: " << (bakeryItems[index].getPricePerUnit() / bakeryItems[index].calculateCost()) * 100 << "%" << endl;
+  // surplus percentage = (price / cost) * 100
+  cout << "Surplus percentage: " << (bakeryItems[index].getPricePerUnit() / bakeryItems[index].calculateCost()) * 100 << "%" << endl;
 }
 
 /**
