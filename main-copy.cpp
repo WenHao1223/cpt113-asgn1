@@ -1277,21 +1277,22 @@ void ReportingAndAnalytics(Employee* employees, int employeeID){
     cout << "| 1. Display Current Financial Summary                   |" << endl;
     cout << "| 2. Display Transaction History                         |" << endl;
     cout << "| 3. Display Balance Sheet                               |" << endl;
-    cout << "| 4. Exit                                                |" << endl;
+    cout << "| 4. Profit and Cost Analysis                            |" << endl;
+    cout << "| 5. Exit                                                |" << endl;
     cout << "==========================================================\n";
     do{
       cout << "Enter your choice: ";
       cin >> reportingChoice;
-      if (reportingChoice < '1' || reportingChoice > '4'){
+      if (reportingChoice < '1' || reportingChoice > '5'){
         cout << "Invalid choice. Please try again." << endl;
       }
-    }while(reportingChoice < '1' || reportingChoice > '4');
+    }while(reportingChoice < '1' || reportingChoice > '5');
 
     // Switch case for Reporting and Analytics
     switch(reportingChoice){
       case '1':
         // Display Current Financial Summary
-        cout << "************Current Financial Summary************\n";
+        cout << "*********** Current Financial Summary ***********\n";
         employees[employeeID].showTotalDebit();
         employees[employeeID].showTotalCredit();
         employees[employeeID].showTotalBalance();
@@ -1327,6 +1328,94 @@ void ReportingAndAnalytics(Employee* employees, int employeeID){
         break;
 
       case '4':
+        // Profit and Cost Analysis, Profit and Price Analysis (switch case)
+        char profitChoice;
+        char cont;
+        int index;
+        do{
+          cout << "==========================================================\n";
+          cout << "||              Profit and Price Analysis               ||\n";
+          cout << "==========================================================\n";
+          cout << "| 1. Price Analysis                                      |" << endl;
+          cout << "| 2. Profit Analysis                                     |" << endl;
+          cout << "| 3. Exit                                                |" << endl;
+          cout << "==========================================================\n";
+          do{
+            cout << "Enter your choice: ";
+            cin >> profitChoice;
+            if (profitChoice < '1' || profitChoice > '3'){
+              cout << "Invalid choice. Please try again." << endl;
+            }
+          }while(profitChoice < '1' || profitChoice > '3');
+
+          switch(profitChoice){
+            case '1':
+              // Price Analysis
+              // Show the price of the bakery items
+              employees[employeeID].accessMenuList();
+              // Do while loop for user multiple price analysis
+              do {
+                cout << "Press (0) to exit....\n";
+                cout << "Enter the choice of the bakery item to compare cost vs price: ";
+                cin >> index;
+
+                if (index == 0){ // Allow user to exit
+                  break;
+                }
+                
+                employees[employeeID].compareCostVsPrice(index - 1);
+                cout << endl;
+                cout << "Do you want to compare another bakery item? (Y/N): ";
+                cin >> cont;
+                if (cont != 'Y' && cont != 'y'){
+                  break;
+                } else {
+                  employees[employeeID].accessMenuList();
+                  cout << endl;
+                }
+              } while (cont == 'Y' || cont == 'y');
+              break;
+
+            case '2':
+              // Profit Analysis
+              // Show the profit of the bakery items
+              employees[employeeID].accessMenuList();
+              // Do while loop for user multiple profit analysis
+              do {
+                cout << "Press (0) to exit....\n";
+                cout << "Enter the choice of the bakery item to compare cost vs profit: ";
+                cin >> index;
+
+                if (index == 0){ // Allow user to exit
+                  break;
+                }
+
+                employees[employeeID].compareCostVsProfit(index - 1);
+                cout << endl;
+                cout << "Do you want to compare another bakery item? (Y/N): ";
+                cin >> cont;
+                if (cont != 'Y' && cont != 'y'){
+                  break;
+                } else {
+                  employees[employeeID].accessMenuList();
+                  cout << endl;
+                }
+              } while (cont == 'Y' || cont == 'y');
+              break;
+
+            case '3':
+              // Exit
+              exit = true;
+              break;
+          }
+          if (exit != true){
+            cout << "Do you want to continue in Profit and Cost Analysis Menu? (Y/N): ";
+            cin >> profitChoice;
+          }
+        }while(exit != true && (profitChoice == 'Y' || profitChoice == 'y'));
+        break;
+
+      case '5':
         // Exit
         exit = true;
         break;
