@@ -108,9 +108,10 @@ void accessMenuDetails(const BakeryItem * item) {
   }
   // cout << endl;
   // cout << "Recipe: " << item->recipe << endl;
+  // Display bakery item status (available or not)
   cout << "Status: ";
   if (item->disabled) {
-    cout << "Sold out." << endl;
+    cout << "Sold out." << endl; 
   } else {
     cout << "Available." << endl;
   }
@@ -121,7 +122,7 @@ void accessMenuDetails(const BakeryItem * item) {
   do {
     cout << "Do you want to view the recipe? (Y/N): ";
     cin >> showRecipe;
-  } while (showRecipe != 'Y' && showRecipe != 'N' && showRecipe != 'y' && showRecipe != 'n');
+  } while (showRecipe != 'Y' && showRecipe != 'N' && showRecipe != 'y' && showRecipe != 'n');  // Input Validation
 
   if (showRecipe == 'Y' || showRecipe == 'y') {
     cout << "====================================================================================================" << endl;
