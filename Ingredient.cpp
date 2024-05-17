@@ -110,8 +110,10 @@ Ingredient::Ingredient(string name, double costPerUnit, int piece) {
  */
 void Ingredient::displayIngredientDetails() const {
   cout << "Name: " << name << endl;
+  cout << setprecision(6) << fixed; // Set the precision of the output to 2 decimal places.
   cout << fixed << "Cost: RM " << costPerUnit;
 
+  cout << setprecision(2) << fixed; // Set the precision of the output to 2 decimal places.
   // Check if the ingredient is countable.
   if (countable) {
     cout << " / piece(s)" << endl;
