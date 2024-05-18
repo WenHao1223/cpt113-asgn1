@@ -199,7 +199,7 @@ void Employee::startBakery(string date) {
     }
     balanceSheetFile.close();
 
-    ofstream balanceSheetFileWrite;
+    ofstream balanceSheetFileWrite; // Output file stream for the balance sheet file
     balanceSheetFileWrite.open("files/balanceSheet.csv");
     // Remove last \n from tempLines
     tempLines = tempLines.substr(0, tempLines.length() - 1);
@@ -420,8 +420,8 @@ void Employee::startBakery(string date) {
     }
 
     // create ingredients array
-    ingredients = new Ingredient[ingredientCount];
-    int ingredientIndex = 0;
+    ingredients = new Ingredient[ingredientCount]; // Array of ingredients for the bakery item
+    int ingredientIndex = 0; // Index of the ingredient
     
     // iterate through ingredients
     for (int i = 0; i < cookieLine.length(); i++) {
@@ -438,8 +438,8 @@ void Employee::startBakery(string date) {
           countable = true;
         }
 
-        string ingredientPieceString = temp.substr(temp.find(",") + 1);
-        int ingredientPiece = stoi(ingredientPieceString);
+        string ingredientPieceString = temp.substr(temp.find(",") + 1); // Extract the piece of the ingredient
+        int ingredientPiece = stoi(ingredientPieceString); // Convert the piece to an integer
 
         // check if ingredient is countable or not
         if (countable) {
@@ -739,7 +739,7 @@ void Employee::closeBakery(string date) {
   cout << "Total balance: RM " << totalBalance << endl;
 
   // Append to balanceSheet.csv
-  ofstream balanceSheetFile;
+  ofstream balanceSheetFile; // Output file stream for the balance sheet file
   balanceSheetFile.open("files/balanceSheet.csv", ios::app);
   balanceSheetFile << setprecision(2) << fixed;
   balanceSheetFile << "\n" << date << "," << totalDebit << "," << totalCredit << "," << totalBalance;
@@ -1326,7 +1326,7 @@ void Employee::createBakeryItem() {
       }
 
       // Replace \n with \\n using .find and .replace
-      auto pos = recipe.find("\n");
+      auto pos = recipe.find("\n"); // variable to store the position of \n in the recipe
 
       // Iterate through all the positions of \n in the recipe.
       while (pos != string::npos) {
@@ -1366,7 +1366,7 @@ void Employee::createBakeryItem() {
       }
 
       // Replace \n with \\n using .find and .replace
-      auto pos = recipe.find("\n");
+      auto pos = recipe.find("\n"); // variable to store the position of \n in the recipe
 
       // Iterate through all the positions of \n in the recipe.
       while (pos != string::npos) {

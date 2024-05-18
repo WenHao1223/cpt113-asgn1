@@ -2,48 +2,48 @@
 // g++ *.cpp -o main.exe && main
 // g++ *.cpp -o main.exe && ./main
 
-#include <iostream>
-#include <iomanip>
-#include <string>
-#include <cmath>
-#include <ctime>
-#include <cstdlib>
-#include <fstream>
+#include <iostream> // for input/output
+#include <iomanip> // for input/output manipulation
+#include <string> // for string
+#include <cmath> // for math functions
+#include <ctime> // for time functions
+#include <cstdlib> // for random number generation
+#include <fstream> // for file input/output
 using namespace std;
 
 // forward declaration
 class Employee;
 
 // class declaration
-#include "Constant.h"
-#include "Discount.h"
-#include "Ingredient.h"
-#include "Cake.h"
-#include "BakeryItem.h"
-#include "IngredientInventory.h"
-#include "Cart.h"
-#include "Supervisor.h"
-#include "Baker.h"
-#include "Cashier.h"
-#include "Employee.h"
+#include "Constant.h" // Implementation file for the Constant namespace.
+#include "Discount.h" // Implementation file for the Discount class.
+#include "Ingredient.h" // Implementation file for the Ingredient class.
+#include "Cake.h" // Implementation file for the Cake class.
+#include "BakeryItem.h" // Implementation file for the BakeryItem class.
+#include "IngredientInventory.h" // Implementation file for the IngredientInventory class.
+#include "Cart.h" // Implementation file for the Cart class.
+#include "Supervisor.h" // Implementation file for the Supervisor class.
+#include "Baker.h" // Implementation file for the Baker class.
+#include "Cashier.h" // Implementation file for the Cashier class.
+#include "Employee.h" // Implementation file for the Employee class.
 
 // global constant
-const int MAX_EMPLOYEES = Constant::MAX_EMPLOYEES;
+const int MAX_EMPLOYEES = Constant::MAX_EMPLOYEES; // Maximum number of employees
 
 // Function Prototype
 // For all role
-void displaySupervisorMenu();
-void displayBakerMenu();
-void displayCashierMenu();
-void processSupervisorChoice(Employee*, int, int);
-void processBakerChoice(Employee*, int);
-void processCashierChoice(Employee*, int, int);
+void displaySupervisorMenu(); // Display Supervisor Menu
+void displayBakerMenu(); // Display Baker Menu
+void displayCashierMenu(); // Display Cashier Menu
+void processSupervisorChoice(Employee*, int, int); // Process Supervisor Choice
+void processBakerChoice(Employee*, int); // Process Baker Choice
+void processCashierChoice(Employee*, int, int); // Process Cashier Choice
 
 // For Supervisor
-void checkBakeryItem(Employee* , int);
-void InventoryManagement(Employee* , int);
-void BakeryItemManagement(Employee* , int);
-void DiscountAndPromotion(Employee*, int);
+void checkBakeryItem(Employee* , int); // Check Bakery Item
+void InventoryManagement(Employee* , int); // Inventory Management
+void BakeryItemManagement(Employee* , int); // Bakery Items Management
+void DiscountAndPromotion(Employee*, int); // Promotions and Discounts
 void EmployeeManagement(Employee*, int, int);
 void ReportingAndAnalytics(Employee*, int);
 
