@@ -285,7 +285,7 @@ int main () {
     cout << "||                                                      ||\n";
     cout << "==========================================================\n";
     cout << "  Today's Date: " << currentDate << endl;
-    cout << "  Welcome, " << employees[employeeID].getName() << " (" << employees[employeeID].getRole() << ")!" << endl;
+    cout << "  Welcome, " << employees[employeeID].getRole() << " " << employees[employeeID].getName() << "!" << endl;
     cout << "==========================================================\n";
     cout << "1 - Continue to Menu\n";
     cout << "2 - Log In to Change Role\n";
