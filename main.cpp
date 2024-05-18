@@ -1327,6 +1327,8 @@ void DiscountAndPromotion(Employee* employees, int employeeID){
           }
 
           if (cont == 'N' && cont == 'n'){  // Break if user does not want to delete another discount
+            cout << "Updated discount list: " << endl;
+            employees[employeeID].accessDiscountList(); // Show discount list
             break;
           }
         }while(cont == 'Y' || cont == 'y'); // Continue if user wants to delete another discount
@@ -1339,7 +1341,7 @@ void DiscountAndPromotion(Employee* employees, int employeeID){
     }
     
     if (exit != true){
-      cout << "Do you want to continue in Promotions and Discounts Menu?";
+      cout << "Do you want to continue in Promotions and Discounts Menu?" << endl; // Ask user if they want to continue in Promotions and Discounts Menu
       cout << "Press 'y' or any key to exit: ";
       cin >> discountChoice;
     }

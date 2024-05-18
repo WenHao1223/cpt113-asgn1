@@ -2117,7 +2117,7 @@ void Employee::addNewDiscount() {
         // add new discount to files/discount.txt
         ofstream discountFile; // Output file stream for the discount file
         discountFile.open("files/discount.txt", ios::app); // Open the discount file in append mode
-        discountFile << endl << discountName << "," << minimumPurchase << "," << discountPercentage << "," << discountDescription << "," << (disabled ? "false" : "true"); // Append the discount details to the file
+        discountFile << endl << discountName << "," << minimumPurchase << "," << discountPercentage << "," << discountDescription << "," << (disabled ? "true" : "false"); // Append the discount details to the file
         discountFile.close(); // Close the discount file
 
         return;
