@@ -601,18 +601,18 @@ font-family="MS Shell Dlg 2" font-size="11" font-weight="400" font-style="normal
 >
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(-0.998955,-1.22461e-16,1.22461e-16,-0.998955,1726.99,525.151)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(-0.998955,-1.22461e-16,1.22461e-16,-0.998955,1726.99,540.135)"
 font-family="MS Shell Dlg 2" font-size="11" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="#ffffff" fill-opacity="1" stroke="#ff0000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(-0.998955,-1.22461e-16,1.22461e-16,-0.998955,1726.99,525.151)"
+<g fill="#ffffff" fill-opacity="1" stroke="#ff0000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(-0.998955,-1.22461e-16,1.22461e-16,-0.998955,1726.99,540.135)"
 font-family="MS Shell Dlg 2" font-size="11" font-weight="400" font-style="normal" 
 >
 <path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M0,-10 L-5,0 L0,10 L5,0 L0,-10"/>
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(-0.998955,-1.22461e-16,1.22461e-16,-0.998955,1726.99,525.151)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(-0.998955,-1.22461e-16,1.22461e-16,-0.998955,1726.99,540.135)"
 font-family="MS Shell Dlg 2" font-size="11" font-weight="400" font-style="normal" 
 >
 </g>
@@ -625,7 +625,7 @@ font-family="MS Shell Dlg 2" font-size="11" font-weight="400" font-style="normal
 <g fill="none" stroke="#ff0000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(0.998955,0,0,0.998955,-37897.2,-4379.26)"
 font-family="MS Shell Dlg 2" font-size="11" font-weight="400" font-style="normal" 
 >
-<path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M39665.7,4919.54 L39665.7,5392.88"/>
+<path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M39665.7,4934.54 L39665.7,5392.88"/>
 </g>
 
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,-37897.2,-4379.26)"
@@ -1959,360 +1959,360 @@ font-family="MS Shell Dlg 2" font-size="11" font-weight="400" font-style="normal
 >
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="MS Shell Dlg 2" font-size="11" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#ff0000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#ff0000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="MS Shell Dlg 2" font-size="11" font-weight="400" font-style="normal" 
 >
 <path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M0,0 L1000,0 L1000,585 L0,585 L0,0"/>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="700" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="467.5" y="12" font-family="Sans Serif" font-size="12" font-weight="700" font-style="normal" 
  >BakeryItem</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#ff0000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#ff0000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <polyline fill="none" vector-effect="non-scaling-stroke" points="0,15 1000,15 " />
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="27" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >- name : string</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="42" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >- category : string</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="57" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >- description : string</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="72" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >- pricePerUnit : double</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="87" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >- ingredient : Ingredient*</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="102" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >- ingredientCount : int</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="117" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >- quantity : double</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="132" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >- recipe : string</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="147" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >- disabled : bool</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="162" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >- cake : Cake</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="177" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >- bakeryItemCount : int</text>
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="butt" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="butt" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <polyline fill="none" vector-effect="none" points="5,178 127,178 " />
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="192" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >- bakeryItems : BakeryItem*</text>
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="butt" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="butt" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <polyline fill="none" vector-effect="none" points="5,193 154,193 " />
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#ff0000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#ff0000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <polyline fill="none" vector-effect="non-scaling-stroke" points="0,195 1000,195 " />
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="207" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ BakeryItem() «constructor»</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="222" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ BakeryItem(name : string, category : string, description : string, pricePerUnit : double, ingredient : Ingredient*, ingredientCount : int, recipe : string, disabled : bool) «constructor»</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="237" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ BakeryItem(name : string, category : string, description : string, pricePerUnit : double, ingredient : Ingredient*, ingredientCount : int, recipe : string, disabled : bool, totalWeight : int) «constructor»</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="252" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ displayBakeryItemDetails()</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="267" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ calculateCost() : double</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="282" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ calculateProfit() : double</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="297" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ setIngredientCostToInventoryIngredientCost(inventoryIngredient : IngredientInventory*)</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="312" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ getBakeryItemName() : string</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="327" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ getBakeryItemCategory() : string</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="342" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ getBakeryItemDescription() : string</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="357" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ getPricePerUnit() : double</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="372" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ getIngredient(index : int) : Ingredient*</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="387" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ getIngredientName(index : int) : string</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="402" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ getCake() : Cake</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="417" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ getIngredientCount() : int</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="432" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ getBakeryItemQuantity() : double</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="447" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ getRecipe() : string</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="462" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ getDisabled() : bool</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="477" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ getBakeryItemCount() : int</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="492" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ setBakeryItems(bakeryItems : BakeryItem*)</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="507" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ setPricePerUnit(pricePerUnit : double)</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="522" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ setBakeryItemQuantity(quantity : double)</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="537" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ setRecipe(recipe : string)</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="552" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ accessMenuDetails(item : BakeryItem*) «friend»</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="567" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ setDisabled(disabled : bool)</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="582" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ ~BakeryItem() «destructor»</text>
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="#a6ceff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 </g>
@@ -2322,7 +2322,7 @@ font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal"
 >
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.627,1007.99)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,864.595,1007.99)"
 font-family="MS Shell Dlg 2" font-size="11" font-weight="400" font-style="normal" 
 >
 </g>
@@ -2765,90 +2765,90 @@ font-family="MS Shell Dlg 2" font-size="11" font-weight="400" font-style="normal
 >
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.05,1683.12)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.03,1683.12)"
 font-family="MS Shell Dlg 2" font-size="11" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="#a3b7f4" fill-opacity="1" stroke="#ff0000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.05,1683.12)"
+<g fill="#a3b7f4" fill-opacity="1" stroke="#ff0000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.03,1683.12)"
 font-family="MS Shell Dlg 2" font-size="11" font-weight="400" font-style="normal" 
 >
 <path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M0,0 L218,0 L218,75 L0,75 L0,0"/>
 </g>
 
-<g fill="#a3b7f4" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.05,1683.12)"
+<g fill="#a3b7f4" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.03,1683.12)"
 font-family="Sans Serif" font-size="12" font-weight="700" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="94.5" y="12" font-family="Sans Serif" font-size="12" font-weight="700" font-style="normal" 
  >Cake</text>
 </g>
 
-<g fill="#a3b7f4" fill-opacity="1" stroke="#ff0000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.05,1683.12)"
+<g fill="#a3b7f4" fill-opacity="1" stroke="#ff0000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.03,1683.12)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <polyline fill="none" vector-effect="non-scaling-stroke" points="0,15 218,15 " />
 </g>
 
-<g fill="#a3b7f4" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.05,1683.12)"
+<g fill="#a3b7f4" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.03,1683.12)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="#a3b7f4" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.05,1683.12)"
+<g fill="#a3b7f4" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.03,1683.12)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="27" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >- totalWeight : int</text>
 </g>
 
-<g fill="#a3b7f4" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.05,1683.12)"
+<g fill="#a3b7f4" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.03,1683.12)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="#a3b7f4" fill-opacity="1" stroke="#ff0000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.05,1683.12)"
+<g fill="#a3b7f4" fill-opacity="1" stroke="#ff0000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.03,1683.12)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <polyline fill="none" vector-effect="non-scaling-stroke" points="0,30 218,30 " />
 </g>
 
-<g fill="#a3b7f4" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.05,1683.12)"
+<g fill="#a3b7f4" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.03,1683.12)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="#a3b7f4" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.05,1683.12)"
+<g fill="#a3b7f4" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.03,1683.12)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="#a3b7f4" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.05,1683.12)"
+<g fill="#a3b7f4" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.03,1683.12)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="42" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ Cake() «constructor»</text>
 </g>
 
-<g fill="#a3b7f4" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.05,1683.12)"
+<g fill="#a3b7f4" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.03,1683.12)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="57" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ Cake(totalWeight : int) «constructor»</text>
 </g>
 
-<g fill="#a3b7f4" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.05,1683.12)"
+<g fill="#a3b7f4" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.03,1683.12)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="72" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ getTotalWeight() : int</text>
 </g>
 
-<g fill="#a3b7f4" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.05,1683.12)"
+<g fill="#a3b7f4" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.03,1683.12)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="#a3b7f4" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.05,1683.12)"
+<g fill="#a3b7f4" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.03,1683.12)"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 </g>
@@ -2858,7 +2858,7 @@ font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal"
 >
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.05,1683.12)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1594.03,1683.12)"
 font-family="MS Shell Dlg 2" font-size="11" font-weight="400" font-style="normal" 
 >
 </g>
@@ -2871,7 +2871,7 @@ font-family="MS Shell Dlg 2" font-size="11" font-weight="400" font-style="normal
 <g fill="#83ffbb" fill-opacity="1" stroke="#ff0000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1501.33,5.69404)"
 font-family="MS Shell Dlg 2" font-size="11" font-weight="400" font-style="normal" 
 >
-<path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M0,0 L356,0 L356,510 L0,510 L0,0"/>
+<path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M0,0 L356,0 L356,525 L0,525 L0,0"/>
 </g>
 
 <g fill="#83ffbb" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1501.33,5.69404)"
@@ -3014,7 +3014,7 @@ font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal"
 font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="222" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
- >+ updateBakeryItemQuantity(index : int, quantity : int)</text>
+ >+ updateBakeryItemQuantity(index : int, quantity : double)</text>
 </g>
 
 <g fill="#83ffbb" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1501.33,5.69404)"
@@ -3148,6 +3148,13 @@ font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal"
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="507" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
  >+ ~Cart() «destructor»</text>
+</g>
+
+<g fill="#83ffbb" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1501.33,5.69404)"
+font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="522" font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal" 
+ >+ updateBakeryItemQuantity(index : int, quantity : double)</text>
 </g>
 
 <g fill="#83ffbb" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,1501.33,5.69404)"
@@ -3410,6 +3417,40 @@ font-family="Sans Serif" font-size="12" font-weight="400" font-style="normal"
 </g>
 
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,863.796,572.151)"
+font-family="MS Shell Dlg 2" font-size="11" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,835.226,731.395)"
+font-family="MS Shell Dlg 2" font-size="11" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,835.226,731.395)"
+font-family="MS Shell Dlg 2" font-size="11" font-weight="400" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="4" y="13" font-family="MS Shell Dlg 2" font-size="11" font-weight="400" font-style="normal" 
+ >0..1</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,835.226,731.395)"
+font-family="MS Shell Dlg 2" font-size="11" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,806.656,752.453)"
+font-family="MS Shell Dlg 2" font-size="11" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,806.656,752.453)"
+font-family="MS Shell Dlg 2" font-size="11" font-weight="400" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="4" y="13" font-family="MS Shell Dlg 2" font-size="11" font-weight="400" font-style="normal" 
+ >-discounts</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998955,0,0,0.998955,806.656,752.453)"
 font-family="MS Shell Dlg 2" font-size="11" font-weight="400" font-style="normal" 
 >
 </g>
