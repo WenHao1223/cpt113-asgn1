@@ -234,6 +234,11 @@ int main () {
       string role;
       string password;
       getline(employeeDataFile, employeeID, ',');
+
+      if (employeeID == "") {
+        continue;
+      }
+
       getline(employeeDataFile, name, ',');
       getline(employeeDataFile, role, ',');
       getline(employeeDataFile, password);
