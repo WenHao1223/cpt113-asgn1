@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<XMI verified="false" xmi.version="1.2" timestamp="2024-05-18T18:36:46" xmlns:UML="http://schema.omg.org/spec/UML/1.4">
+<XMI verified="false" xmi.version="1.2" timestamp="2024-05-18T21:53:31" xmlns:UML="http://schema.omg.org/spec/UML/1.4">
  <XMI.header>
   <XMI.documentation>
    <XMI.exporter>umbrello uml modeller http://umbrello.kde.org</XMI.exporter>
@@ -540,12 +540,6 @@
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
         <UML:Operation stereotype="destructor" visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uXjPBcNQqnScU" comment="destructor&#xd;&#xa;@brief Destructor for the Cart class.&#xd;" isOverride="false" name="~Cart" isInline="false" isVirtual="false"/>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u51bYoDe88Zko" comment="@brief Updates the quantity of a bakery item in the cart at the specified index.&#xd;&#xa;@param index The index of the bakery item to update.&#xd;&#xa;@param quantity The new quantity of the bakery item.&#xd;" isOverride="false" name="updateBakeryItemQuantity" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter visibility="private" isSpecification="false" xmi.id="u1vaBjQsIWUjT" type="udFl2CtkB6kDl" value="" name="index"/>
-          <UML:Parameter visibility="private" isSpecification="false" xmi.id="uyvBt3G3kRDVO" type="u8UI68c7Cwx0r" value="" name="quantity"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
        </UML:Classifier.feature>
       </UML:Class>
       <UML:Class visibility="public" isSpecification="false" namespace="Logical_View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uXVG5E1fKJKS5" name="Cashier">
@@ -1060,7 +1054,7 @@
      </UML:Namespace.ownedElement>
      <XMI.extension xmi.extender="umbrello">
       <diagrams resolution="96">
-       <diagram showopsig="1" linecolor="#ff0000" snapx="25" showattribassocs="1" snapy="25" linewidth="0" showattsig="1" textcolor="#000000" isopen="1" showpackage="1" showpubliconly="0" showstereotype="1" name="class diagram" font="Sans Serif,9,-1,0,50,0,0,0,0,0" canvasheight="1921.01" canvaswidth="1864.5" localid="-1" snapcsgrid="0" showgrid="0" showops="1" griddotcolor="#d3d3d3" backgroundcolor="#ffffff" usefillcolor="1" fillcolor="#ffff00" zoom="40.45557735707909" xmi.id="uUgIeO2s1nMI6" documentation="" showscope="1" snapgrid="0" showatts="1" type="1">
+       <diagram showopsig="1" linecolor="#ff0000" snapx="25" showattribassocs="1" snapy="25" linewidth="0" showattsig="1" textcolor="#000000" isopen="1" showpackage="1" showpubliconly="0" showstereotype="1" name="class diagram" font="Sans Serif,9,-1,0,50,0,0,0,0,0" canvasheight="1921.01" canvaswidth="1864.5" localid="-1" snapcsgrid="0" showgrid="0" showops="1" griddotcolor="#d3d3d3" backgroundcolor="#ffffff" usefillcolor="1" fillcolor="#ffff00" zoom="163.4508869230837" xmi.id="uUgIeO2s1nMI6" documentation="" showscope="1" snapgrid="0" showatts="1" type="1">
         <widgets>
          <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" showoperations="1" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="37937.9" showattsigs="601" showstereotype="1" y="4384.84" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uuu76xX4w0O5x" width="753" isinstance="0" usefillcolor="1" fillcolor="#ffcc74" xmi.id="ue7abUCMMZsUW" autoresize="1" showscope="1" height="1470" showopsigs="601"/>
          <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" showoperations="1" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="38802.7" showattsigs="601" showstereotype="1" y="4390.07" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uubMOmR9TAVag" width="349" isinstance="0" usefillcolor="1" fillcolor="#a6ff83" xmi.id="utTEk8La6RbKR" autoresize="1" showscope="1" height="90" showopsigs="601"/>
@@ -1199,7 +1193,7 @@
   </UML:Model>
  </XMI.content>
  <XMI.extensions xmi.extender="umbrello">
-  <docsettings viewid="uUgIeO2s1nMI6" uniqueid="ug37ZPJikt6d9" documentation=""/>
+  <docsettings viewid="uUgIeO2s1nMI6" uniqueid="uXoAJVOrIsght" documentation=""/>
   <listview>
    <listitem open="1" type="800" id="Views">
     <listitem open="1" type="821" id="Component_View">
@@ -1306,7 +1300,6 @@
       <listitem open="0" type="814" id="uRF0DXKupRk9j"/>
       <listitem open="0" type="814" id="uCBIKgS6kv3Z4"/>
       <listitem open="0" type="814" id="u0SIvOIATziMB"/>
-      <listitem open="0" type="815" id="u51bYoDe88Zko"/>
       <listitem open="0" type="815" id="uzVvd8Sgn9fKv"/>
      </listitem>
      <listitem open="0" type="813" id="uXVG5E1fKJKS5">
