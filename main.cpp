@@ -1784,7 +1784,7 @@ void processOrder(Employee* employees, int employeeID, int employeeCount){
     cout << "==========================================================\n";
     cout << "| 1. Add Cakes/ Cookies                                  |\n";
     cout << "| 2. Add Cakes by Weight                                 |\n";
-    cout << "| 3. Edit item                                           |\n";
+    cout << "| 3. Edit Item                                           |\n";
     cout << "| 4. Display Cart                                        |\n";
     cout << "| 5. Transfer Cart                                       |\n";
     cout << "| 6. Checkout                                            |\n";
@@ -1954,7 +1954,6 @@ void processOrder(Employee* employees, int employeeID, int employeeCount){
 
                 do {
                   cout << "Do you want to edit another item? (Y/N) " << endl;
-                  cout << "Press 'Y' or any key to stop editing: ";
                   cin >> cont;
                   } while (cont != 'Y' && cont != 'y' && cont != 'N' && cont != 'n');
                   if (cont == 'N' && cont != 'n') {
@@ -2000,10 +1999,9 @@ void processOrder(Employee* employees, int employeeID, int employeeCount){
 
             case '3':
               // Exit
-              exit = true;
               break;
           }        
-        } while (exit != true);
+        } while (editOrDelete != '3');
 
       case '4':
         // Display Cart
@@ -2139,14 +2137,14 @@ void processOrder(Employee* employees, int employeeID, int employeeCount){
         cout << endl;
         cout << "Press 0 to checkout/ any key to back to Cashier menu: ";
         cin >> cashierChoice;
-        if (cont == '0') {
+        if (cashierChoice == '0') {
           cout << endl;
           checkout(employees, employeeID);
           break;
         }
       }
     }
-  } while (exit != true && cont != '0');
+  } while (exit != true && cashierChoice != '0');
 }
 
 void checkout (Employee* employees, int employeeID){
