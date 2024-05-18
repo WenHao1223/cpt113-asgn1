@@ -2901,13 +2901,15 @@ void Employee::removeBakeryItemFromCart (int index) {
 void Employee::updateBakeryItemQuantityInCart(int index, int quantity) {
   // Check if the employee is a cashier.
   if (cashier != nullptr) {
+    if (index < 0 || index >= cashier->getCart()->getCartItemCount()) {
+      cout << "Invalid index." << endl;
+      return;
+    }
+
     cout << "Editing " << cashier->getCart()->getBakeryItems()[index].getBakeryItemName() << " quantity in cart..." << endl;
 
     // update bakery item quantity in cart
     cashier->getCart()->updateBakeryItemQuantity(index, quantity);
-
-    // display message
-    cout << cashier->getCart()->getBakeryItems()[index].getBakeryItemName() << " quantity in cart has been changed to " << quantity << "." << endl;
   } else {
     cout << "Only cashier can edit bakery item quantity in cart." << endl;
   }

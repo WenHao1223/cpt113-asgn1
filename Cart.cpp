@@ -152,15 +152,28 @@ void Cart::removeBakeryItemFromCart(int index) {
  * 
  * @return None.
  */
-void Cart::updateBakeryItemQuantity(int index, int quantity) {
-  // Check if the index is valid
-  if (index < 0 || index >= cartItemCount) {
-    cout << "Invalid index." << endl;
+void Cart::updateBakeryItemQuantity(int index, double quantity) {
+  // check if quantity is not a whole number
+  if (this->quantity[index] != (int)(this->quantity[index])) {
+    // display quantity as a mixed number
+    quantity /= bakeryItems[index].getCake().getTotalWeight(); // convert quantity to weight
+  }
+
+  // check if bakery item is enough
+  if (bakeryItems[index].getBakeryItemQuantity() < quantity) {
+    cout << "====================================================" << endl;
+    cout << "Warning: Not enough " << bakeryItems[index].getBakeryItemName() << " in inventory." << endl;
+    cout << "Available: " << bakeryItems[index].getBakeryItemQuantity() << " item(s)." << endl;
+    cout << "====================================================" << endl;
+    // cout << "Require " << quantity << " item(s)." << endl;
     return;
   }
 
-  // Update the quantity of the bakery item at the specified index
+  // update quantity in cart
   this->quantity[index] = quantity;
+
+  // display message
+  cout << bakeryItems[index].getBakeryItemName() << " quantity in cart has been changed." << endl;
 }
 
 /**

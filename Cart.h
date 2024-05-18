@@ -70,7 +70,7 @@ class Cart {
      * @param index The index of the bakery item to update.
      * @param quantity The new quantity of the bakery item.
      */
-    void updateBakeryItemQuantity(int index, int quantity);
+    void updateBakeryItemQuantity(int index, double quantity);
 
     /**
      * @brief Clears the cart by removing all items.

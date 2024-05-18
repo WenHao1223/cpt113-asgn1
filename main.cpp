@@ -1888,7 +1888,7 @@ void processOrder(Employee* employees, int employeeID, int employeeCount){
             char display;
             addMoreItems = false;
             cout << "Do you want to display cart details ?" << endl;
-            cout << "Press 'Y' or any key to stop adding cake items by weight: ";
+            cout << "Press 'Y' or any key to exit: ";
             cin >> display;
             if (display == 'Y' || display == 'y') {
               employees[employeeID].displayCartDetails();
