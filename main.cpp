@@ -233,10 +233,15 @@ int main () {
       string name;
       string role;
       string password;
-      getline(employeeDataFile, employeeID, ','); // read employee ID
-      getline(employeeDataFile, name, ','); // read employee name
-      getline(employeeDataFile, role, ','); // read employee role
-      getline(employeeDataFile, password); // read employee password
+      getline(employeeDataFile, employeeID, ',');
+
+      if (employeeID == "") {
+        continue;
+      }
+
+      getline(employeeDataFile, name, ',');
+      getline(employeeDataFile, role, ',');
+      getline(employeeDataFile, password);
 
       employees[employeeCount].setEmployeeID(employeeID); // set employee ID
       employees[employeeCount].setName(name); // set employee name
@@ -1223,20 +1228,20 @@ void DiscountAndPromotion(Employee* employees, int employeeID){
 
           cout << endl;
           do {
-            cout << "Do you want to enable another discount? (Y/N): ";
+            cout << "Do you want to enable another discount? (Y/N): "; // Ask user if they want to enable another discount
             cin >> cont;
-          } while (cont != 'Y' && cont != 'y' && cont != 'N' && cont != 'n');
+          } while (cont != 'Y' && cont != 'y' && cont != 'N' && cont != 'n'); // Input Validation
 
           if (cont == 'Y' && cont == 'y'){
-            employees[employeeID].accessDiscountList();
+            employees[employeeID].accessDiscountList(); // Show discount list
             cout << endl;
           }
 
-          if (cont == 'N' && cont == 'n'){
+          if (cont == 'N' && cont == 'n'){ // Break if user does not want to enable another discount
             break;
           }
 
-        }while(cont == 'Y' || cont == 'y');
+        }while(cont == 'Y' || cont == 'y'); // Continue if user wants to enable another discount
         break;
 
       case '4':
@@ -1268,24 +1273,24 @@ void DiscountAndPromotion(Employee* employees, int employeeID){
 
           cout << endl;
           do {
-            cout << "Do you want to disable another discount? (Y/N): ";
+            cout << "Do you want to disable another discount? (Y/N): "; // Ask user if they want to disable another discount
             cin >> cont;
-          } while (cont != 'Y' && cont != 'y' && cont != 'N' && cont != 'n');
+          } while (cont != 'Y' && cont != 'y' && cont != 'N' && cont != 'n'); // Input Validation 
 
           if (cont == 'Y' && cont == 'y'){
-            employees[employeeID].accessDiscountList();
+            employees[employeeID].accessDiscountList(); // Show discount list
             cout << endl;
           }
 
-          if (cont == 'N' && cont == 'n'){
+          if (cont == 'N' && cont == 'n'){  // Break if user does not want to disable another discount
             break;
           }
-        }while(cont == 'Y' || cont == 'y');
+        }while(cont == 'Y' || cont == 'y'); // Continue if user wants to disable another discount
         break;
 
       case '5':
         // Delete Discount
-        employees[employeeID].accessDiscountList();
+        employees[employeeID].accessDiscountList(); // Show discount list
         cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
         cout << "|                  Delete Discount                 |\n";
         cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
@@ -1307,24 +1312,24 @@ void DiscountAndPromotion(Employee* employees, int employeeID){
             break;
           }
 
-          employees[employeeID].deleteDiscount(index - 1);
+          employees[employeeID].deleteDiscount(index - 1);  // Delete discount
           // cout << "Delete successful!" << endl;
 
           cout << endl;
           do {
-            cout << "Do you want to delete another discount? (Y/N): ";
+            cout << "Do you want to delete another discount? (Y/N): ";  // Ask user if they want to delete another discount
             cin >> cont;
-          } while (cont != 'Y' && cont != 'y' && cont != 'N' && cont != 'n');
+          } while (cont != 'Y' && cont != 'y' && cont != 'N' && cont != 'n'); // Input Validation
 
           if (cont == 'Y' && cont == 'y'){
-            employees[employeeID].accessDiscountList();
+            employees[employeeID].accessDiscountList(); // Show discount list
             cout << endl;
           }
 
-          if (cont == 'N' && cont == 'n'){
+          if (cont == 'N' && cont == 'n'){  // Break if user does not want to delete another discount
             break;
           }
-        }while(cont == 'Y' || cont == 'y');
+        }while(cont == 'Y' || cont == 'y'); // Continue if user wants to delete another discount
         break;
 
       case '6':
@@ -1338,17 +1343,17 @@ void DiscountAndPromotion(Employee* employees, int employeeID){
       cout << "Press 'y' or any key to exit: ";
       cin >> discountChoice;
     }
-  }  while (exit != true && (discountChoice == 'Y' || discountChoice == 'y'));
+  }  while (exit != true && (discountChoice == 'Y' || discountChoice == 'y'));  // Continue if user wants to continue in Promotions and Discounts Menu
 }
 
-void EmployeeManagement(Employee* employees, int employeeID, int employeeCount){
-  char cont;
-  string newEmployee;
-  string newRole;
-  string newEmployeeID;
-  string newEmployeePassword;
-  int index;
-  char employeeMangementChoice;
+void EmployeeManagement(Employee* employees, int employeeID, int employeeCount){    
+  char cont;  // For user to continue or not
+  string newEmployee; // For user to enter new employee name
+  string newRole; // For user to enter new role
+  string newEmployeeID; // For user to enter new employee ID
+  string newEmployeePassword; // For user to enter new employee password
+  int index;  // For user to choose the employee to change role
+  char employeeMangementChoice; // For user to choose the employee management option
   bool exit = false;
   // createNewEmployee, changeRole, deleteEmployee
   do{
@@ -1364,10 +1369,10 @@ void EmployeeManagement(Employee* employees, int employeeID, int employeeCount){
     do{
       cout << "Enter your choice: ";
       cin >> employeeMangementChoice;
-      if (employeeMangementChoice < '1' || employeeMangementChoice > '5'){
+      if (employeeMangementChoice < '1' || employeeMangementChoice > '5'){  // Input Validation
         cout << "Invalid choice. Please try again." << endl;
       }
-    }while(employeeMangementChoice < '1' || employeeMangementChoice > '5');
+    }while(employeeMangementChoice < '1' || employeeMangementChoice > '5'); // Input Validation
     
     // switch case for Employee Management
     switch(employeeMangementChoice){
@@ -1377,7 +1382,7 @@ void EmployeeManagement(Employee* employees, int employeeID, int employeeCount){
         cout << "|           Display Employee Details               |\n";
         cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
         cout << endl;
-        employees[employeeID].displayAllEmployeeDetails(employees);
+        employees[employeeID].displayAllEmployeeDetails(employees); // Display all employee details
         break;
 
       case '2':
@@ -1406,25 +1411,24 @@ void EmployeeManagement(Employee* employees, int employeeID, int employeeCount){
           cout << "Enter the new employee password: ";
           cin >> newEmployeePassword;
 
-          employees[employeeID].createNewEmployee(employees, employeeCount, newEmployeeID, newEmployee, newRole, newEmployeePassword);
+          employees[employeeID].createNewEmployee(employees, employeeCount, newEmployeeID, newEmployee, newRole, newEmployeePassword);  // Create new employee
           // cout << "Create successful!" << endl;
 
           cout << endl;
           do {
             cout << "Do you want to create another employee? (Y/N): ";
             cin >> cont;
-          } while (cont != 'Y' && cont != 'y' && cont != 'N' && cont != 'n');
+          } while (cont != 'Y' && cont != 'y' && cont != 'N' && cont != 'n'); // Input Validation
 
           if (cont == 'N' && cont == 'n'){
             cout << "Updated Employee List: " << endl;
-            employees[employeeID].displayAllEmployeeDetails(employees);
+            employees[employeeID].displayAllEmployeeDetails(employees); // Display all employee details
             break;
           }
 
-          if (cont == 'Y' && cont == 'y'){
-            cout << endl;
-          }
-        }while(cont == 'Y' || cont == 'y');
+          cout << endl;
+
+        }while(cont == 'Y' || cont == 'y'); // Continue if user wants to create another employee
         
 
         break;
@@ -1434,7 +1438,7 @@ void EmployeeManagement(Employee* employees, int employeeID, int employeeCount){
         cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
         cout << "|           Change Employee Role                   |\n";
         cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
-        employees[employeeID].displayAllEmployeeDetails(employees);
+        employees[employeeID].displayAllEmployeeDetails(employees); // Display all employee details
         // Do while loop for user multiple change employee role
         do{
           cout << "Press (0) to exit....\n";
@@ -1453,27 +1457,27 @@ void EmployeeManagement(Employee* employees, int employeeID, int employeeCount){
           }
 
           if (index < 0 || index > employeeCount) {
-            cout << "Invalid index." << endl;
+            cout << "Invalid index." << endl; // Input Validation
             return;
           }
 
           cout << "Supervisor/ Baker/ Cashier" << endl;
           cout << "Enter the new role: ";
           cin >> newRole;
-          employees[employeeID].changeEmployeeRole(employees, index - 1, newRole);
+          employees[employeeID].changeEmployeeRole(employees, index - 1, newRole);  // Change employee role
           // cout << "Change successful!" << endl;
           
           cout << endl;
           do {
             cout << "Do you want to change another employee role? (Y/N): ";
             cin >> cont;
-          } while (cont != 'Y' && cont != 'y' && cont != 'N' && cont != 'n');
+          } while (cont != 'Y' && cont != 'y' && cont != 'N' && cont != 'n'); // Input Validation
 
           cout << endl;
-          if (cont == 'N' && cont == 'n'){
+          if (cont == 'N' && cont == 'n'){  // Break if user does not want to change another employee role
             break;
           }
-        }while(cont == 'Y' || cont == 'y');
+        }while(cont == 'Y' || cont == 'y'); // Continue if user wants to change another employee role
         break;
 
       case '4':
@@ -1504,21 +1508,21 @@ void EmployeeManagement(Employee* employees, int employeeID, int employeeCount){
             return;
           }
 
-          employees[employeeID].deleteEmployee(employees, index - 1);
+          employees[employeeID].deleteEmployee(employees, index - 1); // Delete employee
           // cout << "Delete successful!" << endl;
 
           cout << endl;
           do {
             cout << "Do you want to delete another employee? (Y/N): ";
             cin >> cont;
-          } while (cont != 'Y' && cont != 'y' && cont != 'N' && cont != 'n');
+          } while (cont != 'Y' && cont != 'y' && cont != 'N' && cont != 'n'); // Input Validation
 
           if (cont == 'N' && cont == 'n'){
             cout << "Updated Employee List: " << endl;
-            employees[employeeID].displayAllEmployeeDetails(employees);
+            employees[employeeID].displayAllEmployeeDetails(employees);   // Display all employee details
             break;
           }
-        }while(cont == 'Y' || cont == 'y');
+        }while(cont == 'Y' || cont == 'y'); // Continue if user wants to delete another employee
         break;
 
       case '5':
@@ -1532,11 +1536,11 @@ void EmployeeManagement(Employee* employees, int employeeID, int employeeCount){
       cout << "Press 'y' or any key to exit: ";
       cin >> employeeMangementChoice;
     }
-  }while(exit != true && (employeeMangementChoice == 'Y' || employeeMangementChoice == 'y'));
+  }while(exit != true && (employeeMangementChoice == 'Y' || employeeMangementChoice == 'y')); // Continue if user wants to continue in Employee Management Menu
 }
 
 void ReportingAndAnalytics(Employee* employees, int employeeID){
-  char reportingChoice;
+  char reportingChoice; // For user to choose the reporting and analytics option
   string date;
   bool exit = false;
   //Show Total Profit per day, Show total credit and total debit, show total balance
@@ -1589,12 +1593,12 @@ void ReportingAndAnalytics(Employee* employees, int employeeID){
           do {
             cout << "Do you want to access another transaction history? (Y/N): ";
             cin >> reportingChoice;
-          } while (reportingChoice != 'Y' && reportingChoice != 'y' && reportingChoice != 'N' && reportingChoice != 'n');
+          } while (reportingChoice != 'Y' && reportingChoice != 'y' && reportingChoice != 'N' && reportingChoice != 'n'); // Input Validation
 
-          if (reportingChoice == 'N' && reportingChoice != 'n') {
+          if (reportingChoice == 'N' && reportingChoice != 'n') { // Allow user to exit
             break;
           }
-        } while (reportingChoice == 'Y' || reportingChoice == 'y');
+        } while (reportingChoice == 'Y' || reportingChoice == 'y'); // Continue if user wants to access another transaction history
         break;
 
       case '3':
