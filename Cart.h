@@ -143,43 +143,43 @@ class Cart {
      * @brief Sets the array of bakery items in the cart.
      * @param bakeryItems The array of bakery items to set.
      */
-    void setBakeryItems(BakeryItem *);
+    void setBakeryItems(BakeryItem * bakeryItems);
 
     /**
      * @brief Sets the array of quantities corresponding to each bakery item in the cart.
      * @param quantity The array of quantities to set.
      */
-    void setQuantity(double *);
+    void setQuantity(double * quantity);
 
     /**
      * @brief Sets the number of items in the cart.
      * @param cartItemCount The number of items to set.
      */
-    void setCartItemCount(int);
+    void setCartItemCount(int cartItemCount);
 
     /**
      * @brief Sets the total cost of all items in the cart.
      * @param totalCost The total cost to set.
      */
-    void setTotalCost(double);
+    void setTotalCost(double totalCost);
 
     /**
      * @brief Sets the total price of all items in the cart (including discounts).
      * @param totalPrice The total price to set.
      */
-    void setTotalPrice(double);
+    void setTotalPrice(double totalPrice);
 
     /**
      * @brief Sets the total profit from selling all items in the cart.
      * @param totalProfit The total profit to set.
      */
-    void setTotalProfit(double);
+    void setTotalProfit(double totalProfit);
 
     /**
      * @brief Sets the total discount applied to the cart.
      * @param totalDiscount The total discount to set.
      */
-    void setTotalDiscount(double);
+    void setTotalDiscount(double totalDiscount);
 
     // destructor
     /**

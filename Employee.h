@@ -229,7 +229,7 @@ class Employee {
      * @return None.
      * 
      */
-    void accessIngredientInventoryDetails(int) const;
+    void accessIngredientInventoryDetails(int index) const;
 
     /**
      * @brief Check the ingredient inventory.

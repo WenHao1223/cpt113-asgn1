@@ -149,35 +149,35 @@ class IngredientInventory : public Ingredient {
      * @param index The index of the ingredient in the inventory.
      * @return A pointer to the specific ingredient in the inventory.
      */
-    IngredientInventory * getIngredientInventory(int) const;
+    IngredientInventory * getIngredientInventory(int index) const;
 
     /**
      * @brief Get the name of a specific ingredient in the inventory.
      * @param index The index of the ingredient in the inventory.
      * @return The name of the specific ingredient in the inventory.
      */
-    string getIngredientInventoryName(int) const;
+    string getIngredientInventoryName(int index) const;
 
     /**
      * @brief Get the cost of a specific ingredient in the inventory.
      * @param index The index of the ingredient in the inventory.
      * @return The cost of the specific ingredient in the inventory.
      */
-    double getIngredientInventoryCost(int) const;
+    double getIngredientInventoryCost(int index) const;
 
     /**
      * @brief Get the number of pieces of a specific ingredient in the inventory.
      * @param index The index of the ingredient in the inventory.
      * @return The number of pieces of the specific ingredient in the inventory.
      */
-    int getIngredientInventoryPiece(int) const;
+    int getIngredientInventoryPiece(int index) const;
 
     /**
      * @brief Get the weight of a specific ingredient in the inventory.
      * @param index The index of the ingredient in the inventory.
      * @return The weight of the specific ingredient in the inventory.
      */
-    double getIngredientInventoryWeight(int) const;
+    double getIngredientInventoryWeight(int index) const;
 
     // destructor
     /**

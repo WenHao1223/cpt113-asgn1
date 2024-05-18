@@ -68,7 +68,7 @@ class BakeryItem {
      * @brief Set the ingredient cost to the inventory ingredient cost.
      * @param inventory The IngredientInventory object containing the ingredient cost information.
      */
-    void setIngredientCostToInventoryIngredientCost(IngredientInventory *);
+    void setIngredientCostToInventoryIngredientCost(IngredientInventory * inventoryIngredient);
 
     // Accessors
     /**
@@ -100,14 +100,14 @@ class BakeryItem {
      * @param index The index of the ingredient.
      * @return A pointer to the Ingredient object.
      */
-    Ingredient * getIngredient(int) const;
+    Ingredient * getIngredient(int index) const;
     
     /**
      * @brief 
      * @param index The index of the ingredient.
      * @return The name of the ingredient.
      */
-    string getIngredientName(int) const;
+    string getIngredientName(int index) const;
     
     /**
      * @brief Get the cake object
@@ -151,31 +151,31 @@ class BakeryItem {
      * @brief Set the bakery items.
      * @param items The array of BakeryItem objects.
      */
-    void setBakeryItems(BakeryItem *);
+    void setBakeryItems(BakeryItem * bakeryItems);
     
     /**
      * @brief Set the price per unit of the bakery item.
      * @param price The price per unit.
      */
-    void setPricePerUnit(double);
+    void setPricePerUnit(double pricePerUnit);
     
     /**
      * @brief Set the quantity of the bakery item.
      * @param quantity The quantity of the bakery item.
      */
-    void setBakeryItemQuantity(double);
+    void setBakeryItemQuantity(double quantity);
     
     /**
      * @brief Set the recipe of the bakery item.
      * @param recipe The recipe of the bakery item.
      */
-    void setRecipe(string);
+    void setRecipe(string recipe);
     
     /**
      * @brief Set the disabled flag of the bakery item.
      * @param disabled The disabled flag.
      */
-    void setDisabled(bool);
+    void setDisabled(bool disabled);
 
     // Friend function to be used by main.cpp
     /**
@@ -186,7 +186,7 @@ class BakeryItem {
      * 
      * @param item The BakeryItem object to access the menu details of.
      */
-    friend void accessMenuDetails(const BakeryItem *);
+    friend void accessMenuDetails(const BakeryItem * item);
 
     // Destructor
     ~BakeryItem();

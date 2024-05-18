@@ -118,31 +118,31 @@ class Discount {
      * @brief Mutator for the name of the discount.
      * @param name The new name of the discount.
      */
-    void setName(string);
+    void setName(string name);
 
     /**
      * @brief Mutator for the minimum purchase amount required to apply the discount.
      * @param minimumPurchase The new minimum purchase amount required to apply the discount.
      */
-    void setMinimumPurchase(double);
+    void setMinimumPurchase(double minimumPurchase);
 
     /**
      * @brief Mutator for the percentage of discount to be applied.
      * @param discountPercentage The new percentage of discount to be applied.
      */
-    void setDiscountPercentage(double);
+    void setDiscountPercentage(double discountPercentage);
 
     /**
      * @brief Mutator for the description of the discount.
      * @param description The new description of the discount.
      */
-    void setDescription(string);
+    void setDescription(string description);
 
     /**
      * @brief Mutator for the disabled status of the discount.
      * @param disabled The new disabled status of the discount.
      */
-    void setDisabled(bool);
+    void setDisabled(bool disabled);
 
     /**
      * @brief Destructor for the Discount class.

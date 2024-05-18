@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<XMI verified="false" xmi.version="1.2" timestamp="2024-05-17T20:37:06" xmlns:UML="http://schema.omg.org/spec/UML/1.4">
+<XMI verified="false" xmi.version="1.2" timestamp="2024-05-18T12:07:39" xmlns:UML="http://schema.omg.org/spec/UML/1.4">
  <XMI.header>
   <XMI.documentation>
    <XMI.exporter>umbrello uml modeller http://umbrello.kde.org</XMI.exporter>
@@ -155,62 +155,67 @@
           <UML:Parameter visibility="private" isSpecification="false" xmi.id="ua7mAjVn4ruuq" type="udFl2CtkB6kDl" value="" name=""/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="true" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uRK7L2KOjgic4" comment="@brief Get the cake object&#xd;&#xa;@param None.&#xd;&#xa;@return Cake object.&#xd;" isOverride="false" name="getCake" isInline="false" isVirtual="false">
+        <UML:Operation visibility="public" isSpecification="false" isQuery="true" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uRK7L2KOjgic4" comment="@brief Get the cake object&#xa;@param None.&#xa;@return Cake object.&#xa;" isOverride="false" name="getCake" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
           <UML:Parameter kind="return" xmi.id="ugyckbRXgPZSG" type="u9KQebxtqvbNq"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="true" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="urNbR4j9eMn0H" comment="@brief Get the number of ingredients in the bakery item.&#xd;&#xa;@return The number of ingredients.&#xd;" isOverride="false" name="getIngredientCount" isInline="false" isVirtual="false">
+        <UML:Operation visibility="public" isSpecification="false" isQuery="true" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="urNbR4j9eMn0H" comment="@brief Get the number of ingredients in the bakery item.&#xa;@return The number of ingredients.&#xa;" isOverride="false" name="getIngredientCount" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
           <UML:Parameter kind="return" xmi.id="ufhA0AZKaJMVv" type="udFl2CtkB6kDl"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="true" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ubkVcPPVBLvXg" comment="@brief Get the quantity of the bakery item.&#xd;&#xa;@return The quantity of the bakery item.&#xd;" isOverride="false" name="getBakeryItemQuantity" isInline="false" isVirtual="false">
+        <UML:Operation visibility="public" isSpecification="false" isQuery="true" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ubkVcPPVBLvXg" comment="@brief Get the quantity of the bakery item.&#xa;@return The quantity of the bakery item.&#xa;" isOverride="false" name="getBakeryItemQuantity" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
           <UML:Parameter kind="return" xmi.id="uEy7agVytdrNK" type="u8UI68c7Cwx0r"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="true" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u77eWuMO1qe18" comment="@brief Get the recipe of the bakery item.&#xd;&#xa;@return The recipe of the bakery item.&#xd;" isOverride="false" name="getRecipe" isInline="false" isVirtual="false">
+        <UML:Operation visibility="public" isSpecification="false" isQuery="true" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u77eWuMO1qe18" comment="@brief Get the recipe of the bakery item.&#xa;@return The recipe of the bakery item.&#xa;" isOverride="false" name="getRecipe" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
           <UML:Parameter kind="return" xmi.id="u1cqxx5OlZW91" type="ux4jG0SASkqUT"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="true" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uyJN9Fj0UNWmw" comment="@brief Check if the bakery item is disabled.&#xd;&#xa;@return True if the bakery item is disabled, false otherwise.&#xd;" isOverride="false" name="getDisabled" isInline="false" isVirtual="false">
+        <UML:Operation visibility="public" isSpecification="false" isQuery="true" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uyJN9Fj0UNWmw" comment="@brief Check if the bakery item is disabled.&#xa;@return True if the bakery item is disabled, false otherwise.&#xa;" isOverride="false" name="getDisabled" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
           <UML:Parameter kind="return" xmi.id="uICJy0879kJGP" type="ug6rliWtuKhhE"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="true" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uLuISQVLi5N1n" comment="@brief Get the total count of bakery items.&#xd;&#xa;@return The total count of bakery items.&#xd;" isOverride="false" name="getBakeryItemCount" isInline="false" isVirtual="false">
+        <UML:Operation visibility="public" isSpecification="false" isQuery="true" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uLuISQVLi5N1n" comment="@brief Get the total count of bakery items.&#xa;@return The total count of bakery items.&#xa;" isOverride="false" name="getBakeryItemCount" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
           <UML:Parameter kind="return" xmi.id="uCcAoz8GHIzSK" type="udFl2CtkB6kDl"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uYQpLbYfRzXDr" comment="Mutators&#xd;&#xa;@brief Set the bakery items.&#xd;&#xa;@param items The array of BakeryItem objects.&#xd;" isOverride="false" name="setBakeryItems" isInline="false" isVirtual="false">
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uYQpLbYfRzXDr" comment="Mutators&#xa;@brief Set the bakery items.&#xa;@param items The array of BakeryItem objects.&#xa;" isOverride="false" name="setBakeryItems" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
           <UML:Parameter visibility="private" isSpecification="false" xmi.id="u76zW6Ta1IK3E" type="u75iKB2EYwSwp" value="" name=""/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uq1aojLflETyk" comment="@brief Set the price per unit of the bakery item.&#xd;&#xa;@param price The price per unit.&#xd;" isOverride="false" name="setPricePerUnit" isInline="false" isVirtual="false">
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uq1aojLflETyk" comment="@brief Set the price per unit of the bakery item.&#xa;@param price The price per unit.&#xa;" isOverride="false" name="setPricePerUnit" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
           <UML:Parameter visibility="private" isSpecification="false" xmi.id="u8t7TeRbPzqUM" type="u8UI68c7Cwx0r" value="" name=""/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uQg6hLcZkXP49" comment="@brief Set the quantity of the bakery item.&#xd;&#xa;@param quantity The quantity of the bakery item.&#xd;" isOverride="false" name="setBakeryItemQuantity" isInline="false" isVirtual="false">
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uQg6hLcZkXP49" comment="@brief Set the quantity of the bakery item.&#xa;@param quantity The quantity of the bakery item.&#xa;" isOverride="false" name="setBakeryItemQuantity" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
           <UML:Parameter visibility="private" isSpecification="false" xmi.id="uypvxXMJjMHJ5" type="u8UI68c7Cwx0r" value="" name=""/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uqhiKvlqh9BXc" comment="@brief Set the recipe of the bakery item.&#xd;&#xa;@param recipe The recipe of the bakery item.&#xd;" isOverride="false" name="setRecipe" isInline="false" isVirtual="false">
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uqhiKvlqh9BXc" comment="@brief Set the recipe of the bakery item.&#xa;@param recipe The recipe of the bakery item.&#xa;" isOverride="false" name="setRecipe" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
           <UML:Parameter visibility="private" isSpecification="false" xmi.id="u7BjwzISAPQIi" type="ux4jG0SASkqUT" value="" name=""/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uFvWTsfYMobFE" comment="@brief Set the disabled flag of the bakery item.&#xd;&#xa;@param disabled The disabled flag.&#xd;" isOverride="false" name="setDisabled" isInline="false" isVirtual="false">
+        <UML:Operation stereotype="destructor" visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uppNcva6MNDcU" comment="Destructor&#xa;" isOverride="false" name="~BakeryItem" isInline="false" isVirtual="false"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uU0B20XnBCcnb" isOverride="false" name="friend accessMenuDetails" isInline="false" isVirtual="false">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="uvuMGtTUDsliN" type="u75iKB2EYwSwp" value="" name="item"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uFvWTsfYMobFE" comment="@brief Set the disabled flag of the bakery item.&#xa;@param disabled The disabled flag.&#xa;" isOverride="false" name="setDisabled" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
           <UML:Parameter visibility="private" isSpecification="false" xmi.id="uIMmeCvEtyBex" type="ug6rliWtuKhhE" value="" name=""/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
-        <UML:Operation stereotype="destructor" visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uppNcva6MNDcU" comment="Destructor&#xd;" isOverride="false" name="~BakeryItem" isInline="false" isVirtual="false"/>
        </UML:Classifier.feature>
       </UML:Class>
       <UML:Class visibility="public" isSpecification="false" namespace="Logical_View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ucM3kuxAPYpO9" name="Ingredient">
@@ -1044,14 +1049,14 @@
      </UML:Namespace.ownedElement>
      <XMI.extension xmi.extender="umbrello">
       <diagrams resolution="96">
-       <diagram showopsig="1" linecolor="#ff0000" snapx="25" showattribassocs="1" snapy="25" linewidth="0" showattsig="1" textcolor="#000000" isopen="1" showpackage="1" showpubliconly="0" showstereotype="1" name="class diagram" font="Sans Serif,9,-1,0,50,0,0,0,0,0" canvasheight="1921.01" canvaswidth="1857.9" localid="-1" snapcsgrid="0" showgrid="0" showops="1" griddotcolor="#d3d3d3" backgroundcolor="#ffffff" usefillcolor="1" fillcolor="#ffff00" zoom="435.353148396718" xmi.id="uUgIeO2s1nMI6" documentation="" showscope="1" snapgrid="0" showatts="1" type="1">
+       <diagram showopsig="1" linecolor="#ff0000" snapx="25" showattribassocs="1" snapy="25" linewidth="0" showattsig="1" textcolor="#000000" isopen="1" showpackage="1" showpubliconly="0" showstereotype="1" name="class diagram" font="Sans Serif,9,-1,0,50,0,0,0,0,0" canvasheight="1921.01" canvaswidth="1857.9" localid="-1" snapcsgrid="0" showgrid="0" showops="1" griddotcolor="#d3d3d3" backgroundcolor="#ffffff" usefillcolor="1" fillcolor="#ffff00" zoom="142.3177164604009" xmi.id="uUgIeO2s1nMI6" documentation="" showscope="1" snapgrid="0" showatts="1" type="1">
         <widgets>
          <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="#000000" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="37937.9" showattsigs="601" y="4384.84" showstereotype="0" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uuu76xX4w0O5x" width="753" isinstance="0" usefillcolor="1" fillcolor="#ffcc74" xmi.id="ue7abUCMMZsUW" autoresize="1" showscope="1" height="1470" showopsigs="601"/>
          <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="#000000" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="38802.7" showattsigs="601" y="4390.07" showstereotype="0" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uubMOmR9TAVag" width="271" isinstance="0" usefillcolor="1" fillcolor="#a6ff83" xmi.id="utTEk8La6RbKR" autoresize="1" showscope="1" height="90" showopsigs="601"/>
          <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="#000000" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="38808.9" showattsigs="601" y="4563.48" showstereotype="0" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="u7VUItfwfZaRv" width="244" isinstance="0" usefillcolor="1" fillcolor="#a6ff83" xmi.id="uHfSHavQqXqPW" autoresize="1" showscope="1" height="90" showopsigs="601"/>
          <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="#000000" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="38802.5" showattsigs="601" y="4735.84" showstereotype="0" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="ukOjC9vwq0geM" width="256" isinstance="0" usefillcolor="1" fillcolor="#a6ff83" xmi.id="uXVG5E1fKJKS5" autoresize="1" showscope="1" height="150" showopsigs="601"/>
          <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="#000000" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="38803.4" showattsigs="601" y="4945.95" showstereotype="0" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uFVKOV8r0qMPv" width="665" isinstance="0" usefillcolor="1" fillcolor="#ffaf83" xmi.id="uA3VuxAzXRkr5" autoresize="1" showscope="1" height="375" showopsigs="601"/>
-         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="#000000" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="38801.9" showattsigs="601" y="5392.88" showstereotype="0" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uEoJMpvqVSbFn" width="983" isinstance="0" usefillcolor="1" fillcolor="#a6ceff" xmi.id="ujdDy0Og71s0N" autoresize="1" showscope="1" height="570" showopsigs="601"/>
+         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="#000000" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="38801.9" showattsigs="601" y="5392.88" showstereotype="0" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uEoJMpvqVSbFn" width="983" isinstance="0" usefillcolor="1" fillcolor="#a6ceff" xmi.id="ujdDy0Og71s0N" autoresize="1" showscope="1" height="585" showopsigs="601"/>
          <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="#000000" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="38182" showattsigs="601" y="5945.85" showstereotype="0" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="ukCAVWLFRwQk2" width="452" isinstance="0" usefillcolor="1" fillcolor="#eeff69" xmi.id="uHxw4xF4IgeKK" autoresize="1" showscope="1" height="360" showopsigs="601"/>
          <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="#000000" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="38923.1" showattsigs="601" y="6026.49" showstereotype="0" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="u5sSUYNPMW2Db" width="361" isinstance="0" usefillcolor="1" fillcolor="#eeff69" xmi.id="ucM3kuxAPYpO9" autoresize="1" showscope="1" height="270" showopsigs="601"/>
          <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="#000000" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="39576.5" showattsigs="601" y="6071.97" showstereotype="0" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uB6kk46IhDUEt" width="140" isinstance="0" usefillcolor="1" fillcolor="#a3b7f4" xmi.id="u9KQebxtqvbNq" autoresize="1" showscope="1" height="75" showopsigs="601"/>
@@ -1115,7 +1120,7 @@
          </assocwidget>
          <assocwidget linecolor="#ff0000" indexa="1" usesdiagramfillcolor="1" widgetbid="ucM3kuxAPYpO9" indexb="1" linewidth="0" seqnum="" textcolor="none" usesdiagramusefillcolor="1" totalcounta="2" totalcountb="2" widgetaid="ujdDy0Og71s0N" font="Sans Serif,9,-1,0,50,0,0,0,0,0" visibilityA="1" visibilityB="1" localid="uS9IP5HVFsvy1" usefillcolor="1" fillcolor="none" changeabilityA="900" xmi.id="u1pIyC0NhPKRW" changeabilityB="900" autoresize="1" type="501">
           <linepath layout="Direct">
-           <startpoint startx="39133.5" starty="5962.88"/>
+           <startpoint startx="39133.5" starty="5977.88"/>
            <endpoint endx="39133.5" endy="6026.49"/>
           </linepath>
           <floatingtext linecolor="#ff0000" usesdiagramfillcolor="1" linewidth="0" textcolor="none" usesdiagramusefillcolor="1" x="39137.7" showstereotype="1" y="5996.88" text="0..1" font="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" localid="uJ3jc5dWIcw4i" pretext="" role="702" width="28" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="uivSjXNUt66Oe" autoresize="1" height="17"/>
@@ -1123,12 +1128,12 @@
          </assocwidget>
          <assocwidget linecolor="#ff0000" indexa="1" usesdiagramfillcolor="1" widgetbid="u9KQebxtqvbNq" indexb="1" linewidth="0" seqnum="" textcolor="none" usesdiagramusefillcolor="1" totalcounta="2" totalcountb="2" widgetaid="ujdDy0Og71s0N" font="Sans Serif,9,-1,0,50,0,0,0,0,0" visibilityA="1" visibilityB="1" localid="uM3oYNkSiGx3M" usefillcolor="1" fillcolor="none" changeabilityA="900" xmi.id="uhtiupYE6YwjX" changeabilityB="900" autoresize="1" type="510">
           <linepath layout="Direct">
-           <startpoint startx="39650" starty="5962.88"/>
+           <startpoint startx="39650" starty="5977.88"/>
            <endpoint endx="39650" endy="6071.97"/>
           </linepath>
           <floatingtext linecolor="#ff0000" usesdiagramfillcolor="1" linewidth="0" textcolor="none" usesdiagramusefillcolor="1" x="39610.8" showstereotype="1" y="6034.8" text="cake" font="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" localid="u4ZBdu1pKdEq0" pretext="-" role="710" width="34" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="uMtOWek1b74jW" autoresize="1" height="17"/>
          </assocwidget>
-         <assocwidget linecolor="#ff0000" indexa="1" usesdiagramfillcolor="1" widgetbid="ujdDy0Og71s0N" indexb="1" linewidth="0" seqnum="" textcolor="none" usesdiagramusefillcolor="1" totalcounta="2" totalcountb="2" widgetaid="uW1OOEMqbpOn9" font="Sans Serif,9,-1,0,50,0,0,0,0,0" visibilityA="1" visibilityB="1" localid="uvfTnHGwNx2Cw" usefillcolor="1" fillcolor="none" changeabilityA="900" xmi.id="uHr521XsjVxXp" changeabilityB="900" autoresize="1" type="501">
+         <assocwidget linecolor="#ff0000" indexa="1" usesdiagramfillcolor="1" widgetbid="ujdDy0Og71s0N" indexb="2" linewidth="0" seqnum="" textcolor="none" usesdiagramusefillcolor="1" totalcounta="2" totalcountb="3" widgetaid="uW1OOEMqbpOn9" font="Sans Serif,9,-1,0,50,0,0,0,0,0" visibilityA="1" visibilityB="1" localid="uvfTnHGwNx2Cw" usefillcolor="1" fillcolor="none" changeabilityA="900" xmi.id="uHr521XsjVxXp" changeabilityB="900" autoresize="1" type="501">
           <linepath layout="Direct">
            <startpoint startx="39665.7" starty="4899.54"/>
            <endpoint endx="39665.7" endy="5392.88"/>
@@ -1143,6 +1148,16 @@
           </linepath>
           <floatingtext linecolor="#ff0000" usesdiagramfillcolor="1" linewidth="0" textcolor="none" usesdiagramusefillcolor="1" x="39375" showstereotype="1" y="4797.75" text="0..1" font="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" localid="uRMQ3afOWutyj" pretext="" role="702" width="28" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="uSoBFR3RohJxi" autoresize="1" height="17"/>
           <floatingtext linecolor="#ff0000" usesdiagramfillcolor="1" linewidth="0" textcolor="none" usesdiagramusefillcolor="1" x="39372.3" showstereotype="1" y="4822.73" text="cart" font="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" localid="uuD2SkHqsapvM" pretext="-" role="710" width="31" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="u7CMbiYKOMjEI" autoresize="1" height="17"/>
+         </assocwidget>
+         <assocwidget linecolor="#ff0000" indexa="0" usesdiagramfillcolor="1" widgetbid="ujdDy0Og71s0N" indexb="0" linewidth="0" seqnum="" textcolor="none" usesdiagramusefillcolor="1" totalcounta="0" totalcountb="0" widgetaid="ujdDy0Og71s0N" font="Sans Serif,9,-1,0,50,0,0,0,0,0" visibilityA="1" visibilityB="1" localid="uvMw95SlY0AQT" usefillcolor="1" fillcolor="none" changeabilityA="900" xmi.id="umcr5RcN5YyjW" changeabilityB="900" autoresize="1" type="501">
+          <linepath layout="Direct">
+           <startpoint startx="39047.7" starty="5392.88"/>
+           <endpoint endx="39539.2" endy="5392.88"/>
+           <point x="39047.7" y="5342.88"/>
+           <point x="39539.2" y="5342.88"/>
+          </linepath>
+          <floatingtext linecolor="#ff0000" usesdiagramfillcolor="1" linewidth="0" textcolor="none" usesdiagramusefillcolor="1" x="39541" showstereotype="1" y="5373" text="0..1" font="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" localid="ujEx3u1feIUvZ" pretext="" role="702" width="28" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="uggnnSB72Rz1l" autoresize="1" height="17"/>
+          <floatingtext linecolor="#ff0000" usesdiagramfillcolor="1" linewidth="0" textcolor="none" usesdiagramusefillcolor="1" x="39469.2" showstereotype="1" y="5373.88" text="bakeryItems" font="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" localid="uvhTLcDSlyERH" pretext="-" role="710" width="72" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="uIMAd6rj2KBsg" autoresize="1" height="17"/>
          </assocwidget>
         </associations>
        </diagram>
@@ -1181,7 +1196,7 @@
   </UML:Model>
  </XMI.content>
  <XMI.extensions xmi.extender="umbrello">
-  <docsettings viewid="uUgIeO2s1nMI6" uniqueid="u4RRyJtxRXMbl" documentation=""/>
+  <docsettings viewid="uUgIeO2s1nMI6" uniqueid="uvuMGtTUDsliN" documentation=""/>
   <listview>
    <listitem open="1" type="800" id="Views">
     <listitem open="1" type="821" id="Component_View">
@@ -1209,7 +1224,7 @@
       <listitem open="0" type="814" id="uEL0PzFp4sYtf"/>
       <listitem open="0" type="815" id="uz6cXdRqBaMgR"/>
      </listitem>
-     <listitem open="0" type="813" id="ujdDy0Og71s0N">
+     <listitem open="1" type="813" id="ujdDy0Og71s0N">
       <listitem open="0" type="815" id="uppNcva6MNDcU"/>
       <listitem open="0" type="815" id="uERGhNi5V7pnh"/>
       <listitem open="0" type="815" id="uZzKZJ5ItwfZO"/>
@@ -1223,6 +1238,7 @@
       <listitem open="0" type="814" id="uVBfD8AzZP9Nl"/>
       <listitem open="0" type="814" id="uWHIJzxqXRRFd"/>
       <listitem open="0" type="815" id="um0Bj7l520XD1"/>
+      <listitem open="0" type="815" id="uU0B20XnBCcnb"/>
       <listitem open="0" type="815" id="uHLTcVay03AsR"/>
       <listitem open="0" type="815" id="uLuISQVLi5N1n"/>
       <listitem open="0" type="815" id="ubTqofJInxrub"/>
