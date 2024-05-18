@@ -180,9 +180,10 @@ void Employee::startBakery(string date) {
   string balanceString = lastLine.substr(lastLine.find(",", lastLine.find(",", lastLine.find(",") + 1) + 1) + 1);
 
   // Check if dateString is the same as today's date
+  // Check if balanceSheetFile is there
   // If it is, set totalDebit, totalCredit, totalBalance to the values in the last line
   // If it is not, set totalDebit, totalCredit to 0
-  if (dateString == date) {
+  if (dateString == date && balanceSheetFile.good()) {
     // Set total debit and total credit
     totalDebit = stod(debitString);
     totalCredit = stod(creditString);
@@ -224,6 +225,10 @@ void Employee::startBakery(string date) {
   } else {
     totalDebit = 0;
     totalCredit = 0;
+  }
+
+  if (balanceString == "") {
+    balanceString = "5000.0";
   }
 
   // Set total balance
