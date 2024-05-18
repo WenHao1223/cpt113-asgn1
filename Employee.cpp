@@ -839,7 +839,7 @@ void Employee::checkIngredientInventory() const {
  */
 void Employee::accessIngredientInventoryFile(int index, string field, string value) {
   ifstream ingredientInventoryFile; // Input file stream for the ingredient inventory file.
-  ingredientInventoryFile.open("files/IngredientInventory.txt", ios::in); // Open the ingredient inventory file in input mode.
+  ingredientInventoryFile.open("files/ingredientInventory.txt", ios::in); // Open the ingredient inventory file in input mode.
   string line; // String to store each line of the file.
   string newFileLines; // String to store the new file lines after modification.
 
@@ -896,7 +896,7 @@ void Employee::accessIngredientInventoryFile(int index, string field, string val
 
   // Write the new file lines to the ingredient inventory file.
   ofstream newIngredientInventoryFile; // Output file stream for the new ingredient inventory file.
-  newIngredientInventoryFile.open("files/IngredientInventory.txt"); // Open the ingredient inventory file in output mode.
+  newIngredientInventoryFile.open("files/ingredientInventory.txt"); // Open the ingredient inventory file in output mode.
   newIngredientInventoryFile << newFileLines; // Write the new file lines to the ingredient inventory file.
   newIngredientInventoryFile.close(); // Close the ingredient inventory file.
 }
