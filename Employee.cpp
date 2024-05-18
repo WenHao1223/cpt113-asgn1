@@ -163,9 +163,9 @@ void Employee::startBakery(string date) {
 
   orderNo = 0;
   
-  // Fetch the total balance from files/balanceSheet.csv last row last column
+  // Fetch the total balance from files/balanceSheet.txt last row last column
   ifstream balanceSheetFile; // Input file stream for the balance sheet file
-  balanceSheetFile.open("files/balanceSheet.csv"); // Open the balance sheet file in input mode
+  balanceSheetFile.open("files/balanceSheet.txt"); // Open the balance sheet file in input mode
   string line; // String to store each line of the file
   string lastLine; // String to store the last line of the file
   while (getline(balanceSheetFile, line)) {
@@ -188,9 +188,9 @@ void Employee::startBakery(string date) {
     totalDebit = stod(debitString);
     totalCredit = stod(creditString);
 
-    // Delete last line from balanceSheet.csv
+    // Delete last line from balanceSheet.txt
     ifstream balanceSheetFile;
-    balanceSheetFile.open("files/balanceSheet.csv");
+    balanceSheetFile.open("files/balanceSheet.txt");
     string tempLines;
     string line;
     while (getline(balanceSheetFile, line)) {
@@ -201,15 +201,15 @@ void Employee::startBakery(string date) {
     balanceSheetFile.close();
 
     ofstream balanceSheetFileWrite; // Output file stream for the balance sheet file
-    balanceSheetFileWrite.open("files/balanceSheet.csv");
+    balanceSheetFileWrite.open("files/balanceSheet.txt");
     // Remove last \n from tempLines
     tempLines = tempLines.substr(0, tempLines.length() - 1);
     balanceSheetFileWrite << tempLines;
     balanceSheetFileWrite.close();
 
-    // Read balance from balanceSheet.csv
+    // Read balance from balanceSheet.txt
     // Extract data from last line after confirming last line is previous date
-    balanceSheetFile.open("files/balanceSheet.csv");
+    balanceSheetFile.open("files/balanceSheet.txt");
     while (getline(balanceSheetFile, line)) {
       lastLine = line;
     }
@@ -235,9 +235,9 @@ void Employee::startBakery(string date) {
   totalBalance = stod(balanceString);
   cout << endl;
 
-  // Fetch ingredient inventory from files/ingredientInventory.csv
+  // Fetch ingredient inventory from files/ingredientInventory.txt
   ifstream ingredientInventoryFile; // Input file stream for the ingredient inventory file
-  ingredientInventoryFile.open("files/ingredientInventory.csv"); // Open the ingredient inventory file in input mode
+  ingredientInventoryFile.open("files/ingredientInventory.txt"); // Open the ingredient inventory file in input mode
 
   cout << "Reading ingredient inventory file..." << endl;
   string ingredientInventoryLine; // String to store each line of the file
@@ -286,9 +286,9 @@ void Employee::startBakery(string date) {
   Ingredient * ingredients;
 
   // Fetch bakery items (cake)
-  // Read from file/cake.csv
+  // Read from file/cake.txt
   ifstream cakeFile; // Input file stream for the bakery item file
-  cakeFile.open("files/cake.csv"); // Open the bakery item file in input mode
+  cakeFile.open("files/cake.txt"); // Open the bakery item file in input mode
 
   cout << "Reading cake file..." << endl;
   string cakeLine; // String to store each line of the file
@@ -393,9 +393,9 @@ void Employee::startBakery(string date) {
   cakeFile.close();
 
   // Fetch bakery items (cookie)
-  // Read from file/cookie.csv
+  // Read from file/cookie.txt
   ifstream cookieFile; // Input file stream for the cookie file
-  cookieFile.open("files/cookie.csv"); // Open the cookie file in input mode
+  cookieFile.open("files/cookie.txt"); // Open the cookie file in input mode
 
   cout << "Reading cookie file..." << endl;
   string cookieLine; // String to store each line of the file
@@ -491,9 +491,9 @@ void Employee::startBakery(string date) {
   // Array of discounts
   discounts = new Discount[Constant::MAX_DISCOUNTS];
 
-  // Read from file/discount.csv
+  // Read from file/discount.txt
   ifstream discountFile; // Input file stream for the discount file
-  discountFile.open("files/discount.csv", ios::in); // Open the discount file in input mode
+  discountFile.open("files/discount.txt", ios::in); // Open the discount file in input mode
 
   cout << "Reading discount file..." << endl;
   string discountLine; // String to store each line of the file
@@ -759,9 +759,9 @@ void Employee::closeBakery(string date) {
   totalBalance += totalProfitPerDay;
   cout << "Total balance: RM " << totalBalance << endl;
 
-  // Append to balanceSheet.csv
+  // Append to balanceSheet.txt
   ofstream balanceSheetFile; // Output file stream for the balance sheet file
-  balanceSheetFile.open("files/balanceSheet.csv", ios::app);
+  balanceSheetFile.open("files/balanceSheet.txt", ios::app);
   balanceSheetFile << setprecision(2) << fixed;
   balanceSheetFile << "\n" << date << "," << totalDebit << "," << totalCredit << "," << totalBalance;
   balanceSheetFile.close();
@@ -839,7 +839,7 @@ void Employee::checkIngredientInventory() const {
  */
 void Employee::accessIngredientInventoryFile(int index, string field, string value) {
   ifstream ingredientInventoryFile; // Input file stream for the ingredient inventory file.
-  ingredientInventoryFile.open("files/IngredientInventory.csv", ios::in); // Open the ingredient inventory file in input mode.
+  ingredientInventoryFile.open("files/IngredientInventory.txt", ios::in); // Open the ingredient inventory file in input mode.
   string line; // String to store each line of the file.
   string newFileLines; // String to store the new file lines after modification.
 
@@ -896,7 +896,7 @@ void Employee::accessIngredientInventoryFile(int index, string field, string val
 
   // Write the new file lines to the ingredient inventory file.
   ofstream newIngredientInventoryFile; // Output file stream for the new ingredient inventory file.
-  newIngredientInventoryFile.open("files/IngredientInventory.csv"); // Open the ingredient inventory file in output mode.
+  newIngredientInventoryFile.open("files/IngredientInventory.txt"); // Open the ingredient inventory file in output mode.
   newIngredientInventoryFile << newFileLines; // Write the new file lines to the ingredient inventory file.
   newIngredientInventoryFile.close(); // Close the ingredient inventory file.
 }
@@ -1330,9 +1330,9 @@ void Employee::createBakeryItem() {
 
     // check if bakery item is cake or cookie
     if (bakeryItemCategory == "Cake") {
-      // append to cake.csv
+      // append to cake.txt
       ofstream cakeFile; // Output file stream for the cake file
-      cakeFile.open("files/cake.csv", ios::app); // Open the cake file in append mode
+      cakeFile.open("files/cake.txt", ios::app); // Open the cake file in append mode
       cakeFile << "\n" << bakeryItemName << ",\"" << bakeryItemDescription << "\"," << bakeryItemPricePerUnit << ",\"";
 
       // write ingredients to file with format: name,weight/piece
@@ -1368,9 +1368,9 @@ void Employee::createBakeryItem() {
       cakeFile << "\",\"" << recipe << "\"," << (bakeryItems->getBakeryItemCount() == 0 ? "false" : "true") << "," << totalWeight;
       cakeFile.close();
     } else {
-      // append to cookie.csv
+      // append to cookie.txt
       ofstream cookieFile; // Output file stream for the cookie file
-      cookieFile.open("files/cookie.csv", ios::app); // Open the cookie file in append mode
+      cookieFile.open("files/cookie.txt", ios::app); // Open the cookie file in append mode
       cookieFile << "\n" << bakeryItemName << ",\"" << bakeryItemDescription << "\"," << bakeryItemPricePerUnit << ",\"";
 
       // write ingredients to file with format: name,weight/piece
@@ -1427,9 +1427,9 @@ void Employee::accessBakeryItemFile (int index, string field, string value) {
 
   // Check if the bakery item is a cake or a cookie.
   if (bakeryItems[index].getBakeryItemCategory() == "Cake") {
-    bakeryItemFile.open("files/cake.csv", ios::in);
+    bakeryItemFile.open("files/cake.txt", ios::in);
   } else {
-    bakeryItemFile.open("files/cookie.csv", ios::in);
+    bakeryItemFile.open("files/cookie.txt", ios::in);
   }
 
   string line; // String to store each line of the file.
@@ -1517,9 +1517,9 @@ void Employee::accessBakeryItemFile (int index, string field, string value) {
 
   // Check if the bakery item is a cake or a cookie.
   if (bakeryItems[index].getBakeryItemCategory() == "Cake") {
-    newBakeryItemFile.open("files/cake.csv");
+    newBakeryItemFile.open("files/cake.txt");
   } else {
-    newBakeryItemFile.open("files/cookie.csv");
+    newBakeryItemFile.open("files/cookie.txt");
   }
   newBakeryItemFile << newFileLines;
   newBakeryItemFile.close();
@@ -1543,7 +1543,7 @@ void Employee::withdrawBakeryItem (int index) {
     // Disable the bakery item.
     bakeryItems[index].setDisabled(true);
 
-    // file handling of bakery item file - cake.csv / cookie.csv
+    // file handling of bakery item file - cake.txt / cookie.txt
     accessBakeryItemFile(index, "disabled", "true");
 
     cout << bakeryItems[index].getBakeryItemName() << " has been withdrawn." << endl;
@@ -1570,7 +1570,7 @@ void Employee::enableBakeryItem (int index) {
     // Enable the bakery item.
     bakeryItems[index].setDisabled(false);
 
-    // file handling of bakery item file - cake.csv / cookie.csv
+    // file handling of bakery item file - cake.txt / cookie.txt
     accessBakeryItemFile(index, "disabled", "false");
 
     cout << bakeryItems[index].getBakeryItemName() << " has been enabled." << endl;
@@ -1595,7 +1595,7 @@ void Employee::changeBakeryItemPrice(int index, double newPrice) {
     cout << role << " - Changing " << bakeryItems[index].getBakeryItemName() << " price..." << endl;
     bakeryItems[index].setPricePerUnit(newPrice);
 
-    // file handling of bakery item file - cake.csv / cookie.csv
+    // file handling of bakery item file - cake.txt / cookie.txt
     accessBakeryItemFile(index, "pricePerUnit", to_string(newPrice));
 
     cout << setprecision(2) << fixed;
@@ -1758,7 +1758,7 @@ void Employee::createNewEmployee(Employee * employees, int & employeeCount, stri
 
         // file handling of employee data file
         ofstream employeeDataFile; // Output file stream for the employee data file
-        employeeDataFile.open("files/employeeData.csv", ios::app); // Open the employee data file in append mode
+        employeeDataFile.open("files/employeeData.txt", ios::app); // Open the employee data file in append mode
         employeeDataFile << "\n" << employeeID << "," << name << "," << role << "," << password; // Append the employee details to the file
         employeeDataFile.close(); // Close the employee data file
 
@@ -1803,7 +1803,7 @@ void Employee::createNewEmployee(Employee * employees, int & employeeCount, stri
 void Employee::accessEmployeeDataFile (int index, string field, string value) {
   // Open the employee data file in input mode.
   ifstream employeeDataFile; // Input file stream for the employee data file
-  employeeDataFile.open("files/employeeData.csv", ios::in); // Open the employee data file in input mode
+  employeeDataFile.open("files/employeeData.txt", ios::in); // Open the employee data file in input mode
 
   string line; // String to store each line of the file
   string newFileLines; // String to store the new file lines after modification
@@ -1816,7 +1816,7 @@ void Employee::accessEmployeeDataFile (int index, string field, string value) {
 
   // Check if the employee data file is found.
   if (!employeeDataFile) {
-    cout << "files/employeeData.csv not found." << endl;
+    cout << "files/employeeData.txt not found." << endl;
     return;
   } else {
     getline(employeeDataFile, line); // skip first line (header)
@@ -1865,7 +1865,7 @@ void Employee::accessEmployeeDataFile (int index, string field, string value) {
 
   // Write the new file lines to the employee data file.
   ofstream newEmployeeDataFile; // Output file stream for the new employee data file
-  newEmployeeDataFile.open("files/employeeData.csv"); // Open the employee data file
+  newEmployeeDataFile.open("files/employeeData.txt"); // Open the employee data file
   newEmployeeDataFile << newFileLines; // Write the new file lines to the employee data file
   newEmployeeDataFile.close(); // Close the employee data file
 }
@@ -2114,9 +2114,9 @@ void Employee::addNewDiscount() {
         discounts[i] = Discount(discountName, minimumPurchase, discountPercentage, discountDescription, disabled);
         cout << "Discount '" << discountName << "' has been added successful!" << endl;
 
-        // add new discount to files/discount.csv
+        // add new discount to files/discount.txt
         ofstream discountFile; // Output file stream for the discount file
-        discountFile.open("files/discount.csv", ios::app); // Open the discount file in append mode
+        discountFile.open("files/discount.txt", ios::app); // Open the discount file in append mode
         discountFile << endl << discountName << "," << minimumPurchase << "," << discountPercentage << "," << discountDescription << "," << (disabled ? "false" : "true"); // Append the discount details to the file
         discountFile.close(); // Close the discount file
 
@@ -2142,7 +2142,7 @@ void Employee::addNewDiscount() {
 void Employee::accessDiscountFile(int index, string field, string value) {
   // Open the discount file in input mode.
   ifstream discountFile; // Input file stream for the discount file
-  discountFile.open("files/discount.csv", ios::in); // Open the discount file in input mode
+  discountFile.open("files/discount.txt", ios::in); // Open the discount file in input mode
   string line; // String to store each line of the file
   string newFileLines; // String to store the new file lines after modification
 
@@ -2205,7 +2205,7 @@ void Employee::accessDiscountFile(int index, string field, string value) {
 
   // Write the new file lines to the discount file.
   ofstream newDiscountFile; // Output file stream for the new discount file
-  newDiscountFile.open("files/discount.csv"); // Open the discount file
+  newDiscountFile.open("files/discount.txt"); // Open the discount file
   newDiscountFile << newFileLines; // Write the new file lines to the discount file
   newDiscountFile.close(); // Close the discount file
 }
@@ -2230,7 +2230,7 @@ void Employee::editDiscountName(int index, string newName) {
   if (supervisor != nullptr) {
     cout << role << " - Editing discount name..." << endl;
 
-    // edit name in files/discount.csv
+    // edit name in files/discount.txt
     accessDiscountFile(index, "name", newName);
     discounts[index].setName(newName);
     cout << "New name has been updated for discount '" << discounts[index].getName() << "'." << endl;
@@ -2259,7 +2259,7 @@ void Employee::editDiscountMinimumPurchase(int index, double newMinimumPurchase)
   if (supervisor != nullptr) {
     cout << role << " - Editing minimum purchase..." << endl;
 
-    // edit minimum purchase in files/discount.csv
+    // edit minimum purchase in files/discount.txt
     accessDiscountFile(index, "minimumPurchase", to_string(newMinimumPurchase));
 
     discounts[index].setMinimumPurchase(newMinimumPurchase);
@@ -2289,7 +2289,7 @@ void Employee::editDiscountPercentage(int index, double newPercentage) {
   if (supervisor != nullptr) {
     cout << role << " - Editing discount percentage..." << endl;
 
-    // edit percentage in files/discount.csv
+    // edit percentage in files/discount.txt
     accessDiscountFile(index, "discountPercentage", to_string(newPercentage));
 
     discounts[index].setDiscountPercentage(newPercentage);
@@ -2319,7 +2319,7 @@ void Employee::editDiscountDescription(int index, string newDescription) {
   if (supervisor != nullptr) {
     cout << role << " - Editing discount description..." << endl;
 
-    // edit description in files/discount.csv
+    // edit description in files/discount.txt
     accessDiscountFile(index, "description", newDescription);
 
     discounts[index].setDescription(newDescription);
@@ -2348,7 +2348,7 @@ void Employee::disableDiscount(int index) {
   if (supervisor != nullptr) {
     cout << role << " - Disabling discount..." << endl;
 
-    // edit disabled in files/discount.csv
+    // edit disabled in files/discount.txt
     accessDiscountFile(index, "disabled", "true");
 
     discounts[index].setDisabled(true);
@@ -2377,7 +2377,7 @@ void Employee::enableDiscount(int index) {
   if (supervisor != nullptr) {
     cout << role << " - Enabling discount..." << endl;
 
-    // edit disabled in files/discount.csv
+    // edit disabled in files/discount.txt
     accessDiscountFile(index, "disabled", "false");
 
     discounts[index].setDisabled(false);
@@ -2406,7 +2406,7 @@ void Employee::deleteDiscount(int index) {
   if (supervisor != nullptr) {
     cout << role << " - Deleting discount..." << endl;
 
-    // delete discount in files/discount.csv
+    // delete discount in files/discount.txt
     accessDiscountFile(index, "deleteAll", "");
 
     cout << "Discount '" << discounts[index].getName() << "' has been deleted." << endl;
@@ -2434,7 +2434,7 @@ void Employee::displayBalanceSheet() const {
 
     // Display the balance sheet in a table format.
     ifstream balanceSheetFile; // Input file stream for the balance sheet file
-    balanceSheetFile.open("files/balanceSheet.csv", ios::in); // Open the balance sheet file in input mode
+    balanceSheetFile.open("files/balanceSheet.txt", ios::in); // Open the balance sheet file in input mode
     string line; // String to store each line of the file
 
     // Check if the balance sheet file is found.
@@ -2493,7 +2493,7 @@ void Employee::accessTransactionHistory (string date) const {
     cout << role << " - Accessing " + date + " transaction history ..." << endl;
 
     ifstream transactionHistoryFile; // Input file stream for the transaction history file
-    transactionHistoryFile.open("files/transactions/transaction-"+date+".csv", ios::in); // Open the transaction history file in input mode
+    transactionHistoryFile.open("files/transactions/transaction-"+date+".txt", ios::in); // Open the transaction history file in input mode
 
     // Check if the transaction history file is found.
     if (!transactionHistoryFile) {
@@ -3314,13 +3314,13 @@ void Employee::checkout(string dateTime) {
     } while (dineIn != 'Y' && dineIn != 'N' && dineIn != 'y' && dineIn != 'n');
     cout << endl;
 
-    // Store transaction details to csv file
+    // Store transaction details to txt file
     // Generate receipt txt file
     ofstream transactionFile; // Variable to store the transaction file
-    transactionFile.open("files/transactions/transaction-" + dateTime.substr(0, 4) + dateTime.substr(5, 2) + dateTime.substr(8, 2) + ".csv", ios::app); // Open the transaction file
+    transactionFile.open("files/transactions/transaction-" + dateTime.substr(0, 4) + dateTime.substr(5, 2) + dateTime.substr(8, 2) + ".txt", ios::app); // Open the transaction file
 
-    // input file stored in files/transactions/transaction-[YYYYMMDD].csv
-    ifstream transactionFileCheck("files/transactions/transaction-" + dateTime.substr(0, 4) + dateTime.substr(5, 2) + dateTime.substr(8, 2) + ".csv");
+    // input file stored in files/transactions/transaction-[YYYYMMDD].txt
+    ifstream transactionFileCheck("files/transactions/transaction-" + dateTime.substr(0, 4) + dateTime.substr(5, 2) + dateTime.substr(8, 2) + ".txt");
     // check if file is empty
     if (transactionFileCheck.peek() == ifstream::traits_type::eof()) {
       // set header
@@ -3341,7 +3341,7 @@ void Employee::checkout(string dateTime) {
     }
     transactionFileCheck.close();
 
-    // store transaction details to csv file
+    // store transaction details to txt file
     transactionFile << endl << orderNo << "," << dateTime << "," << employeeID << ",\"";
     // iterate through all bakery items in cart
     for (int i = 0; i < cashier->getCart()->getCartItemCount(); i++) {

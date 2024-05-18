@@ -217,7 +217,7 @@ void IngredientInventory::addNewInventoryIngredientWeight(string name, double co
 
   // file handling to add new ingredient into inventory
   ofstream addInventory;
-  addInventory.open("files/IngredientInventory.csv", ios::app);
+  addInventory.open("files/IngredientInventory.txt", ios::app);
   addInventory << "\n" << name << "," << cost << "," << weight << ",0,false";
   addInventory.close();
 
@@ -276,7 +276,7 @@ void IngredientInventory::addNewInventoryIngredientPiece(string name, double cos
 
   // file handling to add new ingredient into inventory
   ofstream addInventory;
-  addInventory.open("files/IngredientInventory.csv", ios::app);
+  addInventory.open("files/IngredientInventory.txt", ios::app);
   addInventory << "\n" << name << "," << cost << "," << piece << ",0,false";
   addInventory.close();
 

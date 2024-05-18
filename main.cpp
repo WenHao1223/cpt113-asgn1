@@ -222,10 +222,10 @@ int main () {
 
   Employee * employees = new Employee[MAX_EMPLOYEES];
 
-  // read employee data from employeeData.csv
+  // read employee data from employeeData.txt
   string line;
   int employeeCount = 0;
-  ifstream employeeDataFile("files/employeeData.csv");
+  ifstream employeeDataFile("files/employeeData.txt");
   if (employeeDataFile) {
     getline(employeeDataFile, line); // skip first line (header)
     while (!employeeDataFile.eof() && employeeCount < MAX_EMPLOYEES) {
@@ -251,7 +251,7 @@ int main () {
       employeeCount++;
     }
   } else {
-    cout << "Error: employeeData.csv not found" << endl;
+    cout << "Error: employeeData.txt not found" << endl;
     return 0;
   }
   cout << endl;
