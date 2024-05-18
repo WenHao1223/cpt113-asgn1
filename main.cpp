@@ -328,7 +328,7 @@ void displaySupervisorMenu(){
   cout << "==========================================================\n";
   cout << "| 1. Check Bakery Item                                   |\n"; // View today's menu items and details
   cout << "| 2. Inventory Management                                |\n"; // Manage inventory list and details
-  cout << "| 3. Menu Items Management                               |\n"; // Create new menu items, edit and delete existing menu items
+  cout << "| 3. Bakery Items Management                               |\n"; // Create new menu items, edit and delete existing menu items
   cout << "| 4. Promotions and Discounts                            |\n";
   cout << "| 5. Employee Management                                 |\n";
   cout << "| 6. Reporting and Analytics                             |\n"; // For displaying balance sheet and transaction history
@@ -383,7 +383,7 @@ void processSupervisorChoice(Employee* employees, int employeeID, int employeeCo
         InventoryManagement(employees, employeeID);
         break;
       case '3':
-        // Menu Items Management
+        // Bakery Items Management
         BakeryItemManagement(employees, employeeID);
         break;
       case '4':
