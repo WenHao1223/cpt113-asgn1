@@ -245,6 +245,10 @@ void Employee::startBakery(string date) {
 
   getline(ingredientInventoryFile, ingredientInventoryLine); // skip first line (header)
   while (getline(ingredientInventoryFile, ingredInvName, ',')) {
+    if (ingredInvName == "") {
+      continue;
+    }
+    
     getline(ingredientInventoryFile, ingredientInventoryLine, ',');
     ingredInvCost = stod(ingredientInventoryLine);
     getline(ingredientInventoryFile, ingredientInventoryLine, ',');
@@ -300,6 +304,10 @@ void Employee::startBakery(string date) {
 
     // name
     getline(cakeFile, cakeName, ',');
+
+    if (cakeName == "") {
+      continue;
+    }
 
     // description
     getline(cakeFile, cakeLine, '"');
@@ -400,6 +408,10 @@ void Employee::startBakery(string date) {
     // name
     getline(cookieFile, cookieName, ',');
 
+    if (cookieName == "") {
+      continue;
+    }
+
     // description
     getline(cookieFile, cookieLine, '"');
     getline(cookieFile, cookieDescription, '"');
@@ -489,6 +501,10 @@ void Employee::startBakery(string date) {
 
   getline(discountFile, discountLine); // skip first line (header)
   while (getline(discountFile, discountName, ',')) {
+    if (discountName == "") {
+      continue;
+    }
+
     getline(discountFile, discountLine, ',');
     discountMinimumPurchase = stod(discountLine);
     getline(discountFile, discountLine, ',');
@@ -832,6 +848,11 @@ void Employee::accessIngredientInventoryFile(int index, string field, string val
   newFileLines += line + "\n"; // Append the first line to the new file lines.
   while (!ingredientInventoryFile.eof()) {
     getline(ingredientInventoryFile, name, ',');
+
+    if (name == "") {
+      continue;
+    }
+
     getline(ingredientInventoryFile, costPerUnit, ',');
     getline(ingredientInventoryFile, weight, ',');
     getline(ingredientInventoryFile, piece, ',');
@@ -1431,6 +1452,10 @@ void Employee::accessBakeryItemFile (int index, string field, string value) {
     // name
     getline(bakeryItemFile, name, ',');
 
+    if (name == "") {
+      continue;
+    }
+
     // description
     getline(bakeryItemFile, line, '"');
     getline(bakeryItemFile, description, '"');
@@ -1796,6 +1821,11 @@ void Employee::accessEmployeeDataFile (int index, string field, string value) {
   // Read the employee data file line by line.
   while (!employeeDataFile.eof()) {
     getline(employeeDataFile, employeeID, ',');
+
+    if (employeeID == "") {
+      continue;
+    }
+
     getline(employeeDataFile, name, ',');
     getline(employeeDataFile, role, ',');
     getline(employeeDataFile, password);
@@ -2127,6 +2157,11 @@ void Employee::accessDiscountFile(int index, string field, string value) {
   // Read the discount file line by line.
   while (!discountFile.eof()) {
     getline(discountFile, name, ',');
+
+    if (name == "") {
+      continue;
+    }
+
     getline(discountFile, minimumPurchase, ',');
     getline(discountFile, discountPercentage, ',');
     getline(discountFile, description, ',');
@@ -2419,6 +2454,11 @@ void Employee::displayBalanceSheet() const {
     // Read the balance sheet file line by line.
     while (!balanceSheetFile.eof()) {
       getline(balanceSheetFile, line, ',');
+
+      if (line == "") {
+        continue;
+      }
+
       cout << "| " << left << setw(15) << line << "| ";
       getline(balanceSheetFile, line, ',');
       cout << left << setw(15) << line << "| ";
@@ -2477,6 +2517,11 @@ void Employee::accessTransactionHistory (string date) const {
     while (!transactionHistoryFile.eof()) {
       // orderID
       getline(transactionHistoryFile, line, ',');
+
+      if (line == "") {
+        continue;
+      }
+
       cout << "| " << left << setw(10) << line << "| ";
       
       // dateTime
